@@ -1,0 +1,4 @@
+autotest-all: --require features --require lib --format progress features --language zh-CN
+autotest: --require features --require lib features --language zh-CN
+default: --format pretty --language zh-CN
+html: --format html --out features.html --language zh-CN
