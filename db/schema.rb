@@ -13,7 +13,6 @@ ActiveRecord::Schema.define(:version => 20090311141723) do
 
   create_table "users", :force => true do |t|
     t.string   "login"
-    t.string   "email"
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
     t.string   "remember_token"
