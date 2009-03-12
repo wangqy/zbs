@@ -10,7 +10,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :realname
       t.timestamps
     end
-    
+
+    say 'create admin user'
     User.create!({:login => 'admin', :password => 'admin'})
   end
 

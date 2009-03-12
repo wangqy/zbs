@@ -1,11 +1,11 @@
-#login
+#logon
   - form_remote_tag :url => session_path do                                                                                                                 
     %p  
-      %label 用户名
+      %label{:for => 'login'} 用户名
       = text_field_tag 'login', params[:login], :is_focus => true
     %p  
-      %label 密码
+      %label{:for => 'password'} 密码
       = password_field_tag 'password'
     %p  
-      = submit_tag '登录', :class => "button"
+      = submit_tag '登录', :class => "button", :id => "save"
 
