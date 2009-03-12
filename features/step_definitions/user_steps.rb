@@ -1,24 +1,15 @@
-Given /I am on the new user page/ do
-  visit "/users/new"
+假如 /我在登录页面/ do
+  visit "/"
 end
 
-Given /^the following users:$/ do |users|
-  User.create!(users.hashes)
+当 /我输入用户名(.*)/ do |login|
+  fill_in('login', :with => login)
 end
 
-When /^I delete the (\d+)(?:st|nd|rd|th) user$/ do |pos|
-  visit users_url
-  within("table > tr:nth-child(#{pos.to_i+1})") do
-    click_link "Destroy"
-  end
+而且 /我点击登录/ do
+  click_button('save')
 end
 
-Then /^I should see the following users:$/ do |users|
-  users.raw[1..-1].each_with_index do |row, i|
-    row.each_with_index do |cell, j|
-      response.should have_selector("table > tr:nth-child(#{i+2}) > td:nth-child(#{j+1})") { |td|
-        td.inner_text.should == cell
-      }
-    end
-  end
+那么 /我应该能看到(.*)/ do |text|
+  response.should contain(text)
 end
