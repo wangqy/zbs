@@ -4,20 +4,54 @@
   %head
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %title 数字值班室
-    =stylesheet_link_tag "blueprint/screen"
-    / [if IE]
-      =stylesheet_link_tag "blueprint/ie"
-    =stylesheet_link_tag "facebox", "default" 
+    =stylesheet_link_tag "core", "facebox", "default"
     =javascript_include_tag "prototype", "jquery", "facebox", "application" 
 
   %body
     .container
-      #header.span-19
-      #content.span-19
-        -flash.each do |key, msg|
-          =content_tag :p, msg, :class => "flash #{key}"
-        =yield
-      #footer.span-19.clearfix
-        %p
-          高正软件
+      #header.clear
+        %ul{:id=>"sec-nav"}
+        #titles
+          %h1
+            %strong{:id=>"account-name"}
+              %a{:href=>"/"} LH
+            %a.pname{:href=>"/"}
+              %b 数字值班室
+        #rheader
+          #userbadge
+            .ubody
+              #ublinks
+                =link_to "退出", logout_path
+              %strong
+                %a="欢迎您:#{current_user.login}"
+
+      #content
+        #main
+          #project-nav
+            %ul
+              %li{:id=>"t-proj",:class=>"selected"}
+                %a 首  页
+              %li
+                %a=link_to '新增用户', new_user_path
+          #action-nav
+            %ul.clear
+          -flash.each do |key, msg|
+            =content_tag :p, msg, :class => "flash #{key}"
+          #main-content
+            =yield
+        #sbar
+          #shared-bin-block.sblock.bin-block
+            %h3 指标项
+            %ul{:id=>"shared-ticket-bins",:class=>"stacked wbadges sortable"}
+              %li{:class=>"bin shared"}
+                %a{:href=>"/"}
+                  %span.badge 60
+                  未处理
+              %li{:class=>"bin shared"}
+                %a{:href=>"/"}
+                  %span.badge 160
+                  已处理
+      #footer
+        #footer-cnt
+          %p 高正软件
     

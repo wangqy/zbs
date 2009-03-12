@@ -3,6 +3,8 @@ class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
 
+  layout 'login', :only=>"new"
+
   # render new.rhtml
   def new
   end
