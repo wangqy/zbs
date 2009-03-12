@@ -1,0 +1,23 @@
+!!! Strict
+
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %title 数字值班室
+    =stylesheet_link_tag "blueprint/screen"
+    / [if IE]
+      =stylesheet_link_tag "blueprint/ie"
+    =stylesheet_link_tag "facebox", "default" 
+    =javascript_include_tag "prototype", "jquery", "facebox", "application" 
+
+  %body
+    .container
+      #header.span-19
+      #content.span-19
+        -flash.each do |key, msg|
+          =content_tag :p, msg, :class => "flash #{key}"
+        =yield
+      #footer.span-19.clearfix
+        %p
+          高正软件
+    
