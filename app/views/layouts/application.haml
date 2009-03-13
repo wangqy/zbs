@@ -8,7 +8,7 @@
     =javascript_include_tag "prototype", "jquery", "facebox", "application" 
 
   %body
-    .container
+    #container
       #header.clear
         %ul{:id=>"sec-nav"}
         #titles
@@ -27,6 +27,8 @@
 
       #content
         #main
+          -flash.each do |key, msg|
+            =content_tag :p, msg, :class => "flash #{key}"
           #project-nav
             %ul
               %li{:id=>"t-proj",:class=>"selected"}
@@ -35,8 +37,6 @@
                 %a=link_to '新增用户', new_user_path
           #action-nav
             %ul.clear
-          -flash.each do |key, msg|
-            =content_tag :p, msg, :class => "flash #{key}"
           #main-content
             =yield
         #sbar

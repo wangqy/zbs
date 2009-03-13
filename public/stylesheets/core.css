@@ -2873,12 +2873,13 @@ span.cs-a { background: url(../images/app/icons/a.png) no-repeat;}
 
 /* @group System */
 
-#flashes {
+.flash {
   text-align: center;
   font-weight: bold;
+  margin-bottom: 5px;
 }
 
-#flash-notice, #flash-errors, #flash-archived, #errorExplanation, .delete-dialog {
+.notice, .errors, #flash-archived, #errorExplanation, .delete-dialog {
   background: #bec;
   color: #031;
   padding: 10px;
@@ -2896,7 +2897,7 @@ span.cs-a { background: url(../images/app/icons/a.png) no-repeat;}
   color: #641;
 }
 
-#flash-errors, .delete-dialog, #errorExplanation {
+#errors, .delete-dialog, #errorExplanation {
   background: #fdd;
   border-top-color: #c00;
   border-bottom-color: #fbb;

@@ -1,0 +1,11 @@
+=error_messages_for :user
+-form_for :user, :url => users_path do |f|
+  %p  
+    %label{:for => 'login'} 用户名
+    = text_field_tag 'login', params[:login], :is_focus => true
+  %p  
+    %label{:for => 'password'} 密码
+    = password_field_tag 'password'
+  %p  
+    = submit_tag '保存', :class => "button", :id => "save"
+
