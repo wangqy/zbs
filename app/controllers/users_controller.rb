@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.save
     if @user.errors.empty?
-      flash[:notice] = "新增用户成功!"
+      flash.now[:notice] = "新增用户成功!"
     end
     render :action => 'new'
   end
