@@ -7,10 +7,14 @@ include AuthenticatedTestHelper
 describe UsersController do
   fixtures :users
 
+  before(:each) do
+    login_as :cogentsoft
+  end
+
   it 'allows signup' do
     lambda do
       create_user
-      response.should be_redirect
+      response.should be_success
     end.should change(User, :count).by(1)
   end
 

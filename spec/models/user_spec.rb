@@ -40,11 +40,6 @@ describe User do
     User.authenticate('quentin', 'new password').should == users(:quentin)
   end
 
-  it 'does not rehash password' do
-    users(:quentin).update_attributes(:login => 'quentin2')
-    User.authenticate('quentin2', 'test').should == users(:quentin)
-  end
-
   it 'authenticates user' do
     User.authenticate('quentin', 'test').should == users(:quentin)
   end
