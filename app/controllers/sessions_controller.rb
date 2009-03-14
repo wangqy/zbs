@@ -2,11 +2,13 @@
 class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
+  skip_before_filter :must_login
 
   layout 'login'
 
   # render new.rhtml
   def new
+    redirect_to(home_path) if logged_in?
   end
 
   def create
@@ -29,6 +31,6 @@ class SessionsController < ApplicationController
     cookies.delete :auth_token
     reset_session
     flash[:notice] = "成功退出."
-    redirect_to new_session_path
+    redirect_to login_path
   end
 end

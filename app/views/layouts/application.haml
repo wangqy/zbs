@@ -10,10 +10,10 @@
   %body
     #container
       #header.clear
-        %ul{:id=>"sec-nav"}
+        %ul#sec-nav
         #titles
           %h1
-            %strong{:id=>"account-name"}
+            %strong#account-name
               %a{:href=>"/"} LH
             %a.pname{:href=>"/"}
               %b 数字值班室
@@ -29,10 +29,18 @@
         #main
           #project-nav
             %ul
-              %li{:id=>"t-proj",:class=>"selected"}
-                %a 首  页
+              %li#t-proj{:class=>"#{select('home')}"}
+                %a{:href=>"/"} 首页
+              %li{:class=>"#{select('users')}"}
+                =link_to '新增用户', new_user_path
               %li
-                %a=link_to '新增用户', new_user_path
+                =link_to '新增来电', new_user_path
+              %li
+                =link_to '新增来访', new_user_path
+              %li
+                =link_to '新增来信', new_user_path
+              %li
+                =link_to '新增来函', new_user_path
           #action-nav
             %ul.clear
           -flash.each do |key, msg|
@@ -42,12 +50,12 @@
         #sbar
           #shared-bin-block.sblock.bin-block
             %h3 指标项
-            %ul{:id=>"shared-ticket-bins",:class=>"stacked wbadges sortable"}
-              %li{:class=>"bin shared"}
+            %ul#shared-ticket-bins.stacked.wbadges.sortable
+              %li.bin.shared
                 %a{:href=>"/"}
                   %span.badge 60
                   未处理
-              %li{:class=>"bin shared"}
+              %li.bin.shared
                 %a{:href=>"/"}
                   %span.badge 160
                   已处理

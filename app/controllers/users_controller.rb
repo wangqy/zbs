@@ -1,9 +1,4 @@
 class UsersController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
-  
-  before_filter :must_login
-
   # render new.rhtml
   def new
   end

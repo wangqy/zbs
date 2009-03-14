@@ -4,6 +4,8 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   helper :all # include all helpers, all the time
+  before_filter :set_menu
+  before_filter :must_login
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
@@ -19,4 +21,9 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  def set_menu
+    @menu = controller_name
+  end
+
 end
