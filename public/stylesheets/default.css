@@ -1,0 +1,15 @@
+/* 
+ * :border 1px solid red */
+
+.formin tr {
+  line-height: 40px; }
+.formin th {
+  width: 100px;
+  text-align: right; }
+.formin td {
+  width: 200px; }
+.formin input {
+  width: 200px;
+  font-size: 180%; }
+.formin .btns input {
+  width: 200px; }
