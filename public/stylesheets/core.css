@@ -3394,57 +3394,6 @@ div.warn h3 {
   color: #aaa;
 }
 
-/* @group popups */
-
-.popup {
-  background: transparent;
-  border: 12px solid #333;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  -o-border-radius: 6px;
-  border-radius: 6px;
-  text-align: left;
-}
-
-.popup-content {
-  background: #fff;
-}
-
-.popup h3 {
-  padding: 3px 6px;
-  background: #555;
-  color: #fff;
-}
-
-.popup table {
-  width: 100%;
-}
-
-.popup th {
-  padding: 6px;
-  background: #f7f7f7;
-  border-bottom: 1px solid #eee;
-  font-weight: bold;
-}
-
-.popup td {
-  padding: 6px;
-  border-bottom: 1px solid #eee;
-}
-
-.popup td.query {
-  font-weight: bold;
-  color: #333;
-  white-space: nowrap;
-}
-
-.popup .plinks {
-  text-align: right;
-  font-weight: bold;
-}
-
-/* @end */
-
 /* @group calendar */
 
 
