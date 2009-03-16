@@ -31,8 +31,9 @@
             %ul
               %li#t-proj{:class=>"#{select('home')}"}
                 %a{:href=>"/"} 首页
-              %li{:class=>"#{select('users')}"}
-                =link_to '用户管理', new_user_path
+              - if is_admin?
+                %li{:class=>"#{select('users')}"}
+                  =link_to '用户管理', new_user_path
               %li
                 =link_to '新增来电', new_user_path
               %li

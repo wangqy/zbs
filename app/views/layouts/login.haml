@@ -5,6 +5,7 @@
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %title 数字值班室
     =stylesheet_link_tag "basic"
+    =javascript_include_tag "jquery"
 
   %body
     #container
@@ -18,3 +19,8 @@
             =content_tag :p, msg, :class => "flash #{key}"
           .box-content
             =yield
+
+  :javascript
+    //focus
+    jQuery(":input[is_focus]").focus();
+  

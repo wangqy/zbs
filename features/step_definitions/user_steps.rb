@@ -14,10 +14,8 @@ end
 end
 
 而且 /我点击(.*)/ do |label|
-  button_id = ""
+  button_id = "save"
   case label
-  when "保存"
-    button_id = "save"
   when "确定"
     button_id = "edit"
   end
@@ -28,11 +26,23 @@ end
   response.should contain(text)
 end
 
-假如 /我已经以管理员(.*)身份登录/ do |login|
+那么 /我应该看不到:(.*)/ do |text|
+  response.should_not contain(text)
+end
+
+假如 /我已经以用户(.*),密码(.*)登录/ do |login, password|
   假如 "我在登录页面"
   当 "我输入用户名为#{login}"
-  当 "我输入密码为admin"
+  当 "我输入密码为#{password}"
   而且 "我点击登录"
+end
+
+假如 /我已经以用户(.*)身份登录/ do |login|
+  假如 "我已经以用户#{login},密码test登录"
+end
+
+假如 /我已经以管理员(.*)身份登录/ do |login|
+  假如 "我已经以用户#{login},密码admin登录"
 end
 
 假如 /有以下用户数据/ do |users|
