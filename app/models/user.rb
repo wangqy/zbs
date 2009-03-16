@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   attr_accessor :password
 
   validates_presence_of     :login
-  validates_length_of       :password, :maximum => 40
+  validates_length_of       :password, :maximum => 40, :allow_nil => true
   validates_length_of       :login,    :maximum => 40
   validates_uniqueness_of   :login, :case_sensitive => false
   before_save :encrypt_password

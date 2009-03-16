@@ -28,8 +28,10 @@
       %tr
         %th 用户名
         %th 姓名
+        %th 操作
       - @list.each do |user|
         %tr
           %td=user.login
           %td=user.realname
+          %td=link_to '编辑', edit_user_path(user), :rel => "facebox"
 

@@ -28,13 +28,6 @@ describe User do
     end.should_not change(User, :count)
   end
 
-  it 'requires password' do
-    lambda do
-      u = create_user(:password => nil)
-      u.errors.on(:password).should_not be_nil
-    end.should_not change(User, :count)
-  end
-
   it 'resets password' do
     users(:quentin).update_attributes(:password => 'new password')
     User.authenticate('quentin', 'new password').should == users(:quentin)

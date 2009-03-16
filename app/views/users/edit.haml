@@ -1,0 +1,19 @@
+%fieldset
+  %legend 编辑用户
+  =error_messages_for :user
+  -form_for @user do |f|
+    =f.hidden_field 'id'
+    %table.formin
+      %tr
+        %th
+          %label{:for => 'user_login'} 用户名
+        %td
+          = f.text_field 'login', :is_focus => true
+      %tr
+        %th
+          %label{:for => 'user_realname'} 姓名
+        %td
+          = f.text_field 'realname'
+    %p.btns{:style=>"clear:left"}
+      = submit_tag '确定', :id => "edit"
+      %input{:type=>"button", :onclick=>"javascript:j.facebox.close()", :value=>"取消"} 

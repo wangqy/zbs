@@ -32,7 +32,6 @@
 
 #facebox table {
   border-collapse: collapse;
-  width: auto;
 }
 
 #facebox td {
@@ -54,22 +53,16 @@
   text-align: center;
 }
 
-/*
 #facebox img {
   border: 0;
   margin: 0;
 }
-*/
 
 #facebox .footer {
   border-top: 1px solid #DDDDDD;
   padding-top: 5px;
   margin-top: 10px;
   text-align: right;
-}
-
-#facebox .footer img {
-  vertical-align: middle;
 }
 
 #facebox .tl, #facebox .tr, #facebox .bl, #facebox .br {
@@ -100,4 +93,3 @@
   position: absolute;
   height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
 }
-

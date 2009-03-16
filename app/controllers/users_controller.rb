@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  layout 'facebox', :only => ["edit", "update"]
+  layout 'application', :only => ["new", "create"]
+
   # render new.rhtml
   def new
     @list = User.all :order => "login"
@@ -15,4 +18,17 @@ class UsersController < ApplicationController
     render :action => 'new'
   end
 
+  def edit
+    @user = User.find_by_id(params[:id])
+  end
+
+  def update
+    user = User.find(params[:id])
+    if user.update_attributes(params[:user])
+      flash[:notice] = "编辑用户成功!"
+      redirect_to new_user_path
+      return
+    end
+    render :action => 'edit'
+  end
 end

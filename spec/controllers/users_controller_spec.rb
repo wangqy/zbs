@@ -25,15 +25,7 @@ describe UsersController do
       response.should be_success
     end.should_not change(User, :count)
   end
-  
-  it 'requires password on signup' do
-    lambda do
-      create_user(:password => nil)
-      assigns[:user].errors.on(:password).should_not be_nil
-      response.should be_success
-    end.should_not change(User, :count)
-  end
-  
+
   def create_user(options = {})
     post :create, :user => { :login => 'quire', :email => 'quire@example.com',
       :password => 'quire'}.merge(options)

@@ -6,11 +6,12 @@ j(document).ready(function(){
   //focus
   j(":input[is_focus]").focus();
 
-  //facebox lightbox(avoid enter key triggle another facebox):w
+  //facebox lightbox(avoid enter key triggle another facebox)
   j('a[rel*=facebox]').focus(function(){j(this).blur();});
+  j('a[rel*=facebox]').facebox(); 
 
   j(document).bind('reveal.facebox', function(){
     //focus
     j(":input[is_focus]").focus();
-  }
-}
+  });
+});

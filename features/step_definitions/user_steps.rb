@@ -3,7 +3,7 @@
   case page
   when "登录"
     url = "/"
-  when "用户新增" 
+  when "用户管理" 
     url = new_user_path
   end
   visit url
@@ -14,7 +14,14 @@ end
 end
 
 而且 /我点击(.*)/ do |label|
-  click_button('save')
+  button_id = ""
+  case label
+  when "保存"
+    button_id = "save"
+  when "确定"
+    button_id = "edit"
+  end
+  click_button(button_id)
 end
 
 那么 /我应该能看到:(.*)/ do |text|
@@ -28,3 +35,25 @@ end
   而且 "我点击登录"
 end
 
+假如 /有以下用户数据/ do |users|
+  #users = users.arguments_replaced({"用户名"=>"login","姓名"=>"realname"})
+  #User.create!(users.hashes)
+end
+  
+当 /我修改第(\d+)个用户的(.+)为(.+)/ do |pos, label, value|
+  within("table.list > tr:nth-child(#{pos.to_i+1})") do
+    click_link '编辑'
+  end
+  当 "我输入#{label}为#{value}"
+  而且 "我点击确定"
+end
+
+那么 /我将看到以下用户数据/ do |users|
+  users.rows.each_with_index do |row, i|
+    row.each_with_index do |cell, j|
+      response.should have_selector("table.list > tr:nth-child(#{i+2}) > td:nth-child(#{j+1})") do |td|
+        td.inner_text.should == cell
+      end
+    end
+  end
+end
