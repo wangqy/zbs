@@ -1,12 +1,12 @@
 - form_tag session_path do                                                                                                                 
   %dl
     %dt
-      %label{:for => 'login'} 用户名
+      = label_tag 'login', "用户名"
     %dd
       = text_field_tag 'login', params[:login], :is_focus => true
   %dl 
     %dt
-      %label{:for => 'password'} 密码
+      = label_tag 'password', "密码"
     %dd
       = password_field_tag 'password'
   %p.btns  

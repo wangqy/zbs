@@ -6,16 +6,16 @@
       %table.formin
         %tr
           %th
-            %label{:for => 'user_login'} 用户名
+            = f.label 'login', "用户名"
           %td
             = f.text_field 'login', :is_focus => true
           %th
-            %label{:for => 'user_password'} 密码
+            = f.label 'password', "密码"
           %td
             = f.password_field 'password'
         %tr
           %th
-            %label{:for => 'user_realname'} 姓名
+            = f.label 'realname', "姓名"
           %td
             = f.text_field 'realname'
       %p.btns{:style=>"clear:left"}
