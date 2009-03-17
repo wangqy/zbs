@@ -15,6 +15,19 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :security
       t.integer :kind
 
+      #姓名
+      t.string :name
+      #联系电话
+      t.string :phone
+      #手机号码
+      t.string :mobile
+      #性别
+      t.integer :sex
+      #Email
+      t.string :email
+      #联系地址
+      t.string :address
+
       #来电号码call attribute
       t.string :phone
       

@@ -32,13 +32,4 @@ describe Call do
     lam.should change(Case, :count).by(1)
   end
 
-  #新增来电,关联以往记录
-  it "should create a new instance relate to case" do
-    lam = lambda do
-      Call.create!(@valid_attributes.merge(:case => cases(:noise)))
-    end
-    lam.should change(Person, :count).by(1)
-    lam.should_not change(Case, :count)
-  end
-
 end

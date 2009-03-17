@@ -10,6 +10,16 @@ class Call < Event
         :kind => kind
       )
     end
+    unless self.person
+      create_person(
+        :name => name,
+        :phone => phone,
+        :mobile => mobile,
+        :sex => sex,
+        :email => email,
+        :address => address
+      )
+    end
   end
 
 end
