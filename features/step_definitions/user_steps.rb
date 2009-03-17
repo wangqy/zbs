@@ -13,6 +13,10 @@ end
   fill_in(label, :with => value)
 end
 
+当 /我选择(.*)为(.*)/ do |label, value|
+  select(value, :from => label)
+end
+
 而且 /我点击(.*)/ do |label|
   button_id = "save"
   case label
