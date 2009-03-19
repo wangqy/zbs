@@ -5,6 +5,8 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'spec'
 require 'spec/rails'
 
+include AuthenticatedTestHelper
+
 Spec::Runner.configure do |config|
   # If you're not using ActiveRecord you should remove these
   # lines, delete config/database.yml and disable :active_record
@@ -24,6 +26,8 @@ Spec::Runner.configure do |config|
   # names with your fixtures.
   #
   # config.global_fixtures = :table_a, :table_b
+  config.global_fixtures = :all
+
   #
   # If you declare global fixtures, be aware that they will be declared
   # for all of your examples, even those that don't use them.

@@ -1,0 +1,27 @@
+.group
+  %fieldset
+    %legend 新增来电
+    =error_messages_for :call
+    -form_for @call do |f|
+      %table.formin
+        %tr
+          %th
+            = f.label 'phone', "来电电话"
+          %td
+            = f.text_field 'phone', :is_focus => true
+          %th
+            = f.label 'timing', "来电时间"
+          %td
+            = f.text_field 'timing'
+        %tr
+          %th
+            = f.label 'name', "来电人姓名"
+          %td
+            = f.text_field 'name'
+          %th
+            = f.label 'aim', "来电目的"
+          %td
+            = f.select 'aim'
+      %p.btns{:style=>"clear:left"}
+        = submit_tag '保存', :id => "save"
+

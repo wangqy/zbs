@@ -5,6 +5,8 @@
     url = "/"
   when "用户管理" 
     url = new_user_path
+  when "新增来电" 
+    url = new_call_path
   end
   visit url
 end

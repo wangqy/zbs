@@ -29,13 +29,13 @@
         #main
           #project-nav
             %ul
-              %li#t-proj{:class=>"#{select('home')}"}
+              %li#t-proj{:class=>"#{select_menu('home')}"}
                 %a{:href=>"/"} 首页
               - if is_admin?
-                %li{:class=>"#{select('users')}"}
+                %li{:class=>"#{select_menu('users')}"}
                   =link_to '用户管理', new_user_path
-              %li
-                =link_to '新增来电', new_user_path
+              %li{:class=>"#{select_menu('calls')}"}
+                =link_to '新增来电', new_call_path
               %li
                 =link_to '新增来访', new_user_path
               %li

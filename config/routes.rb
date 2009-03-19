@@ -6,6 +6,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.home '/home', :controller => 'home'
 
+  map.resources :calls
+
   map.resources :users
 
   map.resource :session
