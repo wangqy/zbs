@@ -34,7 +34,6 @@ class Enum
   #如调用aim(1),则返回对应的值"求助"
   self.constants.each do |c| 
     class_eval <<-EOF                                                                                                                                        
-      p "init enum: #{c}"
       #用于取值{1 => "求助", 2 => "投诉"}
       #{c}_HASH = {}
       #用于返回如[["求助", 1], ["投诉", 2]]

@@ -6,22 +6,22 @@
       %table.formin
         %tr
           %th
-            = f.label 'phone', "来电电话"
+            = f.label :callnumber, "来电电话"
           %td
-            = f.text_field 'phone', :is_focus => true
+            = f.text_field :callnumber, :is_focus => true
           %th
-            = f.label 'timing', "来电时间"
+            = f.label :timing, "来电时间"
           %td
-            = f.text_field 'timing'
+            = f.text_field :timing
         %tr
           %th
-            = f.label 'name', "来电人姓名"
+            = f.label :name, "来电人姓名"
           %td
-            = f.text_field 'name'
+            = f.text_field :name
           %th
-            = f.label 'aim', "来电目的"
+            = f.label :aim, "来电目的"
           %td
-            = f.select 'aim'
+            = f.select :aim
         %tr
           %th
             = f.label :emergency, "紧急程度"
@@ -40,7 +40,7 @@
           %th
             = f.label :content, "内容摘要"
           %td{:colspan=>3}
-            = f.text_area :content
+            = f.text_area :content, :rows => 5, :cols=> 70
         %tr
           %th
             = f.label :kind, "事件分类"
@@ -69,7 +69,7 @@
         %tr
           %th
             = f.label :address, "联系地址或单位"
-          %td{:colspan=>3}
+          %td
             = f.text_field :address
 
       %p.btns{:style=>"clear:left"}

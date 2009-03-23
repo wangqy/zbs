@@ -8,18 +8,16 @@ describe Call do
       :phone => "13988889999",
       :title => "马可波罗__投诉__区长热线办公室",
       :content => "楼下太吵",
-      :aim => "1",
-      :emergency => "1",
-      :security => "1",
-      :kind => "1",
-      :person => Person.new(
-        :name => "马可波罗", 
-        :phone => "13988889999",
-        :mobile => "13988889999",
-        :sex => "1",
-        :email => "mahb@cogentsoft.com.cn",
-        :address => "简洁公司"
-      )
+      :aim => 1,
+      :emergency => 1,
+      :security => 1,
+      :kind => 1,
+      :name => "马可波罗", 
+      :phone => "13988889999",
+      :mobile => "13988889999",
+      :sex => 1,
+      :email => "mahb@cogentsoft.com.cn",
+      :address => "简洁公司"
     }
   end
 

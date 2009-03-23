@@ -29,7 +29,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :address
 
       #来电号码call attribute
-      t.string :phone
+      t.string :callnumber
       
       t.references :person
       t.references :case

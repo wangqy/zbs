@@ -36,6 +36,10 @@ end
   response.should_not contain(text)
 end
 
+那么 /(.*)变为(.*)/ do |label, value|
+  field_labeled(label).value.should == value
+end
+
 假如 /我已经以用户(.*),密码(.*)登录/ do |login, password|
   假如 "我在登录页面"
   当 "我输入用户名为#{login}"
