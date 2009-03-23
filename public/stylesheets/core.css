@@ -490,7 +490,7 @@ li#nticket a:hover { background-color: #444; color: #fff;}
   text-indent: -9999px;
   right: 8px;
   top: 11px;
-  background: #057 url(../images/app/droparrow.gif) 5px 6px no-repeat;
+  background: #057 url(/images/app/droparrow.gif) 5px 6px no-repeat;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -o-border-radius: 2px;
@@ -506,7 +506,7 @@ li#nticket a:hover { background-color: #444; color: #fff;}
 }
 
 #project-nav ul.submenu {
-  width: 230px;
+  width: 98px;
   background: #fff !important;
   position: absolute;
   border-bottom: 1px solid #4294CF;

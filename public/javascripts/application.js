@@ -14,4 +14,23 @@ j(document).ready(function(){
     //focus
     j(":input[is_focus]").focus();
   });
+
+  var SubMenu = Class.create({
+    initialize: function(li) {
+      if(!$(li)) return;
+      this.trigger = $(li).down('em');
+      if(!this.trigger) return;
+      this.menu = $(li).down('ul');
+      this.trigger.observe('click', this.respondToClick.bind(this));
+      document.observe('click', function(){ this.menu.hide();}.bind(this));
+    },
+                  
+    respondToClick: function(event) {
+      event.stop();
+      $$('ul.submenu').without(this.menu).invoke('hide');
+      this.menu.toggle();
+    }
+  });
+
+  new SubMenu("t-menu")
 });
