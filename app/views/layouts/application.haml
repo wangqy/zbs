@@ -51,6 +51,9 @@
                 =link_to '新增来函', new_user_path
           #action-nav
             %ul.clear
+              -if is_menu("calls")
+                %li=link_to '新增来电', new_call_path
+                %li=link_to '查询来电', calls_path
           -flash.each do |key, msg|
             =content_tag :div, msg, :id => "flash-#{key}"
           #main-content

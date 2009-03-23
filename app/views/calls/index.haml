@@ -15,8 +15,8 @@
           %td=call.calltag
           %td=call.title
           %td=call.name
-          %td=call.phone
-          %td=call.timing.to_s('MM-dd hh:mm:ss')
+          %td=call.callnumber
+          %td=call.timing.to_s(:without_year)
           %td=call.creator
           %td=link_to '查看', call
           %td=link_to '编辑', edit_call_path(call)

@@ -1,1 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+complain:
+  type: Call
+  title: 马可波罗__投诉__区长热线办公室
+  name: 马可波罗
+  creator: quentin
+  modifier: quentin

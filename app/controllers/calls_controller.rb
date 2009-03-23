@@ -1,5 +1,6 @@
 class CallsController < ApplicationController
   def index
+    @list = Call.paginate :page => params[:page], :order => 'created_at DESC'
   end
 
   def new
@@ -8,6 +9,8 @@ class CallsController < ApplicationController
 
   def create
     @call = Call.new(params[:call])
+    @call.creator = current_user.login
+    @call.modifier = current_user.login
 
     if @call.save
       flash[:notice] = '保存成功.'
@@ -24,6 +27,7 @@ class CallsController < ApplicationController
 
   def update
     @call = Call.find(params[:id])
+    params[:call][:modifier] = current_user.login
     if @call.update_attributes(params[:call])
       flash.now[:notice] = '更新成功.'
     end

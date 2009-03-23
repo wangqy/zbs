@@ -2,7 +2,11 @@
 module ApplicationHelper
 
   def select_menu(menu)
-    "selected" if @menu == menu
+    "selected" if is_menu(menu)
+  end
+
+  def is_menu(menu)
+    @menu == menu
   end
 
   def is_admin?

@@ -5,39 +5,10 @@
     url = "/"
   when "用户管理" 
     url = new_user_path
-  when "新增来电" 
+  when "来电管理" 
     url = new_call_path
   end
   visit url
-end
-
-当 /我输入(.*)为(.*)/ do |label, value|
-  fill_in(label, :with => value)
-end
-
-当 /我选择(.*)为(.*)/ do |label, value|
-  select(value, :from => label)
-end
-
-而且 /我点击(.*)/ do |label|
-  button_id = "save"
-  case label
-  when "确定"
-    button_id = "edit"
-  end
-  click_button(button_id)
-end
-
-那么 /我应该能看到:(.*)/ do |text|
-  response.should contain(text)
-end
-
-那么 /我应该看不到:(.*)/ do |text|
-  response.should_not contain(text)
-end
-
-那么 /(.*)变为(.*)/ do |label, value|
-  field_labeled(label).value.should == value
 end
 
 假如 /我已经以用户(.*),密码(.*)登录/ do |login, password|
@@ -66,14 +37,4 @@ end
   end
   当 "我输入#{label}为#{value}"
   而且 "我点击确定"
-end
-
-那么 /我将看到以下用户数据/ do |users|
-  users.rows.each_with_index do |row, i|
-    row.each_with_index do |cell, j|
-      response.should have_selector("table.list > tr:nth-child(#{i+2}) > td:nth-child(#{j+1})") do |td|
-        td.inner_text.should == cell
-      end
-    end
-  end
 end

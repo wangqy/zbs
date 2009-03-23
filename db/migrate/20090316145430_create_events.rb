@@ -28,11 +28,17 @@ class CreateEvents < ActiveRecord::Migration
       #联系地址
       t.string :address
 
-      #来电号码call attribute
+      #call attribute
+      #来电号码
       t.string :callnumber
+      #来电编号
+      t.string :calltag
       
       t.references :person
       t.references :case
+
+      #创建人,修改人
+      t.string :creator, :modifier
 
       t.timestamps
     end
