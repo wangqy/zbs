@@ -74,6 +74,6 @@
             = f.text_field :address
 
     %p.btns{:style=>"clear:left"}
-      = submit_tag '保存,继续新增'
-      = submit_tag '保存,接着修改'
+      = submit_tag t('html.button.save'), :disable_with => t('html.saving')
+      = submit_tag t('html.button.modify'), :disable_with => t('html.saving')
 

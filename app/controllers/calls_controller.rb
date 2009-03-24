@@ -1,6 +1,6 @@
 class CallsController < ApplicationController
   def index
-    @list = Call.paginate :page => params[:page], :order => 'created_at DESC'
+    @list = Call.paginate :per_page => 2, :page => params[:page], :order => 'created_at DESC'
   end
 
   def new
@@ -14,7 +14,11 @@ class CallsController < ApplicationController
 
     if @call.save
       flash[:notice] = '保存成功.'
-      redirect_to edit_call_path(@call)
+      if params[:commit]==t('html.button.save')
+        redirect_to new_call_path
+      else
+        redirect_to edit_call_path(@call)
+      end
     else
       render :action => "new"  
     end
@@ -29,9 +33,15 @@ class CallsController < ApplicationController
     @call = Call.find(params[:id])
     params[:call][:modifier] = current_user.login
     if @call.update_attributes(params[:call])
-      flash.now[:notice] = '更新成功.'
+      flash[:notice] = '更新成功.'
+      if params[:commit]==t('html.button.save')
+        redirect_to new_call_path
+      else
+        redirect_to edit_call_path
+      end
+    else
+      render :action => "new"
     end
-    render :action => "new"
   end
 
 end

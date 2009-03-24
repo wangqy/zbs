@@ -20,3 +20,10 @@ cn:
       messages:
         blank: "不能为空"
         taken: "已经存在"
+
+  html:
+    button:
+      save: "保存,继续新增"
+      modify: "保存,接着修改"
+    saving: "保存中..."
+
