@@ -1,4 +1,6 @@
 class Call < Event
+  validates_presence_of :timing, :on => :save
+  validates_presence_of :callnumber, :on => :save
 
   def before_create
     unless self.case

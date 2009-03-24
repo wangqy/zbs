@@ -5,7 +5,8 @@ describe Call do
 
   before(:each) do
     @valid_attributes = {
-      :phone => "13988889999",
+      :callnumber => "13988889999",
+      :timing => "2009-03-24 22:22:22".to_time,
       :title => "马可波罗__投诉__区长热线办公室",
       :content => "楼下太吵",
       :aim => 1,

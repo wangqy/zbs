@@ -14,7 +14,9 @@
 .formin select {
   width: 200px; }
 .formin .btns input {
-  width: 200px; }
+  font-size: 20px;
+  width: 200px;
+  margin-left: 20px; }
 
 #call_timing {
   width: 182px;

@@ -9,6 +9,10 @@ cn:
       user:
         login: "用户名"
         realname: "姓名"
+      call:
+        callnumber: "来电电话"
+        timing: "来电时间"
+
     errors:
       template:
         header: ""

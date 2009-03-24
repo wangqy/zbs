@@ -2,11 +2,11 @@ class CreateEvents < ActiveRecord::Migration
   def self.up
     create_table :events do |t|
       #事件时间
-      t.datetime :timing
+      t.datetime :timing, :null => false
       #主题(规则:姓名__目的__值班室)
-      t.string :title
+      t.string :title, :null => false
       #内容摘要
-      t.string :content
+      t.string :content, :null => false
       #事件类型:来电,来访等(Rails自动设置)
       t.string :type
       #(来电)目的,紧急程度,保密程度,事件分类
@@ -30,7 +30,7 @@ class CreateEvents < ActiveRecord::Migration
 
       #call attribute
       #来电号码
-      t.string :callnumber
+      t.string :callnumber, :null => false
       #来电编号
       t.string :calltag
       

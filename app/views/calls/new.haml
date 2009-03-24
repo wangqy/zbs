@@ -1,9 +1,9 @@
 .group
   =error_messages_for :call
-  -form_for @call do |f|
+  -form_for @call, :html => {:class=>'formin'} do |f|
     %fieldset
       %legend 来电信息
-      %table.formin
+      %table
         %tr
           %th
             = f.label :callnumber, "来电电话"
@@ -48,7 +48,7 @@
             = f.select :kind
     %fieldset
       %legend 来电人详细信息
-      %table.formin
+      %table
         %tr
           %th
             = f.label :sex, "性别"
@@ -74,5 +74,6 @@
             = f.text_field :address
 
     %p.btns{:style=>"clear:left"}
-      = submit_tag '保存', :id => "save"
+      = submit_tag '保存,继续新增'
+      = submit_tag '保存,接着修改'
 

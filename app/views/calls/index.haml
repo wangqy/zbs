@@ -20,5 +20,7 @@
           %td=call.creator
           %td=link_to '查看', call
           %td=link_to '编辑', edit_call_path(call)
-          %td=link_to '删除', call, :confirm => "你确定要删除吗", :method => :delete
+          %td=link_to '删除', call, :confirm => "你确定要删除吗?", :method => :delete
+      %tr
+        %td{:colspan=>7}=will_paginate @list
 

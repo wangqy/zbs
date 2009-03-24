@@ -19,8 +19,14 @@ describe CallsController do
 
   describe "save call" do
     it "should save creator and modifier" do
-      post :create, :call => { :name => "马可波罗" }
-      call = Call.last
+      post :create, :call => { 
+        :callnumber => "13988889999",
+        :timing => "2009-03-24 22:22:22".to_time,
+        :name => "马可波罗",
+        :title => "马可波罗__投诉__区长办公室",
+        :content => "楼下太吵啦"
+      }
+      call = assigns[:call]
       call.creator.should == "aaron"
       call.modifier.should == "aaron"
     end
@@ -30,7 +36,7 @@ describe CallsController do
     it "should update modifier" do
       call = events(:complain)
       post :update, :call => { :name => "新马可波罗" }, :id => call.id
-      Call.find(call).modifier.should == "aaron"
+      assigns[:call].modifier.should == "aaron"
     end
   end
 end
