@@ -17,7 +17,9 @@
   width: 200px; }
 
 #call_timing {
-  width: 180px;
+  width: 183px;
+  font-size: 20px;
+  padding: 3px 0;
   float: left; }
 
 .calendar_date_select_popup_icon {
