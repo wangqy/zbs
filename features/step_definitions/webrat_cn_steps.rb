@@ -15,11 +15,13 @@ end
 end
 
 那么 /我应该能看到:(.*)/ do |text|
-  response.should contain(text)
+  #response.should contain(text)
+  response.body.should =~ /#{text}/m
 end
 
 那么 /我应该看不到:(.*)/ do |text|
-  response.should_not contain(text)
+  #response.should_not contain(text)
+  response.body.should_not =~ /#{text}/m
 end
 
 那么 /(.*)变为(.*)/ do |label, value|
