@@ -1,8 +1,8 @@
 .group
-  %fieldset
-    %legend 新增来电
-    =error_messages_for :call
-    -form_for @call do |f|
+  =error_messages_for :call
+  -form_for @call do |f|
+    %fieldset
+      %legend 来电信息
       %table.formin
         %tr
           %th
@@ -46,8 +46,9 @@
             = f.label :kind, "事件分类"
           %td{:colspan=>3}
             = f.select :kind
-        %tr
-          %td{:colspan=>4} 来电人详细信息
+    %fieldset
+      %legend 来电人详细信息
+      %table.formin
         %tr
           %th
             = f.label :sex, "性别"
@@ -72,6 +73,6 @@
           %td
             = f.text_field :address
 
-      %p.btns{:style=>"clear:left"}
-        = submit_tag '保存', :id => "save"
+    %p.btns{:style=>"clear:left"}
+      = submit_tag '保存', :id => "save"
 
