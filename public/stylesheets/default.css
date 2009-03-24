@@ -15,3 +15,10 @@
   width: 200px; }
 .formin .btns input {
   width: 200px; }
+
+#call_timing {
+  width: 180px;
+  float: left; }
+
+.calendar_date_select_popup_icon {
+  float: right; }
