@@ -1,8 +1,23 @@
-/* 
- * :border 1px solid red */
-
 fieldset {
   margin-bottom: 5px; }
+
+.list {
+  width: 100%;
+  background-color: #5a9ecf;
+  border: 0; }
+  .list td {
+    background-color: #ffffff; }
+
+#quick-search-bar {
+  background-color: #5a9ecf; }
+  #quick-search-bar label {
+    color: #000000;
+    margin-left: 10px; }
+  #quick-search-bar input {
+    font-size: 14px; }
+  #quick-search-bar input[type='submit'] {
+    width: 100px;
+    font-weight: bold; }
 
 .formin tr {
   line-height: 40px; }
