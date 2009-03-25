@@ -47,4 +47,12 @@ describe CallsController do
       assigns[:call].modifier.should == "aaron"
     end
   end
+
+  describe "list call" do
+    it "should view a call" do
+      get :show, :id => events(:complain).id
+      assigns[:call].should == events(:complain)
+      response.should be_success
+    end
+  end
 end
