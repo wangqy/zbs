@@ -3,9 +3,9 @@
     %legend 查询条件
     #quick-search-bar
       -form_tag calls_path, :method=>:get do
-        %label 来电号码
+        =label_tag :callnumber, '来电号码'
         =text_field_tag :callnumber, params[:callnumber]
-        %label 来电人
+        =label_tag :name, '来电人姓名'
         =text_field_tag :name, params[:name]
         =submit_tag '查询'
 .group
