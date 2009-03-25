@@ -479,11 +479,11 @@ li#nticket a:hover { background-color: #444; color: #fff;}
   -moz-border-radius-topleft: 4px;
 }
 
-#project-nav #t-menu a, #project-nav #t-proj a {
+#project-nav #t-menu a, #project-nav #t-proj a, #project-nav .mainmenu a {
   padding-right: 27px;
 }
 
-#t-menu em, #t-proj em {
+#t-menu em, #t-proj em, .mainmenu em {
   position: absolute;
   width: 14px;
   height: 14px;
@@ -497,11 +497,11 @@ li#nticket a:hover { background-color: #444; color: #fff;}
   border-radius: 2px;
 }
 
-#t-menu a:hover em, #t-proj a:hover em {
+#t-menu a:hover em, #t-proj a:hover em, .mainmenu a:hover em {
   background-color: #057;
 }
 
-#tmenu em:hover, #t-proj em:hover {
+#t-menu em:hover, #t-proj em:hover, .mainmenu em:hover {
   background-color: #C0DCF0;
 }
 

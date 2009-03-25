@@ -1,6 +1,21 @@
-class DepartmentController < ApplicationController
+class DepartmentsController < ApplicationController
   def index
     @list = Department.paginate :page => params[:page], :order => 'created_at DESC'
+  end
+
+  def show
+    @department = Department.find(params[:id])
+  end
+  
+  def destroy
+    @department = Department.find(params[:id])
+    if @department.destroy
+      flash[:notice] = '删除成功'
+      redirect_to departments_path
+    elsif
+      flash[:notice] = '删除失败'
+      redirect_to departments_path
+    end
   end
 
   def new

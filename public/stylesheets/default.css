@@ -10,7 +10,8 @@
   width: 200px; }
 .formin input {
   width: 200px;
-  font-size: 180%; }
+  font-size: 130%;
+  border:1px solid #DDDDDD}
 .formin select {
   width: 200px; }
 .formin .btns input {

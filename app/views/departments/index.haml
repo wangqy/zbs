@@ -12,7 +12,7 @@
         %th 操作
       - @list.each do |department|
         %tr
-          %td=#{department.code_prefix},#{department.code_suffix}"
+          %td="#{department.code_prefix}#{department.code_suffix}"
           %td=department.name
           %td=department.manager
           %td=department.telephone

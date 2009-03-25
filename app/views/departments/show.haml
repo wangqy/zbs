@@ -1,0 +1,44 @@
+.group
+  %fieldset
+    %legend 机构信息
+    %table
+      %tr
+        %th
+          = "部门编码"
+        %td
+          = "#{@department.code_prefix}#{@department.code_suffix}"
+        %th
+          = "传真"
+        %td
+          = @department.fax
+      %tr
+        %th
+          = "部门名称"
+        %td
+          = @department.name
+        %th
+          = "电子邮件"
+        %td
+          = @department.email
+      %tr
+        %th
+          = "负责人"
+        %td
+          = @department.manager
+        %th
+          = "联系电话"
+        %td
+          = @department.manager
+      %tr
+        %th
+          = "地址"
+        %td{:colspan=>3}
+          = @department.address
+      %tr
+        %th
+          = "备注"
+        %td{:colspan=>3}
+          = @department.remark
+  %p.btns{:style=>"clear:left"}
+    = submit_tag '返回',{:type=>'button',:onclick=>'history.back();'}
+

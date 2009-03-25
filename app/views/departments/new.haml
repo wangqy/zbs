@@ -8,8 +8,8 @@
           %th
             = f.label :code_prefix, "部门编码"
           %td
-            = f.text_field :code_prefix, :is_focus => true
-            = f.text_field :code_suffix
+            = f.text_field :code_prefix, :style=>'width:50px;float:left;', :maxlength=>3,:is_focus => true
+            = f.text_field :code_suffix, :style=>'width:146px;float:left;', :maxlength=>10
           %th
             = f.label :fax, "传真"
           %td
@@ -42,3 +42,7 @@
             = f.label :remark, "备注"
           %td{:colspan=>3}
             = f.text_area :remark, :rows => 5, :cols=> 70
+    %p.btns{:style=>"clear:left"}
+      = submit_tag '保存,继续新增'
+      = submit_tag '保存,接着修改'
+

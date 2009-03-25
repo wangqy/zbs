@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
-  map.resources :departments
+  map.resources :department
 
   map.resource :session
 

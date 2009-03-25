@@ -32,7 +32,6 @@ j(document).ready(function(){
     }
   });
 
-  //根据主菜单的class为".mainmenu"来自动初始化子菜单
   //new SubMenu("t-menu");
   //new SubMenu("d-menu");
   var menus = j("li.mainmenu");
