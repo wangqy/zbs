@@ -1,6 +1,14 @@
 class CallsController < ApplicationController
   def index
-    @list = Call.paginate :per_page => 2, :page => params[:page], :order => 'created_at DESC'
+    #TODO make this finder dynamic
+    if !params[:callnumber].blank? && !params[:name].blank?  
+      @condition = ['callnumber like ? and name like ?', "%#{params[:callnumber]}%", "%#{params[:name]}%"]
+    elsif !params[:callnumber].blank?
+      @condition = ['callnumber like ?', "%#{params[:callnumber]}%"]
+    elsif !params[:name].blank?
+      @condition = ['name like ?', "%#{params[:name]}%"]
+    end
+    @list = Call.paginate :conditions => @condition, :page => params[:page], :order => 'created_at DESC'
   end
 
   def new

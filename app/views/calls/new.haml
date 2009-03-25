@@ -72,6 +72,15 @@
             = f.label :address, "联系地址或单位"
           %td
             = f.text_field :address
+        %tr
+          %th
+            = f.label :attribute1, "<+label_name1+>"
+          %td
+            = f.<+text_field+> :<+attribute1+>
+          %th
+            = f.label :<+attribute2+>, "<+label_name2+>"
+          %td
+            = f.<+text_field+> :<+attribute2+>
 
     %p.btns{:style=>"clear:left"}
       = submit_tag t('html.button.save'), :disable_with => t('html.saving')
