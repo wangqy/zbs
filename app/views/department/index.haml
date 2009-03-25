@@ -1,0 +1,26 @@
+.group
+  %fieldset
+    %legend 查询机构
+    %table.list
+      %tr
+        %th 机构编码
+        %th 机构名称
+        %th 负责人
+        %th 联系电话
+        %th 地址
+        %th 最后修改时间
+        %th 操作
+      - @list.each do |department|
+        %tr
+          %td=#{department.code_prefix},#{department.code_suffix}"
+          %td=department.name
+          %td=department.manager
+          %td=department.telephone
+          %td=department.address
+          %td=department.updated_at.to_s
+          %td=link_to '查看', department
+          %td=link_to '编辑', edit_department_path(department)
+          %td=link_to '删除', department, :confirm => "你确定要删除吗?", :method => :delete
+      %tr
+        %td{:colspan=>7}=will_paginate @list
+

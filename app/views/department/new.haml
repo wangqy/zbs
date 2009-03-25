@@ -1,0 +1,44 @@
+.group
+  =error_messages_for :department
+  -form_for @department, :html => {:class=>'formin'} do |f|
+    %fieldset
+      %legend 机构信息
+      %table
+        %tr
+          %th
+            = f.label :code_prefix, "部门编码"
+          %td
+            = f.text_field :code_prefix, :is_focus => true
+            = f.text_field :code_suffix
+          %th
+            = f.label :fax, "传真"
+          %td
+            = f.text_field :fax
+        %tr
+          %th
+            = f.label :name, "部门名称"
+          %td
+            = f.text_field :name
+          %th
+            = f.label :email, "电子邮件"
+          %td
+            = f.text_field :email
+        %tr
+          %th
+            = f.label :manager, "负责人"
+          %td
+            = f.text_field :manager
+          %th
+            = f.label :telephone, "联系电话"
+          %td
+            = f.text_field :manager
+        %tr
+          %th
+            = f.label :address, "地址"
+          %td{:colspan=>3}
+            = f.text_field :address
+        %tr
+          %th
+            = f.label :remark, "备注"
+          %td{:colspan=>3}
+            = f.text_area :remark, :rows => 5, :cols=> 70
