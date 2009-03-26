@@ -56,4 +56,10 @@ class CallsController < ApplicationController
     @call = Call.find(params[:id])
   end
 
+  def destroy
+    @call = Call.find(params[:id])
+    @call.destroy
+    redirect_to :back
+  end
+
 end

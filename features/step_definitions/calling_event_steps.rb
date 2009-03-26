@@ -1,8 +1,8 @@
-假如 /我刚新增来电/ do
+假如 /我新增(\d+)的来电/ do |callnumber|
   call = Call.create!(
-    :callnumber => "13988889999",
+    :callnumber => callnumber,
     :timing => "2009-03-23 10:10:10".to_datetime,
-    :calltag => "深电2009032300045",
+    :calltag => "深电20090323000#{callnumber[-2,2]}",
     :title => "马可波罗__投诉__区长热线办公室",
     :content => "楼下太吵了",
     :name => "马可波罗",

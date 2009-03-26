@@ -54,5 +54,11 @@ describe CallsController do
       assigns[:call].should == events(:complain)
       response.should be_success
     end
+
+    it "should delete a call" do
+      request.env["HTTP_REFERER"] = "/calls"
+      post :destroy, :id => events(:complain).id
+      response.should be_redirect
+    end
   end
 end
