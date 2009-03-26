@@ -57,8 +57,7 @@ class Enum
 
     def method_missing(method, *args)
       unless method.to_s =~ @@regexp
-        super
-        return
+        return super
       end
 
       m = @@regexp.match(method.to_s)

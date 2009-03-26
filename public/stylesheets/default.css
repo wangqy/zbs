@@ -31,10 +31,15 @@ fieldset {
   font-size: 180%; }
 .formin select {
   width: 200px; }
-.formin .btns input {
+
+.btns input {
   font-size: 20px;
   width: 200px;
   margin-left: 20px; }
+.btns a {
+  width: 200px;
+  font-size: 20px;
+  padding: 4px 15px; }
 
 #call_timing {
   width: 182px;
