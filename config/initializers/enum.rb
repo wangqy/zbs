@@ -52,6 +52,27 @@ class Enum
     EOF
   end 
 
+  module EnumViewer
+    @@regexp = /(.+)_enum(_(.+))*/
+
+    def method_missing(method, *args)
+      unless method.to_s =~ @@regexp
+        super
+        return
+      end
+
+      m = @@regexp.match(method.to_s)
+      property = m[1]
+      value = self.send(property)
+      return unless value
+
+      enum_code = m[3]
+      enum_code = property unless enum_code
+      Enum.send(enum_code, value)
+    end
+  end
+
+  ActiveRecord::Base.send :include, EnumViewer
 end
 
 #重载rails的select方法,增加对枚举的支持
