@@ -22,6 +22,8 @@ fieldset {
 .formin tr {
   line-height: 40px; }
 .formin th {
+  background-color: #f1f1f1;
+  padding-right: 5px;
   width: 100px;
   text-align: right; }
 .formin td {
