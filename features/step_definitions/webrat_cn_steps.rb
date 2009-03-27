@@ -10,6 +10,10 @@ end
   select(value, :from => label)
 end
 
+当 /我选中(.*)/ do |field|
+  check(field)
+end
+
 而且 /我点击(.*)/ do |label|
   click_button(label)
 end
@@ -31,6 +35,10 @@ end
 
 那么 /(.*)变为(.*)/ do |label, value|
   field_labeled(label).value.should == value
+end
+
+#使用fixture初始化数据,不要实现方法体
+假如 /有以下数据/ do |hashes|
 end
 
 那么 /我将看到以下数据/ do |hashes|

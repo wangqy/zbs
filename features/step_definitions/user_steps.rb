@@ -25,11 +25,6 @@ end
 假如 /我已经以管理员(.*)身份登录/ do |login|
   假如 "我已经以用户#{login},密码admin登录"
 end
-
-假如 /有以下用户数据/ do |users|
-  #users = users.arguments_replaced({"用户名"=>"login","姓名"=>"realname"})
-  #User.create!(users.hashes)
-end
   
 当 /我修改第(\d+)个用户的(.+)为(.+)/ do |pos, label, value|
   within("table.list > tr:nth-child(#{pos.to_i+1})") do
