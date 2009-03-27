@@ -6,7 +6,8 @@
       %table
         %tr
           %th
-            = f.label :code_prefix, "部门编码"
+            = f.label :code_prefix, "机构编码"
+            = f.label :code_suffix, "机构编码后缀",:style=>'display:none;'
           %td
             = f.text_field :code_prefix, :style=>'width:50px;float:left;', :maxlength=>3,:is_focus => true
             = f.text_field :code_suffix, :style=>'width:146px;float:left;', :maxlength=>10
@@ -16,7 +17,7 @@
             = f.text_field :fax
         %tr
           %th
-            = f.label :name, "部门名称"
+            = f.label :name, "机构名称"
           %td
             = f.text_field :name
           %th
@@ -31,7 +32,7 @@
           %th
             = f.label :telephone, "联系电话"
           %td
-            = f.text_field :manager
+            = f.text_field :telephone
         %tr
           %th
             = f.label :address, "地址"
@@ -44,5 +45,5 @@
             = f.text_area :remark, :rows => 5, :cols=> 70
     %p.btns{:style=>"clear:left"}
       = submit_tag '保存,继续新增'
-      = submit_tag '保存,接着修改'
+      = submit_tag '保存'
 

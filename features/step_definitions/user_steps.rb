@@ -7,6 +7,10 @@
     url = new_user_path
   when "来电管理" 
     url = new_call_path
+  when "机构管理"
+    url = departments_path
+  when "机构新增"
+    url = new_department_path
   end
   visit url
 end
