@@ -7,7 +7,10 @@
     url = new_user_path
   when "来电管理" 
     url = new_call_path
+  when "事件调度" 
+    url = dispatches_path
   end
+  raise 'visit url is blank' if url.blank?
   visit url
 end
 

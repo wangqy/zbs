@@ -9,3 +9,5 @@ vendor/plugins/selenium-on-rails/log/default.yml
 tmp/**
 #vim swap file
 **.swp
+#ruote wfidgen
+db/ruote*/**

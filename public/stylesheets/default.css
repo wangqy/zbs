@@ -31,6 +31,11 @@ fieldset {
 .formin input {
   width: 200px;
   font-size: 180%; }
+.formin .calendar {
+  width: 182px;
+  font-size: 20px;
+  padding: 3px 0;
+  float: left; }
 .formin select {
   width: 200px; }
 
@@ -42,12 +47,6 @@ fieldset {
   width: 200px;
   font-size: 20px;
   padding: 4px 15px; }
-
-#call_timing {
-  width: 182px;
-  font-size: 20px;
-  padding: 3px 0;
-  float: left; }
 
 .calendar_date_select_popup_icon {
   float: right; }

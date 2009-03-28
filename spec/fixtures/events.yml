@@ -9,3 +9,13 @@ complain:
   name: 马可波罗
   creator: quentin
   modifier: quentin
+
+complain22:
+  type: Call
+  callnumber: 13911112222
+  timing: <%= "2009-03-23 14:14:14".to_datetime %>
+  title: 孙敏__咨询__区长热线办公室
+  content: 楼下太吵了
+  name: 孙敏
+  creator: quentin
+  modifier: quentin

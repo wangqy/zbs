@@ -9,7 +9,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090325012404) do
+ActiveRecord::Schema.define(:version => 20090327020215) do
+
+  create_table "ar_workitems", :force => true do |t|
+    t.string   "fei"
+    t.string   "wfid"
+    t.string   "expid"
+    t.string   "wfname"
+    t.string   "wfrevision"
+    t.string   "participant_name"
+    t.string   "store_name"
+    t.datetime "dispatch_time"
+    t.datetime "last_modified"
+    t.text     "wi_fields"
+    t.string   "activity"
+    t.text     "keywords"
+  end
+
+  add_index "ar_workitems", ["expid"], :name => "index_ar_workitems_on_expid"
+  add_index "ar_workitems", ["fei"], :name => "index_ar_workitems_on_fei", :unique => true
+  add_index "ar_workitems", ["participant_name"], :name => "index_ar_workitems_on_participant_name"
+  add_index "ar_workitems", ["store_name"], :name => "index_ar_workitems_on_store_name"
+  add_index "ar_workitems", ["wfid"], :name => "index_ar_workitems_on_wfid"
+  add_index "ar_workitems", ["wfname"], :name => "index_ar_workitems_on_wfname"
+  add_index "ar_workitems", ["wfrevision"], :name => "index_ar_workitems_on_wfrevision"
 
   create_table "cases", :force => true do |t|
     t.string   "content"
@@ -62,6 +85,39 @@ ActiveRecord::Schema.define(:version => 20090325012404) do
     t.datetime "updated_at"
   end
 
+  create_table "expressions", :force => true do |t|
+    t.string "fei",                           :null => false
+    t.string "wfid",                          :null => false
+    t.string "expid",                         :null => false
+    t.string "exp_class",                     :null => false
+    t.text   "svalue",    :limit => 16777215, :null => false
+  end
+
+  add_index "expressions", ["exp_class"], :name => "index_expressions_on_exp_class"
+  add_index "expressions", ["expid"], :name => "index_expressions_on_expid"
+  add_index "expressions", ["fei"], :name => "index_expressions_on_fei"
+  add_index "expressions", ["wfid"], :name => "index_expressions_on_wfid"
+
+  create_table "history", :force => true do |t|
+    t.datetime "created_at"
+    t.string   "source",      :null => false
+    t.string   "event",       :null => false
+    t.string   "wfid"
+    t.string   "wfname"
+    t.string   "wfrevision"
+    t.string   "fei"
+    t.string   "participant"
+    t.string   "message"
+  end
+
+  add_index "history", ["created_at"], :name => "index_history_on_created_at"
+  add_index "history", ["event"], :name => "index_history_on_event"
+  add_index "history", ["participant"], :name => "index_history_on_participant"
+  add_index "history", ["source"], :name => "index_history_on_source"
+  add_index "history", ["wfid"], :name => "index_history_on_wfid"
+  add_index "history", ["wfname"], :name => "index_history_on_wfname"
+  add_index "history", ["wfrevision"], :name => "index_history_on_wfrevision"
+
   create_table "people", :force => true do |t|
     t.string   "name"
     t.string   "phone"
@@ -72,6 +128,17 @@ ActiveRecord::Schema.define(:version => 20090325012404) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "process_errors", :force => true do |t|
+    t.datetime "created_at"
+    t.string   "wfid",       :null => false
+    t.string   "expid",      :null => false
+    t.text     "svalue",     :null => false
+  end
+
+  add_index "process_errors", ["created_at"], :name => "index_process_errors_on_created_at"
+  add_index "process_errors", ["expid"], :name => "index_process_errors_on_expid"
+  add_index "process_errors", ["wfid"], :name => "index_process_errors_on_wfid"
 
   create_table "users", :force => true do |t|
     t.string   "login"

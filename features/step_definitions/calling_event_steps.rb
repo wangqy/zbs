@@ -28,9 +28,3 @@ end
   而且 "我输入手机号码为#{callnumber}"
   而且 "我输入联系地址或单位为简洁公司"
 end
-
-而且 /我在第(\d+)条记录中点击(.*)按钮/ do |pos, button_label|
-  within("table >tr:nth-child(#{pos.to_i+1})") do
-    click_link button_label
-  end
-end

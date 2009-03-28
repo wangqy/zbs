@@ -11,11 +11,17 @@ end
 end
 
 当 /我选中(.*)/ do |field|
-  check(field)
+  choose(field)
 end
 
 而且 /我点击(.*)/ do |label|
   click_button(label)
+end
+
+而且 /我在第(\d+)条记录中点击(.*)按钮/ do |pos, button_label|
+  within("table >tr:nth-child(#{pos.to_i+1})") do
+    click_link button_label
+  end
 end
 
 那么 /我应该能看到输入的值:(.*)/ do |text|
