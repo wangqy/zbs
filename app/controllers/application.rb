@@ -19,25 +19,16 @@ class ApplicationController < ActionController::Base
   #workflow definition
   @@pdef = OpenWFE.process_definition :name => 'dispatch_event' do
     sequence do
-      logit
       #转办,自己受理,直接办结
-      turn
-      finish :if => "${f.handle} == 3"
+      turn :if => "${f:handle} == 1"
+      get :if => "${f:handle} == 2"
+      finish
     end
   end
 
-  ruote_engine.register_participant :logit do |workitem|
-    puts "logit"
-  end
+  ruote_engine.register_participant :turn, OpenWFE::Extras::ArParticipant
 
-  ruote_engine.register_participant :receive do |workitem|
-    puts "receive #{workitem.user_login}"
-    OpenWFE::Extras::ArParticipant.new(:user_login)
-  end
-
-  ruote_engine.register_participant :turn, OpenWFE::Extras::ArParticipant do
-    puts "turn to #{workitem.user_login}"
-  end
+  ruote_engine.register_participant :get, OpenWFE::Extras::ArParticipant
 
   ruote_engine.register_participant :finish do |workitem|
     puts "finish event #{workitem.event_id}"
