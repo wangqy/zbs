@@ -1,5 +1,7 @@
 .group
   -form_tag dispatches_path do 
+    =hidden_field_tag 'id', params[:id]
+    =hidden_field_tag 'user_login', 'admin'
     %fieldset
       %legend 事件信息
       %table.formin

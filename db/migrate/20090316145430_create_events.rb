@@ -1,6 +1,8 @@
 class CreateEvents < ActiveRecord::Migration
   def self.up
     create_table :events do |t|
+      #事件状态(0指未安排)
+      t.integer :state, :null => false, :default => 0
       #事件时间
       t.datetime :timing, :null => false
       #主题(规则:姓名__目的__值班室)

@@ -18,4 +18,12 @@ describe DispatchesController do
       response.should be_success
     end
   end
+
+  describe "save dispatch" do
+    it "should set state to 1" do
+      post :create, :id => events("complain"), :handle => 3
+      assigns[:event].state.should == 1
+    end
+  end
+
 end

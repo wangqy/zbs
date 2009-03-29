@@ -61,9 +61,10 @@ ActiveRecord::Schema.define(:version => 20090327020215) do
   end
 
   create_table "events", :force => true do |t|
-    t.datetime "timing",     :null => false
-    t.string   "title",      :null => false
-    t.string   "content",    :null => false
+    t.integer  "state",      :default => 0, :null => false
+    t.datetime "timing",                    :null => false
+    t.string   "title",                     :null => false
+    t.string   "content",                   :null => false
     t.string   "type"
     t.integer  "aim"
     t.integer  "emergency"
@@ -75,7 +76,7 @@ ActiveRecord::Schema.define(:version => 20090327020215) do
     t.integer  "sex"
     t.string   "email"
     t.string   "address"
-    t.string   "callnumber", :null => false
+    t.string   "callnumber",                :null => false
     t.string   "calltag"
     t.integer  "person_id"
     t.integer  "case_id"

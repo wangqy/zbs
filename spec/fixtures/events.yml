@@ -2,6 +2,7 @@
 
 complain:
   type: Call
+  calltag: 深电2009032300099
   callnumber: 13988889999
   timing: <%= "2009-03-24 22:22:22".to_datetime %>
   title: 马可波罗__投诉__区长热线办公室
@@ -9,9 +10,11 @@ complain:
   name: 马可波罗
   creator: quentin
   modifier: quentin
+  created_at: <%= "2009-03-24 22:22:22".to_datetime %>
 
 complain22:
   type: Call
+  calltag: 深电2009032300022
   callnumber: 13911112222
   timing: <%= "2009-03-23 14:14:14".to_datetime %>
   title: 孙敏__咨询__区长热线办公室
@@ -19,3 +22,4 @@ complain22:
   name: 孙敏
   creator: quentin
   modifier: quentin
+  created_at: <%= "2009-03-23  6:14:14".to_datetime %>
