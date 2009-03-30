@@ -30,8 +30,8 @@
         #main
           #project-nav
             %ul
-              %li#t-proj{:class=>"#{select_menu('home')}"}
-                %a{:href=>"/"} 首页
+              %li#t-proj{:class=>"#{select_menu('workitems')}"}
+                =link_to '待办事项', workitems_path
               - if is_admin?
                 %li{:class=>"#{select_menu('users')}"}
                   =link_to '用户管理', new_user_path

@@ -16,24 +16,6 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
-  #workflow definition
-  @@pdef = OpenWFE.process_definition :name => 'dispatch_event' do
-    sequence do
-      #转办,自己受理,直接办结
-      turn :if => "${f:handle} == 1"
-      get :if => "${f:handle} == 2"
-      finish
-    end
-  end
-
-  ruote_engine.register_participant :turn, OpenWFE::Extras::ArParticipant
-
-  ruote_engine.register_participant :get, OpenWFE::Extras::ArParticipant
-
-  ruote_engine.register_participant :finish do |workitem|
-    puts "finish event #{workitem.event_id}"
-  end
-                                                                                                                                                             
   #Creates an HistoryEntry record
   def history_log (event, options={})
     source = options.delete(:source) || current_user.login

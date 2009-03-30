@@ -13,7 +13,7 @@ class DispatchesController < ApplicationController
     Event.transaction do
       @event.update_attributes!(:state => 1)
       #start workflow
-      li = OpenWFE::LaunchItem.new @@pdef
+      li = OpenWFE::LaunchItem.new PDEF
       li.event_id = @event.id
       li.handle = params[:handle].to_i
       li.user_login = params[:user_login]

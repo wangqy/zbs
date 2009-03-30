@@ -66,10 +66,9 @@ module OpenWFE
       part = old_lookup_participant(participant_name)
 
       return part if part
-
       target =
         ::User.find_by_login(participant_name) ||
-        ::Group.find_by_name(participant_name)
+        ::Department.find_by_name(participant_name)
       store_name = target ? participant_name : 'unknown'
 
       #store_name = participant_name

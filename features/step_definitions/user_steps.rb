@@ -9,6 +9,8 @@
     url = new_call_path
   when "事件调度" 
     url = dispatches_path
+  when "待办事项" 
+    url = workitems_path
   end
   raise 'visit url is blank' if url.blank?
   visit url
