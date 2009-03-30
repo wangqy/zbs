@@ -9,15 +9,15 @@
     )
   end
   #events = Call.create!(events)
-  events = Event.all
+  #events = Event.all
 
-  events.each do |event|
-    #start workflow
-    li = OpenWFE::LaunchItem.new PDEF
-    li.event_id = event.id
-    li.handle = 1
-    li.user_login = "aaron"
-    fei = ActionController::Base.ruote_engine.launch li
-    sleep 5
-  end
+  #events.each do |event|
+  #  #start workflow
+  #  li = OpenWFE::LaunchItem.new PDEF
+  #  li.event_id = event.id
+  #  li.handle = 1
+  #  li.user_login = "aaron"
+  #  fei = ActionController::Base.ruote_engine.launch li
+  #  sleep 5
+  #end
 end

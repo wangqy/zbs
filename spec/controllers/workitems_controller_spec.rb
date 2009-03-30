@@ -1,23 +1,25 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe WorkitemsController do
+  set_fixture_class :ar_workitems => "OpenWFE::Extras::ArWorkitem"
 
-  #Delete these examples and add some real ones
-  it "should use WorkitemsController" do
-    controller.should be_an_instance_of(WorkitemsController)
+  before(:each) do
+    login_as :aaron
   end
-
 
   describe "GET 'index'" do
     it "should be successful" do
       get 'index'
+      assigns[:list].should_not be_nil
       response.should be_success
     end
   end
 
   describe "GET 'edit'" do
     it "should be successful" do
-      get 'edit'
+      get 'edit', :id => ar_workitems(:complain_workitem)
+      assigns[:event].should_not be_nil
+      assigns[:event].workitem_id.should_not be_nil
       response.should be_success
     end
   end

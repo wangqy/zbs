@@ -12,9 +12,11 @@
             =radio_button_tag 'handle', 1
             =label_tag 'handle_1', '转办'
             =radio_button_tag 'handle', 2
-            =label_tag 'handle_2', '自己受理'
-            =radio_button_tag 'handle', 9
-            =label_tag 'handle_9', '直接办结'
+            =label_tag 'handle_2', '受理'
+            =radio_button_tag 'handle', 3
+            =label_tag 'handle_3', '申请办结'
+            =radio_button_tag 'handle', 4
+            =label_tag 'handle_4', '退回'
         %tr
           %th= label_tag :department_code, "接收部门"
           %td= select_tag :department_code

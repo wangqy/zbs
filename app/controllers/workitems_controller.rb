@@ -23,6 +23,9 @@ class WorkitemsController < ApplicationController
   end
 
   def edit
+    workitem = OpenWFE::Extras::ArWorkitem.find(params[:id])
+    @event = Event.find(workitem.field("event_id"))
+    @event.workitem_id = workitem.id
   end
 
   def update

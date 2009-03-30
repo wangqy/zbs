@@ -1,4 +1,11 @@
 class Enum
+  #try aen to get snippet
+
+  #流程状态
+  STATE = [
+    %w{转办 受理 申请办结 退回 直接办结}, 
+    %w{1    2    3        4    9       }
+  ]
   #来电目的
   AIM = [
     %w{求助 投诉 咨询 建议 举报 其他},

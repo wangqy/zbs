@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
       flash[:notice] = "登录成功."
-      redirect_to home_path 
+      redirect_to workitems_path
     else
       flash.now[:error] = "错误的用户名或密码."
       render :action => 'new'

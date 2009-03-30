@@ -1,0 +1,22 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+complain_workitem:
+  fei: (fei 0.9.20 engine field:__definition dispatch_event 0 20090330-dujezukechi participant 0.0.0)
+  wfid: 20090330-dujezukechi
+  expid: 0.0.0
+  wfname: dispatch_event
+  wfrevision: 0
+  participant_name: aaron
+  store_name: aaron
+  dispatch_time: 2009-03-30 14:12:41
+  last_modified: 2009-03-30 14:12:41
+  wi_fields: |
+    handle: 1
+    event_id: <%= Fixtures.identify(:complain) %>
+    user_login: aaron
+    params: 
+    if: 1 == 1
+    ref: admin
+  
+  activity: NULL
+  keywords: |participant:admin|handle:1|event_id:44|user_login:admin|params:|if:1 == 1|ref:admin|
