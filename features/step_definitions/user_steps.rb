@@ -11,6 +11,10 @@
     url = dispatches_path
   when "待办事项" 
     url = workitems_path
+  when "机构管理"
+    url = departments_path
+  when "机构新增"
+    url = new_department_path
   end
   raise 'visit url is blank' if url.blank?
   visit url
