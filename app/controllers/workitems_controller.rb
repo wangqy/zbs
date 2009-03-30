@@ -29,6 +29,13 @@ class WorkitemsController < ApplicationController
   end
 
   def update
+    workitem = OpenWFE::Extras::ArWorkitem.find(params[:id])
+    origin_workitem = workitem.to_owfe_workitem 
+    OpenWFE::Extras::ArWorkitem.destroy(workitem.id) 
+    RuotePlugin.ruote_engine.reply(origin_workitem)
+    history_log('proceeded', :fei => origin_workitem.fei) 
+    flash[:notice] = "待办事项处理成功"
+    redirect_to :action => :index
   end
 
 end

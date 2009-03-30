@@ -1,19 +1,15 @@
 #workflow definition
 PDEF = OpenWFE.process_definition :name => 'dispatch_event' do
   sequence do
-    participant :ref => "${f:user_login}", :if => "${f:handle} == 1"
-    #转办,自己受理,直接办结
-    turn :if => "${f:handle} == 1"
-    get :if => "${f:handle} == 2"
+    cursor :break_if => "(${f:handle} == 90) || (${f:handle} == 91)" do
+      participant :ref => "${f:department_code}", :if => "${f:handle} == 10 || ${f:handle} == 30"
+      participant :ref => "${f:user_login}", :if => "(${f:handle} == 20) || (${f:handle} == 21)"
+    end
     finish
   end
 end
 
 begin
-  ActionController::Base.ruote_engine.register_participant :turn, OpenWFE::Extras::ArParticipant
-
-  ActionController::Base.ruote_engine.register_participant :get, OpenWFE::Extras::ArParticipant
-
   ActionController::Base.ruote_engine.register_participant :finish do |workitem|
     puts "finish event #{workitem.event_id}"
   end

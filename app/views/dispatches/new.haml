@@ -1,7 +1,6 @@
 .group
   -form_tag dispatches_path do 
     =hidden_field_tag 'id', params[:id]
-    =hidden_field_tag 'user_login', 'admin'
     =render :partial => "events/show"
     %fieldset
       %legend 业务办理
@@ -9,15 +8,15 @@
         %tr
           %th 办理方式
           %td{:colspan=>3}
-            =radio_button_tag 'handle', 1
-            =label_tag 'handle_1', '转办'
-            =radio_button_tag 'handle', 2
-            =label_tag 'handle_2', '自己受理'
-            =radio_button_tag 'handle', 9
-            =label_tag 'handle_9', '直接办结'
+            =radio_button_tag 'handle', 10
+            =label_tag 'handle_10', '转办'
+            =radio_button_tag 'handle', 20
+            =label_tag 'handle_20', '自己受理'
+            =radio_button_tag 'handle', 90
+            =label_tag 'handle_90', '直接办结'
         %tr
           %th= label_tag :department_code, "接收部门"
-          %td= select_tag :department_code
+          %td= select_dept
           %th 截止日期
           %td=calendar_date_select_tag "finish_date", nil, :popup => :force, :class => 'calendar'
         %tr
