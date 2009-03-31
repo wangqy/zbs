@@ -19,6 +19,12 @@ fieldset {
     width: 100px;
     font-weight: bold; }
 
+.formin .title {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold; }
+.formin .sub_title {
+  color: red; }
 .formin tr {
   line-height: 40px; }
 .formin th {
@@ -31,8 +37,17 @@ fieldset {
 .formin input {
   width: 200px;
   font-size: 180%; }
+.formin input.long {
+  width: 508px; }
+.formin .calendar {
+  width: 182px;
+  font-size: 20px;
+  padding: 3px 0;
+  float: left; }
 .formin select {
   width: 200px; }
+.formin input[type=radio] {
+  margin-left: 10px; }
 
 .btns input {
   font-size: 20px;
@@ -42,12 +57,6 @@ fieldset {
   width: 200px;
   font-size: 20px;
   padding: 4px 15px; }
-
-#call_timing {
-  width: 182px;
-  font-size: 20px;
-  padding: 3px 0;
-  float: left; }
 
 .calendar_date_select_popup_icon {
   float: right; }

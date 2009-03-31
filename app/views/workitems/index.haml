@@ -1,0 +1,18 @@
+.group
+  %fieldset
+    %legend 事件列表
+    %table.list
+      %tr
+        %th 事件编号
+        %th 事件主题
+        %th 登记时间
+        %th 登记人
+        %th 操作
+      - @list.each do |event|
+        %tr
+          %td=event.calltag
+          %td=event.title
+          %td=event.created_at.to_s(:without_year)
+          %td=event.creator
+          %td=link_to '处理', edit_workitem_path(:id=>event.workitem_id)
+

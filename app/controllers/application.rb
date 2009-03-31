@@ -16,6 +16,14 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
+  #Creates an HistoryEntry record
+  def history_log (event, options={})
+    source = options.delete(:source) || current_user.login
+    OpenWFE::Extras::HistoryEntry.log!(source, event, options)
+  end
+                  
+  
+
   def must_login
     unless logged_in?
       redirect_to login_path

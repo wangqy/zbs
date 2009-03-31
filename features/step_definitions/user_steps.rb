@@ -7,6 +7,10 @@
     url = new_user_path
   when "来电管理" 
     url = new_call_path
+  when "事件调度" 
+    url = dispatches_path
+  when "待办事项" 
+    url = workitems_path
   when "机构管理"
     url = departments_path
   when "机构新增"
@@ -16,6 +20,7 @@
   when "人员新增"
     url = new_employee_path
   end
+  raise 'visit url is blank' if url.blank?
   visit url
 end
 
@@ -32,11 +37,6 @@ end
 
 假如 /我已经以管理员(.*)身份登录/ do |login|
   假如 "我已经以用户#{login},密码admin登录"
-end
-
-假如 /有以下用户数据/ do |users|
-  #users = users.arguments_replaced({"用户名"=>"login","姓名"=>"realname"})
-  #User.create!(users.hashes)
 end
   
 当 /我修改第(\d+)个用户的(.+)为(.+)/ do |pos, label, value|

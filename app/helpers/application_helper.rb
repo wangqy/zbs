@@ -19,4 +19,9 @@ module ApplicationHelper
   def select_enum(object_name, method)
     select_tag "#{object_name}[#{method}]", options_for_select(Enum.__send__(method))
   end
+
+  #选择部门
+  def select_dept
+    select_tag :department_code, options_for_select(Department.all.collect {|d| [d.name, d.code_prefix]})
+  end
 end
