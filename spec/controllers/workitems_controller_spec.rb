@@ -26,8 +26,8 @@ describe WorkitemsController do
 
   describe "GET 'update'" do
     it "should be successful" do
-      get 'update'
-      response.should be_success
+      get 'update', :id => ar_workitems(:complain_workitem)
+      response.should redirect_to(workitems_path)
     end
   end
 end
