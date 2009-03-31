@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
 
@@ -11,6 +12,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
 
   map.resources :departments
+
+  map.resources :employees
 
   map.resource :session
 

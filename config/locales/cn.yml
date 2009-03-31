@@ -12,6 +12,14 @@ cn:
       call:
         callnumber: "来电电话"
         timing: "来电时间"
+      department:
+        code: "机构代码"
+        name: "机构名称"
+      employee:
+        name: "姓名"
+        department_id: "部门"
+        telephone: "办公电话"
+
 
     errors:
       template:

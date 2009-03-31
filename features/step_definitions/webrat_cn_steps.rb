@@ -14,6 +14,10 @@ end
   click_button(label)
 end
 
+而且 /我选中(.*)/ do |label|
+  choose(label)
+end
+
 那么 /我应该能看到输入的值:(.*)/ do |text|
   response.body.should =~ /#{text}/m
 end

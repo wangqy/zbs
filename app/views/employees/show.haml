@@ -1,0 +1,44 @@
+.group
+  %fieldset
+    %legend 人员信息
+    %table
+      %tr
+        %th
+          = "姓名"
+        %td
+          = @employee.name
+        %th
+          = "性别"
+        %td
+          = @employee.sexText
+      %tr
+        %th
+          = "部门"
+        %td
+          = @employee.department.name
+        %th
+          = "职位"
+        %td
+          = @employee.position
+      %tr
+        %th
+          = "办公电话"
+        %td
+          = @employee.telephone
+        %th
+          = "手机"
+        %td
+          = @employee.mobile
+      %tr
+        %th
+          = "电子邮箱"
+        %td{:colspan=>3}
+          = @employee.email
+      %tr
+        %th
+          = "备注"
+        %td{:colspan=>3}
+          = @employee.remark
+  %p.btns{:style=>"clear:left"}
+    = submit_tag '返回',{:type=>'button',:onclick=>'history.back();'}
+

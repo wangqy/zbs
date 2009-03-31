@@ -11,6 +11,10 @@
     url = departments_path
   when "机构新增"
     url = new_department_path
+  when "人员管理"
+    url = employees_path
+  when "人员新增"
+    url = new_employee_path
   end
   visit url
 end

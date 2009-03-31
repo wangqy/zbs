@@ -1,0 +1,46 @@
+.group
+  =error_messages_for :employee
+  -form_for @employee, :html => {:class=>'formin'} do |f|
+    %fieldset
+      %legend 人员信息
+      %table
+        %tr
+          %th
+            = f.label :name, "姓名"
+          %td
+            = f.text_field :name, :maxlength => "10"
+          %th
+            = f.label :sex, "性别"
+          %td
+            = "#{f.label "sex_1", "男"}#{f.radio_button :sex, '1'}#{f.label "sex_2", "女"}#{f.radio_button :sex, '2'}"
+        %tr
+          %th
+            = f.label :department_id, "部门"
+          %td
+            = f.select :department_id, departments.collect{|d| [d.name, d.id]}, :include_blank => true
+          %th
+            = f.label :position, "职位"
+          %td
+            = f.text_field :position
+        %tr
+          %th
+            = f.label :telephone, "办公电话"
+          %td
+            = f.text_field :telephone
+          %th
+            = f.label :mobile, "手机"
+          %td
+            = f.text_field :mobile
+        %tr
+          %th
+            = f.label :email, "电子邮箱"
+          %td{:colspan=>3}
+            = f.text_field :email
+        %tr
+          %th
+            = f.label :remark, "备注"
+          %td{:colspan=>3}
+            = f.text_area :remark, :rows => 5, :cols=> 70
+    %p.btns{:style=>"clear:left"}
+      = submit_tag '保存'
+
