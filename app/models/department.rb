@@ -1,9 +1,13 @@
 class Department < ActiveRecord::Base
 
   #部门成员
-  has_many :employees, :class_name => "Employee", :foreign_key => "department_id"
+  has_many :employees, :class_name => "User", :foreign_key => "department_id"
   #负责人
-  has_many :managers, :class_name => "Employee", :foreign_key => "department_id"
+  has_many :managers, :class_name => "User", :foreign_key => "department_id"
+  #创建人
+  belongs_to :creator, :class_name => "User", :foreign_key => "creator"
+  #最后修改人
+  belongs_to :modifier, :class_name => "User", :foreign_key => "modifier"
 
   validates_presence_of :code, :name
   validates_length_of :code, :maximum => 10

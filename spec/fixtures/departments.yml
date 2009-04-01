@@ -1,4 +1,4 @@
-one:
+劳动局:
   code: A001
   name: 劳动局
   manager: 劳动局长
@@ -6,7 +6,7 @@ one:
   address: 深南大道1号
   remark: 没找到
 
-two:
+教育局:
   code: A002
   name: 教育局
   manager: 教育局长

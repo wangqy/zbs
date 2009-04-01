@@ -24,8 +24,8 @@ class DepartmentsController < ApplicationController
 
   def create
     @department = Department.new(params[:department])
-    @department.creator = current_user.login
-    @department.modifier = current_user.login
+    @department.creator = current_user
+    @department.modifier = current_user
 
     if @department.save
       flash[:notice] = '保存成功.'
@@ -42,7 +42,7 @@ class DepartmentsController < ApplicationController
 
   def update
     @department = Department.find(params[:id])
-    params[:department][:modifier] = current_user.login
+    params[:department][:modifier] = current_user
     if @department.update_attributes(params[:department])
       flash.now[:notice] = '更新成功.'
     end

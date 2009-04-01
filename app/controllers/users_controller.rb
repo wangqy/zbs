@@ -4,11 +4,15 @@ class UsersController < ApplicationController
 
   # render new.rhtml
   def new
+    @user = User.new
     @list = User.all :order => "login"
   end
 
   def create
     @user = User.new(params[:user])
+    @user.creator = current_user
+    @user.modifier = current_user
+
     @user.save
     if @user.errors.empty?
       flash.now[:notice] = "新增用户成功!"
@@ -24,6 +28,7 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
+    params[:user][:modifier] = current_user
     if user.update_attributes(params[:user])
       flash[:notice] = "编辑用户成功!"
       redirect_to new_user_path
