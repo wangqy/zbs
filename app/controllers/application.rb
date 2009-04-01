@@ -34,4 +34,17 @@ class ApplicationController < ActionController::Base
     @menu = controller_name
   end
 
+  def workitem_attributes_from(history, last_workitem)
+      workitem_attributes = nil
+      #转办,申请办结
+      if [10,30].include?(history.handle)
+        workitem_attributes = {:store_name => history.department_code}
+      #自己受理,受理
+      elsif [20,21].include?(history.handle)
+        workitem_attributes = {:store_name => current_user.login}
+      #退回,退回重办
+      elsif [40,41].include?(history.handle)
+        workitem_attributes = {:store_name => last_workitem.store_name}
+      end
+  end
 end

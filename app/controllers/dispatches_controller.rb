@@ -9,8 +9,24 @@ class DispatchesController < ApplicationController
 
   #开启流程
   def create
-    @event = Event.find(params[:id])
-    if @event.update_attributes!(:state => 1)
+    @history = History.new(params[:history])
+    if @history.valid?
+      @event = Event.find(params[:id])
+      @history.event = @event
+      Event.transaction do
+        #已安排
+        @event.state = 1
+        @event.historys << @history
+        last_workitem = nil
+
+        workitem_attributes = workitem_attributes_from(@history, last_workitem)
+        if workitem_attributes
+          workitem_attributes[:last_store_name] = last_workitem.store_name if last_workitem
+          workitem_attributes[:creator] = current_user.login
+          @event.workitems.create workitem_attributes
+        end
+        @event.save! 
+      end
       flash[:notice] = "办理成功."
       redirect_to dispatches_path
     else

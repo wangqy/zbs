@@ -1,5 +1,5 @@
 .group
-  -form_tag workitem_path(:id => @event.workitem_id), :method => :put do 
+  -form_tag workitem_path(:id => @workitem.id), :method => :put do 
     =render :partial => "events/show"
     %fieldset
       %legend 业务办理
@@ -7,14 +7,14 @@
         %tr
           %th 办理方式
           %td{:colspan=>3}
-            =radio_button_tag 'handle', 10
-            =label_tag 'handle_10', '转办'
-            =radio_button_tag 'handle', 21
-            =label_tag 'handle_21', '受理'
-            =radio_button_tag 'handle', 30
-            =label_tag 'handle_30', '申请办结'
-            =radio_button_tag 'handle', 40
-            =label_tag 'handle_40', '退回'
+            =radio_button_tag 'history[handle]', 10
+            =label_tag :history_handle_10, '转办'
+            =radio_button_tag 'history[handle]', 21
+            =label_tag :history_handle_21, '受理'
+            =radio_button_tag 'history[handle]', 30
+            =label_tag :history_handle_30, '申请办结'
+            =radio_button_tag 'history[handle]', 40
+            =label_tag :history_handle_40, '退回'
         %tr
           %th= label_tag :department_code, "接收部门"
           %td= select_dept
