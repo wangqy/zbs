@@ -26,8 +26,6 @@ class WorkitemsController < ApplicationController
         last_workitem = @workitem
 
         workitem_attributes = workitem_attributes_from(@history, last_workitem)
-        p "==========="
-        p workitem_attributes
         if workitem_attributes
           workitem_attributes[:last_store_name] = last_workitem.store_name if last_workitem
           workitem_attributes[:creator] = current_user.login

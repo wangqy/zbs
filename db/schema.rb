@@ -22,15 +22,30 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
   end
 
   create_table "departments", :force => true do |t|
-    t.string   "code_prefix", :limit => 3
-    t.string   "code_suffix", :limit => 10
-    t.string   "name",        :limit => 40
-    t.string   "manager",     :limit => 10
-    t.string   "telephone",   :limit => 20
-    t.string   "fax",         :limit => 20
-    t.string   "email",       :limit => 50
-    t.string   "address",     :limit => 120
-    t.string   "remark",      :limit => 800
+    t.string   "name",       :limit => 40
+    t.string   "manager",    :limit => 10
+    t.string   "telephone",  :limit => 20
+    t.string   "fax",        :limit => 20
+    t.string   "email",      :limit => 50
+    t.string   "address",    :limit => 120
+    t.string   "remark",     :limit => 800
+    t.integer  "creator"
+    t.integer  "modifier"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "code",       :limit => 10
+  end
+
+  create_table "employees", :force => true do |t|
+    t.string   "name",          :limit => 10
+    t.integer  "sex"
+    t.integer  "department_id"
+    t.string   "position"
+    t.string   "telephone",     :limit => 20
+    t.string   "mobile",        :limit => 20
+    t.integer  "ismanager"
+    t.string   "email",         :limit => 120
+    t.string   "remark",        :limit => 20
     t.integer  "creator"
     t.integer  "modifier"
     t.datetime "created_at"
@@ -99,8 +114,8 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
   end
 
   create_table "workitems", :force => true do |t|
-    t.string   "store_name"
-    t.integer  "event_id"
+    t.string   "store_name",      :null => false
+    t.integer  "event_id",        :null => false
     t.string   "creator",         :null => false
     t.string   "last_store_name"
     t.datetime "created_at"

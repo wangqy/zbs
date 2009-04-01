@@ -7,7 +7,7 @@ describe DispatchesController do
       :id => events("complain").id,
       :history => {
         :handle => "10",
-        :department_code => "111"
+        :department_code => "A001"
       }
     }
   end
@@ -35,7 +35,7 @@ describe DispatchesController do
     #转办
     it "should be turn" do
       lamb = lambda do
-        post :create, @valid_attributes.merge(:history => {:handle => 10}) 
+        post :create, @valid_attributes
       end
       lamb.should change(Workitem, :count).by(1)
       lamb.should change(History, :count).by(1)
