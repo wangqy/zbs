@@ -18,10 +18,6 @@ end
   click_button(label)
 end
 
-而且 /我选中(.*)/ do |label|
-  choose(label)
-end
-
 而且 /我在第(\d+)条记录中点击(.*)按钮/ do |pos, button_label|
   within("table >tr:nth-child(#{pos.to_i+1})") do
     click_link button_label
