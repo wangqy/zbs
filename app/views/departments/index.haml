@@ -3,21 +3,21 @@
     %legend 查询机构
     %table.list
       %tr
-        %th 机构编码
-        %th 机构名称
-        %th 负责人
-        %th 联系电话
+        %th{:width=>"80"} 机构代码
+        %th{:width=>"100"} 机构名称
+        %th{:width=>"60"} 负责人
+        %th{:width=>"100"}联系电话
         %th 地址
-        %th 最后修改时间
-        %th 操作
+        %th{:width=>"150"} 最后修改时间
+        %th{:width=>"120"} 操作
       - @list.each do |department|
         %tr
-          %td="#{department.code_prefix}#{department.code_suffix}"
+          %td=department.code
           %td=department.name
           %td=department.manager
           %td=department.telephone
           %td=department.address
-          %td=department.updated_at.to_s
+          %td=department.updated_at.strftime("%Y-%m-%d %H:%M:%S")
           %td
             =link_to '查看', department
             =link_to '编辑', edit_department_path(department)

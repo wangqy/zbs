@@ -1,0 +1,29 @@
+.group
+  %fieldset
+    %legend 查询人员
+    %table.list
+      %tr
+        %th{:width=>'60'} 姓名
+        %th{:width=>'60'} 性别
+        %th 部门
+        %th{:width=>'120'} 办公电话
+        %th{:width=>'120'} 手机
+        %th{:width=>'70'} 是否负责人
+        %th{:width=>'150'} 最后修改时间
+        %th{:width=>'120'} 操作
+      - @list.each do |employee|
+        %tr
+          %td=employee.name
+          %td=employee.sexText
+          %td=employee.department.name
+          %td=employee.telephone
+          %td=employee.mobile
+          %td=employee.ismanager
+          %td=employee.updated_at.strftime("%Y-%m-%d %H:%M:%S")
+          %td
+            =link_to '查看', employee
+            =link_to '编辑', edit_employee_path(employee)
+            =link_to '删除', employee, :confirm => "你确定要删除吗?", :method => :delete
+      %tr
+        %td{:colspan=>8}=will_paginate @list
+

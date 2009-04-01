@@ -53,6 +53,15 @@
                     =link_to '新增机构', new_department_path
                   %li.bin.shared
                     =link_to '查询机构', departments_path
+              %li#e-menu.mainmenu{:class=>"#{select_menu('employees')}"}
+                -link_to new_employee_path do
+                  人员管理
+                  %em more
+                %ul.submenu.wbadges{:style=>"display:none"}
+                  %li.bin.shared
+                    =link_to '新增人员', new_employee_path
+                  %li.bin.shared
+                    =link_to '查询人员', employees_path
               %li
                 =link_to '新增来访', new_user_path
               %li

@@ -4,16 +4,16 @@
     %table
       %tr
         %th
-          = "部门编码"
+          = "机构代码"
         %td
-          = "#{@department.code_prefix}#{@department.code_suffix}"
+          = @department.code
         %th
           = "传真"
         %td
           = @department.fax
       %tr
         %th
-          = "部门名称"
+          = "机构名称"
         %td
           = @department.name
         %th

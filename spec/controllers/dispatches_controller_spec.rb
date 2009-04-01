@@ -6,7 +6,8 @@ describe DispatchesController do
     @valid_attributes = {
       :id => events("complain").id,
       :history => {
-        :handle => "10"
+        :handle => "10",
+        :department_code => "111"
       }
     }
   end
@@ -48,7 +49,6 @@ describe DispatchesController do
       lamb.should change(Workitem, :count).by(1)
       lamb.should change(History, :count).by(1)
     end
-
 
     #直接办结
     it "should be finish" do
