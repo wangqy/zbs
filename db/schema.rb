@@ -45,15 +45,14 @@ ActiveRecord::Schema.define(:version => 20090330062839) do
   end
 
   create_table "departments", :force => true do |t|
-    t.string   "code_prefix", :limit => 3
-    t.string   "code_suffix", :limit => 10
-    t.string   "name",        :limit => 40
-    t.string   "manager",     :limit => 10
-    t.string   "telephone",   :limit => 20
-    t.string   "fax",         :limit => 20
-    t.string   "email",       :limit => 50
-    t.string   "address",     :limit => 120
-    t.string   "remark",      :limit => 800
+    t.string   "code",       :limit => 10
+    t.string   "name",       :limit => 40
+    t.string   "manager",    :limit => 10
+    t.string   "telephone",  :limit => 20
+    t.string   "fax",        :limit => 20
+    t.string   "email",      :limit => 50
+    t.string   "address",    :limit => 120
+    t.string   "remark",     :limit => 800
     t.integer  "creator"
     t.integer  "modifier"
     t.datetime "created_at"
