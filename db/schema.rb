@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
   end
 
   create_table "departments", :force => true do |t|
+    t.string   "code",       :limit => 10
     t.string   "name",       :limit => 40
     t.string   "manager",    :limit => 10
     t.string   "telephone",  :limit => 20
