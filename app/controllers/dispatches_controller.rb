@@ -9,17 +9,25 @@ class DispatchesController < ApplicationController
 
   #开启流程
   def create
-    @event = Event.find(params[:id])
-    if @event.update_attributes!(:state => 1)
+    @history = History.new(params[:history])
+    if @history.valid?
+      @event = Event.find(params[:id])
+      @history.event = @event
+      Event.transaction do
+        #已安排
+        @event.state = 1
+        @event.historys << @history
+        last_workitem = nil
+
+        workitem_attributes = workitem_attributes_from(@history, last_workitem)
+        if workitem_attributes
+          workitem_attributes[:last_store_name] = last_workitem.store_name if last_workitem
+          workitem_attributes[:creator] = current_user.login
+          @event.workitems.create workitem_attributes
+        end
+        @event.save! 
+      end
       flash[:notice] = "办理成功."
-      #start workflow
-      li = OpenWFE::LaunchItem.new PDEF
-      li.event_id = @event.id
-      li.handle = params[:handle].to_i
-      li.department_code = params[:department_code]
-      li.user_login = current_user.login
-      fei = ruote_engine.launch li
-      history_log '添加流程', :fei => fei
       redirect_to dispatches_path
     else
       render :action => "new"

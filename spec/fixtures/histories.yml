@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  event: 
+  handle: 1
+  department_code: MyString
+  timeout: 2009-03-31
+  reason: MyString
+  remark: MyString
+  responser: MyString
+  creator: MyString
+
+two:
+  event: 
+  handle: 1
+  department_code: MyString
+  timeout: 2009-03-31
+  reason: MyString
+  remark: MyString
+  responser: MyString
+  creator: MyString

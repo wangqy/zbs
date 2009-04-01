@@ -3,6 +3,13 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe DispatchesController do
   before(:each) do
     login_as :cogentsoft
+    @valid_attributes = {
+      :id => events("complain").id,
+      :history => {
+        :handle => "10",
+        :department_code => "A001"
+      }
+    }
   end
 
   describe "GET 'index'" do
@@ -14,42 +21,42 @@ describe DispatchesController do
 
   describe "GET 'new'" do
     it "should be successful" do
-      get 'new', :id => events("complain")
+      get 'new', :id => events("complain").id
       response.should be_success
     end
   end
 
   describe "save dispatch" do
     it "should set state to 1" do
-      post :create, :id => events("complain"), :handle => 3
+      post :create, @valid_attributes
       assigns[:event].state.should == 1
     end
 
     #转办
-    it "should insert a workitem while handle=1" do
-      lambda do
-        post :create, :id => events("complain"), :handle => 1
-        #ArWorkitem is asynchronous
-        sleep 0.5
-      end.should change(OpenWFE::Extras::ArWorkitem, :count).by(1)
+    it "should be turn" do
+      lamb = lambda do
+        post :create, @valid_attributes
+      end
+      lamb.should change(Workitem, :count).by(1)
+      lamb.should change(History, :count).by(1)
     end
 
     #自己办理
-    it "should insert a workitem while handle=2" do
-      lambda do
-        post :create, :id => events("complain"), :handle => 2
-        #ArWorkitem is asynchronous
-        sleep 0.5
-      end.should change(OpenWFE::Extras::ArWorkitem, :count).by(1)
+    it "should deal by himself" do
+      lamb = lambda do
+        post :create, @valid_attributes.merge(:history => {:handle => 20})
+      end
+      lamb.should change(Workitem, :count).by(1)
+      lamb.should change(History, :count).by(1)
     end
-
 
     #直接办结
-    it "should not insert a workitem while handle=3" do
-      lambda do
-        post :create, :id => events("complain"), :handle => 3
-      end.should_not change(OpenWFE::Extras::ArWorkitem, :count)
+    it "should be finish" do
+      lamb = lambda do
+        post :create, @valid_attributes.merge(:history => {:handle => 90})
+      end
+      lamb.should_not change(Workitem, :count)
+      lamb.should change(History, :count).by(1)
     end
   end
-
 end

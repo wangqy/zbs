@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+complain_workitem:
+  store_name: aaron
+  event: complain 
+  creator: quentin
+  
+complain_workitem22:
+  store_name: aaron
+  event: complain22 
+  creator: quentin
