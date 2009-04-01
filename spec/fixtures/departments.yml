@@ -1,6 +1,5 @@
 one:
-  code_prefix: A
-  code_suffix: 001
+  code: A001
   name: 劳动局
   manager: 劳动局长
   telephone: 075581234567
@@ -8,8 +7,7 @@ one:
   remark: 没找到
 
 two:
-  code_prefix: A
-  code_suffix: 002
+  code: A002
   name: 教育局
   manager: 教育局长
   telephone: 075581234567

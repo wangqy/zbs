@@ -1,10 +1,8 @@
 class CreateDepartments < ActiveRecord::Migration
   def self.up
     create_table :departments do |t|
-      #机构编码－前缀
-      t.string :code_prefix, :limit=>3
-      #机构编码－后缀
-      t.string :code_suffix, :limit=>10
+      #机构编码
+      t.string :code, :limit=>10
       #名称
       t.string :name, :limit=>40
       #负责人

@@ -15,7 +15,11 @@ describe Employee do
     }
   end
 
+  #新增人员
   it "should create a new instance given valid attributes" do
-    Employee.create!(@valid_attributes)
+    lambda do
+      Employee.create!(@valid_attributes)
+    end.should change(Employee, :count).by(1)
   end
+
 end
