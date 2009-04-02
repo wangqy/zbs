@@ -22,6 +22,8 @@ class WorkitemsController < ApplicationController
     if @history.valid?
       @history.event = @event
       Event.transaction do
+        #状态
+        @event.set_next_state_from @history.handle
         @event.historys << @history
         last_workitem = @workitem
 

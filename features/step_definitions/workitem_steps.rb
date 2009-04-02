@@ -1,14 +1,18 @@
-假如 /有以下待办事项:/ do |hashes|
+假如 /有以下(.+)的事项:/ do |state_label, hashes|
+  state = 10
+  case state_label
+  when "已受理"
+    state = 20
+  when "待审核"
+    state = 30
+  when "已退回"
+    state = 40
+  when "待重办"
+    state = 50
+  end
   events = hashes.arguments_replaced({"事件编号"=>"calltag","事件主题"=>"title","登记时间"=>"created_at","登记人"=>"creator"}).hashes
   events.each do |event|
-    event.merge!( 
-      "created_at" => "2009-#{event[:created_at]}".to_datetime, 
-      :timing => "2009-#{event[:created_at]}".to_datetime,
-      :content => "测试内容", 
-      :callnumber => 13988889999
-    )
+    event = Event.find_by_calltag(event["calltag"])
+    event.update_attribute(:state, state)
   end
-  #events = Call.create!(events)
-  #events = Event.all
-
 end

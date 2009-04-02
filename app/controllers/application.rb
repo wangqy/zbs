@@ -16,14 +16,6 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
-  #Creates an HistoryEntry record
-  def history_log (event, options={})
-    source = options.delete(:source) || current_user.login
-    OpenWFE::Extras::HistoryEntry.log!(source, event, options)
-  end
-                  
-  
-
   def must_login
     unless logged_in?
       redirect_to login_path
@@ -34,6 +26,7 @@ class ApplicationController < ActionController::Base
     @menu = controller_name
   end
 
+  #根据history属性handle判断,workitem的store_name存储的是用户名还是机构代码
   def workitem_attributes_from(history, last_workitem)
       workitem_attributes = nil
       #转办,申请办结
@@ -47,4 +40,5 @@ class ApplicationController < ActionController::Base
         workitem_attributes = {:store_name => last_workitem.store_name}
       end
   end
+  
 end

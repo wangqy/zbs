@@ -27,36 +27,35 @@ describe DispatchesController do
   end
 
   describe "save dispatch" do
-    it "should set state to 1" do
-      post :create, @valid_attributes
-      assigns[:event].state.should == 1
+    #保存
+    it "should be save" do
+      lambda do
+        post :create, @valid_attributes
+        events(:complain).reload.state.should == 10
+      end.should change(History, :count).by(1)
     end
-
     #转办
     it "should be turn" do
-      lamb = lambda do
+      lambda do
         post :create, @valid_attributes
-      end
-      lamb.should change(Workitem, :count).by(1)
-      lamb.should change(History, :count).by(1)
+        events(:complain).reload.state.should == 10
+      end.should change(Workitem, :count).by(1)
     end
 
     #自己办理
     it "should deal by himself" do
-      lamb = lambda do
+      lambda do
         post :create, @valid_attributes.merge(:history => {:handle => 20})
-      end
-      lamb.should change(Workitem, :count).by(1)
-      lamb.should change(History, :count).by(1)
+        events(:complain).reload.state.should == 20
+      end.should change(Workitem, :count).by(1)
     end
 
     #直接办结
     it "should be finish" do
-      lamb = lambda do
+      lambda do
         post :create, @valid_attributes.merge(:history => {:handle => 90})
-      end
-      lamb.should_not change(Workitem, :count)
-      lamb.should change(History, :count).by(1)
+        events(:complain).reload.state.should == 90
+      end.should_not change(Workitem, :count)
     end
   end
 end
