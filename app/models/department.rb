@@ -1,7 +1,4 @@
 class Department < ActiveRecord::Base
-
-  #部门成员
-  has_many :employees, :class_name => "User", :foreign_key => "department_id"
   #负责人
   has_many :managers, :class_name => "User", :foreign_key => "department_id"
   #创建人

@@ -15,8 +15,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :departments
 
-  map.resources :employees
-
   map.resource :session
 
   map.resources :dispatches
