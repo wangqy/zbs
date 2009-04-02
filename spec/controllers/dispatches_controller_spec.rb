@@ -27,6 +27,11 @@ describe DispatchesController do
   end
 
   describe "save dispatch" do
+    it "require handle" do
+      post :create, @valid_attributes.merge(:history => {:handle => ""})
+      assigns[:history].errors.on(:handle).should_not be_nil
+    end
+
     #保存
     it "should be save" do
       lambda do

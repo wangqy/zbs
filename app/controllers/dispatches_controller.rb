@@ -10,8 +10,8 @@ class DispatchesController < ApplicationController
   #开启流程
   def create
     @history = History.new(params[:history])
+    @event = Event.find(params[:id])
     if @history.valid?
-      @event = Event.find(params[:id])
       @history.event = @event
       Event.transaction do
         #状态

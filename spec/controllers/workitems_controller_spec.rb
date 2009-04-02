@@ -13,6 +13,10 @@ describe WorkitemsController do
   end
 
   describe "POST 'update'" do
+    it "require handle" do
+      put :update, @valid_attributes.merge(:history => {:handle => ""})
+      assigns[:history].errors.on(:handle).should_not be_nil
+    end
 
     describe "in prepare deal" do
       before(:each) do
