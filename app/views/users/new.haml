@@ -30,7 +30,7 @@
             %span.required *
             = f.label :department_id, "部门"
           %td
-            = f.select :department_id, departments.collect{|d| [d.name, d.id]}, :include_blank => true
+            = f.select :department_id, Department.all.collect{|d| [d.name, d.id]}, :include_blank => true
           %th
             = f.label :position, "职位"
           %td
