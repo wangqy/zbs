@@ -1,4 +1,4 @@
-假如 /有以下(.+)事项:/ do |state_label, hashes|
+假如 /有以下(.+)的事项:/ do |state_label, hashes|
   state = 10
   case state_label
   when "已受理"
