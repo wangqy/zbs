@@ -8,6 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.column :remember_token_expires_at, :datetime
       
       t.string :realname
+
+      t.references :department
       t.timestamps
     end
 

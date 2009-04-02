@@ -14,8 +14,8 @@ class DispatchesController < ApplicationController
       @event = Event.find(params[:id])
       @history.event = @event
       Event.transaction do
-        #已安排
-        @event.state = 1
+        #状态
+        @event.state = next_state_from(@event.state, @history.handle)
         @event.historys << @history
         last_workitem = nil
 

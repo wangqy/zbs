@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
     t.integer  "modifier"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "code",       :limit => 10
   end
 
   create_table "employees", :force => true do |t|
@@ -110,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
     t.string   "realname"
+    t.integer  "department_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
