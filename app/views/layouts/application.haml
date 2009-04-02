@@ -23,6 +23,7 @@
             .ubody
               #ublinks
                 =link_to "退出", logout_path
+                =link_to "修改密码", pass_path, :rel => "facebox"
               %strong
                 %a="欢迎您:#{current_user.login}"
 
@@ -53,15 +54,25 @@
                     =link_to '新增机构', new_department_path
                   %li.bin.shared
                     =link_to '查询机构', departments_path
-              %li#e-menu.mainmenu{:class=>"#{select_menu('employees')}"}
-                -link_to new_employee_path do
-                  人员管理
+              %li#p-menu.mainmenu{:class=>"#{select_menu('personal')}"}
+                -link_to custom_path do
+                  个人设置
                   %em more
                 %ul.submenu.wbadges{:style=>"display:none"}
                   %li.bin.shared
-                    =link_to '新增人员', new_employee_path
+                    =link_to '个人设置', new_department_path
                   %li.bin.shared
-                    =link_to '查询人员', employees_path
+                    =link_to '修改密码', departments_path
+              /
+                %li#e-menu.mainmenu{:class=>"#{select_menu('employees')}"}
+                  -link_to new_employee_path do
+                    人员管理
+                    %em more
+                  %ul.submenu.wbadges{:style=>"display:none"}
+                    %li.bin.shared
+                      =link_to '新增人员', new_employee_path
+                    %li.bin.shared
+                      =link_to '查询人员', employees_path
               %li
                 =link_to '新增来访', new_user_path
               %li

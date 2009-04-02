@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  layout 'facebox', :only => ["edit", "update"]
-  layout 'application', :only => ["new", "create"]
+  layout 'facebox', :only => ["edit", "update","pass", "updatepass"]
+  layout 'application', :only => ["new", "create", "custom", "customed"]
 
   # render new.rhtml
   def new
@@ -36,4 +36,30 @@ class UsersController < ApplicationController
     end
     render :action => 'edit'
   end
+
+  def pass
+    @user = User.new
+  end
+
+  def updatepass
+    
+  end
+=begin
+  def custom
+    @menu = "personal"
+    @user = User.find(current_user)
+    #p @user
+  end
+
+  def customed
+    @menu = "personal"
+    user = User.find(current_user);
+    params[:user][:modifier] = current_user
+    if user.update_attributes(params[:user])
+      flash[:notice] = "个人信息更新成功"
+    else
+      flash[:notice] = "个人信息更新失败"
+    end
+  end
+=end
 end

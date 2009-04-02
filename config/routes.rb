@@ -10,6 +10,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :calls
 
   map.resources :users
+  map.custom '/personal/custom', :controller => 'users', :action => 'custom'
+  map.pass '/pass', :controller => 'users', :action => 'pass'
 
   map.resources :departments
 

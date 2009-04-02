@@ -2,22 +2,30 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   # Virtual attribute for the unencrypted password
   attr_accessor :password
+  attr_accessor :oldpass
+  attr_accessor :password_confirmation
 
   belongs_to :department
 
   validates_presence_of     :login, :realname, :telephone
+  validates_uniqueness_of   :login, :case_sensitive => false
   validates_length_of       :realname, :maximum => 10
   validates_length_of       :telephone,:maximum => 20
   validates_length_of       :email,    :maximum => 120, :allow_nil => true
   validates_length_of       :remark,   :maximum => 800, :allow_nil => true
   validates_length_of       :password, :maximum => 40,  :allow_nil => true
   validates_length_of       :login,    :maximum => 40
-  validates_uniqueness_of   :login, :case_sensitive => false
   before_save :encrypt_password
   
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :password, :realname, :telephone, :position, :sex, :remark, :fax, :department_id, :email
+
+  def validate_on_update
+    if :oldpass == ""
+      errors.add(:oldpass, "请输入旧密码")
+    end
+  end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)

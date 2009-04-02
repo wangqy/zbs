@@ -20,9 +20,13 @@ describe DepartmentsController do
 
   it "更新机构" do
     lambda do
-      department = departments(:劳动局)
-      post :update, :department => {:name => "发改局"}, :id => department.id
+      d = departments(:劳动局)
+      post :update, :department => {:name => "发改局"}, :id => d.id
+      #assigns["department"]/assigns[:department]/assigns("department")/assigns(:department)
       assigns[:department].name.should == "发改局"
+      assigns["department"].name.should == "发改局"
+      assigns(:department).name.should == "发改局"
+      assigns("department").name.should == "发改局"
       #p assigns[:department].modifier.realname
     end.should change(Department, :count).by(0)
   end

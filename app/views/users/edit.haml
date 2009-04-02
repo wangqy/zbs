@@ -3,18 +3,20 @@
   =error_messages_for :user
   -form_for @user do |f|
     =f.hidden_field 'id'
-    %table.formin
+    %table.formin{:width=>'600'}
       %tr
         %th
+          %span.required *
           %label{:for => 'user_login'} 用户名
         %td
           = f.text_field 'login', :is_focus => true
         %th
-          =&nbsp;
+          ="&nbsp;"
         %td
-          =&nbsp;
+          ="&nbsp;"
       %tr
         %th
+          %span.required *
           %label{:for => 'user_realname'} 姓名
         %td
           = f.text_field 'realname'
@@ -24,6 +26,7 @@
           = "#{f.label "sex_1", "男"}#{f.radio_button :sex, '1'}#{f.label "sex_2", "女"}#{f.radio_button :sex, '2'}"
       %tr
         %th
+          %span.required *
           = f.label :department_id, "部门"
         %td
           = f.select :department_id, departments.collect{|d| [d.name, d.id]}, :include_blank => true
@@ -33,6 +36,7 @@
           = f.text_field :position
       %tr
         %th
+          %span.required *
           = f.label :telephone, "办公电话"
         %td
           = f.text_field :telephone
@@ -49,7 +53,7 @@
         %th
           = f.label :remark, "备注"
         %td{:colspan=>3}
-          = f.text_area :remark, :rows => 5, :cols=> 70
+          = f.text_area :remark, :rows => 5, :cols=> 40
     %p.btns{:style=>"clear:left"}
       = submit_tag '确定', :id => "edit"
       %input{:type=>"button", :onclick=>"javascript:j.facebox.close()", :value=>"取消"} 

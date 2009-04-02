@@ -23,7 +23,7 @@ fieldset {
   text-align: center;
   font-size: 25px;
   font-weight: bold; }
-.formin .sub_title {
+.formin .sub_title, .formin .required {
   color: red; }
 .formin tr {
   line-height: 40px; }
@@ -31,12 +31,15 @@ fieldset {
   background-color: #f1f1f1;
   padding-right: 5px;
   width: 100px;
-  text-align: right; }
+  text-align: right;
+  font-size: 14px; }
 .formin td {
   width: 200px; }
 .formin input {
   width: 200px;
-  font-size: 180%; }
+  font-size: 16px;
+  border-width: 1px;
+  border-color: #CCCCCC; }
 .formin input.long {
   width: 508px; }
 .formin .calendar {
@@ -48,6 +51,11 @@ fieldset {
   width: 200px; }
 .formin input[type=radio] {
   margin-left: 10px; }
+.formin textarea {
+  font-size: 16px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  overflow: auto; }
 
 .btns input {
   font-size: 20px;

@@ -1,0 +1,27 @@
+.group
+  %fieldset
+    %legend 修改密码
+    =error_messages_for :user
+    -form_for :user, :url => {:action => 'updatepass'}, :html => {:class => 'formin'} do |f|
+      %table
+        %tr
+          %th
+            %span.required *
+            = f.label 'oldpass', '旧密码'
+          %td
+            = f.password_field 'oldpass'
+        %tr
+          %th
+            %span.required *
+            = f.label 'password', '新密码'
+          %td
+            = f.password_field 'password'
+        %tr
+          %th
+            %span.required *
+            = f.label 'password_confirmation', '确认新密码'
+          %td
+            = f.password_field 'password_confirmation'
+      %p.btns{:style=>"clear:left"}
+        = submit_tag '保存', :id => "save"
+
