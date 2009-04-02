@@ -2,32 +2,7 @@
   -form_tag dispatches_path do 
     =hidden_field_tag 'id', params[:id]
     =render :partial => "events/show"
-    %fieldset
-      %legend 业务办理
-      %table.formin
-        %tr
-          %th 办理方式
-          %td{:colspan=>3}
-            =radio_button_tag 'history[handle]', 10
-            =label_tag :history_handle_10, '转办'
-            =radio_button_tag 'history[handle]', 20
-            =label_tag :history_handle_20, '自己受理'
-            =radio_button_tag 'history[handle]', 90
-            =label_tag :history_handle_90, '直接办结'
-        %tr
-          %th= label_tag :history_department_code, "接收部门"
-          %td= select_dept
-          %th= label_tag :history_timeout, "截止日期"
-          %td=calendar_date_select_tag "history[timeout]", nil, :popup => :force, :class => 'calendar', :id => 'history_timeout'
-        %tr
-          %th= label_tag :history_responser, "相关责任人"
-          %td{:colspan=>3}= text_field_tag "history[responser]", nil, :class => "long"
-        %tr
-          %th= label_tag :history_reason, "办理意见"
-          %td{:colspan=>3}= text_area_tag "history[reason]", nil, :rows => 3, :cols => 70, :id => :history_reason
-        %tr
-          %th= label_tag :history_remark, "备注"
-          %td{:colspan=>3}= text_area_tag "history[remark]", nil, :rows => 3, :cols => 70, :id => :history_remark
+    =render :partial => "events/workitem"
 
     %p.btns{:style=>"clear:left"}
       = submit_tag '保存', :disable_with => t('html.saving')

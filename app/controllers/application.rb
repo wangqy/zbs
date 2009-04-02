@@ -16,14 +16,6 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
-  #Creates an HistoryEntry record
-  def history_log (event, options={})
-    source = options.delete(:source) || current_user.login
-    OpenWFE::Extras::HistoryEntry.log!(source, event, options)
-  end
-                  
-  
-
   def must_login
     unless logged_in?
       redirect_to login_path
@@ -48,51 +40,5 @@ class ApplicationController < ActionController::Base
         workitem_attributes = {:store_name => last_workitem.store_name}
       end
   end
-
-  #根据办理方式(handle)及当前事件状态,得出事件的下一状态
-  def next_state_from(now_state, handle)
-    matrix = {
-      #未安排
-      0 => {
-        #转办(待处理),自己受理(已受理),直接办结(已办结)
-        10 => 10,
-        20 => 20,
-        90 => 90
-      },
-      #待处理
-      10 => {
-        #转办(待处理),受理(已受理),申请办结(待审核),退回(已退回)
-        10 => 10,
-        21 => 20,
-        30 => 30,
-        40 => 40
-      },
-      #已受理
-      20 => {
-        #转办(待处理),申请办结(待审核)
-        10 => 10,
-        30 => 30
-      },
-      #已退回
-      40 => {
-        #转办(待处理),受理(已受理)
-        10 => 10,
-        21 => 20
-      },
-      #待重办
-      50 => {
-        #转办(待处理),受理(已受理),申请办结(待审核)
-        10 => 10,
-        21 => 20,
-        30 => 30
-      },
-      #待审核
-      30 => {
-        #确认办结(已办结),退回重办(待重办)
-        91 => 90,
-        41 =>50
-      }
-    }
-    matrix[now_state][handle]
-  end
+  
 end
