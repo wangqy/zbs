@@ -109,7 +109,16 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
     t.string   "realname"
+    t.integer  "sex"
     t.integer  "department_id"
+    t.string   "position"
+    t.string   "telephone",                 :limit => 20
+    t.string   "mobile",                    :limit => 20
+    t.integer  "ismanager"
+    t.string   "email",                     :limit => 120
+    t.string   "remark",                    :limit => 20
+    t.integer  "creator"
+    t.integer  "modifier"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,6 +1,6 @@
 而且 /有以下机构数据/ do |departments|
-  departments = departments.arguments_replaced({"机构编码"=>"code","机构名称"=>"name","负责人"=>"manager","联系电话"=>"telephone","地址"=>"address"})
-  Department.create!(departments.hashes)
+  #departments = departments.arguments_replaced({"机构代码"=>"code","机构名称"=>"name","负责人"=>"manager","联系电话"=>"telephone","地址"=>"address"})
+  #Department.create!(departments.hashes)
 end
 
 当 /我修改第(\d+)个机构的(.+)为(.+)/ do |pos,label,value|
