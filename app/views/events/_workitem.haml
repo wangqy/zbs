@@ -44,11 +44,16 @@
     %tr
       %th= label_tag :history_remark, "备注"
       %td{:colspan=>3}= text_area_tag "history[remark]", nil, :rows => 3, :cols => 70, :id => "history_remark"
+    %script{:type=>"text/" + "javascript"}
+      ="managers = #{dept_responser_json}"
     :javascript
       j(":radio").click(function(){
-        if(j(this).val() == 10 || j(this).val() == 30)
-          j(".show_by_other").show()
+        if(j.inArray(j(this).val(),[10,30]))
+          j(".show_by_other").show();
         else
-          j(".show_by_other").hide()
-      })
+          j(".show_by_other").hide();
+      });
+      j("#history_department_code").change(function(){
+        j("#history_responser").val(managers[j(this).val()]);
+      });
 

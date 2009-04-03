@@ -27,6 +27,12 @@ module ApplicationHelper
     select_tag 'history[department_code]', options_for_select(options)
   end
 
+  def dept_responser_json
+    department = Department.all.collect{|d| {d.code => d.manager}}
+    responser = department.inject({}){|hashes, item| hashes.merge!(item)} 
+    ActiveSupport::JSON.encode(responser)
+  end
+
   #必填
   def require_star
     content_tag :span, "*", :class => "required"
