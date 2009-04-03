@@ -8,6 +8,7 @@ cn:
     attributes:
       user:
         login: "用户名"
+        password: "密码"
         realname: "姓名"
         telephone: "办公电话"
         department_id: "部门"
@@ -17,10 +18,9 @@ cn:
       department:
         code: "机构代码"
         name: "机构名称"
-      employee:
-        name: "姓名"
-        department_id: "部门"
-        telephone: "办公电话"
+      history:
+        handle: "办理方式"
+        department_code: "接收部门"
 
 
     errors:

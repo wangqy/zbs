@@ -30,7 +30,7 @@
             %span.required *
             = f.label :department_id, "部门"
           %td
-            = f.select :department_id, departments.collect{|d| [d.name, d.id]}, :include_blank => true
+            = f.select :department_id, Department.all.collect{|d| [d.name, d.id]}, :include_blank => true
           %th
             = f.label :position, "职位"
           %td
@@ -57,24 +57,3 @@
             = f.text_area :remark, :rows => 5, :cols=> 60
       %p.btns{:style=>"clear:left"}
         = submit_tag '保存', :id => "save"
-
-.group
-  %fieldset
-    %legend 用户列表
-    %table.list
-      %tr
-        %th{:width=>'80'} 用户名
-        %th{:width=>'80'} 姓名
-        %th{:width=>'120'} 部门
-        %th 办公电话
-        %th{:width=>'60'} 负责人
-        %th{:width=>'100'} 操作
-      - @list.each do |user|
-        %tr
-          %td=user.login
-          %td=user.realname
-          %td=user.department ? user.department.name : ""
-          %td=user.telephone
-          %td=user.ismanager_enum_sf
-          %td=link_to '编辑', edit_user_path(user), :rel => "facebox"
-

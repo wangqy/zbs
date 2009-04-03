@@ -2,6 +2,7 @@
   %legend{:style=>'font-size:14px'} 修改密码
   =error_messages_for :user
   -remote_form_for :user, :url => {:action => 'updatepass'}, :html => {:class => 'formpass', :id=>'formin'} do |f|
+    %div#pop-errorExplanation{:style=>'display:none'}
     %table
       %tr
         %th

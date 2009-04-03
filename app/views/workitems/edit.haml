@@ -1,4 +1,5 @@
 .group
+  =error_messages_for :history
   -form_tag workitem_path(:id => @workitem.id), :method => :put do 
     =render :partial => "events/show"
     =render :partial => "events/workitem"

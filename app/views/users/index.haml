@@ -1,0 +1,20 @@
+.group
+  %fieldset
+    %legend 用户列表
+    %table.list
+      %tr
+        %th{:width=>'80'} 用户名
+        %th{:width=>'80'} 姓名
+        %th{:width=>'120'} 部门
+        %th 办公电话
+        %th{:width=>'60'} 负责人
+        %th{:width=>'100'} 操作
+      - @list.each do |user|
+        %tr
+          %td=user.login
+          %td=user.realname
+          %td=user.department ? user.department.name : ""
+          %td=user.telephone
+          %td=user.ismanager_enum_sf
+          %td=link_to '编辑', edit_user_path(user)#, :rel => "facebox"
+

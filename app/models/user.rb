@@ -5,19 +5,32 @@ class User < ActiveRecord::Base
 
   belongs_to :department
 
-  validates_presence_of     :login, :realname, :telephone
+  validates_presence_of     :login, :realname, :telephone, :department_id
   validates_uniqueness_of   :login, :case_sensitive => false
   validates_length_of       :realname, :maximum => 10
   validates_length_of       :telephone,:maximum => 20
   validates_length_of       :email,    :maximum => 120, :allow_nil => true
   validates_length_of       :remark,   :maximum => 800, :allow_nil => true
-  validates_length_of       :password, :maximum => 40,  :allow_nil => true
+  validates_length_of       :password, :maximum => 40, :allow_nil => true
   validates_length_of       :login,    :maximum => 40
   before_save :encrypt_password
   
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :password, :realname, :telephone, :position, :sex, :remark, :fax, :department_id, :email
+
+  def validate_on_create
+    if password.blank?
+      errors.add(:password, '不能为空')
+    end
+  end
+
+  def validate_on_update
+    #puts "pp=#{password==nil}"
+    if password == "" 
+      errors.add(:password, '不能为空')
+    end
+  end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)

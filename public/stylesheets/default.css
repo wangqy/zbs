@@ -31,7 +31,7 @@ fieldset {
   background-color: #f1f1f1;
   padding-right: 5px;
   width: 100px;
-  text-align: right;
+  text-align: center;
   font-size: 14px; }
 .formin td, .formpass td {
   width: 200px; }
@@ -56,6 +56,10 @@ fieldset {
   border-width: 1px;
   border-color: #CCCCCC;
   overflow: auto; }
+.formin table, .formpass table {
+  width: 100%; }
+.formin .fieldWithErrors, .formpass .fieldWithErrors {
+  color: red; }
 
 .formpass input[type=submit] {
   font-size: 16px;

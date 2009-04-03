@@ -1,4 +1,5 @@
 .group
+  =error_messages_for :history
   -form_tag dispatches_path do 
     =hidden_field_tag 'id', params[:id]
     =render :partial => "events/show"
