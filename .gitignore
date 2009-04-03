@@ -12,3 +12,4 @@ tmp/**
 #ruote wfidgen
 db/ruote*/**
 **.*~
+coverage/**

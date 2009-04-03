@@ -12,6 +12,23 @@ describe WorkitemsController do
     }
   end
 
+  describe "GET 'index'" do
+    it "should be successful" do
+      get 'index'
+      assigns[:list].should_not be_nil
+      response.should be_success
+    end
+  end
+
+  describe "GET 'edit'" do
+    it "should be successful" do
+      get 'edit', :id => workitems("complain_workitem").id
+      assigns[:workitem].should_not be_nil
+      assigns[:event].should_not be_nil
+      response.should be_success
+    end
+  end
+
   describe "POST 'update'" do
     it "require handle" do
       @valid_attributes[:history].merge!(:handle => "")
