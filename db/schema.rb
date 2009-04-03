@@ -36,22 +36,6 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
     t.datetime "updated_at"
   end
 
-  create_table "employees", :force => true do |t|
-    t.string   "name",          :limit => 10
-    t.integer  "sex"
-    t.integer  "department_id"
-    t.string   "position"
-    t.string   "telephone",     :limit => 20
-    t.string   "mobile",        :limit => 20
-    t.integer  "ismanager"
-    t.string   "email",         :limit => 120
-    t.string   "remark",        :limit => 20
-    t.integer  "creator"
-    t.integer  "modifier"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "events", :force => true do |t|
     t.integer  "state",      :default => 0, :null => false
     t.datetime "timing",                    :null => false
@@ -81,12 +65,12 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
   create_table "histories", :force => true do |t|
     t.integer  "event_id"
     t.integer  "handle"
-    t.string   "department_code"
+    t.integer  "department_id"
     t.date     "timeout"
     t.string   "responser"
     t.string   "reason"
     t.string   "remark"
-    t.string   "creator"
+    t.integer  "creator"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

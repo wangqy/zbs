@@ -7,7 +7,7 @@ describe DispatchesController do
       :id => events("complain").id,
       :history => {
         :handle => "10",
-        :department_code => "A001"
+        :department_id => departments(:劳动局).id
       }
     }
   end
@@ -33,16 +33,16 @@ describe DispatchesController do
       assigns[:history].errors.on(:handle).should_not be_nil
     end
 
-    it "require department_code if handle is turn" do
-      @valid_attributes[:history].merge!(:department_code => "")
+    it "require department if handle is turn" do
+      @valid_attributes[:history].merge!(:department_id => "")
       post :create, @valid_attributes
-      assigns[:history].errors.on(:department_code).should_not be_nil
+      assigns[:history].errors.on(:department_id).should_not be_nil
     end
 
-    it "require department_code if handle is apply" do
-      @valid_attributes[:history].merge!(:handle => "30", :department_code => "")
+    it "require department if handle is apply" do
+      @valid_attributes[:history].merge!(:handle => "30", :department_id => "")
       post :create, @valid_attributes
-      assigns[:history].errors.on(:department_code).should_not be_nil
+      assigns[:history].errors.on(:department_id).should_not be_nil
     end
 
     #保存
@@ -52,6 +52,7 @@ describe DispatchesController do
         events(:complain).reload.state.should == 10
       end.should change(History, :count).by(1)
     end
+
     #转办
     it "should be turn" do
       lambda do

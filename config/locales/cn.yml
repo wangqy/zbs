@@ -19,7 +19,7 @@ cn:
         name: "机构名称"
       history:
         handle: "办理方式"
-        department_code: "接收部门"
+        department_id: "接收部门"
 
 
     errors:

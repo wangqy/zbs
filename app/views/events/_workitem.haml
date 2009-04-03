@@ -30,30 +30,31 @@
           =label_tag :history_handle_91, '确认办结'
     %tr.show_by_other
       %th
-        = label_tag :history_department_code, "接收部门"
+        = label_tag :history_department_id, "接收部门"
         = require_star
       %td= select_dept
       %th= label_tag :history_timeout, "截止日期"
-      %td=calendar_date_select_tag "history[timeout]", nil, :popup => :force, :class => 'calendar', :id => 'history_timeout'
+      %td=calendar_date_select_tag "history[timeout]", params[:history][:timeout], :popup => :force, :class => 'calendar', :id => 'history_timeout'
     %tr.show_by_other
       %th= label_tag :history_responser, "相关责任人"
-      %td{:colspan=>3}= text_field_tag "history[responser]", nil, :class => "long", :id => "history_responser"
+      %td{:colspan=>3}= text_field_tag "history[responser]", params[:history][:responser], :class => "long", :id => "history_responser"
     %tr
       %th= label_tag :history_reason, "办理意见"
-      %td{:colspan=>3}= text_area_tag "history[reason]", nil, :rows => 3, :cols => 70, :id => "history_reason"
+      %td{:colspan=>3}= text_area_tag "history[reason]", params[:history][:reason], :rows => 3, :cols => 70, :id => "history_reason"
     %tr
       %th= label_tag :history_remark, "备注"
-      %td{:colspan=>3}= text_area_tag "history[remark]", nil, :rows => 3, :cols => 70, :id => "history_remark"
+      %td{:colspan=>3}= text_area_tag "history[remark]", params[:history][:remark], :rows => 3, :cols => 70, :id => "history_remark"
     %script{:type=>"text/" + "javascript"}
       ="managers = #{dept_responser_json}"
     :javascript
       j(":radio").click(function(){
-        if(j.inArray(j(this).val(),[10,30]))
+        if(j(this).val()==10 || j(this).val()==30)
           j(".show_by_other").show();
         else
           j(".show_by_other").hide();
       });
-      j("#history_department_code").change(function(){
+      j(":radio:checked").click();
+      j("#history_department_id").change(function(){
         j("#history_responser").val(managers[j(this).val()]);
       });
 

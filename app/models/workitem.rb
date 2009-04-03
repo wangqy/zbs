@@ -4,4 +4,8 @@ class Workitem < ActiveRecord::Base
   named_scope :of, lambda{|user|
     {:conditions => ['store_name = ?', user.login]}
   }
+
+  named_scope :belong, lambda{|department|
+    {:conditions => ['store_name = ?', department.id]}
+  }
 end

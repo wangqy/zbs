@@ -5,14 +5,14 @@ class CreateHistories < ActiveRecord::Migration
       #办理方式
       t.integer :handle
       #转办部门,截止日期,相关负责人
-      t.string :department_code
+      t.references :department
       t.date :timeout
       t.string :responser
       #办理意见,备注
       t.string :reason
       t.string :remark
-      #办理人
-      t.string :creator
+      #创建人
+      t.integer :creator
 
       t.timestamps
     end

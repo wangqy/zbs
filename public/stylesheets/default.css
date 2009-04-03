@@ -1,3 +1,12 @@
+#main {
+  width: 98%; }
+  #main #mainbar {
+    float: left;
+    width: 70%; }
+
+#footer {
+  width: 98%; }
+
 fieldset {
   margin-bottom: 5px; }
 

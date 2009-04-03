@@ -1,24 +1,28 @@
 class WorkitemsController < ApplicationController
   def index
     @list = Workitem.of current_user
+    @list.concat Workitem.belong(current_user.department) if current_user.department
     @list.collect! do |w| 
       event = w.event
       event.workitem_id = w.id
       event
     end
-    #@list.concat Workitem.find_by_store_name(current_user.department.code)
   end
 
   def edit
     @workitem = Workitem.find(params[:id])
     #FIX aim_enum方法无法找到?
     @event = Event.find(@workitem.event)
+    @list = @event.historys
+    #避免view调用params[:history][:timeout]报错
+    params[:history] = {}
   end
 
   def update
     @workitem = Workitem.find(params[:id])
     @event = Event.find(@workitem.event)
     @history = History.new(params[:history])
+    @history.creator = current_user
     if @history.valid?
       @history.event = @event
       Event.transaction do
@@ -39,6 +43,7 @@ class WorkitemsController < ApplicationController
       flash[:notice] = "待办事项处理成功"
       redirect_to :action => :index
     else
+      @list = @event.historys
       render :action => "edit"
     end
   end

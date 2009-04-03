@@ -1,9 +1,20 @@
-.group
-  =error_messages_for :history
-  -form_tag workitem_path(:id => @workitem.id), :method => :put do 
-    =render :partial => "events/show"
-    =render :partial => "events/workitem"
-    %p.btns{:style=>"clear:left"}
-      = submit_tag '保存', :disable_with => t('html.saving')
-      = link_to '返回', :back
+#mainbar
+  .group
+    =error_messages_for :history
+    -form_tag workitem_path(:id => @workitem.id), :method => :put do 
+      =render :partial => "events/show"
+      =render :partial => "events/workitem"
+      %p.btns{:style=>"clear:left"}
+        = submit_tag '保存', :disable_with => t('html.saving')
+        = link_to '返回', :back
+#sbar
+  #shared-bin-block.sblock.bin-block
+    %h3 办理过程
+    %table
+    -@list.each do |history|
+      %tr
+        %td=history.creator.department.name
+        %td=history.creator.realname
+        %td=history.handle_enum
+        %td=history.created_at.to_s(:without_year)
 

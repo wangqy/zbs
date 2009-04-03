@@ -1,21 +1,21 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  event: 
-  handle: 1
-  department_code: MyString
+apply:
+  event: complain 
+  handle: 20
+  department: 劳动局
   timeout: 2009-03-31
   reason: MyString
   remark: MyString
   responser: MyString
-  creator: MyString
+  creator: aaron
 
-two:
-  event: 
-  handle: 1
-  department_code: MyString
+turn:
+  event: complain 
+  handle: 10
+  department: 劳动局
   timeout: 2009-03-31
   reason: MyString
   remark: MyString
   responser: MyString
-  creator: MyString
+  creator: aaron

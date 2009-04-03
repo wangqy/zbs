@@ -22,11 +22,12 @@ module ApplicationHelper
 
   #选择部门
   def select_dept
-    options = Department.all.collect {|d| [d.name, d.code]}
+    options = Department.all.collect {|d| [d.name, d.id]}
     options = [["未选择",""]] + options
-    select_tag 'history[department_code]', options_for_select(options)
+    select_tag 'history[department_id]', options_for_select(options)
   end
 
+  #获取部门负责人json格式的数据
   def dept_responser_json
     department = Department.all.collect{|d| {d.code => d.manager}}
     responser = department.inject({}){|hashes, item| hashes.merge!(item)} 

@@ -5,11 +5,14 @@ class DispatchesController < ApplicationController
 
   def new
     @event = Event.find(params[:id])
+    #避免view调用params[:history][:timeout]报错
+    params[:history] = {}
   end
 
   #开启流程
   def create
     @history = History.new(params[:history])
+    @history.creator = current_user
     @event = Event.find(params[:id])
     if @history.valid?
       @history.event = @event

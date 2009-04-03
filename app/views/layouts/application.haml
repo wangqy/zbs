@@ -83,18 +83,6 @@
             =content_tag :div, msg, :id => "flash-#{key}"
           #main-content
             =yield
-        #sbar
-          #shared-bin-block.sblock.bin-block
-            %h3 指标项
-            %ul#shared-ticket-bins.stacked.wbadges.sortable
-              %li.bin.shared
-                %a{:href=>"/"}
-                  %span.badge 60
-                  未处理
-              %li.bin.shared
-                %a{:href=>"/"}
-                  %span.badge 160
-                  已处理
       #footer
         #footer-cnt
           %p 高正软件

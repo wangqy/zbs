@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
       workitem_attributes = nil
       #转办,申请办结
       if [10,30].include?(history.handle)
-        workitem_attributes = {:store_name => history.department_code}
+        workitem_attributes = {:store_name => history.department_id}
       #自己受理,受理
       elsif [20,21].include?(history.handle)
         workitem_attributes = {:store_name => current_user.login}

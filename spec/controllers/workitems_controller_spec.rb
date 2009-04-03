@@ -36,10 +36,10 @@ describe WorkitemsController do
       assigns[:history].errors.on(:handle).should_not be_nil
     end
 
-    it "require department_code if handle is turn" do
-      @valid_attributes[:history].merge!(:department_code => "")
+    it "require department if handle is turn" do
+      @valid_attributes[:history].merge!(:department_id => "")
       put :update, @valid_attributes
-      assigns[:history].errors.on(:department_code).should_not be_nil
+      assigns[:history].errors.on(:department_id).should_not be_nil
     end
 
     describe "in prepare deal" do
@@ -50,7 +50,7 @@ describe WorkitemsController do
       it "should delete last workitem and create a new workitem" do
         lambda do
           put 'update', @valid_attributes.merge(
-            :history => {:handle => 10, :department_code => "A001"}
+            :history => {:handle => 10, :department_id => departments(:劳动局)}
           )
           response.should redirect_to(workitems_path)
         end.should_not change(Workitem, :count)
@@ -59,7 +59,7 @@ describe WorkitemsController do
       #转办
       it "should be turn" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 10, :department_code => "A001"}
+          :history => {:handle => 10, :department_id => departments(:劳动局)}
         )
         events(:complain).reload.state.should == 10
       end
@@ -67,7 +67,7 @@ describe WorkitemsController do
       #受理
       it "should be deal" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 21, :department_code => ""}
+          :history => {:handle => 21, :department_id => ""}
         )
         events(:complain).reload.state.should == 20
       end
@@ -75,7 +75,7 @@ describe WorkitemsController do
       #申请办结
       it "should be apply finish" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 30, :department_code => "A001"}
+          :history => {:handle => 30, :department_id => departments(:劳动局)}
         )
         events(:complain).reload.state.should == 30
       end
@@ -83,7 +83,7 @@ describe WorkitemsController do
       #退回
       it "should be return" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 40, :department_code => "A001"}
+          :history => {:handle => 40, :department_id => departments(:劳动局)}
         )
         events(:complain).reload.state.should == 40
       end
@@ -97,7 +97,7 @@ describe WorkitemsController do
       #转办
       it "should be turn" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 10, :department_code => "A001"}
+          :history => {:handle => 10, :department_id => departments(:劳动局)}
         )
         events(:complain).reload.state.should == 10
       end
@@ -105,7 +105,7 @@ describe WorkitemsController do
       #申请办结
       it "should be apply finish" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 30, :department_code => "A001"}
+          :history => {:handle => 30, :department_id => departments(:劳动局)}
         )
         events(:complain).reload.state.should == 30
       end
@@ -120,7 +120,7 @@ describe WorkitemsController do
       #转办
       it "should be turn" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 10, :department_code => "A001"}
+          :history => {:handle => 10, :department_id => departments(:劳动局)}
         )
         events(:complain).reload.state.should == 10
       end
@@ -143,7 +143,7 @@ describe WorkitemsController do
       #转办
       it "should be turn" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 10, :department_code => "A001"}
+          :history => {:handle => 10, :department_id => departments(:劳动局)}
         )
         events(:complain).reload.state.should == 10
       end
@@ -159,7 +159,7 @@ describe WorkitemsController do
       #申请办结
       it "should be turn" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 30, :department_code => "A001"}
+          :history => {:handle => 30, :department_id => departments(:劳动局)}
         )
         events(:complain).reload.state.should == 30
       end
