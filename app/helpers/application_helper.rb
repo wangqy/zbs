@@ -26,4 +26,9 @@ module ApplicationHelper
     options = [["未选择",""]] + options
     select_tag 'history[department_code]', options_for_select(options)
   end
+
+  #必填
+  def require_star
+    content_tag :span, "*", :class => "required"
+  end
 end
