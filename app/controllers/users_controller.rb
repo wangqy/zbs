@@ -42,7 +42,17 @@ class UsersController < ApplicationController
   end
 
   def updatepass
-    
+    user = User.find(current_user)
+    params[:user][:modifier] = current_user
+    p params
+    p user
+    if user.update_attributes(params[:user])
+      flash[:notice] = "密码修改成功"
+      #redirect_to root_path
+    else
+      flash[:notice] = "密码修改失败"
+    end
+    render :partial => "updatepass_success"
   end
 =begin
   def custom

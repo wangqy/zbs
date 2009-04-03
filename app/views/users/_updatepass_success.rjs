@@ -1,0 +1,7 @@
+page.replace_html 'formin', "<div class='notice'>#{flash[:notice]}</div>"
+page.show 'formin'
+
+#
+page.delay(2) do
+  page<<"j.facebox.close();"
+end
