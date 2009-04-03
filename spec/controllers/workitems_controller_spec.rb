@@ -14,8 +14,15 @@ describe WorkitemsController do
 
   describe "POST 'update'" do
     it "require handle" do
-      put :update, @valid_attributes.merge(:history => {:handle => ""})
+      @valid_attributes[:history].merge!(:handle => "")
+      put :update, @valid_attributes
       assigns[:history].errors.on(:handle).should_not be_nil
+    end
+
+    it "require department_code if handle is turn" do
+      @valid_attributes[:history].merge!(:department_code => "")
+      put :update, @valid_attributes
+      assigns[:history].errors.on(:department_code).should_not be_nil
     end
 
     describe "in prepare deal" do

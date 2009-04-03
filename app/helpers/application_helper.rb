@@ -22,6 +22,8 @@ module ApplicationHelper
 
   #选择部门
   def select_dept
-    select_tag 'history[department_code]', options_for_select(Department.all.collect {|d| [d.name, d.code]})
+    options = Department.all.collect {|d| [d.name, d.code]}
+    options = [["未选择",""]] + options
+    select_tag 'history[department_code]', options_for_select(options)
   end
 end
