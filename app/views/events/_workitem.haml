@@ -2,7 +2,7 @@
   %legend 业务办理
   %table.formin
     %tr
-      %th 办理方式
+      %th="办理方式 #{require_star}"
       %td{:colspan=>3}
         -if @event.handles.include?(10)
           =radio_button_tag 'history[handle]', 10
@@ -28,12 +28,14 @@
         -if @event.handles.include?(91)
           =radio_button_tag 'history[handle]', 91
           =label_tag :history_handle_91, '确认办结'
-    %tr
-      %th= label_tag :history_department_code, "接收部门"
+    %tr.show_by_other
+      %th
+        = label_tag :history_department_code, "接收部门"
+        = require_star
       %td= select_dept
       %th= label_tag :history_timeout, "截止日期"
       %td=calendar_date_select_tag "history[timeout]", nil, :popup => :force, :class => 'calendar', :id => 'history_timeout'
-    %tr
+    %tr.show_by_other
       %th= label_tag :history_responser, "相关责任人"
       %td{:colspan=>3}= text_field_tag "history[responser]", nil, :class => "long", :id => "history_responser"
     %tr
@@ -42,3 +44,16 @@
     %tr
       %th= label_tag :history_remark, "备注"
       %td{:colspan=>3}= text_area_tag "history[remark]", nil, :rows => 3, :cols => 70, :id => "history_remark"
+    %script{:type=>"text/" + "javascript"}
+      ="managers = #{dept_responser_json}"
+    :javascript
+      j(":radio").click(function(){
+        if(j.inArray(j(this).val(),[10,30]))
+          j(".show_by_other").show();
+        else
+          j(".show_by_other").hide();
+      });
+      j("#history_department_code").change(function(){
+        j("#history_responser").val(managers[j(this).val()]);
+      });
+

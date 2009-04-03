@@ -28,8 +28,21 @@ describe DispatchesController do
 
   describe "save dispatch" do
     it "require handle" do
-      post :create, @valid_attributes.merge(:history => {:handle => ""})
+      @valid_attributes[:history].merge!(:handle => "")
+      post :create, @valid_attributes
       assigns[:history].errors.on(:handle).should_not be_nil
+    end
+
+    it "require department_code if handle is turn" do
+      @valid_attributes[:history].merge!(:department_code => "")
+      post :create, @valid_attributes
+      assigns[:history].errors.on(:department_code).should_not be_nil
+    end
+
+    it "require department_code if handle is apply" do
+      @valid_attributes[:history].merge!(:handle => "30", :department_code => "")
+      post :create, @valid_attributes
+      assigns[:history].errors.on(:department_code).should_not be_nil
     end
 
     #保存
