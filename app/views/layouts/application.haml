@@ -31,12 +31,12 @@
         #main
           #project-nav
             %ul
-              %li#t-proj{:class=>"#{select_menu('workitems')}"}
+              %li#t-proj{:class=>select_menu('workitems')}
                 =link_to '待办事项', workitems_path
               - if is_admin?
-                %li{:class=>"#{select_menu('users')}"}
+                %li{:class=>select_menu('users')}
                   =link_to '用户管理', new_user_path
-              %li#t-menu.mainmenu{:class=>"#{select_menu('calls')}"}
+              %li#t-menu.mainmenu{:class=>select_menu('calls')}
                 -link_to new_call_path do
                   来电管理
                   %em more
@@ -45,7 +45,7 @@
                     =link_to '新增来电', new_call_path
                   %li.bin.shared
                     =link_to '查询来电', calls_path
-              %li#d-menu.mainmenu{:class=>"#{select_menu('departments')}"}
+              %li#d-menu.mainmenu{:class=>select_menu('departments')}
                 -link_to new_department_path do
                   机构管理
                   %em more
@@ -54,7 +54,7 @@
                     =link_to '新增机构', new_department_path
                   %li.bin.shared
                     =link_to '查询机构', departments_path
-              %li#p-menu.mainmenu{:class=>"#{select_menu('personal')}"}
+              %li#p-menu.mainmenu{:class=>select_menu('personal')}
                 -link_to custom_path do
                   个人设置
                   %em more
@@ -69,7 +69,7 @@
                 =link_to '新增来信', new_user_path
               %li
                 =link_to '新增来函', new_user_path
-              %li{:class=>"#{select_menu('dispatches')}"}
+              %li{:class=>select_menu('dispatches')}
                 =link_to '事件调度', dispatches_path
           #action-nav
             %ul.clear

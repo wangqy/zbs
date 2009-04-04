@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
     t.string   "responser"
     t.string   "reason"
     t.string   "remark"
-    t.integer  "creator"
+    t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

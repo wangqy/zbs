@@ -1,8 +1,14 @@
 #main {
   width: 98%; }
-  #main #mainbar {
-    float: left;
-    width: 70%; }
+  #main #main-content {
+    padding-right: 0; }
+    #main #main-content #mainbar {
+      float: left;
+      width: 70%; }
+    #main #main-content #sbar {
+      margin-right: 1px;
+      background: #ddd;
+      padding: 2px; }
 
 #footer {
   width: 98%; }

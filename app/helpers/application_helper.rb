@@ -29,7 +29,7 @@ module ApplicationHelper
 
   #获取部门负责人json格式的数据
   def dept_responser_json
-    department = Department.all.collect{|d| {d.code => d.manager}}
+    department = Department.all.collect{|d| {d.id => d.manager}}
     responser = department.inject({}){|hashes, item| hashes.merge!(item)} 
     ActiveSupport::JSON.encode(responser)
   end

@@ -8,13 +8,15 @@
         = submit_tag '保存', :disable_with => t('html.saving')
         = link_to '返回', :back
 #sbar
+  .proj-desc
+    %p 办理过程
   #shared-bin-block.sblock.bin-block
-    %h3 办理过程
-    %table
-    -@list.each do |history|
-      %tr
-        %td=history.creator.department.name
-        %td=history.creator.realname
-        %td=history.handle_enum
-        %td=history.created_at.to_s(:without_year)
-
+    %ul#shared-ticket-bins.stacked.wbadges.sortable
+      -@list.each do |history|
+        %li.bin.shared
+          %a{:title => "办理意见:#{history.reason}"}
+            %span.badge{:title=>history.created_at.to_s(:with_year)}=history.created_at.to_s(:only_date)
+            %span=history.creator.department.name
+            %span=history.creator.realname
+            %span=history.handle_enum
+            %span=history.department.name if history.department

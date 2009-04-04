@@ -1,21 +1,23 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
+#自己受理
 apply:
-  event: complain 
+  event: complain22
   handle: 20
-  department: 劳动局
+  department: 
   timeout: 2009-03-31
-  reason: MyString
-  remark: MyString
-  responser: MyString
+  reason: 
+  remark: 时间紧迫
+  responser: 
   creator: aaron
 
+#转办
 turn:
-  event: complain 
+  event: complain22
   handle: 10
   department: 劳动局
   timeout: 2009-03-31
-  reason: MyString
-  remark: MyString
-  responser: MyString
+  reason: 转你处办理
+  remark: 时间紧迫
+  responser: 张飞
   creator: aaron

@@ -83,6 +83,15 @@ class Enum
       enum_code = property unless enum_code
       Enum.send(enum_code, value)
     end
+
+    #修正通过关联关系得到的实体对象无法调用_enum方法的问题
+    def respond_to?(method_sym, include_private = false)
+      if method_sym.to_s =~ /_enum/
+        true
+      else
+        super
+      end
+    end
   end
 
   ActiveRecord::Base.send :include, EnumViewer

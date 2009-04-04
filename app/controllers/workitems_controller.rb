@@ -11,8 +11,7 @@ class WorkitemsController < ApplicationController
 
   def edit
     @workitem = Workitem.find(params[:id])
-    #FIX aim_enum方法无法找到?
-    @event = Event.find(@workitem.event)
+    @event = @workitem.event
     @list = @event.historys
     #避免view调用params[:history][:timeout]报错
     params[:history] = {}
@@ -20,7 +19,7 @@ class WorkitemsController < ApplicationController
 
   def update
     @workitem = Workitem.find(params[:id])
-    @event = Event.find(@workitem.event)
+    @event = @workitem.event
     @history = History.new(params[:history])
     @history.creator = current_user
     if @history.valid?
