@@ -1,11 +1,7 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
-  belongs_to :department
-
   # Virtual attribute for the unencrypted password
   attr_accessor :password
-  attr_accessor :oldpass
-  attr_accessor :password_confirmation
 
   belongs_to :department
 
@@ -15,7 +11,7 @@ class User < ActiveRecord::Base
   validates_length_of       :telephone,:maximum => 20
   validates_length_of       :email,    :maximum => 120, :allow_nil => true
   validates_length_of       :remark,   :maximum => 800, :allow_nil => true
-  validates_length_of       :password, :maximum => 40,  :allow_nil => true
+  validates_length_of       :password, :maximum => 40, :allow_nil => true
   validates_length_of       :login,    :maximum => 40
   before_save :encrypt_password
   
@@ -23,9 +19,16 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :password, :realname, :telephone, :position, :sex, :remark, :fax, :department_id, :email
 
+  def validate_on_create
+    if password.blank?
+      errors.add(:password, '不能为空')
+    end
+  end
+
   def validate_on_update
-    if :oldpass == ""
-      errors.add(:oldpass, "请输入旧密码")
+    #puts "pp=#{password==nil}"
+    if password == "" 
+      errors.add(:password, '不能为空')
     end
   end
 

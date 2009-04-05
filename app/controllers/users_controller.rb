@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
-  layout 'facebox', :only => ["edit", "update","pass", "updatepass"]
-  layout 'application', :only => ["new", "create", "custom", "customed"]
+  layout 'facebox', :only => ["pass", "updatepass"]
+  layout 'application', :only => ["index", "new", "create", "edit", "update", "custom", "customed"]
 
   # render new.rhtml
+
+  def index
+    @list = User.all :order => "login"
+  end
+
   def new
     @user = User.new
-    @list = User.all :order => "login"
   end
 
   def create
@@ -27,14 +31,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
+    @user = User.find(params[:id])
     params[:user][:modifier] = current_user
-    if user.update_attributes(params[:user])
+    if @user.update_attributes(params[:user])
       flash[:notice] = "编辑用户成功!"
       redirect_to new_user_path
-      return
+    else
+      render :action => "new"
     end
-    render :action => 'edit'
   end
 
   def pass
@@ -42,7 +46,17 @@ class UsersController < ApplicationController
   end
 
   def updatepass
-    
+    @user = User.find(current_user)
+    params[:user][:modifier] = current_user
+    #p params
+    #p user
+    if @user.update_attributes(params[:user])
+      flash.now[:notice] = "密码修改成功"
+      render :partial => "update_success"
+      #redirect_to root_path
+    else
+      render :partial => "update_failure"
+    end
   end
 =begin
   def custom

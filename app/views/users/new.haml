@@ -2,79 +2,37 @@
   %fieldset
     %legend 新增用户
     =error_messages_for :user
-    -form_for :user, :url => users_path, :html => {:class=>"formin"} do |f|
-      %table
+    -form_for :user, :url => users_path do |f|
+      %table.formin
         %tr
-          %th
-            %span.required *
-            = f.label 'login', "用户名"
-          %td
-            = f.text_field 'login', :is_focus => true
-          %th
-            %span.required *
-            = f.label 'password', "密码"
-          %td
-            = f.password_field 'password'
+          %th= f.label 'login', "用户名 #{require_star}"
+          %td= f.text_field 'login', :is_focus => true
+          %th= f.label 'password', "密码 #{require_star}"
+          %td= f.password_field 'password'
         %tr
-          %th
-            %span.required *
-            = f.label 'realname', "姓名"
+          %th= f.label 'realname', "姓名 #{require_star}"
+          %td= f.text_field 'realname'
+          %th= f.label :sex, "性别"
           %td
-            = f.text_field 'realname'
-          %th
-            = f.label :sex, "性别"
-          %td
-            = "#{f.label "sex_1", "男"}#{f.radio_button :sex, '1'}#{f.label "sex_2", "女"}#{f.radio_button :sex, '2'}"
+            =f.radio_button :sex, '1'
+            =f.label "sex_1", "男"
+            =f.radio_button :sex, '2'
+            =f.label "sex_2", "女"
         %tr
-          %th
-            %span.required *
-            = f.label :department_id, "部门"
-          %td
-            = f.select :department_id, Department.all.collect{|d| [d.name, d.id]}, :include_blank => true
-          %th
-            = f.label :position, "职位"
-          %td
-            = f.text_field :position
+          %th= f.label :department_id, "部门 #{require_star}"
+          %td= f.select :department_id, Department.all.collect{|d| [d.name, d.id]}, :include_blank => true
+          %th= f.label :position, "职位"
+          %td= f.text_field :position
         %tr
-          %th
-            %span.required *
-            = f.label :telephone, "办公电话"
-          %td
-            = f.text_field :telephone
-          %th
-            = f.label :mobile, "手机"
-          %td
-            = f.text_field :mobile
+          %th= f.label :telephone, "办公电话 #{require_star}"
+          %td= f.text_field :telephone
+          %th= f.label :mobile, "手机"
+          %td= f.text_field :mobile
         %tr
-          %th
-            = f.label :email, "电子邮箱"
-          %td{:colspan=>3}
-            = f.text_field :email
+          %th= f.label :email, "电子邮箱"
+          %td{:colspan=>3}= f.text_field :email
         %tr
-          %th
-            = f.label :remark, "备注"
-          %td{:colspan=>3}
-            = f.text_area :remark, :rows => 5, :cols=> 60
+          %th= f.label :remark, "备注"
+          %td{:colspan=>3}= f.text_area :remark, :rows => 5, :cols=> 60
       %p.btns{:style=>"clear:left"}
         = submit_tag '保存', :id => "save"
-
-.group
-  %fieldset
-    %legend 用户列表
-    %table.list
-      %tr
-        %th{:width=>'80'} 用户名
-        %th{:width=>'80'} 姓名
-        %th{:width=>'120'} 部门
-        %th 办公电话
-        %th{:width=>'60'} 负责人
-        %th{:width=>'100'} 操作
-      - @list.each do |user|
-        %tr
-          %td=user.login
-          %td=user.realname
-          %td=user.department ? user.department.name : ""
-          %td=user.telephone
-          %td=user.ismanager_enum_sf
-          %td=link_to '编辑', edit_user_path(user), :rel => "facebox"
-

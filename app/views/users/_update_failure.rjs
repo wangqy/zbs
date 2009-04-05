@@ -1,0 +1,2 @@
+page.replace_html 'pop-errorExplanation', error_messages_for('user')
+page.show 'pop-errorExplanation'

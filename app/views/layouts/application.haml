@@ -34,9 +34,16 @@
               %li#t-proj{:class=>select_menu('workitems')}
                 =link_to '待办事项', workitems_path
               - if is_admin?
-                %li{:class=>select_menu('users')}
-                  =link_to '用户管理', new_user_path
-              %li#t-menu.mainmenu{:class=>select_menu('calls')}
+                %li#u-menu.mainmenu{:class=>"#{select_menu('users')}"}
+                  -link_to new_user_path do
+                    用户管理
+                    %em more
+                  %ul.submenu.wbadges{:style=>"display:none"}
+                    %li.bin.shared
+                      =link_to '新增用户', new_user_path
+                    %li.bin.shared
+                      =link_to '查询用户', users_path
+              %li#t-menu.mainmenu{:class=>"#{select_menu('calls')}"}
                 -link_to new_call_path do
                   来电管理
                   %em more
@@ -79,6 +86,9 @@
               -elsif is_menu("departments")
                 %li=link_to '新增机构', new_department_path
                 %li=link_to '查询机构', departments_path
+              -elsif is_menu("users")
+                %li=link_to '新增用户', new_user_path
+                %li=link_to '查询用户', users_path
           -flash.each do |key, msg|
             =content_tag :div, msg, :id => "flash-#{key}"
           #main-content

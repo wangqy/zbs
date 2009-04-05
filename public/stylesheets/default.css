@@ -9,6 +9,9 @@
       margin-right: 1px;
       background: #ddd;
       padding: 2px; }
+      #main #main-content #sbar p {
+        font-size: 14px;
+        line-height: 20px; }
       #main #main-content #sbar li .badge {
         font-size: 12px; }
       #main #main-content #sbar li span {
@@ -39,45 +42,57 @@ fieldset {
     width: 100px;
     font-weight: bold; }
 
-.formin .title {
+.formin .title, .formpass .title {
   text-align: center;
   font-size: 25px;
   font-weight: bold; }
-.formin .sub_title, .formin .required {
+.formin .sub_title, .formin .required, .formpass .sub_title, .formpass .required {
   color: red; }
-.formin tr {
+.formin tr, .formpass tr {
   line-height: 40px; }
-.formin th {
+.formin th, .formpass th {
   background-color: #f1f1f1;
   padding-right: 5px;
   width: 120px;
   text-align: right;
   font-size: 14px; }
-.formin td {
+.formin td, .formpass td {
   width: 280px; }
-.formin input {
+.formin input, .formpass input {
   width: 200px;
   font-size: 16px;
   border-width: 1px;
   border-color: #CCCCCC; }
-.formin input.long {
+.formin input.long, .formpass input.long {
   width: 587px; }
-.formin .calendar {
+.formin .calendar, .formpass .calendar {
   width: 182px;
   font-size: 20px;
   padding: 3px 0;
   float: left; }
-.formin select {
+.formin select, .formpass select {
   width: 200px; }
-.formin input[type=radio] {
+.formin input[type=radio], .formpass input[type=radio] {
   margin-left: 10px; }
-.formin textarea {
+.formin textarea, .formpass textarea {
   font-size: 16px;
   border-width: 1px;
   border-color: #CCCCCC;
   overflow: auto; }
-.formin .show_by_other {
+.formin .show_by_other, .formpass .show_by_other {
   display: none; }
+.formin table, .formpass table {
+  width: 100%; }
+.formin .fieldWithErrors, .formpass .fieldWithErrors {
+  color: red; }
+
+.formpass input[type=submit] {
+  font-size: 16px;
+  width: 60px; }
+
+.formpass input[type=button] {
+  font-size: 16px;
+  width: 60px; }
 
 .btns input {
   font-size: 20px;
