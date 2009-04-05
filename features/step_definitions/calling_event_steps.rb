@@ -5,8 +5,8 @@ def create_call(options)
     :title => "马可波罗__投诉__区长热线办公室",
     :content => "楼下太吵了",
     :name => "马可波罗",
-    :creator => "aaron",
-    :modifier => "aaron"
+    :creator => User.find_by_login("aaron"),
+    :modifier => User.find_by_login("aaron")
   }
   @valid_attributes.merge! options
   Call.create! @valid_attributes

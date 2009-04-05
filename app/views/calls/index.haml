@@ -27,7 +27,7 @@
           %td=call.name
           %td=call.callnumber
           %td=call.timing.to_s(:without_year)
-          %td=call.creator
+          %td=call.creator.realname
           %td
             =link_to '查看', call
             =link_to '编辑', edit_call_path(call)

@@ -1,8 +1,0 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-noise:
-  content: 楼下太吵了
-  aim: 1 
-  emergency: 1
-  security: 1
-  kind: 1

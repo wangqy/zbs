@@ -1,8 +1,14 @@
 class Event < ActiveRecord::Base
-  belongs_to :case
-  belongs_to :person
   has_many :workitems
   has_many :historys
+  #创建人,修改人
+  belongs_to :creator, :class_name => "User"
+  belongs_to :modifier, :class_name => "User"
+
+  validates_presence_of :timing, :title, :content
+  validates_length_of :title, :name, :phone, :mobile, :callnumber, :maximum => 20, :allow_nil => true
+  validates_length_of :content, :maximum => 800, :allow_nil => true
+  validates_length_of :address, :email, :maximum => 50, :allow_nil => true
 
   #当前流程ID
   attr_accessor :workitem_id

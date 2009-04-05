@@ -1,11 +1,11 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Call do
-  fixtures :cases
 
   before(:each) do
     @valid_attributes = {
       :callnumber => "13988889999",
+      :calltag => "深电2009032400008",
       :timing => "2009-03-24 22:22:22".to_time,
       :title => "马可波罗__投诉__区长热线办公室",
       :content => "楼下太吵",
@@ -18,17 +18,14 @@ describe Call do
       :mobile => "13988889999",
       :sex => 1,
       :email => "mahb@cogentsoft.com.cn",
-      :address => "简洁公司"
+      :address => "简洁公司",
+      :creator => users(:quentin),
+      :modifier => users(:quentin)
     }
   end
 
-  #新增来电,无关联以往记录
   it "should create a new instance given valid attributes" do
-    lam = lambda do
-      Call.create!(@valid_attributes)
-    end
-    lam.should change(Person, :count).by(1)
-    lam.should change(Case, :count).by(1)
+    Call.create!(@valid_attributes)
   end
 
 end

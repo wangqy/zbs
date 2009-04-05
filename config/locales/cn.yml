@@ -14,6 +14,13 @@ cn:
       call:
         callnumber: "来电电话"
         timing: "来电时间"
+        title: "来电主题"
+        name: "来电人姓名"
+        phone: "联系电话"
+        mobile: "手机号码"
+        email: "电子邮箱"
+        content: "内容摘要"
+        address: "联系地址或单位"
       department:
         code: "机构代码"
         name: "机构名称"
@@ -29,6 +36,7 @@ cn:
       messages:
         blank: "不能为空"
         taken: "已经存在"
+        too_long: "长度不能超过%d个字符"
 
   html:
     button:

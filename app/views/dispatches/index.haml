@@ -13,7 +13,7 @@
           %td=event.calltag
           %td=event.title
           %td=event.created_at.to_s(:without_year)
-          %td=event.creator
+          %td=event.creator.realname
           %td=link_to '办理', new_dispatch_path(:id=>event.id)
     =will_paginate @list
 

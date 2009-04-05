@@ -14,7 +14,7 @@
           %td=event.calltag
           %td=event.title
           %td=event.created_at.to_s(:without_year)
-          %td=event.creator
+          %td=event.creator.realname
           %td=event.state_enum
           %td=link_to '处理', edit_workitem_path(:id=>event.workitem_id)
 

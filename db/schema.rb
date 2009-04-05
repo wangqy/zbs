@@ -11,16 +11,6 @@
 
 ActiveRecord::Schema.define(:version => 20090331125107) do
 
-  create_table "cases", :force => true do |t|
-    t.string   "content"
-    t.integer  "aim"
-    t.integer  "emergency"
-    t.integer  "security"
-    t.integer  "kind"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "departments", :force => true do |t|
     t.string   "code",       :limit => 10
     t.string   "name",       :limit => 40
@@ -37,27 +27,25 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
   end
 
   create_table "events", :force => true do |t|
-    t.integer  "state",      :default => 0, :null => false
-    t.datetime "timing",                    :null => false
-    t.string   "title",                     :null => false
-    t.string   "content",                   :null => false
-    t.string   "type"
-    t.integer  "aim"
-    t.integer  "emergency"
-    t.integer  "security"
-    t.integer  "kind"
-    t.string   "name"
-    t.string   "phone"
-    t.string   "mobile"
-    t.integer  "sex"
-    t.string   "email"
-    t.string   "address"
-    t.string   "callnumber",                :null => false
-    t.string   "calltag"
-    t.integer  "person_id"
-    t.integer  "case_id"
-    t.string   "creator"
-    t.string   "modifier"
+    t.integer  "state",       :limit => 2,   :default => 0, :null => false
+    t.datetime "timing",                                    :null => false
+    t.string   "title",       :limit => 20,                 :null => false
+    t.string   "content",     :limit => 800,                :null => false
+    t.string   "type",        :limit => 10,                 :null => false
+    t.integer  "aim",         :limit => 2
+    t.integer  "emergency",   :limit => 2
+    t.integer  "security",    :limit => 2
+    t.integer  "kind",        :limit => 2
+    t.string   "name",        :limit => 20
+    t.string   "phone",       :limit => 20
+    t.string   "mobile",      :limit => 20
+    t.integer  "sex",         :limit => 2
+    t.string   "address",     :limit => 50
+    t.string   "email",       :limit => 50
+    t.string   "callnumber",  :limit => 20,                 :null => false
+    t.string   "calltag",     :limit => 20,                 :null => false
+    t.integer  "creator_id",                                :null => false
+    t.integer  "modifier_id",                               :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -71,17 +59,6 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
     t.string   "reason"
     t.string   "remark"
     t.integer  "creator_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "people", :force => true do |t|
-    t.string   "name"
-    t.string   "phone"
-    t.string   "mobile"
-    t.integer  "sex"
-    t.string   "email"
-    t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

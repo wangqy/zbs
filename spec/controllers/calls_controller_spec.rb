@@ -6,6 +6,7 @@ describe CallsController do
     @valid_call = {
       :call => { 
         :callnumber => "13988889999",
+        :calltag => "深电2009032400009",
         :timing => "2009-03-24 22:22:22".to_time,
         :name => "马可波罗",
         :title => "马可波罗__投诉__区长办公室",
@@ -34,11 +35,16 @@ describe CallsController do
   end
 
   describe "save call" do
+    it "require callnumber" do
+      post :create, @valid_call[:call].merge!(:callnumber => "")
+      response.should be_success
+    end
+
     it "should save creator and modifier" do
       post :create, @valid_call 
       call = assigns[:call]
-      call.creator.should == "aaron"
-      call.modifier.should == "aaron"
+      call.creator.should == users(:aaron)
+      call.modifier.should == users(:aaron)
     end
 
     it "should continue save" do
@@ -51,7 +57,7 @@ describe CallsController do
     it "should update modifier" do
       call = events(:complain)
       post :update, :call => { :name => "新马可波罗" }, :id => call.id
-      assigns[:call].modifier.should == "aaron"
+      assigns[:call].modifier.should == users(:aaron)
     end
   end
 

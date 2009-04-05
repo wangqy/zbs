@@ -14,17 +14,17 @@ class CallsController < ApplicationController
   def new
     @call = Call.new
     @call.timing = DateTime.now.to_s(:with_year)
-    @list = []
-    if params[:callnumber]
-      @call.callnumber = params[:callnumber]
-      @list = Call.history_of(@call)
-    end
+    @call.callnumber = params[:callnumber] if params[:callnumber]
+    @list = relate_list(@call)
   end
 
   def create
     @call = Call.new(params[:call])
-    @call.creator = current_user.login
-    @call.modifier = current_user.login
+    @call.creator = current_user
+    @call.modifier = current_user
+
+    #TODO: 来电编号
+    @call.calltag = "深电#{Date.today.to_s(:serial)}00009"
 
     if @call.save
       flash[:notice] = '保存成功.'
@@ -34,20 +34,20 @@ class CallsController < ApplicationController
         redirect_to edit_call_path(@call)
       end
     else
-      @list = Call.history_of(params[:callnumber])
+      @list = relate_list(@call)
       render :action => "new"  
     end
   end
 
   def edit
     @call = Call.find(params[:id])
-    @list = Call.history_of(@call)
+    @list = relate_list(@call)
     render :action => "new"
   end
 
   def update
     @call = Call.find(params[:id])
-    params[:call][:modifier] = current_user.login
+    params[:call][:modifier] = current_user
     if @call.update_attributes(params[:call])
       flash[:notice] = '更新成功.'
       if params[:commit]==t('html.button.save')
@@ -56,20 +56,25 @@ class CallsController < ApplicationController
         redirect_to edit_call_path
       end
     else
-      @list = Call.history_of(@call)
+      @list = relate_list(@call)
       render :action => "new"
     end
   end
 
   def show
     @call = Call.find(params[:id])
-    @list = Call.history_of(@call)
+    @list = relate_list(@call)
   end
 
   def destroy
     @call = Call.find(params[:id])
     @call.destroy
     redirect_to :back
+  end
+
+  private
+  def relate_list(call)
+    call.callnumber ? Call.history_of(call) : []
   end
 
 end
