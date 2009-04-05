@@ -17,6 +17,13 @@ describe CallsController do
   describe "GET 'new'" do
     it "should be successful" do
       get 'new'
+      assigns[:call].timing.should_not be_nil
+      response.should be_success
+    end
+    
+    it "should be pop up" do
+      get 'new', :callnumber => "13988889999"
+      assigns[:call].callnumber.should_not be_nil
       response.should be_success
     end
   end

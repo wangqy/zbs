@@ -2,12 +2,18 @@
   .group
     =error_messages_for :history
     -form_tag workitem_path(:id => @workitem.id), :method => :put do 
-      =render :partial => "events/show"
       =render :partial => "events/workitem"
       %p.btns{:style=>"clear:left"}
         = submit_tag '保存', :disable_with => t('html.saving')
         = link_to '返回', :back
+      =render :partial => "events/show"
 #sbar
+  .proj-desc
+    %p 事件简介
+    %p
+      %span=@event.name
+      %span="#{@event.aim_enum}:"
+      =@event.content
   .proj-desc
     %p 办理过程
   #shared-bin-block.sblock.bin-block

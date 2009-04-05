@@ -13,6 +13,12 @@ class CallsController < ApplicationController
 
   def new
     @call = Call.new
+    @call.timing = DateTime.now.to_s(:with_year)
+    @list = []
+    if params[:callnumber]
+      @call.callnumber = params[:callnumber]
+      @list = Call.history_of(@call)
+    end
   end
 
   def create
@@ -28,12 +34,14 @@ class CallsController < ApplicationController
         redirect_to edit_call_path(@call)
       end
     else
+      @list = Call.history_of(params[:callnumber])
       render :action => "new"  
     end
   end
 
   def edit
     @call = Call.find(params[:id])
+    @list = Call.history_of(@call)
     render :action => "new"
   end
 
@@ -48,12 +56,14 @@ class CallsController < ApplicationController
         redirect_to edit_call_path
       end
     else
+      @list = Call.history_of(@call)
       render :action => "new"
     end
   end
 
   def show
     @call = Call.find(params[:id])
+    @list = Call.history_of(@call)
   end
 
   def destroy

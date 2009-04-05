@@ -3,13 +3,15 @@
     =error_messages_for :history
     -form_tag dispatches_path do 
       =hidden_field_tag 'id', params[:id]
-      =render :partial => "events/show"
       =render :partial => "events/workitem"
       %p.btns{:style=>"clear:left"}
         = submit_tag '保存', :disable_with => t('html.saving')
         = link_to '返回', :back
+      =render :partial => "events/show"
 #sbar
-  #shared-bin-block.sblock.bin-block
-    %h3 事件简介
-    .name=@event.name
-    .content=@event.content
+  .proj-desc
+    %p 事件简介
+    %p
+      %span=@event.name
+      %span="#{@event.aim_enum}:"
+      =@event.content

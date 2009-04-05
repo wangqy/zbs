@@ -2,6 +2,16 @@ class Call < Event
   validates_presence_of :callnumber, :on => :save
   validates_presence_of :timing, :on => :save
 
+  named_scope :history_of, lambda{|call|
+    sql = "callnumber = ?"
+    conditions = [sql, call.callnumber]
+    unless call.new_record?
+      sql << " and id != ?"
+      conditions << call.id
+    end
+    {:conditions => conditions}
+  }
+
   def before_create
     unless self.case
       create_case(

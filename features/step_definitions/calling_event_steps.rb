@@ -1,20 +1,34 @@
-假如 /我新增(\d+)的来电/ do |callnumber|
-  call = Call.create!(
-    :callnumber => callnumber,
-    :timing => "2009-03-23 10:10:10".to_datetime,
-    :calltag => "深电20090323000#{callnumber[-2,2]}",
+def create_call(options)
+  @valid_attributes = {
+    :calltag => "深电2009032300088",
+    :timing => DateTime.now.to_s(:with_year),
     :title => "马可波罗__投诉__区长热线办公室",
     :content => "楼下太吵了",
     :name => "马可波罗",
     :creator => "aaron",
     :modifier => "aaron"
-  )
+  }
+  @valid_attributes.merge! options
+  Call.create! @valid_attributes
+end
+
+当 /系统弹出(\d+)的来电录入窗口/ do |callnumber|
+  #以往来电
+  create_call :callnumber => callnumber
+  visit(new_call_path(:callnumber => callnumber))
+end
+
+假如 /我新增(\d+)的来电/ do |callnumber|
+  call = create_call(:callnumber => callnumber)
   visit edit_call_path(call)
 end
 
 当 /我输入(.*)的来电信息/ do |callnumber|
   当 "我输入来电电话为#{callnumber}"
-  而且 "我输入来电时间为2009-03-24 22:22" 
+  而且 "我输入#{callnumber}来电的其他信息"
+end
+
+当 /我输入(.*)来电的其他信息/ do |callnumber|
   而且 "我输入来电人姓名为马可波罗"
   而且 "我选择来电目的为投诉"
   而且 "我选择紧急程度为一般"
