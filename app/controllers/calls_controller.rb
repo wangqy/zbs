@@ -68,7 +68,12 @@ class CallsController < ApplicationController
 
   def destroy
     @call = Call.find(params[:id])
-    @call.destroy
+    if(@call.state != 0)
+      flash[:errors] = "事件已安排,不能删除."
+    else
+      flash[:notice] = "事件删除成功."
+      @call.destroy
+    end
     redirect_to :back
   end
 
