@@ -17,6 +17,12 @@
       #main #main-content #sbar li span {
         font-size: 14px;
         line-height: 20px; }
+    #main #main-content .group table {
+      width: 100%; }
+    #main #main-content td {
+      width: 280px; }
+    #main #main-content th {
+      width: 120px; }
 
 #footer {
   width: 98%; }

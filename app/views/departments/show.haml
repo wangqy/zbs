@@ -11,6 +11,7 @@
           = "传真"
         %td
           = @department.fax
+        %td.last &nbsp;
       %tr
         %th
           = "机构名称"
@@ -20,6 +21,7 @@
           = "电子邮件"
         %td
           = @department.email
+        %td.last &nbsp;
       %tr
         %th
           = "负责人"
@@ -29,16 +31,19 @@
           = "联系电话"
         %td
           = @department.manager
+        %td.last &nbsp;
       %tr
         %th
           = "地址"
         %td{:colspan=>3}
           = @department.address
+        %td.last &nbsp;
       %tr
         %th
           = "备注"
         %td{:colspan=>3}
           = @department.remark
+        %td.last &nbsp;
   %p.btns{:style=>"clear:left"}
     = submit_tag '返回',{:type=>'button',:onclick=>'history.back();'}
 

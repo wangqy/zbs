@@ -40,6 +40,24 @@ class ApplicationController < ActionController::Base
         workitem_attributes = {:store_name => last_workitem.store_name}
       end
   end
+
+  #获取查询sql
+  #@param params
+  #@name  name[queryField]
+  #@return ["1=1 and field like ?", "%fieldValue%"]
+  def condition(param, name)
+    conditions = []
+    conditions[0] = "1=1"
+    unless param[name].nil?
+      param[name].keys.each do |key|
+        unless param[name][key].blank?
+          conditions[0] += " and #{key} like ?"
+          conditions<<"%#{param[name][key]}%"
+        end
+      end
+    end
+    conditions
+  end
   
   ActionView::Base.field_error_proc = Proc.new{|html_tag, instance| %(<span class="fieldWithErrors">#{html_tag}</span>)}
 end
