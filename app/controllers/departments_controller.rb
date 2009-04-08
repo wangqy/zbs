@@ -1,6 +1,23 @@
 class DepartmentsController < ApplicationController
   def index
-    @list = Department.paginate :page => params[:page], :order => 'created_at DESC'
+=begin
+    @conditions = []
+    @conditions[0] = "1=1"
+    unless params[:department].nil?
+      params[:department].keys.each do |key|
+        #puts params[:department][key]
+        #puts params[:department]["name"]
+        unless params[:department][key].blank?
+          @conditions[0] += " and #{key} like ?"
+          @conditions<<"%#{params[:department][key]}%"
+        end
+      end
+=end
+    @conditions = condition params, "department"
+    if params[:department].nil?
+      params[:department] = {}
+    end
+    @list = Department.paginate :conditions => @conditions, :page => params[:page], :order => 'created_at DESC'
   end
 
   def show
@@ -29,7 +46,11 @@ class DepartmentsController < ApplicationController
 
     if @department.save
       flash[:notice] = '保存成功.'
-      redirect_to edit_department_path(@department)
+      if params[:commit]==t('html.button.save')
+        redirect_to new_department_path
+      else
+        redirect_to departments_path
+      end
     else
       render :action => "new"  
     end
@@ -45,7 +66,13 @@ class DepartmentsController < ApplicationController
     params[:department][:modifier] = current_user
     if @department.update_attributes(params[:department])
       flash.now[:notice] = '更新成功.'
+      if params[:commit]==t('html.button.save')
+        redirect_to new_department_path
+      else
+        redirect_to departments_path
+      end
+    else
+      render :action => "new"
     end
-    render :action => "new"
   end
 end

@@ -7,21 +7,25 @@
         %tr
           %th
             = f.label :code, "机构代码"
+            = require_star
           %td
             = f.text_field :code, :maxlength=>10,:is_focus => true
           %th
             = f.label :fax, "传真"
           %td
             = f.text_field :fax
+          %td.last &nbsp;
         %tr
           %th
             = f.label :name, "机构名称"
+            = require_star
           %td
             = f.text_field :name
           %th
             = f.label :email, "电子邮件"
           %td
             = f.text_field :email
+          %td.last &nbsp;
         %tr
           %th
             = f.label :manager, "负责人"
@@ -31,17 +35,21 @@
             = f.label :telephone, "联系电话"
           %td
             = f.text_field :telephone
+          %td.last &nbsp;
         %tr
           %th
             = f.label :address, "地址"
           %td{:colspan=>3}
             = f.text_field :address
+          %td.last &nbsp;
         %tr
           %th
             = f.label :remark, "备注"
           %td{:colspan=>3}
             = f.text_area :remark, :rows => 5, :cols=> 70
+          %td.last &nbsp;
     %p.btns{:style=>"clear:left"}
-      = submit_tag '保存,继续新增'
-      = submit_tag '保存'
+      -unless !@department.id.nil?
+        = submit_tag t('html.button.save'), :disable_with => t('html.saving') 
+      = submit_tag t('html.button.back'), :disable_with => t('html.saving')
 

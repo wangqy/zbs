@@ -1,5 +1,15 @@
 .group
   %fieldset
+    %legend 查询条件
+    #quick-search-bar
+      -form_tag departments_path, :method=>:get do
+        =label_tag "department[code]", '机构代码'
+        =text_field_tag "department[code]", params[:department][:code]
+        =label_tag "department[name]", '机构名称'
+        =text_field_tag "department[name]", params[:department][:name]
+        =submit_tag '查询'
+.group
+  %fieldset
     %legend 查询机构
     %table.list
       %tr
@@ -17,7 +27,7 @@
           %td=department.manager
           %td=department.telephone
           %td=department.address
-          %td=department.updated_at.strftime("%Y-%m-%d %H:%M:%S")
+          %td=department.updated_at.to_s(:full)
           %td
             =link_to '查看', department
             =link_to '编辑', edit_department_path(department)

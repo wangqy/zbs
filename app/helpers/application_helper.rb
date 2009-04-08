@@ -38,4 +38,6 @@ module ApplicationHelper
   def require_star
     content_tag :span, "*", :class => "required"
   end
+
+  
 end

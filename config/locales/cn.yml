@@ -43,5 +43,6 @@ cn:
     button:
       save: "保存,继续新增"
       modify: "保存,接着修改"
+      back: "保存,返回列表"
     saving: "保存中..."
 

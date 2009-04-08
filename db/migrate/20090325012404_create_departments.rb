@@ -18,9 +18,9 @@ class CreateDepartments < ActiveRecord::Migration
       #备注
       t.string :remark, :limit=>800
       #创建人
-      t.integer :creator
+      t.references :creator
       #最后修改人
-      t.integer :modifier
+      t.references :modifier
 
       t.timestamps
     end
