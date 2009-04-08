@@ -13,3 +13,4 @@ tmp/**
 coverage/**
 #full-text search engine
 db/sphinx/**
+config/development.sphinx.conf
