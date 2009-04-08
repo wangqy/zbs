@@ -1,6 +1,11 @@
 class Call < Event
   validates_presence_of :callnumber, :on => :save
 
+  define_index do
+    indexes content
+    set_property :delta => true
+  end
+
   named_scope :history_of, lambda{|call|
     sql = "callnumber = ?"
     conditions = [sql, call.callnumber]

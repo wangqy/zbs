@@ -1,0 +1,4 @@
+development:
+  charset_type: zh_cn.utf-8
+  charset_dictpath: /usr/local/sphinx/dict
+
