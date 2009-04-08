@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
     t.integer  "ismanager"
     t.string   "email",                     :limit => 120
     t.string   "remark",                    :limit => 20
+    t.integer  "disabled"
     t.integer  "creator"
     t.integer  "modifier"
     t.datetime "created_at"

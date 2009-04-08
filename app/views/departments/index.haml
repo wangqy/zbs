@@ -10,7 +10,7 @@
         =submit_tag '查询'
 .group
   %fieldset
-    %legend 查询机构
+    %legend 机构列表
     %table.list
       %tr
         %th{:width=>"80"} 机构代码
@@ -32,6 +32,6 @@
             =link_to '查看', department
             =link_to '编辑', edit_department_path(department)
             =link_to '删除', department, :confirm => "你确定要删除吗?", :method => :delete
-      %tr
-        %td{:colspan=>7}=will_paginate @list
+    #pagination
+      =will_paginate @list
 

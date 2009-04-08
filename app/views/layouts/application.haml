@@ -33,7 +33,7 @@
             %ul
               %li#t-proj{:class=>select_menu('workitems')}
                 =link_to '待办事项', workitems_path
-              - if is_admin?
+              - if is_admin? || ismanager?
                 %li#u-menu.mainmenu{:class=>"#{select_menu('users')}"}
                   -link_to new_user_path do
                     用户管理

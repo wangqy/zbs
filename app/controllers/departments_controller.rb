@@ -1,23 +1,10 @@
 class DepartmentsController < ApplicationController
   def index
-=begin
-    @conditions = []
-    @conditions[0] = "1=1"
-    unless params[:department].nil?
-      params[:department].keys.each do |key|
-        #puts params[:department][key]
-        #puts params[:department]["name"]
-        unless params[:department][key].blank?
-          @conditions[0] += " and #{key} like ?"
-          @conditions<<"%#{params[:department][key]}%"
-        end
-      end
-=end
     @conditions = condition params, "department"
     if params[:department].nil?
       params[:department] = {}
     end
-    @list = Department.paginate :conditions => @conditions, :page => params[:page], :order => 'created_at DESC'
+    @list = Department.paginate :per_page =>1, :conditions => @conditions, :page => params[:page], :order => 'created_at DESC'
   end
 
   def show

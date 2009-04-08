@@ -4,6 +4,8 @@
   when "登录"
     url = "/"
   when "用户管理" 
+    url = users_path
+  when "用户新增"
     url = new_user_path
   when "来电管理" 
     url = new_call_path
@@ -40,5 +42,5 @@ end
     click_link '编辑'
   end
   当 "我输入#{label}为#{value}"
-  而且 "我点击确定"
+  而且 "我点击保存,返回列表"
 end

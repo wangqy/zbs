@@ -24,6 +24,9 @@
           %th= f.label :position, "职位"
           %td= f.text_field :position
         %tr
+          %th= f.label :ismanager, "是否负责人"
+          %td{:colspan=>3}= f.check_box :ismanager, {}, "1", "0"
+        %tr
           %th= f.label :telephone, "办公电话 #{require_star}"
           %td= f.text_field :telephone
           %th= f.label :mobile, "手机"
@@ -35,4 +38,5 @@
           %th= f.label :remark, "备注"
           %td{:colspan=>3}= f.text_area :remark, :rows => 5, :cols=> 60
       %p.btns{:style=>"clear:left"}
-        = submit_tag '保存', :id => "save"
+        = submit_tag t('html.button.save'), :disable_with => t('html.saving')
+        = submit_tag t('html.button.back'), :disable_with => t('html.saving')
