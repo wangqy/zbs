@@ -69,9 +69,20 @@ describe CallsController do
     end
 
     it "should delete a call" do
-      request.env["HTTP_REFERER"] = "/calls"
-      post :destroy, :id => events(:complain).id
-      response.should be_redirect
+      lambda do
+        request.env["HTTP_REFERER"] = "/calls"
+        post :destroy, :id => events(:complain).id
+        response.should be_redirect
+      end.should change(Event, :count).by(-1)
+    end
+
+    it "should not be delete a dispatched call" do
+      lambda do
+        events(:complain).update_attribute(:state, 10)
+        request.env["HTTP_REFERER"] = "/calls"
+        post :destroy, :id => events(:complain).id
+        response.should be_redirect
+      end.should_not change(Event, :count)
     end
   end
 end

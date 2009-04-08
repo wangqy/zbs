@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
     t.string   "calltag",     :limit => 20,                 :null => false
     t.integer  "creator_id",                                :null => false
     t.integer  "modifier_id",                               :null => false
+    t.boolean  "delta"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
