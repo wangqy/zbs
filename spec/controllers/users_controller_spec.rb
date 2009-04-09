@@ -11,6 +11,11 @@ describe UsersController do
     login_as :cogentsoft
   end
 
+  it 'allows query users' do
+    get :index
+    response.should be_success
+  end
+
   it 'allows signup' do
     lambda do
       create_user
