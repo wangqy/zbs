@@ -15,7 +15,7 @@ class CallsController < ApplicationController
     @call = Call.new
     @call.timing = DateTime.now.to_s(:with_year)
     @call.callnumber = params[:callnumber] if params[:callnumber]
-    @list = relate_list(@call)
+    @list = search_relate_list_for(@call)
   end
 
   def create
@@ -25,6 +25,8 @@ class CallsController < ApplicationController
 
     #TODO: 来电编号
     @call.calltag = "深电#{Date.today.to_s(:serial)}00009"
+
+    @call.init_case params[:call][:case_id]
 
     if @call.save
       flash[:notice] = '保存成功.'
@@ -42,7 +44,6 @@ class CallsController < ApplicationController
   def edit
     @call = Call.find(params[:id])
     @list = relate_list(@call)
-    render :action => "new"
   end
 
   def update
@@ -57,7 +58,7 @@ class CallsController < ApplicationController
       end
     else
       @list = relate_list(@call)
-      render :action => "new"
+      render :action => "edit"
     end
   end
 
@@ -78,10 +79,12 @@ class CallsController < ApplicationController
   end
 
   private
+  def search_relate_list_for(call)
+    call.callnumber ? Case.search(call.callnumber, :order => :created_at): []
+  end
+
   def relate_list(call)
-    list = call.callnumber ? Call.search(call.callnumber, :order => :created_at): []
-    list.reject! {|c| c.id == call.id} unless call.new_record?
-    list
+    list = call.case.events.reject {|c| c ==call}
   end
 
 end

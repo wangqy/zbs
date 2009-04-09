@@ -1,0 +1,6 @@
+#mainbar
+  .group
+    =error_messages_for :call
+    -form_for @call do |f|
+      =render :partial => "calls/form", :locals => {:f => f}
+=render :partial => "calls/relate"

@@ -46,5 +46,14 @@ module ApplicationHelper
     content_tag :span, "*", :class => "required"
   end
 
+  #事件类型
+  def event_type(type)
+    case type
+    when "Call"
+      "来电"
+    when "Visit"
+      "来访"
+    end
+  end
   
 end

@@ -23,8 +23,13 @@ describe CallsController do
     end
     
     it "should be pop up" do
+      dup_event = events(:complain).clone
+      dup_event.timing = dup_event.timing.change(:hour => 8)
+      dup_event.save
+      
       get 'new', :callnumber => "13988889999"
       assigns[:call].callnumber.should_not be_nil
+      assigns[:list][0].should == dup_event.case
       response.should be_success
     end
   end
@@ -36,7 +41,9 @@ describe CallsController do
 
   describe "save call" do
     it "require callnumber" do
-      post :create, @valid_call[:call].merge!(:callnumber => "")
+      @valid_call[:call].merge!(:callnumber => "")
+      post :create, @valid_call
+      assigns[:call].errors.on(:callnumber).should_not be_nil
       response.should be_success
     end
 

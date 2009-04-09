@@ -28,4 +28,15 @@ describe Call do
     Call.create!(@valid_attributes)
   end
 
+  it "should create a new case" do
+    call = Call.new @valid_attributes
+    call.init_case ""
+    c = call.case
+    c.should_not be_nil
+    c.content.should == call.content
+    c.phone.should == call.phone
+    c.mobile.should == call.mobile
+    c.callnumber.should == call.callnumber
+  end
+
 end

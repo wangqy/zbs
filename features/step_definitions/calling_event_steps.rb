@@ -6,7 +6,8 @@ def create_call(options)
     :content => "楼下太吵了",
     :name => "马可波罗",
     :creator => User.find_by_login("aaron"),
-    :modifier => User.find_by_login("aaron")
+    :modifier => User.find_by_login("aaron"),
+    :case => Case.first
   }
   @valid_attributes.merge! options
   Call.create! @valid_attributes

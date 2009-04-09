@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090331125107) do
+ActiveRecord::Schema.define(:version => 20090409075821) do
+
+  create_table "cases", :force => true do |t|
+    t.string   "callnumber", :limit => 20,  :null => false
+    t.string   "phone",      :limit => 20
+    t.string   "mobile",     :limit => 20
+    t.string   "content",    :limit => 800, :null => false
+    t.boolean  "delta"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "departments", :force => true do |t|
     t.string   "code",        :limit => 10
@@ -46,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20090331125107) do
     t.string   "calltag",     :limit => 20,                 :null => false
     t.integer  "creator_id",                                :null => false
     t.integer  "modifier_id",                               :null => false
-    t.boolean  "delta"
+    t.integer  "case_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

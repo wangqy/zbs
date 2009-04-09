@@ -1,0 +1,12 @@
+#sbar
+  .proj-desc
+    %p 相关记录
+  #shared-bin-block.sblock.bin-block
+    %ul#shared-ticket-bins.stacked.wbadges.sortable
+      -@list.each do |event|
+        %li.bin.shared
+          %a
+            %span.badge{:title=>event.created_at.to_s(:with_year)}=event.created_at.to_s(:only_date)
+            %span=event.name
+            %span=event_type event.class.to_s
+            %span=event.aim_enum

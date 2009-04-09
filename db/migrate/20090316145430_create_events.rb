@@ -28,7 +28,8 @@ class CreateEvents < ActiveRecord::Migration
       #创建人,修改人
       t.integer :creator_id, :modifier_id, :null => false
 
-      t.boolean :delta
+      #关联case
+      t.references :case, :nill => false
 
       t.timestamps
     end
