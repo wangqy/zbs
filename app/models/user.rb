@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :password, :realname, :telephone, :position, :sex, :remark, :fax, :department_id, :email
+  attr_accessible :login, :password, :realname, :telephone, :mobile, :position, :ismanager, :sex, :remark, :fax, :department_id, :email, :modifier, :disabled
 
   def validate_on_create
     if password.blank?

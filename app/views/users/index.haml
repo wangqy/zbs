@@ -1,5 +1,15 @@
 .group
   %fieldset
+    %legend 查询条件
+    #quick-search-bar
+      -form_tag users_path, :method=>:get do
+        =label_tag "user[login]", '用户名'
+        =text_field_tag "user[login]", params[:user][:login]
+        =label_tag "user[realname]", '姓名'
+        =text_field_tag "user[realname]", params[:user][:realname]
+        =submit_tag '查询'
+.group
+  %fieldset
     %legend 用户列表
     %table.list
       %tr
@@ -9,12 +19,20 @@
         %th 办公电话
         %th{:width=>'60'} 负责人
         %th{:width=>'100'} 操作
-      - @list.each do |user|
+      - @page.each do |user|
         %tr
           %td=user.login
           %td=user.realname
           %td=user.department ? user.department.name : ""
           %td=user.telephone
           %td=user.ismanager_enum_sf
-          %td=link_to '编辑', edit_user_path(user)#, :rel => "facebox"
+          %td
+            =link_to '编辑', edit_user_path(user)
+            -if user.disabled==0
+              -if !is_admin?(user)
+                =link_to '禁用',{:action => 'disable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.disable')}')"}
+            -else
+              =link_to '启用',{:action => 'enable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.enable')}')"}
+    #paginate{:style => 'text-align:right;'}
+      =will_paginate @page
 

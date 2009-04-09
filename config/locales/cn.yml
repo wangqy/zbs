@@ -45,4 +45,15 @@ cn:
       modify: "保存,接着修改"
       back: "保存,返回列表"
     saving: "保存中..."
+    link:
+      view: "查看"
+      edit: "编辑"
+      delete: "删除"
+      disable: "禁用"
+      enable: "启用"
+  confirm:
+    delete: "确定要删除吗?"
+    user:
+      disable: "确定要禁用用户吗?"
+      enable: "确定要启用用户吗?"
 

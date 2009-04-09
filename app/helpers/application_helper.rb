@@ -9,8 +9,15 @@ module ApplicationHelper
     @menu == menu
   end
 
-  def is_admin?
-    ['cogentsoft', 'admin'].include?current_user.login
+  def is_admin?(user=nil)
+    if user.nil?
+      user = current_user
+    end
+    ['cogentsoft', 'admin'].include?user.login
+  end
+
+  def ismanager?
+    current_user.ismanager == 1
   end
 
   #枚举下拉列表

@@ -5,7 +5,11 @@ class UsersController < ApplicationController
   # render new.rhtml
 
   def index
-    @list = User.all :order => "login"
+    @conditions = condition params, "user"
+    if params[:user].nil?
+      params[:user] = {}
+    end
+    @page = User.paginate :page => params[:page], :conditions => @conditions, :per_page => 10, :order => "login"
   end
 
   def new
@@ -14,16 +18,23 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    #默认不禁用
+    @user.disabled = 0
     @user.creator = current_user
     @user.modifier = current_user
 
     @user.save
     if @user.errors.empty?
-      flash.now[:notice] = "新增用户成功!"
-      @user = User.new
+      flash[:notice] = "新增用户成功!"
+      if params[:commit] == t('html.button.save')
+        @user = User.new
+        redirect_to new_user_path
+      else
+        redirect_to users_path
+      end
+    else
+      render :action => 'new'
     end
-    @list = User.all :order => "login"
-    render :action => 'new'
   end
 
   def edit
@@ -31,14 +42,37 @@ class UsersController < ApplicationController
   end
 
   def update
+    p params
     @user = User.find(params[:id])
     params[:user][:modifier] = current_user
     if @user.update_attributes(params[:user])
       flash[:notice] = "编辑用户成功!"
-      redirect_to new_user_path
+      redirect_to users_path
     else
       render :action => "new"
     end
+  end
+
+  def disable
+    @user = User.find(params[:id])
+    @user.update_attribute(:disabled, 1)
+    if @user.errors.empty?
+      flash[:notice] = "禁用用户成功"
+    else
+      flash[:notice] = "禁用用户失败"
+    end
+    redirect_to users_path
+  end
+
+  def enable
+    @user = User.find(params[:id])
+    @user.update_attribute(:disabled, 0)
+    if @user.errors.empty?
+      flash[:notice] = "启用用户成功"
+    else
+      flash[:notice] = "启用用户失败"
+    end
+    redirect_to users_path
   end
 
   def pass
