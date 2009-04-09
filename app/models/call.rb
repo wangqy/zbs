@@ -2,7 +2,8 @@ class Call < Event
   validates_presence_of :callnumber, :on => :save
 
   define_index do
-    indexes content
+    indexes :callnumber, :phone, :mobile
+    has :created_at, :id
     set_property :delta => true
   end
 

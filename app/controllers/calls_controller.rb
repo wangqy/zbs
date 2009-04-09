@@ -79,7 +79,9 @@ class CallsController < ApplicationController
 
   private
   def relate_list(call)
-    call.callnumber ? Call.history_of(call) : []
+    list = call.callnumber ? Call.search(call.callnumber, :order => :created_at): []
+    list.reject! {|c| c.id == call.id} unless call.new_record?
+    list
   end
 
 end
