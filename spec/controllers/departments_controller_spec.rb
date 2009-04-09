@@ -11,6 +11,17 @@ describe DepartmentsController do
     login_as :cogentsoft
   end
 
+  it "查询机构" do
+    get :index
+    response.should be_success
+  end
+
+  it "查看机构" do
+    d = departments(:劳动局)
+    get :show, :id => d 
+    response.should be_success
+  end
+
   it "新增机构" do
     lambda do
       create_department
@@ -29,6 +40,14 @@ describe DepartmentsController do
       assigns("department").name.should == "发改局"
       #p assigns[:department].modifier.realname
     end.should change(Department, :count).by(0)
+  end
+
+  it "删除机构" do
+    d = departments(:劳动局)
+    d.should_not be_nil
+    delete :destroy, :id => d
+    response.should be_redirect
+    flash[:notice].should have_text('删除成功')
   end
 
   #创建一个机构

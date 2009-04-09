@@ -115,4 +115,15 @@ class ActionView::Helpers::FormBuilder
     orig_select(method, choices, options, html_options)
   end
 
+  #生成枚举单选按钮
+  def radio_enum(method, enum=nil, options = {}, html_options = {})
+    enums = enum.nil? ?Enum.__send__(method):Enum.__send__(enum)
+    html = ""
+    enums.each do |v|
+      html += radio_button method, v[1]
+      html += label "#{method}_#{v[1]}", v[0]
+    end
+    html
+  end
+
 end

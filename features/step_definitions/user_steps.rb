@@ -44,3 +44,15 @@ end
   当 "我输入#{label}为#{value}"
   而且 "我点击保存,返回列表"
 end
+
+当 /我禁用第(\d+)个用户/ do |pos|
+  within("table.list > tr:nth-child(#{pos.to_i+1})") do
+    click_link '禁用'
+  end
+end
+
+当 /我启用第(\d+)个用户/ do |pos|
+  within("table.list > tr:nth-child(#{pos.to_i+1})") do
+    click_link '启用'
+  end
+end
