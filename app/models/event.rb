@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   belongs_to :creator, :class_name => "User"
   belongs_to :modifier, :class_name => "User"
 
-  validates_presence_of :timing, :title, :content
+  validates_presence_of :callnumber, :timing, :title, :content
   validates_length_of :title, :name, :phone, :mobile, :callnumber, :maximum => 20, :allow_nil => true
   validates_length_of :content, :maximum => 800, :allow_nil => true
   validates_length_of :address, :email, :maximum => 50, :allow_nil => true

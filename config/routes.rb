@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.home '/home', :controller => 'home'
 
-  map.resources :calls
+  map.resources :events
 
   map.resources :users
   map.custom '/personal/custom', :controller => 'users', :action => 'custom'
