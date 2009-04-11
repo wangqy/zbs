@@ -1,2 +1,2 @@
-module CallsHelper
+module EventsHelper
 end

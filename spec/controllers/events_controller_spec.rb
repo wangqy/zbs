@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe CallsController do
+describe EventsController do
   before(:each) do
     login_as :aaron
     @valid_call = {

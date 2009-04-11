@@ -1,10 +1,5 @@
 class Enum
   #try aen to get snippet
-  CATEGORY = [
-    %w{来电 来访 来函 传真 Email 电子政务交互 社区家园交互 其他}, 
-    %w{1    2    3    4    5     6            7            9   }
-  ]
-
   #办理方式
   HANDLE = [
     %w{转办 自己受理 受理 申请办结 退回 退回重办 直接办结 确认办结}, 

@@ -5,46 +5,46 @@
       %table.formin
         %tr
           %th 来电电话
-          %td=@call.callnumber
+          %td=@event.callnumber
           %th 来电时间
-          %td=@call.timing.to_s(:with_year)
+          %td=@event.timing.to_s(:with_year)
         %tr
           %th 来电人姓名
-          %td=@call.name
+          %td=@event.name
           %th 来电目的
-          %td=@call.aim_enum
+          %td=@event.aim_enum
         %tr
           %th 紧急程度
-          %td=@call.emergency_enum
+          %td=@event.emergency_enum
           %th 保密程度
-          %td=@call.security_enum
+          %td=@event.security_enum
         %tr
           %th 来电主题
-          %td{:colspan=>3}=@call.title
+          %td{:colspan=>3}=@event.title
         %tr
           %th 内容摘要
-          %td{:colspan=>3}=@call.content
+          %td{:colspan=>3}=@event.content
         %tr
           %th 事件分类
-          %td{:colspan=>3}=@call.kind_enum
+          %td{:colspan=>3}=@event.kind_enum
     %fieldset
       %legend 来电人详细信息
       %table.formin
         %tr
           %th 性别
-          %td=@call.sex_enum
+          %td=@event.sex_enum
           %th 联系电话
-          %td=@call.phone
+          %td=@event.phone
         %tr
           %th 电子邮箱
-          %td=@call.email
+          %td=@event.email
           %th 手机号码
-          %td=@call.mobile
+          %td=@event.mobile
         %tr
           %th 联系地址或单位
-          %td=@call.address
+          %td=@event.address
 
     %p.btns{:style=>"clear:left"}
       = link_to '返回', :back
 
-=render :partial => "calls/relate"
+=render :partial => "events/relate"

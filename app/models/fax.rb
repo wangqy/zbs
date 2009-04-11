@@ -1,0 +1,2 @@
+class Fax < Event
+end
