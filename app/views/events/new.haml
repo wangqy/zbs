@@ -18,7 +18,7 @@
             %a
               %span.badge{:title=>event.created_at.to_s(:with_year)}=event.created_at.to_s(:only_date)
               %span=event.name
-              %span=event_type event.class.to_s
+              %span=t_menu(event.class.to_s)
               %span=event.aim_enum
   :javascript
     j(".relate_btn").toggle(

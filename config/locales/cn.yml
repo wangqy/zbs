@@ -5,6 +5,14 @@ cn:
   activerecord:
     models:
       user: "用户"
+      call: "来电"
+      visit: "来访"
+      faxis: "传真"
+      letter: "来函"
+      email: "Email"
+      govsite: "政务交互"
+      comsite: "家园交互"
+      other: "其他"
     attributes:
       user:
         login: "用户名"

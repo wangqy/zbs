@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_menu
-    @menu = controller_name
+    @menu = (params[:type] ? params[:type].downcase.pluralize : controller_name)
   end
 
   #根据history属性handle判断,workitem的store_name存储的是用户名还是机构代码

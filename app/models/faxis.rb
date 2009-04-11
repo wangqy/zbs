@@ -1,0 +1,2 @@
+class Faxis < Event
+end

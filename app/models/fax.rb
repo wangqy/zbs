@@ -1,2 +1,0 @@
-class Fax < Event
-end
