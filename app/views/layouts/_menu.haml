@@ -1,4 +1,4 @@
-%li#t-menu.mainmenu{:class=>select_menu(menu)}
+%li.mainmenu{:class=>select_menu(menu),:id=>"#{menu}-menu"}
   -link_to new_path(menu) do
     ="#{t_menu(menu)}管理"
     %em more

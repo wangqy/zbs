@@ -10,8 +10,8 @@ cn:
       faxis: "传真"
       letter: "来函"
       email: "Email"
-      govsite: "政务交互"
-      comsite: "家园交互"
+      govsite: "政务网"
+      comsite: "家园网"
       other: "其他"
     attributes:
       user:
