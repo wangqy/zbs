@@ -1,17 +1,17 @@
 #mainbar
   .group
     %fieldset
-      %legend 查看来电信息
+      %legend 查看事件信息
       %table.formin
         %tr
-          %th 来电电话
+          %th=l(:callnumber)
           %td=@event.callnumber
-          %th 来电时间
+          %th=l(:timing)
           %td=@event.timing.to_s(:with_year)
         %tr
-          %th 来电人姓名
+          %th=l(:name)
           %td=@event.name
-          %th 来电目的
+          %th 目的
           %td=@event.aim_enum
         %tr
           %th 紧急程度
@@ -19,7 +19,7 @@
           %th 保密程度
           %td=@event.security_enum
         %tr
-          %th 来电主题
+          %th 主题
           %td{:colspan=>3}=@event.title
         %tr
           %th 内容摘要
@@ -28,7 +28,7 @@
           %th 事件分类
           %td{:colspan=>3}=@event.kind_enum
     %fieldset
-      %legend 来电人详细信息
+      %legend 联系人详细信息
       %table.formin
         %tr
           %th 性别

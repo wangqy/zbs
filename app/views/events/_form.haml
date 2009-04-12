@@ -1,15 +1,15 @@
 %fieldset
-  %legend 来电信息
+  %legend 事件信息
   %table.formin
     %tr
-      %th= f.label :callnumber, "来电电话 #{require_star}"
+      %th= f.label :callnumber, lr(:callnumber)
       %td= f.text_field :callnumber, :is_focus => true
-      %th= f.label :timing, "来电时间 #{require_star}"
+      %th= f.label :timing, lr(:timing)
       %td= f.calendar_date_select "timing", :time => true, :popup => :force, :class => "calendar"
     %tr
-      %th= f.label :name, "来电人姓名"
+      %th= f.label :name, l(:name)
       %td= f.text_field :name
-      %th= f.label :aim, "来电目的"
+      %th= f.label :aim, "目的"
       %td= f.select :aim
     %tr
       %th= f.label :emergency, "紧急程度"
@@ -17,7 +17,7 @@
       %th= f.label :security, "保密程度"
       %td= f.select :security
     %tr
-      %th= f.label :title, "来电主题 #{require_star}"
+      %th= f.label :title, "主题 #{require_star}"
       %td{:colspan=>3}= f.text_field :title, :class => "long"
     %tr
       %th= f.label :content, "内容摘要 #{require_star}"
@@ -26,7 +26,7 @@
       %th= f.label :kind, "事件分类"
       %td{:colspan=>3}= f.select :kind
 %fieldset
-  %legend 来电人详细信息
+  %legend 联系人详细信息
   %table.formin
     %tr
       %th= f.label :sex, "性别"
