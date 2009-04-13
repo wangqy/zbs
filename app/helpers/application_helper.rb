@@ -9,6 +9,24 @@ module ApplicationHelper
     @menu == menu
   end
 
+  #@param "calls"
+  #@return new_call_path
+  def new_path(menu)
+    send("new_#{menu.singularize}_path")
+  end
+
+  #@param "calls"
+  #@return new_call_path
+  def index_path(menu)
+    send("#{menu}_path")
+  end
+
+  #@param "calls"
+  #@return 来电
+  def t_menu(menu)
+    t('activerecord.models.' + menu.downcase.singularize)
+  end
+
   def is_admin?(user=nil)
     if user.nil?
       user = current_user
@@ -44,16 +62,6 @@ module ApplicationHelper
   #必填
   def require_star
     content_tag :span, "*", :class => "required"
-  end
-
-  #事件类型
-  def event_type(type)
-    case type
-    when "Call"
-      "来电"
-    when "Visit"
-      "来访"
-    end
   end
   
 end

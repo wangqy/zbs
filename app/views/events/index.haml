@@ -3,9 +3,9 @@
     %legend 查询条件
     #quick-search-bar
       -form_tag calls_path, :method=>:get do
-        =label_tag :callnumber, '来电号码'
+        =label_tag :callnumber, l(:callnumber)
         =text_field_tag :callnumber, params[:callnumber]
-        =label_tag :name, '来电人姓名'
+        =label_tag :name, l(:name)
         =text_field_tag :name, params[:name]
         =submit_tag '查询'
 .group
@@ -13,11 +13,11 @@
     %legend 查询结果
     %table.list
       %tr
-        %th 来电编号
-        %th 来电主题
-        %th 来电人
-        %th 来电电话
-        %th 来电时间
+        %th=l(:calltag)
+        %th=l(:title)
+        %th=l(:name)
+        %th=l(:callnumber)
+        %th=l(:timing)
         %th 登记人
         %th 操作
       - @list.each do |call|

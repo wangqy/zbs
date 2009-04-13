@@ -1,0 +1,2 @@
+class Comsite < Event
+end

@@ -1,0 +1,2 @@
+class Govsite < Event
+end

@@ -9,9 +9,9 @@ class CreateEvents < ActiveRecord::Migration
       t.string :title, :null => false, :limit => 20
       #内容摘要
       t.string :content, :null => false, :limit => 800
-      #事件类型:来电,来访等(Rails自动设置)
+      #事件类型(来电,来访,来函,传真等)
       t.string :type, :null => false, :limit => 10
-      #(来电)目的,紧急程度,保密程度,事件分类
+      #目的,紧急程度,保密程度,事件分类
       t.integer :aim, :emergency, :security, :kind, :limit => 2
 
       #姓名,联系电话,手机号码,Email

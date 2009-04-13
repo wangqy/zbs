@@ -7,14 +7,14 @@
       %td{:colspan=>3}
       %td.sub_title="编号:#{@event.calltag}"
     %tr
-      %th 来电电话
+      %th=el(:callnumber)
       %td=@event.callnumber
-      %th 来电时间
+      %th=el(:timing)
       %td=@event.timing.to_s(:with_year)
     %tr
-      %th 来电人姓名
+      %th=el(:name)
       %td=@event.name
-      %th 来电目的
+      %th 目的
       %td=@event.aim_enum
     %tr
       %th 紧急程度
@@ -28,7 +28,7 @@
       %th 事件分类
       %td{:colspan=>3}=@event.kind_enum
 %fieldset
-  %legend 来电人详细信息
+  %legend 联系人详细信息
   %table.formin
     %tr
       %th 性别

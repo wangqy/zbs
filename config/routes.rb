@@ -7,15 +7,15 @@ ActionController::Routing::Routes.draw do |map|
 
   map.home '/home', :controller => 'home'
 
-  map.resources :calls
-  
-  map.resources :logs
+  #define in config/initializers/route.rb
+  map.event_resources :calls, :visits, :letters, :emails, :faxes, :govsites, :comsites, :others
 
   map.resources :users
   map.custom '/personal/custom', :controller => 'users', :action => 'custom'
   map.pass '/pass', :controller => 'users', :action => 'pass'
 
   map.resources :departments
+  map.resources :logs
 
   map.resource :session
 

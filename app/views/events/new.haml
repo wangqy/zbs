@@ -1,9 +1,9 @@
 #mainbar
   .group
-    =error_messages_for :call
-    -form_for @call do |f|
+    =error_messages_for params[:type]
+    -form_for :event, @event, :url => "/#{params[:type].downcase}s" do |f|
       =f.hidden_field :case_id
-      =render :partial => "calls/form", :locals => {:f => f}
+      =render :partial => "events/form", :locals => {:f => f}
 #sbar
   .proj-desc
     %p 以下显示以往可能相关的情况及其事件列表,当前反映情况与以之相同时,请点击"关联"按钮
@@ -18,7 +18,7 @@
             %a
               %span.badge{:title=>event.created_at.to_s(:with_year)}=event.created_at.to_s(:only_date)
               %span=event.name
-              %span=event_type event.class.to_s
+              %span=t_menu(event.class.to_s)
               %span=event.aim_enum
   :javascript
     j(".relate_btn").toggle(

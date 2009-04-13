@@ -1,10 +1,8 @@
-body {
-  font-size: 14px; }
-
 #main {
   width: 98%; }
   #main #main-content {
-    padding-right: 0; }
+    padding-right: 0;
+    font-size: 14px; }
     #main #main-content #mainbar {
       float: left;
       width: 70%; }
@@ -111,6 +109,3 @@ fieldset {
   width: 200px;
   font-size: 20px;
   padding: 4px 15px; }
-
-#project-nav ul.submenu li a {
-  font-size: 12px; }
