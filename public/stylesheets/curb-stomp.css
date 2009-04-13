@@ -1,0 +1,68 @@
+.clear {height: 1px;}
+
+/* css diff
+#content {
+  width: 1000px;
+}
+*/
+
+/* Scootz over please */
+#main {
+  padding-left: 0px;
+}
+
+/* css diff */
+.mainmenu em {
+  top: 8px;
+}
+
+.calendar {
+  width: 178px !important;
+  font-size: 20px;
+  padding: 3px 0;
+}
+
+#sbar {
+  margin-left: 75%;
+}
+
+/* move two paces to the right */
+div.ticket-meta {
+  width: 80px;
+}
+
+/* Set the nav in the right spot */
+#nav ul {
+  height: 33px;
+}
+
+/* Why so much space */
+.link-list li, .link-list li a {
+  margin: 0;
+  padding: 0;
+  line-height: 100% !important;
+  display: inline;
+}
+
+.link-list li a {
+  display: block;
+}
+
+/* Fix huge titles */
+#select h4, .changes h4 {
+  font-size: 90%;
+}
+
+/* Come on now, where did that border come from? */
+#options li {
+  border: none;
+}
+
+#ticket_state, #ticket_tag {
+  z-index: -9999;
+}
+
+/* Make them links white. */
+.paging li a {
+  color: #fff !important;
+}

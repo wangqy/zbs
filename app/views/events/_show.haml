@@ -2,7 +2,7 @@
   %legend 事件信息
   %table.formin
     %tr
-      %td.title{:colspan=>4}=@event.title
+      %td.title{:colspan=>4,:class=>"last"}=@event.title
     %tr
       %td{:colspan=>3}
       %td.sub_title="编号:#{@event.calltag}"
@@ -23,10 +23,10 @@
       %td=@event.security_enum
     %tr
       %th 内容摘要
-      %td{:colspan=>3}=@event.content
+      %td{:colspan=>3,:class=>"last"}=@event.content
     %tr
       %th 事件分类
-      %td{:colspan=>3}=@event.kind_enum
+      %td{:colspan=>3,:class=>"last"}=@event.kind_enum
 %fieldset
   %legend 联系人详细信息
   %table.formin
@@ -42,4 +42,4 @@
       %td=@event.mobile
     %tr
       %th 联系地址或单位
-      %td=@event.address
+      %td{:colspan=>3,:class=>"last"}=@event.address

@@ -1,15 +1,23 @@
 #main {
-  width: 98%; }
+  width: 98%;
+  margin-left: 5px; }
   #main #main-content {
     padding-right: 0;
-    font-size: 14px; }
+    font-size: 14px;
+    /* 
+     * td
+     * :width 280px
+     * th
+     * :width 120px */ }
     #main #main-content #mainbar {
       float: left;
       width: 70%; }
     #main #main-content #sbar {
       margin-right: 1px;
       background: #ddd;
-      padding: 2px; }
+      padding: 2px;
+      margin-left: 70%;
+      height: 630px; }
       #main #main-content #sbar p {
         font-size: 14px;
         line-height: 20px; }
@@ -20,13 +28,10 @@
         line-height: 20px; }
     #main #main-content .group table {
       width: 100%; }
-    #main #main-content td {
-      width: 280px; }
-    #main #main-content th {
-      width: 120px; }
 
 #footer {
-  width: 98%; }
+  width: 98%;
+  margin-left: 5px; }
 
 fieldset {
   margin-bottom: 5px; }
@@ -46,7 +51,7 @@ fieldset {
   #quick-search-bar input {
     font-size: 14px; }
   #quick-search-bar input[type='submit'] {
-    width: 100px;
+    width: 80px;
     font-weight: bold; }
 
 .formin .title, .formpass .title {
@@ -60,27 +65,30 @@ fieldset {
 .formin th, .formpass th {
   background-color: #f1f1f1;
   padding-right: 5px;
-  width: 120px;
+  width: 100px;
   text-align: right;
   font-size: 14px; }
 .formin td, .formpass td {
-  width: 280px; }
+  width: 200px; }
+.formin .last, .formpass .last {
+  width: 500px; }
 .formin input, .formpass input {
-  width: 200px;
+  width: 190px;
   font-size: 16px;
   border-width: 1px;
   border-color: #CCCCCC; }
 .formin input.long, .formpass input.long {
-  width: 587px; }
+  width: 510px; }
 .formin .calendar, .formpass .calendar {
   width: 182px;
   font-size: 20px;
   padding: 3px 0;
   float: left; }
 .formin select, .formpass select {
-  width: 200px; }
-.formin input[type=radio], .formpass input[type=radio] {
-  margin-left: 10px; }
+  width: 190px; }
+.formin .radio, .formpass .radio {
+  margin-left: 10px;
+  width: 10px; }
 .formin textarea, .formpass textarea {
   font-size: 16px;
   border-width: 1px;
@@ -88,10 +96,11 @@ fieldset {
   overflow: auto; }
 .formin .show_by_other, .formpass .show_by_other {
   display: none; }
-.formin table, .formpass table {
-  width: 100%; }
 .formin .fieldWithErrors, .formpass .fieldWithErrors {
   color: red; }
+
+.group {
+  margin-right: 10px; }
 
 .formpass input[type=submit] {
   font-size: 16px;

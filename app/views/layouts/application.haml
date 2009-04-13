@@ -5,6 +5,10 @@
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %title 数字值班室
     =stylesheet_link_tag "core", "facebox", "default"
+    / [if lt IE 7]
+      =stylesheet_link_tag "curb-stomp"
+    / [if gte IE 7]
+      =stylesheet_link_tag "ie7"
     =javascript_include_tag "prototype", "jquery", "facebox", "application" 
     =calendar_date_select_includes "blue"
 
@@ -37,17 +41,19 @@
                 %li#u-menu.mainmenu{:class=>"#{select_menu('users')}"}
                   -%w{users departments}.each do |menu|
                     =render :partial => "layouts/menu", :locals => { :menu => menu }
-              -%w{calls visits faxes letters emails govsites comsites others}.each do |menu|
-                =render :partial => "layouts/menu", :locals => { :menu => menu }
-              %li{:class=>select_menu('dispatches')}
-                =link_to '事件调度', dispatches_path
+              - else
+                -%w{calls visits faxes letters emails govsites comsites others}.each do |menu|
+                  =render :partial => "layouts/menu", :locals => { :menu => menu }
+                %li{:class=>select_menu('dispatches')}
+                  =link_to '事件调度', dispatches_path
           #action-nav
             %ul.clear
               - if is_admin? || ismanager?
                 -%w{users departments}.each do |menu|
                   =render :partial => "layouts/submenu", :locals => { :menu => menu }
-              -%w{calls visits faxes letters emails govsites comsites others}.each do |menu|
-                =render :partial => "layouts/submenu", :locals => { :menu => menu }
+              - else
+                -%w{calls visits faxes letters emails govsites comsites others}.each do |menu|
+                  =render :partial => "layouts/submenu", :locals => { :menu => menu }
           -flash.each do |key, msg|
             =content_tag :div, msg, :id => "flash-#{key}"
           #main-content

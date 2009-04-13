@@ -1,6 +1,7 @@
 module ActionView::Helpers::FormTagHelper
   alias_method :orig_radio_button_tag, :radio_button_tag
   def radio_button_tag(name, value, checked = false, options = {})
+    options.merge! :class => "radio"
     #history[:handle]
     regexp_name = name.to_s.match(/(.*)\[:*(.*)\]/)
     first_pretty_name = regexp_name[1]

@@ -5,6 +5,7 @@ cn:
   activerecord:
     models:
       user: "用户"
+      department: "机构"
       call: "来电"
       visit: "来访"
       faxis: "传真"
@@ -33,7 +34,7 @@ cn:
         address: "联系地址或单位"
       visit:
         calltag: "编号"
-        callnumber: "来访人联系电话"
+        callnumber: "来访人电话"
         timing: "来访时间"
         title: "主题"
         name: "来访人姓名"

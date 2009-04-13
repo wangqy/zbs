@@ -21,7 +21,7 @@
       %td{:colspan=>3}= f.text_field :title, :class => "long"
     %tr
       %th= f.label :content, "内容摘要 #{require_star}"
-      %td{:colspan=>3}= f.text_area :content, :rows => 5, :cols=> 57
+      %td{:colspan=>3}= f.text_area :content, :rows => 5, :cols=> 49
     %tr
       %th= f.label :kind, "事件分类"
       %td{:colspan=>3}= f.select :kind
@@ -40,7 +40,7 @@
       %td= f.text_field :mobile
     %tr
       %th= f.label :address, "联系地址或单位"
-      %td= f.text_field :address
+      %td{:colspan=>3}= f.text_field :address, :class => "long"
 
 %p.btns{:style=>"clear:left"}
   = submit_tag t('html.button.save'), :disable_with => t('html.saving')

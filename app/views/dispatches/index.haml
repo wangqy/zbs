@@ -1,19 +1,17 @@
 .group
-  %fieldset
-    %legend 事件列表
-    %table.list
+  %table.list
+    %tr
+      %th 事件编号
+      %th 事件主题
+      %th 登记时间
+      %th 登记人
+      %th 操作
+    - @list.each do |event|
       %tr
-        %th 事件编号
-        %th 事件主题
-        %th 登记时间
-        %th 登记人
-        %th 操作
-      - @list.each do |event|
-        %tr
-          %td=event.calltag
-          %td=event.title
-          %td=event.created_at.to_s(:without_year)
-          %td=event.creator.realname
-          %td=link_to '办理', new_dispatch_path(:id=>event.id)
-    =will_paginate @list
+        %td=event.calltag
+        %td=event.title
+        %td=event.created_at.to_s(:without_year)
+        %td=event.creator.realname
+        %td=link_to '办理', new_dispatch_path(:id=>event.id)
+  =will_paginate @list
 
