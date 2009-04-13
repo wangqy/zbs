@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   belongs_to :department
 
-  validates_presence_of     :login, :realname, :telephone
+  validates_presence_of     :login, :realname, :telephone, :department_id
   validates_uniqueness_of   :login, :case_sensitive => false
   validates_length_of       :realname, :maximum => 10
   validates_length_of       :telephone,:maximum => 20

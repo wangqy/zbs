@@ -18,7 +18,7 @@
         %th{:width=>'140'} 部门
         %th{:width=>'120'} 负责人
         %th 办公电话
-        %th{:width=>'120'} 操作
+        %th{:width=>'100'} 操作
       - @page.each do |user|
         %tr
           %td=user.login

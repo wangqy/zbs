@@ -61,15 +61,6 @@
                     =link_to '新增机构', new_department_path
                   %li.bin.shared
                     =link_to '查询机构', departments_path
-              %li#p-menu.mainmenu{:class=>select_menu('personal')}
-                -link_to custom_path do
-                  个人设置
-                  %em more
-                %ul.submenu.wbadges{:style=>"display:none"}
-                  %li.bin.shared
-                    =link_to '个人设置', new_department_path
-                  %li.bin.shared
-                    =link_to '修改密码', departments_path
               %li
                 =link_to '新增来访', new_user_path
               %li
@@ -78,6 +69,8 @@
                 =link_to '新增来函', new_user_path
               %li{:class=>select_menu('dispatches')}
                 =link_to '事件调度', dispatches_path
+              %li{:class=>select_menu('logs')}
+                =link_to '操作日志',logs_path 
           #action-nav
             %ul.clear
               -if is_menu("calls")

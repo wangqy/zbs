@@ -1,0 +1,22 @@
+.group
+  %fieldset
+    %legend 日志列表
+    %table.list
+      %tr
+        %th{:width=>"100"} 模块名称
+        %th{:width=>"100"} 操作类型
+        %th{:width=>"100"} 操作人员
+        %th{:width=>"160"} 操作时间
+        %th IP地址
+        %th{:width=>"60"} 操作
+      - @list.each do |log|
+        %tr
+          %td=t('activerecord.models.' + log.modulename.downcase)
+          %td=log.operate_enum_op
+          %td=log.operator.realname
+          %td=log.operatedate.to_s(:full)
+          %td=log.ip
+          %td
+            =link_to t('html.link.view'), log
+    #pagination
+      =will_paginate @list

@@ -1,3 +1,15 @@
+CREATE TABLE `cases` (
+  `id` int(11) NOT NULL auto_increment,
+  `callnumber` varchar(20) NOT NULL,
+  `phone` varchar(20) default NULL,
+  `mobile` varchar(20) default NULL,
+  `content` varchar(800) NOT NULL,
+  `delta` tinyint(1) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `departments` (
   `id` int(11) NOT NULL auto_increment,
   `code` varchar(10) default NULL,
@@ -36,6 +48,7 @@ CREATE TABLE `events` (
   `calltag` varchar(20) NOT NULL,
   `creator_id` int(11) NOT NULL,
   `modifier_id` int(11) NOT NULL,
+  `case_id` int(11) default NULL,
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
@@ -55,6 +68,20 @@ CREATE TABLE `histories` (
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `logs` (
+  `id` int(11) NOT NULL auto_increment,
+  `operate` int(11) default NULL,
+  `modulename` varchar(10) default NULL,
+  `content` varchar(120) default NULL,
+  `objectid` int(11) default NULL,
+  `operatedate` datetime default NULL,
+  `ip` varchar(15) default NULL,
+  `operator_id` int(11) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `schema_migrations` (
   `version` varchar(255) NOT NULL,
@@ -105,3 +132,7 @@ INSERT INTO schema_migrations (version) VALUES ('20090325012404');
 INSERT INTO schema_migrations (version) VALUES ('20090331122950');
 
 INSERT INTO schema_migrations (version) VALUES ('20090331125107');
+
+INSERT INTO schema_migrations (version) VALUES ('20090409075821');
+
+INSERT INTO schema_migrations (version) VALUES ('20090410054847');

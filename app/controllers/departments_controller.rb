@@ -15,6 +15,7 @@ class DepartmentsController < ApplicationController
     @department = Department.find(params[:id])
     if @department.destroy
       flash[:notice] = '删除成功'
+      Log.delete @department, current_user, request.remote_ip
       redirect_to departments_path
     elsif
       flash[:notice] = '删除失败'
@@ -33,6 +34,7 @@ class DepartmentsController < ApplicationController
 
     if @department.save
       flash[:notice] = '保存成功.'
+      Log.create @department, current_user, request.remote_ip
       if params[:commit]==t('html.button.save')
         redirect_to new_department_path
       else
@@ -53,6 +55,7 @@ class DepartmentsController < ApplicationController
     params[:department][:modifier] = current_user
     if @department.update_attributes(params[:department])
       flash.now[:notice] = '更新成功.'
+      Log.update @department, current_user, request.remote_ip
       if params[:commit]==t('html.button.save')
         redirect_to new_department_path
       else

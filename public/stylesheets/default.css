@@ -22,10 +22,10 @@ body {
         line-height: 20px; }
     #main #main-content .group table {
       width: 100%; }
-    #main #main-content td {
+    #main #main-content table[class=''] td {
       width: 280px; }
-    #main #main-content th {
-      width: 120px; }
+    #main #main-content table[class=''] th {
+      width: 100px; }
 
 #footer {
   width: 98%; }

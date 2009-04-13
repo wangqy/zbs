@@ -5,6 +5,7 @@ cn:
   activerecord:
     models:
       user: "用户"
+      department: "机构"
     attributes:
       user:
         login: "用户名"
@@ -57,3 +58,22 @@ cn:
       disable: "确定要禁用用户吗?"
       enable: "确定要启用用户吗?"
 
+  msg:
+    create:
+      success: "新增{{model}}成功"
+      failure: "新增{{model}}失败"
+    update:
+      success: "更新{{model}}成功"
+      failure: "更新{{model}}失败"
+    delete:
+      success: "删除{{model}}成功"
+      failure: "删除{{model}}失败"
+    disable:
+      success: "禁用{{model}}成功"
+      failure: "禁用{{model}}失败"
+    enable:
+      success: "启用{{model}}成功"
+      failure: "启用{{model}}失败"
+    pass:
+      success: "修改{{model}}密码成功"
+      failure: "修改{{model}}密码失败"

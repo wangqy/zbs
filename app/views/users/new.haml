@@ -14,7 +14,7 @@
           %td= f.text_field 'realname'
           %th= f.label :sex, "性别"
           %td
-            = f.radio_enum :sex
+            = f.radio_enum :sex, 'sex'
         %tr
           %th= f.label :department_id, "部门 #{require_star}"
           %td= f.select :department_id, Department.all.collect{|d| [d.name, d.id]}, :include_blank => true

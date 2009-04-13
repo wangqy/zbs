@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   layout 'facebox', :only => ["pass", "updatepass"]
   layout 'application', :only => ["index", "new", "create", "edit", "update", "custom", "customed"]
 
-  # render new.rhtml
-
+  #列表
   def index
     @conditions = condition params, "user"
     if params[:user].nil?
@@ -12,10 +11,12 @@ class UsersController < ApplicationController
     @page = User.paginate :page => params[:page], :conditions => @conditions, :per_page => 10, :order => "login"
   end
 
+  #新增
   def new
     @user = User.new
   end
 
+  #保存
   def create
     @user = User.new(params[:user])
     #默认不禁用
@@ -25,7 +26,8 @@ class UsersController < ApplicationController
 
     @user.save
     if @user.errors.empty?
-      flash[:notice] = "新增用户成功!"
+      flash[:notice] = m('user.create.success') 
+      Log.create @user, current_user, request.remote_ip
       if params[:commit] == t('html.button.save')
         @user = User.new
         redirect_to new_user_path
@@ -37,55 +39,75 @@ class UsersController < ApplicationController
     end
   end
 
+  #编辑
   def edit
     @user = User.find_by_id(params[:id])
   end
 
+  #更新
   def update
-    p params
     @user = User.find(params[:id])
     params[:user][:modifier] = current_user
     if @user.update_attributes(params[:user])
-      flash[:notice] = "编辑用户成功!"
+      flash[:notice] = m('user.update.success')
+      Log.update @user, current_user, request. remote_ip
       redirect_to users_path
     else
       render :action => "new"
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    if @user.errors.empty?
+      flash[:notice] = m('user.delete.success')
+    else
+      flash[:notice] = m('user.delete.failure')
+    end
+    redirect_to users_path
+  end
+
+  #禁用
   def disable
     @user = User.find(params[:id])
     @user.update_attribute(:disabled, 1)
     if @user.errors.empty?
-      flash[:notice] = "禁用用户成功"
+      Log.disable @user, current_user, request.remote_ip
+      flash[:notice] = m('user.disable.success')
     else
-      flash[:notice] = "禁用用户失败"
+      flash[:notice] = m('user.disable.success')
     end
     redirect_to users_path
   end
 
+  #启用
   def enable
     @user = User.find(params[:id])
     @user.update_attribute(:disabled, 0)
     if @user.errors.empty?
-      flash[:notice] = "启用用户成功"
+      Log.enable @user, current_user, request.remote_ip
+      flash[:notice] = m('user.enable.success')
     else
-      flash[:notice] = "启用用户失败"
+      flash[:notice] = m('user.enable.failure')
     end
     redirect_to users_path
   end
 
+  #修改密码
   def pass
     @user = User.new
   end
 
+  #更新密码
   def updatepass
     @user = User.find(current_user)
     params[:user][:modifier] = current_user
     #p params
     #p user
     if @user.update_attributes(params[:user])
-      flash.now[:notice] = "密码修改成功"
+      Log.pass @user, current_user, request.remote_ip
+      flash.now[:notice] = m('user.pass.success')
       render :partial => "update_success"
       #redirect_to root_path
     else
