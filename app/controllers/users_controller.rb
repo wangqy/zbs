@@ -103,7 +103,6 @@ class UsersController < ApplicationController
   def updatepass
     @user = User.find(current_user)
     params[:user][:modifier] = current_user
-    #p params
     #p user
     if @user.update_attributes(params[:user])
       Log.pass @user, current_user, request.remote_ip
