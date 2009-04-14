@@ -16,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :departments
   map.resources :logs
+  map.resources :notices
 
   map.resource :session
 

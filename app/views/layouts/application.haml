@@ -35,7 +35,7 @@
                 =link_to '待办事项', workitems_path
               - if is_admin? || ismanager?
                 %li#u-menu.mainmenu{:class=>"#{select_menu('users')}"}
-                  -%w{users departments}.each do |menu|
+                  -%w{users departments notices}.each do |menu|
                     =render :partial => "layouts/menu", :locals => { :menu => menu }
               -%w{calls visits faxes letters emails govsites comsites others}.each do |menu|
                 =render :partial => "layouts/menu", :locals => { :menu => menu }

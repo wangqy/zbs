@@ -41,21 +41,35 @@ class ApplicationController < ActionController::Base
       end
   end
 
-  #获取查询sql
+  #获取查询sql,integer用=匹配,其他均用like匹配
   #@param params
   #@name  name[queryField]
   #@return ["1=1 and field like ?", "%fieldValue%"]
   def condition(param, name)
+    modelName =  controller_name.capitalize.singularize
+    c = eval modelName
     conditions = []
     conditions[0] = "1=1"
     unless param[name].nil?
       param[name].keys.each do |key|
         unless param[name][key].blank?
-          conditions[0] += " and #{key} like ?"
-          conditions<<"%#{param[name][key]}%"
+          c_h = c.columns_hash
+          if c_h.has_key? key
+            t = c_h[key].type.to_s
+          else
+            t = 'string'
+          end
+          unless t == 'integer'
+            conditions[0] += " and #{key} like ?"
+            conditions<<"%#{param[name][key]}%"
+          else
+            conditions[0] += " and #{key} = ?"
+            conditions<<"#{param[name][key]}"
+          end
         end
       end
     end
+    p conditions
     conditions
   end
 

@@ -17,6 +17,10 @@
     url = departments_path
   when "机构新增"
     url = new_department_path
+  when "公告管理"
+    url = notices_path
+  when "公告新增"
+    url = new_notice_path
   end
   raise 'visit url is blank' if url.blank?
   visit url

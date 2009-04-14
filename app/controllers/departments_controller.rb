@@ -4,7 +4,7 @@ class DepartmentsController < ApplicationController
     if params[:department].nil?
       params[:department] = {}
     end
-    @list = Department.paginate :per_page =>1, :conditions => @conditions, :page => params[:page], :order => 'created_at DESC'
+    @list = Department.paginate :per_page =>10, :conditions => @conditions, :page => params[:page], :order => 'created_at DESC'
   end
 
   def show
@@ -14,11 +14,11 @@ class DepartmentsController < ApplicationController
   def destroy
     @department = Department.find(params[:id])
     if @department.destroy
-      flash[:notice] = '删除成功'
+      flash[:notice] = m('department.delete.success')
       Log.delete @department, current_user, request.remote_ip
       redirect_to departments_path
     elsif
-      flash[:notice] = '删除失败'
+      flash[:notice] = m('department.delete.failure')
       redirect_to departments_path
     end
   end
@@ -33,7 +33,7 @@ class DepartmentsController < ApplicationController
     @department.modifier = current_user
 
     if @department.save
-      flash[:notice] = '保存成功.'
+      flash[:notice] = m('department.create.success')
       Log.create @department, current_user, request.remote_ip
       if params[:commit]==t('html.button.save')
         redirect_to new_department_path
@@ -54,7 +54,7 @@ class DepartmentsController < ApplicationController
     @department = Department.find(params[:id])
     params[:department][:modifier] = current_user
     if @department.update_attributes(params[:department])
-      flash.now[:notice] = '更新成功.'
+      flash[:notice] = m('department.update.success')
       Log.update @department, current_user, request.remote_ip
       if params[:commit]==t('html.button.save')
         redirect_to new_department_path

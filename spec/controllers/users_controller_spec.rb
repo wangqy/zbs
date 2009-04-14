@@ -37,6 +37,7 @@ describe UsersController do
     flash[:notice].should have_text('修改用户密码成功')
     assigns[:user].errors.should be_empty
     response.should render_template('users/_update_success')
+    User.authenticate('cogentsoft','111111').should == users(:cogentsoft)
     response.should be_success
   end
 

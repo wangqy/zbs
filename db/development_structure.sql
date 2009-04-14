@@ -25,7 +25,7 @@ CREATE TABLE `departments` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `events` (
   `id` int(11) NOT NULL auto_increment,
@@ -81,7 +81,21 @@ CREATE TABLE `logs` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `notices` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(120) default NULL,
+  `content` varchar(800) default NULL,
+  `deployed` int(11) default NULL,
+  `creator_id` int(11) default NULL,
+  `modifier_id` int(11) default NULL,
+  `deployee_id` int(11) default NULL,
+  `deployed_at` datetime default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `schema_migrations` (
   `version` varchar(255) NOT NULL,
@@ -110,7 +124,7 @@ CREATE TABLE `users` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `workitems` (
   `id` int(11) NOT NULL auto_increment,
@@ -136,3 +150,5 @@ INSERT INTO schema_migrations (version) VALUES ('20090331125107');
 INSERT INTO schema_migrations (version) VALUES ('20090409075821');
 
 INSERT INTO schema_migrations (version) VALUES ('20090410054847');
+
+INSERT INTO schema_migrations (version) VALUES ('20090414032432');
