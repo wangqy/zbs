@@ -104,9 +104,10 @@ ActiveRecord::Schema.define(:version => 20090414032432) do
     t.string   "salt",                      :limit => 40
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
-    t.string   "realname"
+    t.string   "realname",                                 :null => false
     t.integer  "sex"
-    t.integer  "department_id"
+    t.integer  "department_id",                            :null => false
+    t.integer  "role",                                     :null => false
     t.string   "position"
     t.string   "telephone",                 :limit => 20
     t.string   "mobile",                    :limit => 20

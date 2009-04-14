@@ -36,6 +36,8 @@
           %td
             = f.text_field :position
         %tr
+          %th= f.label :role, "角色 #{require_star}"
+          %td= f.select :role
           %th= f.label :ismanager, "是否负责人"
           %td{:colspan=>3}= f.check_box :ismanager, {}, "1", "0"
         %tr

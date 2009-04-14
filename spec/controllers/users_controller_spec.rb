@@ -31,6 +31,14 @@ describe UsersController do
       response.should be_success
     end.should_not change(User, :count)
   end
+
+  it 'requires role' do
+    lambda do
+      create_user(:role => nil)
+      assigns[:user].errors.on(:role).should_not be_nil
+      response.should be_success
+    end.should_not change(User, :count)
+  end
   
   it 'allows modify password' do
     modify_password
@@ -67,7 +75,8 @@ describe UsersController do
       :telephone => '26741022',
       :password => 'quire',
       :disabled => '0',
-      :department_id => '0'
+      :department_id => '0',
+      :role => 1
     }.merge(options)
   end
 

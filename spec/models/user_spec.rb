@@ -83,7 +83,8 @@ protected
       :password => 'quire',
       :realname => 'quire',
       :telephone => '26741022',
-      :department_id => 0
+      :department_id => 0,
+      :role => 1
     }.merge(options))
     record.save
     record

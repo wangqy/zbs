@@ -29,13 +29,9 @@
           %td
             =link_to t('html.link.edit'), edit_user_path(user)
             -if user.disabled==0
-              -if !is_admin?(user)
-                =link_to t('html.link.disable'),{:action => 'disable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.disable')}')"}
+              =link_to t('html.link.disable'),{:action => 'disable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.disable')}')"}
             -else
-              -if !is_admin?(user)
-                =link_to t('html.link.enable'),{:action => 'enable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.enable')}')"}
-            -if !is_admin?(user)
-              =link_to t('html.link.delete'), user, :confirm => t('confirm.delete'), :method => :delete
+              =link_to t('html.link.enable'),{:action => 'enable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.enable')}')"}
     #paginate{:style => 'text-align:right;'}
       =will_paginate @page
 

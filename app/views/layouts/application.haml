@@ -39,17 +39,19 @@
             %ul
               %li#t-proj{:class=>select_menu('home')}
                 =link_to '首页', home_path
-              %li#workitem-menu{:class=>select_menu('workitems')}
-                =link_to '待办事项', workitems_path
-              - if is_admin? || ismanager?
+              - if is_admin?
                 %li#u-menu.mainmenu{:class=>"#{select_menu('users')}"}
                   -%w{users departments notices logs}.each do |menu|
                     =render :partial => "layouts/menu", :locals => { :menu => menu }
+              - elsif is_depart_person? || is_dispatch_person?
+                %li#workitem-menu{:class=>select_menu('workitems')}
+                  =link_to '待办事项', workitems_path
+                - if is_dispatch_person?
+                  %li{:class=>select_menu('dispatches')}
+                    =link_to '事件调度', dispatches_path
               - else
                 -%w{calls visits faxes letters emails govsites comsites others}.each do |menu|
                   =render :partial => "layouts/menu", :locals => { :menu => menu }
-                %li{:class=>select_menu('dispatches')}
-                  =link_to '事件调度', dispatches_path
           #action-nav
             %ul.clear
               - if is_admin? || ismanager?

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   belongs_to :department
 
-  validates_presence_of     :login, :realname, :telephone, :department_id
+  validates_presence_of     :login, :realname, :telephone, :department_id, :role
   validates_uniqueness_of   :login, :case_sensitive => false
   validates_length_of       :realname, :maximum => 10
   validates_length_of       :telephone,:maximum => 20
@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
   
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :password, :realname, :telephone, :mobile, :position, :ismanager, :sex, :remark, :fax, :department_id, :email, :modifier, :disabled
+  # =========== 新加字段时注意要修改此处 ============
+  attr_accessible :login, :password, :realname, :telephone, :mobile, :position, :ismanager, :sex, :remark, :fax, :department_id, :email, :modifier, :disabled, :role
 
   def validate_on_create
     if password.blank?
