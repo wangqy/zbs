@@ -4,7 +4,7 @@ class DepartmentsController < ApplicationController
     if params[:department].nil?
       params[:department] = {}
     end
-    @list = Department.paginate :per_page =>1, :conditions => @conditions, :page => params[:page], :order => 'created_at DESC'
+    @list = Department.paginate :page => params[:page], :conditions => @conditions, :page => params[:page], :order => 'created_at DESC'
   end
 
   def show
