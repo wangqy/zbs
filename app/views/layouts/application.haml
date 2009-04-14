@@ -37,7 +37,9 @@
         #main
           #project-nav
             %ul
-              %li#t-proj{:class=>select_menu('workitems')}
+              %li#t-proj{:class=>select_menu('home')}
+                =link_to '首页', home_path
+              %li#workitem-menu{:class=>select_menu('workitems')}
                 =link_to '待办事项', workitems_path
               - if is_admin? || ismanager?
                 %li#u-menu.mainmenu{:class=>"#{select_menu('users')}"}
