@@ -4,6 +4,7 @@ cogentsoft:
   telephone: 26741022
   salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
   crypted_password: 0fe58654f17c58104c7b290e30c648655f629015 # admin
+  department: 劳动局
   disabled: 0
 
 quentin:

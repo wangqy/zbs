@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090409075821) do
+ActiveRecord::Schema.define(:version => 20090410054847) do
 
   create_table "cases", :force => true do |t|
     t.string   "callnumber", :limit => 20,  :null => false
@@ -70,6 +70,18 @@ ActiveRecord::Schema.define(:version => 20090409075821) do
     t.string   "reason"
     t.string   "remark"
     t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "logs", :force => true do |t|
+    t.integer  "operate"
+    t.string   "modulename",  :limit => 10
+    t.string   "content",     :limit => 120
+    t.integer  "objectid"
+    t.datetime "operatedate"
+    t.string   "ip",          :limit => 15
+    t.integer  "operator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -35,7 +35,7 @@ class CreateUsers < ActiveRecord::Migration
     end
 
     say 'create admin user'
-    User.create!({:login => 'admin', :password => 'admin', :realname => '管理员', :telephone => '26741022'})
+    User.create!({:login => 'admin', :password => 'admin', :realname => '管理员', :telephone => '26741022', :department_id => 0, :disabled => 0})
     
   end
 

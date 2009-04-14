@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.pass '/pass', :controller => 'users', :action => 'pass'
 
   map.resources :departments
+  map.resources :logs
 
   map.resource :session
 

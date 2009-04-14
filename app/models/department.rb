@@ -7,6 +7,7 @@ class Department < ActiveRecord::Base
   belongs_to :modifier, :class_name => "User"
 
   validates_presence_of :name, :code 
+  validates_uniqueness_of :name, :code
   validates_length_of :code, :maximum => 10
   validates_length_of :name, :maximum => 10
   validates_length_of :manager, :maximum => 10, :allow_nil => true

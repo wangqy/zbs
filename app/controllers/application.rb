@@ -58,6 +58,17 @@ class ApplicationController < ActionController::Base
     end
     conditions
   end
+
+  #获取操作结果提示信息
+  #@path 'user.create.success' 'user.create.failure'
+  # user 为定义在activerecord.models下的model name
+  #m('user.create.success') => 新增用户成功
+  def m(path)
+    a = path.split('.')
+    m = t("activerecord.models.#{a[0]}")
+    s = t("msg.#{a[1]}.#{a[2]}", :model => m)
+  end
   
+  #高亮显示页面出错项
   ActionView::Base.field_error_proc = Proc.new{|html_tag, instance| %(<span class="fieldWithErrors">#{html_tag}</span>)}
 end

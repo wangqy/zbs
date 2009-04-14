@@ -19,6 +19,7 @@ describe UsersController do
   it 'allows signup' do
     lambda do
       create_user
+      assigns[:user].errors.should be_empty
       response.should be_redirect
     end.should change(User, :count).by(1)
   end
@@ -33,7 +34,9 @@ describe UsersController do
   
   it 'allows modify password' do
     modify_password
-    flash[:notice].should have_text('密码修改成功')
+    flash[:notice].should have_text('修改用户密码成功')
+    assigns[:user].errors.should be_empty
+    response.should render_template('users/_update_success')
     response.should be_success
   end
 
@@ -62,12 +65,13 @@ describe UsersController do
       :realname => 'quire',
       :telephone => '26741022',
       :password => 'quire',
-      :disabled => '0'
+      :disabled => '0',
+      :department_id => '0'
     }.merge(options)
   end
 
   def modify_password
-    post :updatepass, :user=>{
+    xhr :post, :updatepass, :user=>{
       :password => '111111'
     }
   end

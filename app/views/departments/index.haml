@@ -13,12 +13,12 @@
     %legend 机构列表
     %table.list
       %tr
-        %th{:width=>"80"} 机构代码
-        %th{:width=>"100"} 机构名称
-        %th{:width=>"60"} 负责人
-        %th{:width=>"100"}联系电话
+        %th{:width=>"120"} 机构代码
+        %th{:width=>"120"} 机构名称
+        %th{:width=>"100"} 负责人
+        %th{:width=>"150"}联系电话
         %th 地址
-        %th{:width=>"150"} 最后修改时间
+        %th{:width=>"160"} 最后修改时间
         %th{:width=>"120"} 操作
       - @list.each do |department|
         %tr
@@ -29,9 +29,9 @@
           %td=department.address
           %td=department.updated_at.to_s(:full)
           %td
-            =link_to '查看', department
-            =link_to '编辑', edit_department_path(department)
-            =link_to '删除', department, :confirm => "你确定要删除吗?", :method => :delete
+            =link_to t('html.link.view'), department
+            =link_to t('html.link.edit'), edit_department_path(department)
+            =link_to t('html.link.delete'), department, :confirm => "你确定要删除吗?", :method => :delete
     #pagination
       =will_paginate @list
 

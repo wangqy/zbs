@@ -3,12 +3,7 @@
   margin-left: 5px; }
   #main #main-content {
     padding-right: 0;
-    font-size: 14px;
-    /* 
-     * td
-     * :width 280px
-     * th
-     * :width 120px */ }
+    font-size: 14px; }
     #main #main-content #mainbar {
       float: left;
       width: 70%; }
@@ -27,6 +22,10 @@
         line-height: 20px; }
     #main #main-content .group table {
       width: 100%; }
+    #main #main-content table[class=''] td {
+      width: 280px; }
+    #main #main-content table[class=''] th {
+      width: 100px; }
 
 #footer {
   width: 98%;
