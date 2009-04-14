@@ -47,7 +47,7 @@ describe DepartmentsController do
     d.should_not be_nil
     delete :destroy, :id => d
     response.should be_redirect
-    flash[:notice].should have_text('删除成功')
+    flash[:notice].should have_text('删除机构成功')
   end
 
   #创建一个机构

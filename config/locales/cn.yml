@@ -7,6 +7,7 @@ cn:
       user: "用户"
       department: "机构"
       log: "日志"
+      notice: "公告"
       call: "来电"
       visit: "来访"
       faxis: "传真"
@@ -116,6 +117,9 @@ cn:
       history:
         handle: "办理方式"
         department_id: "接收部门"
+      notice:
+        title: "标题"
+        content: "内容"
 
 
     errors:

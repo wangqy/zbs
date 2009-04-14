@@ -4,6 +4,9 @@ module NavigationHelpers
     
     when /the homepage/i
       root_path
+    when /the new notice page/
+      new_notice_path
+
     
     # Add more page name => path mappings here
     
