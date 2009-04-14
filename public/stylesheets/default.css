@@ -16,8 +16,7 @@
       margin-right: 1px;
       background: #ddd;
       padding: 2px;
-      margin-left: 70%;
-      height: 630px; }
+      margin-left: 70%; }
       #main #main-content #sbar p {
         font-size: 14px;
         line-height: 20px; }
@@ -88,6 +87,7 @@ fieldset {
   width: 190px; }
 .formin .radio, .formpass .radio {
   margin-left: 10px;
+  margin-right: 5px;
   width: 10px; }
 .formin textarea, .formpass textarea {
   font-size: 16px;

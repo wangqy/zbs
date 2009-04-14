@@ -2,7 +2,7 @@
 class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
-  skip_before_filter :must_login
+  skip_before_filter :must_login, :destroy
 
   layout 'login'
 

@@ -1,39 +1,44 @@
-.group
-  %fieldset
-    %legend 新增用户
-    =error_messages_for :user
-    -form_for :user, :url => users_path do |f|
-      %table.formin
-        %tr
-          %th= f.label 'login', "用户名 #{require_star}"
-          %td= f.text_field 'login', :is_focus => true
-          %th= f.label 'password', "密码 #{require_star}"
-          %td= f.password_field 'password'
-        %tr
-          %th= f.label 'realname', "姓名 #{require_star}"
-          %td= f.text_field 'realname'
-          %th= f.label :sex, "性别"
-          %td
-            = f.radio_enum :sex
-        %tr
-          %th= f.label :department_id, "部门 #{require_star}"
-          %td= f.select :department_id, Department.all.collect{|d| [d.name, d.id]}, :include_blank => true
-          %th= f.label :position, "职位"
-          %td= f.text_field :position
-        %tr
-          %th= f.label :ismanager, "是否负责人"
-          %td{:colspan=>3}= f.check_box :ismanager, {}, "1", "0"
-        %tr
-          %th= f.label :telephone, "办公电话 #{require_star}"
-          %td= f.text_field :telephone
-          %th= f.label :mobile, "手机"
-          %td= f.text_field :mobile
-        %tr
-          %th= f.label :email, "电子邮箱"
-          %td{:colspan=>3}= f.text_field :email
-        %tr
-          %th= f.label :remark, "备注"
-          %td{:colspan=>3}= f.text_area :remark, :rows => 5, :cols=> 60
-      %p.btns{:style=>"clear:left"}
-        = submit_tag t('html.button.save'), :disable_with => t('html.saving')
-        = submit_tag t('html.button.back'), :disable_with => t('html.saving')
+#mainbar
+  .group
+    %fieldset
+      %legend 新增用户
+      =error_messages_for :user
+      -form_for :user, :url => users_path do |f|
+        %table.formin
+          %tr
+            %th= f.label 'login', "用户名 #{require_star}"
+            %td= f.text_field 'login', :is_focus => true
+            %th= f.label 'password', "密码 #{require_star}"
+            %td= f.password_field 'password'
+          %tr
+            %th= f.label 'realname', "姓名 #{require_star}"
+            %td= f.text_field 'realname'
+            %th= f.label :sex, "性别"
+            %td
+              = f.radio_enum :sex
+          %tr
+            %th= f.label :department_id, "部门 #{require_star}"
+            %td= f.select :department_id, Department.all.collect{|d| [d.name, d.id]}, :include_blank => true
+            %th= f.label :position, "职位"
+            %td= f.text_field :position
+          %tr
+            %th= f.label :ismanager, "是否负责人"
+            %td{:colspan=>3}= f.check_box :ismanager, {}, "1", "0"
+          %tr
+            %th= f.label :telephone, "办公电话 #{require_star}"
+            %td= f.text_field :telephone
+            %th= f.label :mobile, "手机"
+            %td= f.text_field :mobile
+          %tr
+            %th= f.label :email, "电子邮箱"
+            %td{:colspan=>3}= f.text_field :email
+          %tr
+            %th= f.label :remark, "备注"
+            %td{:colspan=>3}= f.text_area :remark, :rows => 5, :cols=> 49
+        %p.btns{:style=>"clear:left"}
+          = submit_tag t('html.button.save'), :disable_with => t('html.saving')
+          = submit_tag t('html.button.back'), :disable_with => t('html.saving')
+
+#sbar
+  .proj-desc
+    %p 

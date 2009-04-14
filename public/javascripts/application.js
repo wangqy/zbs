@@ -3,6 +3,8 @@
 var j = jQuery.noConflict();
 
 j(document).ready(function(){
+  //make sure sbar's height the same as mainbar
+  j("#sbar").height(j("#mainbar").height());
   //focus
   j(":input[is_focus]").focus();
 

@@ -3,6 +3,18 @@
   top: 8px;
 }
 
+input.submit{
+  border:#688fd5 1px solid;
+  padding:6px 4px 4px 4px;
+  filter:progid:dximagetransform.microsoft.gradient(gradienttype=0, startcolorstr="#ffffff", endcolorstr="#c3daf5");
+  cursor: hand;
+  color: black;
+}
+
+input.submit:hover{
+  filter: progid:dximagetransform.microsoft.gradient(gradienttype=0, startcolorstr="#ffffff", endcolorstr="#d7e7fa");
+}
+
 #nav {
   margin-top: 8px;
 }

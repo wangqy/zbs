@@ -119,7 +119,7 @@ class ActionView::Helpers::FormBuilder
     enums = enum.nil? ?Enum.__send__(method):Enum.__send__(enum)
     html = ""
     enums.each do |v|
-      html += radio_button method, v[1]
+      html += radio_button method, v[1], :class => :radio
       html += label "#{method}_#{v[1]}", v[0]
     end
     html
