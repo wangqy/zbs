@@ -10,6 +10,8 @@
     / [if gte IE 7]
       =stylesheet_link_tag "ie7"
     =javascript_include_tag "prototype", "jquery", "facebox", "application" 
+    -unless params[:caller]
+      =javascript_include_tag "http://#{CALL_CENTER}/interface/js/jquery.json.js", "http://#{CALL_CENTER}/interface/mixpop.php?extension=802"
     =calendar_date_select_includes "blue"
 
   %body
@@ -25,10 +27,10 @@
         #rheader
           #userbadge
             .ubody
-              #ublinks
+              #ublinks{:style=>"margin:0;padding:0;"}
                 =link_to "退出", logout_path
                 =link_to "修改密码", pass_path, :rel => "facebox"
-              %strong
+              %strong{:style=>"margin:0;padding:0;"}
                 %a="欢迎您:#{current_user.login}"
 
       #content
