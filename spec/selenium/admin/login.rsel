@@ -1,0 +1,6 @@
+open "/logout"
+type "login", "cogentsoft"
+type "password", "admin"
+click_and_wait "save"
+verify_text_present "欢迎您:cogentsoft"
+verify_text_present "登录成功."
