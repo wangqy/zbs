@@ -1,0 +1,38 @@
+.group
+  %fieldset
+    %legend 公告信息
+    %table
+      %tr
+        %th 标题
+        %td= @notice.title
+        %td.last &nbsp;
+      %tr
+        %th 内容
+        %td= @notice.content
+        %td.last &nbsp;
+      %tr
+        %th 是否发布
+        %td= @notice.deployed_enum_sf
+        %td.last &nbsp;
+      %tr
+        %th 创建人
+        %td= @notice.creator.realname
+        %th 创建时间
+        %td= @notice.created_at.to_s(:full)
+        %td.last &nbsp;
+      %tr
+        %th 最后修改人
+        %td= @notice.modifier.realname
+        %th 最后修改时间
+        %td= @notice.updated_at.to_s(:full)
+        %td.last &nbsp;
+      -if @notice.deployed == 1
+        %tr
+          %th 发布人
+          %td= @notice.deployee.realname
+          %th 发布时间
+          %td= @notice.deployed_at.to_s(:full)
+          %td.last &nbsp;
+  %p.btns{:style=>"clear:left"}
+    = submit_tag '返回',{:type=>'button',:onclick=>'history.back();'}
+

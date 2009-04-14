@@ -1,0 +1,37 @@
+.group
+  %fieldset
+    %legend 查询条件
+    #quick-search-bar
+      -form_tag notices_path, :method=>:get do
+        =label_tag "notice[title]", '标题'
+        =text_field_tag "notice[title]", params[:notice][:title]
+        =label_tag "notice[deployed]", '是否发布'
+        -deployed = params[:notice][:deployed]
+        -d = deployed.blank? ? -1 : deployed.to_i
+        =select_tag "notice[deployed]", options_for_select([['不限','']] + Enum.sf, d)
+        =submit_tag '查询'
+.group
+  %fieldset
+    %legend 公告列表
+    %table.list
+      %tr
+        %th{:width=>"200"} 标题
+        %th 内容
+        %th{:width=>"100"} 是否发布
+        %th{:width=>"120"} 最后修改人
+        %th{:width=>"160"} 最后修改时间
+        %th{:width=>"120"} 操作
+      - @list.each do |notice|
+        %tr
+          %td=notice.title
+          %td=notice.content
+          %td=notice.deployed_enum_sf
+          %td=notice.modifier.realname
+          %td=notice.updated_at.to_s(:full)
+          %td
+            =link_to t('html.link.view'), notice
+            =link_to t('html.link.edit'), edit_notice_path(notice)
+            =link_to t('html.link.delete'), notice, :confirm => "你确定要删除吗?", :method => :delete
+    #pagination
+      =will_paginate @list
+

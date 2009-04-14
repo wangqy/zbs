@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+公告1:
+  title: 公告标题1
+  content: 公告内容1
+  deployed: 1
+  creator: cogentsoft
+  created_at: Time.now
+  modifier: cogentsoft
+  updated_at: Time.now
+  deployee: cogentsoft
+  deployed_at: Time.now
+
+公告2:
+  title: 公告标题2
+  content: 公告内容2
+  deployed: 1
+  creator: cogentsoft
+  created_at: Time.now
+  modifier: cogentsoft
+  updated_at: Time.now
+  deployee: cogentsoft
+  deployed_at: Time.now
