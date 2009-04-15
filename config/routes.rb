@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.custom '/personal/custom', :controller => 'users', :action => 'custom'
   map.pass '/pass', :controller => 'users', :action => 'pass'
+  map.user_site '/user/site', :controller => 'users', :action => 'site'
 
   map.resources :departments
   map.resources :logs

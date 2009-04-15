@@ -26,13 +26,13 @@
       function(){
         j(this).text("已关联");
         var case_id = j(this).attr("case_id");
-        var related_case_id = j("#call_case_id").val();
+        var related_case_id = j("#event_case_id").val();
         if(case_id != related_case_id)
           j("#relate_btn" + related_case_id).click();
-        j("#call_case_id").val(case_id);
+        j("#event_case_id").val(case_id);
       },
       //清除关联
       function(){
         j(this).text("关联");
-        j("#call_case_id").val("");
+        j("#event_case_id").val("");
       })

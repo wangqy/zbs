@@ -169,3 +169,6 @@ cn:
     pass:
       success: "修改{{model}}密码成功"
       failure: "修改{{model}}密码失败"
+    site:
+      success: "修改{{model}}坐席号成功"
+      failure: "修改{{model}}坐席号失败"

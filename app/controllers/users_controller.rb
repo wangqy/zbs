@@ -113,6 +113,20 @@ class UsersController < ApplicationController
       render :partial => "update_failure"
     end
   end
+
+  #更新密码
+  def updatesite
+    @user = User.find(current_user)
+    params[:user][:modifier] = current_user
+    if @user.update_attributes(params[:user])
+      Log.site @user, current_user, request.remote_ip
+      flash.now[:notice] = m('user.site.success')
+      render :partial => "update_success_redirect"
+    else
+      render :partial => "update_failure"
+    end
+  end
+
 =begin
   def custom
     @menu = "personal"
