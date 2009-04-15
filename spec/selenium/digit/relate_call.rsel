@@ -1,5 +1,5 @@
 open '/calls/801/pop?callerid=801&calleeid=802&method=dial_in&uniqueid=1239762718.217&datetime=2009-04-15 10:31:58'
-click "relate_btn506999945"
+click "relate_btn#{Case.last.id}"
 type "event_name", "张先生"
 type "event_title", "张先生__投诉__区长办公室"
 type "event_content", "咨询上次来访的处理情况"

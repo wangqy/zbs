@@ -20,13 +20,13 @@
           %td=@event.security_enum
         %tr
           %th 主题
-          %td{:colspan=>3}=@event.title
+          %td{:colspan=>3,:class=>"last"}=@event.title
         %tr
           %th 内容摘要
-          %td{:colspan=>3}=@event.content
+          %td{:colspan=>3,:class=>"last"}=@event.content
         %tr
           %th 事件分类
-          %td{:colspan=>3}=@event.kind_enum
+          %td{:colspan=>3,:class=>"last"}=@event.kind_enum
     %fieldset
       %legend 联系人详细信息
       %table.formin
