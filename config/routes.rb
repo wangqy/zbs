@@ -10,6 +10,9 @@ ActionController::Routing::Routes.draw do |map|
   #define in config/initializers/route.rb
   map.event_resources :calls, :visits, :letters, :emails, :faxes, :govsites, :comsites, :others
 
+  map.named_route("pop_new_call", "pop/:calltype/:callnumber/:site", :controller => 'events', :action => 'new',
+                  :type => "Call", :conditions => { :method => :get, :calltype => :dail_in })
+
   map.resources :users
   map.custom '/personal/custom', :controller => 'users', :action => 'custom'
   map.pass '/pass', :controller => 'users', :action => 'pass'

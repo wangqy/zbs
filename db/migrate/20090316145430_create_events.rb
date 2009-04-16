@@ -24,6 +24,8 @@ class CreateEvents < ActiveRecord::Migration
       #call attribute
       #来电号码, 来电编号
       t.string :callnumber, :calltag, :null => false, :limit => 20
+      #呼叫中心录音唯一标识符,用于关联录音文件
+      t.string :wavfile, :limit => 32
 
       #创建人,修改人
       t.integer :creator_id, :modifier_id, :null => false

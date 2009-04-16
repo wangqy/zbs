@@ -6,6 +6,7 @@
     %tr
       %td{:colspan=>3}
       %td.sub_title="编号:#{@event.calltag}"
+    =render :partial => "events/wavfile", :locals => {:event => @event}
     %tr
       %th=el(:callnumber)
       %td=@event.callnumber

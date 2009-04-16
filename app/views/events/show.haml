@@ -8,6 +8,7 @@
           %td=@event.callnumber
           %th=l(:timing)
           %td=@event.timing.to_s(:with_year)
+        =render :partial => "events/wavfile", :locals => {:event => @event}
         %tr
           %th=l(:name)
           %td=@event.name

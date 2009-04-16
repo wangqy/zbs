@@ -3,7 +3,8 @@
     =error_messages_for params[:type]
     -form_for :event, @event, :url => "/#{params[:type].downcase}s" do |f|
       =f.hidden_field :case_id
-      =render :partial => "events/form", :locals => {:f => f}
+      =f.hidden_field :wavfile
+      =render :partial => "events/form", :locals => {:f => f, :event => @event}
 #sbar
   .proj-desc
     %p 以下显示以往可能相关的情况及其事件列表,当前反映情况与以之相同时,请点击"关联"按钮

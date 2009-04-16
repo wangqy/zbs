@@ -22,15 +22,6 @@ class ActionController::Routing::RouteSet::Mapper
         :type => type,
         :conditions => { :method => :get })
         
-      #popup
-      named_route(
-        "pop_new_#{singular}",
-        "#{controller_name}/:callnumber/pop",
-        :controller => "events",
-        :action => 'new',
-        :type => type,
-        :conditions => { :method => :get })
-        
       named_route(
         singular,
         "#{controller_name}/:id",

@@ -1,6 +1,7 @@
 %fieldset
   %legend 事件信息
   %table.formin
+    =render :partial => "events/wavfile", :locals => {:event => event}
     %tr
       %th= f.label :callnumber, lr(:callnumber)
       %td= f.text_field :callnumber, :is_focus => true
