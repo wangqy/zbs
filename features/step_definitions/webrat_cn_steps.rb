@@ -46,6 +46,11 @@ end
   end
 end
 
+那么 /浏览器后台返回:(.*)/ do |text|
+  encoded_text = ActiveSupport::JSON.encode(text);
+  response.should contain(encoded_text[1,encoded_text.size-2]);
+end
+
 那么 /我应该看不到:(.*)/ do |text|
   response.should_not contain(text)
 end
