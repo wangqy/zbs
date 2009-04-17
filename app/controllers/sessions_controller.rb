@@ -8,7 +8,9 @@ class SessionsController < ApplicationController
 
   # render new.rhtml
   def new
-    redirect_to(home_path) if logged_in?
+    if logged_in?
+      redirect_to_homepage
+    end
   end
 
   def create
@@ -19,7 +21,7 @@ class SessionsController < ApplicationController
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
       flash[:notice] = "登录成功."
-      redirect_to home_path
+      redirect_to_homepage
     else
       flash.now[:error] = "错误的用户名或密码."
       render :action => 'new'
@@ -32,5 +34,14 @@ class SessionsController < ApplicationController
     reset_session
     flash[:notice] = "成功退出."
     redirect_to login_path
+  end
+
+  private
+  def redirect_to_homepage
+    if [1,2].include? current_user.role
+      redirect_to(home_path)
+    else
+      redirect_to workitems_path
+    end
   end
 end
