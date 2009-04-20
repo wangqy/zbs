@@ -11,7 +11,7 @@ class KindsController < ApplicationController
     if @kind.errors.empty?
       flash.now[:notice] = m('kind.create.success')
       Log.create @kind, current_user, request.remote_ip
-      render :partial => "share/update_success"
+      render :partial => "update_success"
     else
       render :partial => "share/update_failure", :locals => { :objname => 'kind' }
     end

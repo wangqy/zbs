@@ -6,6 +6,9 @@ class CreateKinds < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    say 'create empty option'
+    Kind.create!({:name => '未选择'})
   end
 
   def self.down

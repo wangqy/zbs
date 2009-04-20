@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20090417055746) do
     t.integer  "aim",         :limit => 2
     t.integer  "emergency",   :limit => 2
     t.integer  "security",    :limit => 2
-    t.integer  "kind",        :limit => 2
+    t.integer  "kind_id"
     t.string   "name",        :limit => 20
     t.string   "phone",       :limit => 20
     t.string   "mobile",      :limit => 20

@@ -5,6 +5,9 @@ class Kind < ActiveRecord::Base
   validates_presence_of :name
 
   named_scope :parent_list, lambda {
-    {:conditions => ["parent_id is null"]}
+    {
+      :conditions => ["parent_id is null"],
+      :order => "id asc"
+    }
   }
 end

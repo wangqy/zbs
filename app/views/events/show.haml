@@ -27,7 +27,7 @@
           %td{:colspan=>3,:class=>"last"}=@event.content
         %tr
           %th 事件分类
-          %td{:colspan=>3,:class=>"last"}=@event.kind_enum
+          %td{:colspan=>3,:class=>"last"}=@event.kind.name
     %fieldset
       %legend 联系人详细信息
       %table.formin

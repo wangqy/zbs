@@ -7,7 +7,8 @@ def create_call(options)
     :name => "马可波罗",
     :creator => User.find_by_login("aaron"),
     :modifier => User.find_by_login("aaron"),
-    :case => Case.first
+    :case => Case.first,
+    :kind => Kind.first
   }
   @valid_attributes.merge! options
   Call.create! @valid_attributes

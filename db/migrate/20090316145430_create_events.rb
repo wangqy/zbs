@@ -11,8 +11,10 @@ class CreateEvents < ActiveRecord::Migration
       t.string :content, :null => false, :limit => 800
       #事件类型(来电,来访,来函,传真等)
       t.string :type, :null => false, :limit => 10
-      #目的,紧急程度,保密程度,事件分类
-      t.integer :aim, :emergency, :security, :kind, :limit => 2
+      #目的,紧急程度,保密程度
+      t.integer :aim, :emergency, :security, :limit => 2
+      #事件分类
+      t.integer :kind_id
 
       #姓名,联系电话,手机号码,Email
       t.string :name, :phone, :mobile, :limit => 20
