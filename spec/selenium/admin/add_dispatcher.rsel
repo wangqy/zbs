@@ -1,9 +1,10 @@
+setup :fixtures => :user
 open "/logout"
 type "login", "cogentsoft"
 type "password", "admin"
 click_and_wait "save"
 click_and_wait "//li[@id='users-menu']/a"
-type "user_login", "dispatcher"
+type "user_login", "dispatcher1"
 type "user_password", "test"
 type "user_realname", "周瑜"
 click "user_sex_1"

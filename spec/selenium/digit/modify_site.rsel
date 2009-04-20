@@ -1,7 +1,4 @@
-open "/logout"
-type "login", "aaron"
-type "password", "test"
-click_and_wait "save"
+include_partial 'admin/login', :login => 'aaron'
 click "link=设置"
 wait_for_element_present "user_site"
 type "user_site", "802"

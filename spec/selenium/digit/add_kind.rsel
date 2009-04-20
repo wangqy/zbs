@@ -1,10 +1,8 @@
-open "/logout"
-click_and_wait "link=退出"
-type "login", "aaron"
-type "password", "test"
-click_and_wait "save"
+setup :fixtures => [:events, :kinds]
+include_partial 'admin/login', :login => 'aaron'
 click_and_wait "//li[@id='calls-menu']/a"
 click "link=新增分类"
+wait_for_element_present "kind_name"
 type "kind_name", "刚加的事件分类"
 click "save"
 wait_for_text_present "刚加的事件分类"

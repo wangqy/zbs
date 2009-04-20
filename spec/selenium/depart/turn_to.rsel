@@ -1,22 +1,17 @@
-open "/logout"
-click_and_wait "save"
-type "login", "dispatcher"
-type "password", "test"
-click_and_wait "save"
+setup :fixtures => [:events, :cases]
+include_partial 'admin/login', :login => 'aaron'
+include_partial 'digit/add_call', :caller => '802'
+include_partial 'admin/login', :login => 'dispatcher'
 click_and_wait "link=事件调度"
-click_and_wait "//div[@id='main-content']/div/table/tbody/tr[5]/td[5]/a"
+click_and_wait "//div[@id='main-content']/div/table/tbody/tr[3]/td[5]/a"
 click "history_handle_10"
 click "//div[@id='mainbar']/div/form/fieldset[1]/table/tbody/tr[1]/td/label[1]"
 select "history_department_id", "label=劳动局"
 type "history_reason", "转你处办理"
 click_and_wait "commit"
 verify_text_present "办理成功."
-click_and_wait "link=退出"
-type "login", "depart"
-type "password", "test"
-click_and_wait "save"
+include_partial 'admin/login', :login => 'depart'
 click_and_wait "link=待办事项"
-verify_text_present "深电2009041500009"
 click_and_wait "link=处理"
 click "history_handle_21"
 type "history_reason", "我来办理"

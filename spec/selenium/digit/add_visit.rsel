@@ -1,7 +1,5 @@
-open "/logout"
-type "login", "aaron"
-type "password", "test"
-click_and_wait "save"
+setup :fixtures => :events
+include_partial 'admin/login', :login => 'aaron'
 click_and_wait "//li[@id='visits-menu']/a"
 type "event_callnumber", "13988889999"
 type "event_name", "张先生"
