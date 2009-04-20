@@ -14,6 +14,14 @@ end
   choose(field)
 end
 
+当 /我勾选(.*)/ do |field|
+  check(field)
+end
+
+当 /我勾去(.*)/ do |field|
+  uncheck(field)
+end
+
 而且 /我点击(.*)/ do |label|
   click_button(label)
 end

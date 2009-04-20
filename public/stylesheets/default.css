@@ -68,6 +68,23 @@ fieldset {
   .list td {
     background-color: #ffffff; }
 
+.list-notice {
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid;
+  border-color: #5a9ecf; }
+  .list-notice td {
+    background-color: #ffffff; }
+  .list-notice th {
+    background-color: #ffffff;
+    width: 80px; }
+  .list-notice .title {
+    padding: 5px;
+    text-align: center;
+    font-weight: bold; }
+  .list-notice .content {
+    padding: 10px 20px; }
+
 #quick-search-bar {
   background-color: #5a9ecf; }
   #quick-search-bar label {

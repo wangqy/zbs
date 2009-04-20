@@ -37,13 +37,15 @@ class Log < ActiveRecord::Base
   end
   
   #登录
-  def self.login(object, user, ip, content=nil)
-    log(object.class.name, 7, object.id, user, ip, content)
+  def self.login(user, ip, content=nil)
+    log(user.class.name, 7, user.id, user, ip, content)
   end
 
   #退出
-  def self.logout(object, user, ip, content=nil)
-    log(object.class.name, 88888888, object.id, user, ip, content)
+  def self.logout(user, ip, content=nil)
+    unless user.nil?
+      log(user.class.name, 8, user.id, user, ip, content)
+    end
   end
   
   #记录用户操作日志

@@ -19,6 +19,12 @@ describe SessionsController do
     response.should be_success
   end
 
+  it 'disabled user login fails' do
+    post :create, :login => 'disable', :password => 'test'
+    session[:user_id].should be_nil
+    response.should be_success
+  end
+
   it 'logs out' do
     login_as :quentin
     get :destroy

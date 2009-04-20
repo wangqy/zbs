@@ -11,12 +11,15 @@ ActionController::Routing::Routes.draw do |map|
   map.event_resources :calls, :visits, :letters, :emails, :faxes, :govsites, :comsites, :others
 
   map.resources :users
-  map.custom '/personal/custom', :controller => 'users', :action => 'custom'
+  #map.custom '/personal/custom', :controller => 'users', :action => 'custom'
+  #修改密码
   map.pass '/pass', :controller => 'users', :action => 'pass'
 
   map.resources :departments
   map.resources :logs
   map.resources :notices
+  #非admin用户查看公告列表
+  map.notice_list '/listnotice', :controller => 'notices', :action => 'list'
 
   map.resource :session
 

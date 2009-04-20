@@ -24,14 +24,15 @@
       - @list.each do |notice|
         %tr
           %td=notice.title
-          %td=notice.content
+          %td=truncate(notice.content, :length => 40)
           %td=notice.deployed_enum_sf
           %td=notice.modifier.realname
           %td=notice.updated_at.to_s(:full)
           %td
             =link_to t('html.link.view'), notice
-            =link_to t('html.link.edit'), edit_notice_path(notice)
-            =link_to t('html.link.delete'), notice, :confirm => "你确定要删除吗?", :method => :delete
+            -if notice.deployed == 0
+              =link_to t('html.link.edit'), edit_notice_path(notice)
+              =link_to t('html.link.delete'), notice, :confirm => "你确定要删除吗?", :method => :delete
     #pagination
       =will_paginate @list
 
