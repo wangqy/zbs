@@ -28,7 +28,7 @@ class CreateUsers < ActiveRecord::Migration
       #备注
       t.string :remark, :limit=>20
       #是否禁用
-      t.integer :disabled, :limit => 2
+      t.integer :disabled, :default => 0,  :limit => 2
       #坐席号
       t.integer :site, :limit=>10
 
