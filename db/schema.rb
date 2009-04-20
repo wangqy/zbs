@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090414032432) do
+ActiveRecord::Schema.define(:version => 20090417055746) do
 
   create_table "cases", :force => true do |t|
     t.string   "callnumber", :limit => 20,  :null => false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20090414032432) do
     t.integer  "aim",         :limit => 2
     t.integer  "emergency",   :limit => 2
     t.integer  "security",    :limit => 2
-    t.integer  "kind",        :limit => 2
+    t.integer  "kind_id"
     t.string   "name",        :limit => 20
     t.string   "phone",       :limit => 20
     t.string   "mobile",      :limit => 20
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20090414032432) do
     t.string   "email",       :limit => 50
     t.string   "callnumber",  :limit => 20,                 :null => false
     t.string   "calltag",     :limit => 20,                 :null => false
+    t.string   "wavfile",     :limit => 32
     t.integer  "creator_id",                                :null => false
     t.integer  "modifier_id",                               :null => false
     t.integer  "case_id"
@@ -70,6 +71,13 @@ ActiveRecord::Schema.define(:version => 20090414032432) do
     t.string   "reason"
     t.string   "remark"
     t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "kinds", :force => true do |t|
+    t.string   "name",       :limit => 20, :null => false
+    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -104,17 +112,18 @@ ActiveRecord::Schema.define(:version => 20090414032432) do
     t.string   "salt",                      :limit => 40
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
-    t.string   "realname",                                 :null => false
-    t.integer  "sex"
-    t.integer  "department_id",                            :null => false
-    t.integer  "role",                                     :null => false
+    t.string   "realname",                                                :null => false
+    t.integer  "sex",                       :limit => 2
+    t.integer  "department_id",                                           :null => false
+    t.integer  "role",                                                    :null => false
     t.string   "position"
     t.string   "telephone",                 :limit => 20
     t.string   "mobile",                    :limit => 20
-    t.integer  "ismanager"
+    t.integer  "ismanager",                 :limit => 2
     t.string   "email",                     :limit => 120
     t.string   "remark",                    :limit => 20
-    t.integer  "disabled"
+    t.integer  "disabled",                  :limit => 2,   :default => 0
+    t.integer  "site"
     t.integer  "creator"
     t.integer  "modifier"
     t.datetime "created_at"

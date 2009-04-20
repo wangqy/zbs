@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       #姓名
       t.string :realname, :null => false
       #性别
-      t.integer :sex
+      t.integer :sex, :limit => 2
       #部门
       t.integer :department_id, :null => false
       #角色
@@ -22,13 +22,15 @@ class CreateUsers < ActiveRecord::Migration
       #手机
       t.string :mobile, :limit=>20
       #是否负责人
-      t.integer :ismanager
+      t.integer :ismanager, :limit => 2
       #电子邮箱
       t.string :email, :limit=>120
       #备注
       t.string :remark, :limit=>20
       #是否禁用
-      t.integer :disabled
+      t.integer :disabled, :default => 0,  :limit => 2
+      #坐席号
+      t.integer :site, :limit=>10
 
       t.integer :creator
       t.integer :modifier

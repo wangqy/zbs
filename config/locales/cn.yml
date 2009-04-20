@@ -16,6 +16,7 @@ cn:
       govsite: "政务网"
       comsite: "家园网"
       other: "其他"
+      kind: "事件分类"
     attributes:
       user:
         login: "用户名"
@@ -121,6 +122,8 @@ cn:
       notice:
         title: "标题"
         content: "内容"
+      kind:
+        name: "名称"
 
 
     errors:
@@ -177,3 +180,6 @@ cn:
     pass:
       success: "修改{{model}}密码成功"
       failure: "修改{{model}}密码失败"
+    site:
+      success: "修改{{model}}坐席号成功"
+      failure: "修改{{model}}坐席号失败"

@@ -10,8 +10,8 @@
     / [if gte IE 7]
       =stylesheet_link_tag "ie7"
     =javascript_include_tag "prototype", "jquery", "facebox", "application" 
-    -unless params[:caller]
-      =javascript_include_tag "http://#{CALL_CENTER}/interface/js/jquery.json.js", "http://#{CALL_CENTER}/interface/mixpop.php?extension=802"
+    -if is_digit_person? && !current_user.site.blank? && params[:uniqueid].nil?
+      =javascript_include_tag "http://#{CALL_CENTER}/interface/js/jquery.json.js", "http://#{CALL_CENTER}/interface/mixpop.php?extension=#{current_user.site}"
     =calendar_date_select_includes "blue"
 
   %body
@@ -27,14 +27,19 @@
         #rheader
           #userbadge
             .ubody
-              #ublinks{:style=>"margin:0;padding:0;"}
+              #ublinks
                 =link_to "退出", logout_path
                 =link_to "修改密码", pass_path, :rel => "facebox"
                 -if !is_admin?
                   =link_to "公告", notice_list_path
               %strong{:style=>"margin:0;padding:0;"}
                 %a="欢迎您:#{current_user.login}"
-
+            -if is_digit_person?
+              .ubody
+                #ublinks
+                  =link_to "设置", user_site_path, :rel => "facebox"
+                %strong
+                  %a="坐席号:#{current_user.site.blank? ? '请设置' : current_user.site}"
       #content
         #main
           #project-nav

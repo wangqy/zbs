@@ -11,7 +11,7 @@ complain:
   aim: 1
   emergency: 1
   security: 1
-  kind: 1
+  kind: normal
   case: ma_complain
   creator: quentin
   modifier: quentin
@@ -28,7 +28,7 @@ complain22:
   aim: 2
   emergency: 2
   security: 2
-  kind: 2
+  kind: normal_fight
   case: ma_complain
   creator: quentin
   modifier: quentin

@@ -13,7 +13,14 @@ class EventsController < ApplicationController
 
   def new
     @event = dyna_event.new
-    @event.timing = DateTime.now.to_s(:with_year)
+    datetime = params[:datetime]
+    if datetime
+      datetime = datetime.to_datetime
+      @event.wavfile = "#{datetime.to_s(:wav_file_date)}-#{params[:uniqueid]}"
+      @event.timing = datetime.to_s(:with_year)
+    else
+      @event.timing = DateTime.now.to_s(:with_year)
+    end
     @event.callnumber = params[:callnumber] if params[:callnumber]
     @list = search_relate_list_for(@event)
   end

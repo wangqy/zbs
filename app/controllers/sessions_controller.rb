@@ -10,7 +10,9 @@ class SessionsController < ApplicationController
 
   # render new.rhtml
   def new
-    redirect_to(home_path) if logged_in?
+    if logged_in?
+      redirect_to_homepage
+    end
   end
 
   def create
@@ -47,5 +49,14 @@ class SessionsController < ApplicationController
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
     reset_session
+  end
+
+  private
+  def redirect_to_homepage
+    if [1,2].include? current_user.role
+      redirect_to(home_path)
+    else
+      redirect_to workitems_path
+    end
   end
 end

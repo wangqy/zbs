@@ -12,13 +12,14 @@ class User < ActiveRecord::Base
   validates_length_of       :email,    :maximum => 120, :allow_nil => true
   validates_length_of       :remark,   :maximum => 800, :allow_nil => true
   validates_length_of       :password, :maximum => 40, :allow_nil => true
+  validates_length_of       :site, :maximum => 10, :allow_nil => true
   validates_length_of       :login,    :maximum => 40
   before_save :encrypt_password
   
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   # =========== 新加字段时注意要修改此处 ============
-  attr_accessible :login, :password, :realname, :telephone, :mobile, :position, :ismanager, :sex, :remark, :fax, :department_id, :email, :modifier, :disabled, :role
+  attr_accessible :login, :password, :realname, :telephone, :mobile, :position, :ismanager, :sex, :remark, :fax, :department_id, :email, :modifier, :disabled, :role, :site
 
   def validate_on_create
     if password.blank?

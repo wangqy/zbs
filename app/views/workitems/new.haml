@@ -5,6 +5,7 @@
     %fieldset
       %legend 事件信息
       %table.formin
+        =render :partial => "events/wavfile", :locals => {:event => @event}
         %tr
           %td{:colspan=>4}=@event.title
         %tr

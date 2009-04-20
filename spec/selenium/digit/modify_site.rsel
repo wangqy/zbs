@@ -1,0 +1,6 @@
+include_partial 'admin/login', :login => 'aaron'
+click "link=设置"
+wait_for_element_present "user_site"
+type "user_site", "802"
+click_and_wait "save"
+verify_text_present "坐席号:802"

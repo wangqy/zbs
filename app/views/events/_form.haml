@@ -1,6 +1,7 @@
 %fieldset
   %legend 事件信息
   %table.formin
+    =render :partial => "events/wavfile", :locals => {:event => event}
     %tr
       %th= f.label :callnumber, lr(:callnumber)
       %td= f.text_field :callnumber, :is_focus => true
@@ -22,9 +23,7 @@
     %tr
       %th= f.label :content, "内容摘要 #{require_star}"
       %td{:colspan=>3}= f.text_area :content, :rows => 5, :cols=> 49
-    %tr
-      %th= f.label :kind, "事件分类"
-      %td{:colspan=>3}= f.select :kind
+    =render :partial => "events/kind", :locals => { :kind => @event.kind}
 %fieldset
   %legend 联系人详细信息
   %table.formin

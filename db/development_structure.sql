@@ -37,7 +37,7 @@ CREATE TABLE `events` (
   `aim` smallint(6) default NULL,
   `emergency` smallint(6) default NULL,
   `security` smallint(6) default NULL,
-  `kind` smallint(6) default NULL,
+  `kind_id` int(11) default NULL,
   `name` varchar(20) default NULL,
   `phone` varchar(20) default NULL,
   `mobile` varchar(20) default NULL,
@@ -46,6 +46,7 @@ CREATE TABLE `events` (
   `email` varchar(50) default NULL,
   `callnumber` varchar(20) NOT NULL,
   `calltag` varchar(20) NOT NULL,
+  `wavfile` varchar(32) default NULL,
   `creator_id` int(11) NOT NULL,
   `modifier_id` int(11) NOT NULL,
   `case_id` int(11) default NULL,
@@ -68,6 +69,15 @@ CREATE TABLE `histories` (
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `kinds` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(20) NOT NULL,
+  `parent_id` int(11) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `logs` (
   `id` int(11) NOT NULL auto_increment,
@@ -110,16 +120,17 @@ CREATE TABLE `users` (
   `remember_token` varchar(255) default NULL,
   `remember_token_expires_at` datetime default NULL,
   `realname` varchar(255) NOT NULL,
-  `sex` int(11) default NULL,
+  `sex` smallint(6) default NULL,
   `department_id` int(11) NOT NULL,
   `role` int(11) NOT NULL,
   `position` varchar(255) default NULL,
   `telephone` varchar(20) default NULL,
   `mobile` varchar(20) default NULL,
-  `ismanager` int(11) default NULL,
+  `ismanager` smallint(6) default NULL,
   `email` varchar(120) default NULL,
   `remark` varchar(20) default NULL,
-  `disabled` int(11) default NULL,
+  `disabled` smallint(6) default '0',
+  `site` int(11) default NULL,
   `creator` int(11) default NULL,
   `modifier` int(11) default NULL,
   `created_at` datetime default NULL,
@@ -153,3 +164,5 @@ INSERT INTO schema_migrations (version) VALUES ('20090409075821');
 INSERT INTO schema_migrations (version) VALUES ('20090410054847');
 
 INSERT INTO schema_migrations (version) VALUES ('20090414032432');
+
+INSERT INTO schema_migrations (version) VALUES ('20090417055746');

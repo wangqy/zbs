@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+normal:
+  name: 普通事务
+  parent: 
+
+normal_fight:
+  name: 一般斗殴
+  parent: normal

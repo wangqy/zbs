@@ -35,6 +35,11 @@ class Log < ActiveRecord::Base
   def self.pass(object, user, ip, content=nil)
     log(object.class.name, 6, object.id, user, ip, content)
   end
+
+  #修改坐席号
+  def self.site(object, user, ip, content=nil)
+    log(object.class.name, 61, object.id, user, ip, content)
+  end
   
   #登录
   def self.login(user, ip, content=nil)

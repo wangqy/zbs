@@ -3,7 +3,8 @@
     =error_messages_for params[:type]
     -form_for :event, @event, :url => "/#{params[:type].downcase}s" do |f|
       =f.hidden_field :case_id
-      =render :partial => "events/form", :locals => {:f => f}
+      =f.hidden_field :wavfile
+      =render :partial => "events/form", :locals => {:f => f, :event => @event}
 #sbar
   .proj-desc
     %p 以下显示以往可能相关的情况及其事件列表,当前反映情况与以之相同时,请点击"关联"按钮
@@ -26,13 +27,13 @@
       function(){
         j(this).text("已关联");
         var case_id = j(this).attr("case_id");
-        var related_case_id = j("#call_case_id").val();
+        var related_case_id = j("#event_case_id").val();
         if(case_id != related_case_id)
           j("#relate_btn" + related_case_id).click();
-        j("#call_case_id").val(case_id);
+        j("#event_case_id").val(case_id);
       },
       //清除关联
       function(){
         j(this).text("关联");
-        j("#call_case_id").val("");
+        j("#event_case_id").val("");
       })

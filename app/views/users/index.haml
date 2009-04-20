@@ -18,7 +18,7 @@
         %th{:width=>'140'} 部门
         %th{:width=>'120'} 负责人
         %th 办公电话
-        %th{:width=>'120'} 是否禁用
+        %th{:width=>'80'} 是否禁用
         %th{:width=>'120'} 操作
       - @page.each do |user|
         %tr
@@ -30,7 +30,8 @@
           %td=user.disabled_enum_sf
           %td
             =link_to t('html.link.edit'), edit_user_path(user)
-            -if user.role != 1
+            -p "role==1 #{user.role == 1}"
+            -if !(user.role == 1)
               -if user.disabled == 0
                 =link_to t('html.link.disable'),{:action => 'disable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.disable')}')"}
               -else

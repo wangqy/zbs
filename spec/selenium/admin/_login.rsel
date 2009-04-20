@@ -1,0 +1,4 @@
+open "/logout"
+type "login", login
+type "password", "test"
+click_and_wait "save"
