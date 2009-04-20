@@ -15,8 +15,8 @@ class EventsController < ApplicationController
     @event = dyna_event.new
     datetime = params[:datetime]
     if datetime
+      @event.wavfile = params[:recordfile]
       datetime = datetime.to_datetime
-      @event.wavfile = "#{datetime.to_s(:wav_file_date)}-#{params[:uniqueid]}"
       @event.timing = datetime.to_s(:with_year)
     else
       @event.timing = DateTime.now.to_s(:with_year)
