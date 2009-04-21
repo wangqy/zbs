@@ -15,6 +15,10 @@
       #main #main-content #sbar p {
         font-size: 14px;
         line-height: 20px; }
+      #main #main-content #sbar .tip {
+        margin: 10px; }
+        #main #main-content #sbar .tip ul {
+          margin: 10px; }
       #main #main-content #sbar li .badge {
         font-size: 12px; }
       #main #main-content #sbar li span {

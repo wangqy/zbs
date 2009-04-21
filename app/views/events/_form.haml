@@ -40,6 +40,17 @@
     %tr
       %th= f.label :address, "联系地址或单位"
       %td{:colspan=>3}= f.text_field :address, :class => "long"
+%fieldset
+  %legend{:title=>'值班人员,接报人默认为当前用户,值班领导默认为当前用户所在机构名称'} 值班室信息
+  %table.formin
+    %tr
+      %th= f.label :watchman, "值班人员 #{require_star}"
+      %td= f.text_field :watchman
+      %th= f.label :receiver, "接报人 #{require_star}"
+      %td= f.text_field :receiver
+    %tr
+      %th= f.label :manager, "值班领导 #{require_star}"
+      %td{:colspan=>3}= f.text_field :manager, :class => "long"
 
 %p.btns{:style=>"clear:left"}
   = submit_tag t('html.button.save'), :disable_with => t('html.saving')

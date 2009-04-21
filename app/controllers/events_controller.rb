@@ -22,6 +22,10 @@ class EventsController < ApplicationController
       @event.timing = DateTime.now.to_s(:with_year)
     end
     @event.callnumber = params[:callnumber] if params[:callnumber]
+    #值班室信息
+    @event.watchman = current_user.realname
+    @event.receiver = current_user.realname
+    @event.manager = current_user.department.manager
     @list = search_relate_list_for(@event)
   end
 

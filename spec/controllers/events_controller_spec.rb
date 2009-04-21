@@ -10,7 +10,10 @@ describe EventsController do
         :timing => "2009-03-24 22:22:22".to_time,
         :name => "马可波罗",
         :title => "马可波罗__投诉__区长办公室",
-        :content => "楼下太吵啦"
+        :content => "楼下太吵啦",
+        :watchman => "阿朗",
+        :receiver => "阿朗",
+        :manager => "劳动局长"
       },
       :type => "Call"
     }
@@ -19,7 +22,12 @@ describe EventsController do
   describe "GET 'new'" do
     it "should be successful" do
       get 'new', :type => "Call"
-      assigns[:event].timing.should_not be_nil
+      event = assigns[:event]
+      event.timing.should_not be_nil
+      #值班室信息
+      event.watchman.should_not be_nil
+      event.receiver.should_not be_nil
+      event.manager.should_not be_nil
       response.should be_success
     end
     
@@ -45,6 +53,19 @@ describe EventsController do
       @valid_call[:event].merge!(:callnumber => "")
       post :create, @valid_call
       assigns[:event].errors.on(:callnumber).should_not be_nil
+      response.should be_success
+    end
+
+    it "require duty info" do
+      @valid_call[:event].merge!(
+        :watchman => "",
+        :receiver => "",
+        :manager => ""
+      )
+      post :create, @valid_call
+      assigns[:event].errors.on(:watchman).should_not be_nil
+      assigns[:event].errors.on(:receiver).should_not be_nil
+      assigns[:event].errors.on(:manager).should_not be_nil
       response.should be_success
     end
 

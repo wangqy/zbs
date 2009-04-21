@@ -1,10 +1,10 @@
 #mainbar
   .group
-    =error_messages_for :department
-    -form_for @department, :html => {:class=>'formin'} do |f|
-      %fieldset
-        %legend 机构信息
-        %table
+    %fieldset
+      %legend 机构信息
+      =error_messages_for :department
+      -form_for @department do |f|
+        %table.formin
           %tr
             %th
               = f.label :code, "机构代码"
@@ -27,7 +27,7 @@
               = f.text_field :email
           %tr
             %th
-              = f.label :manager, "负责人"
+              = f.label :manager, "值班领导"
             %td
               = f.text_field :manager
             %th
@@ -44,11 +44,13 @@
               = f.label :remark, "备注"
             %td{:colspan=>3}
               = f.text_area :remark, :rows => 5, :cols=> 49
-      %p.btns{:style=>"clear:left"}
-        -unless !@department.id.nil?
-          = submit_tag t('html.button.save'), :disable_with => t('html.saving') 
-        = submit_tag t('html.button.back'), :disable_with => t('html.saving')
+        %p.btns{:style=>"clear:left"}
+          -unless !@department.id.nil?
+            = submit_tag t('html.button.save'), :disable_with => t('html.saving') 
+          = submit_tag t('html.button.back'), :disable_with => t('html.saving')
 
 #sbar
-  .proj-desc
-    %p 
+  .proj-desc.tip
+    %span 当前页面输入项提示信息
+    %ul
+      %li 值班领导: 值班人员录入事件时,值班室信息的值班领导输入项的默认值

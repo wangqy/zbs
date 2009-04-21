@@ -36,6 +36,9 @@ cn:
         email: "电子邮箱"
         content: "内容摘要"
         address: "联系地址或单位"
+        watchman: "值班人员"
+        receiver: "接报人"
+        manager: "值班领导"
       visit:
         calltag: "编号"
         callnumber: "来访人电话"

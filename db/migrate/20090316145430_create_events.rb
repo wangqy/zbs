@@ -29,6 +29,9 @@ class CreateEvents < ActiveRecord::Migration
       #呼叫中心录音唯一标识符,用于关联录音文件
       t.string :wavfile, :limit => 32
 
+      #值班室信息:值班人员,接报人,值班领导
+      t.string :watchman, :receiver, :manager, :null => false, :limit => 20
+
       #创建人,修改人
       t.integer :creator_id, :modifier_id, :null => false
 

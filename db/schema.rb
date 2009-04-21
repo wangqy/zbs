@@ -55,6 +55,9 @@ ActiveRecord::Schema.define(:version => 20090417055746) do
     t.string   "callnumber",  :limit => 20,                 :null => false
     t.string   "calltag",     :limit => 20,                 :null => false
     t.string   "wavfile",     :limit => 32
+    t.string   "watchman",    :limit => 20,                 :null => false
+    t.string   "receiver",    :limit => 20,                 :null => false
+    t.string   "manager",     :limit => 20,                 :null => false
     t.integer  "creator_id",                                :null => false
     t.integer  "modifier_id",                               :null => false
     t.integer  "case_id"
