@@ -56,7 +56,7 @@ class UsersController < ApplicationController
       render :action => "new"
     end
   end
-
+=begin
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -67,6 +67,7 @@ class UsersController < ApplicationController
     end
     redirect_to users_path
   end
+=end
 
   #禁用
   def disable
@@ -76,7 +77,7 @@ class UsersController < ApplicationController
       Log.disable @user, current_user, request.remote_ip
       flash[:notice] = m('user.disable.success')
     else
-      flash[:notice] = m('user.disable.success')
+      flash[:notice] = m('user.disable.failure')
     end
     redirect_to users_path
   end
@@ -126,23 +127,4 @@ class UsersController < ApplicationController
       render :partial => "share/update_failure", :locals => { :objname => 'user' }
     end
   end
-
-=begin
-  def custom
-    @menu = "personal"
-    @user = User.find(current_user)
-    #p @user
-  end
-
-  def customed
-    @menu = "personal"
-    user = User.find(current_user);
-    params[:user][:modifier] = current_user
-    if user.update_attributes(params[:user])
-      flash[:notice] = "个人信息更新成功"
-    else
-      flash[:notice] = "个人信息更新失败"
-    end
-  end
-=end
 end

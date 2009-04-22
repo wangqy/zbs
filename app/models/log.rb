@@ -71,8 +71,5 @@ class Log < ActiveRecord::Base
             }
     log = self.new(hash)
     log.save
-    if !log.errors.empty?
-      p log.errors
-    end
   end
 end

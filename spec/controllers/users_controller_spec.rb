@@ -16,12 +16,42 @@ describe UsersController do
     response.should be_success
   end
 
+  it 'should goto new' do
+    get :new
+    response.should be_success
+  end
+
   it 'allows signup' do
     lambda do
       create_user
       assigns[:user].errors.should be_empty
       response.should be_redirect
     end.should change(User, :count).by(1)
+  end
+
+  it 'should goto new after create' do
+    lambda do
+      post :create, :user => { 
+        :login => 'quire', 
+        :email => 'quire@example.com',
+        :realname => 'quire',
+        :telephone => '26741022',
+        :password => 'quire',
+        :disabled => '0',
+        :department_id => '0',
+        :role => 1
+      }, :commit => '保存,继续新增'
+      assigns[:user].errors.should be_empty
+      response.should redirect_to(:controller => 'users', :action => 'new')
+    end.should change(User, :count).by(1)
+  end
+
+  it 'should create fails with invalid parameters' do
+    lambda do
+      create_user :login => ''
+      assigns[:user].errors.on(:login).should_not be_empty
+      response.should render_template('users/new')
+    end.should change(User, :count).by(0)
   end
 
   it 'requires login on signup' do
@@ -38,6 +68,11 @@ describe UsersController do
       assigns[:user].errors.on(:role).should_not be_nil
       response.should be_success
     end.should_not change(User, :count)
+  end
+
+  it 'should goto pass' do
+    get :pass
+    response.should be_success
   end
   
   it 'allows modify password' do
@@ -74,6 +109,26 @@ describe UsersController do
     response.should be_redirect
     flash[:notice].should have_text('启用用户成功')
     assigns(:user).disabled.should == 0
+  end
+
+  it 'should goto edit' do
+    user = users(:disable)
+    get :edit, :id => user
+    response.should be_success
+  end
+
+  it 'should update user' do
+    user = users(:disable)
+    post :update, :user => {:realname => '禁用名字'}, :id => user
+    response.should redirect_to(:controller => 'users', :action => 'index')
+    assigns("user").realname.should == '禁用名字'
+  end
+
+  it 'should update fails with invalid parameters' do
+    user = users(:disable)
+    post :update, :user => {:login=> ''}, :id => user
+    assigns("user").errors.on(:login).should_not be_nil
+    response.should render_template('users/new')
   end
 
   def create_user(options = {})

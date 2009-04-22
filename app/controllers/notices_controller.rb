@@ -21,12 +21,17 @@ class NoticesController < ApplicationController
   end
   
   def destroy
-    @notice = Notice.find(params[:id])
-    if @notice.destroy
+    begin
+      @notice = Notice.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @notice = nil
+    end
+    
+    if (!@notice.nil?) && @notice.destroy
       flash[:notice] = m('notice.delete.success')
       Log.delete @notice, current_user, request.remote_ip
       redirect_to notices_path
-    elsif
+    else
       flash[:notice] = m('notice.delete.failure')
       redirect_to notices_path
     end
@@ -77,11 +82,7 @@ class NoticesController < ApplicationController
     if @notice.update_attributes(params[:notice])
       flash[:notice] = m('notice.update.success')
       Log.update @notice, current_user, request.remote_ip
-      if params[:commit]==t('html.button.save')
-        redirect_to new_notice_path
-      else
-        redirect_to notices_path
-      end
+      redirect_to notices_path
     else
       render :action => "new"
     end
