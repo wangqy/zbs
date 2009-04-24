@@ -30,7 +30,6 @@
           %td=user.disabled_enum_sf
           %td
             =link_to t('html.link.edit'), edit_user_path(user)
-            -p "role==1 #{user.role == 1}"
             -if !(user.role == 1)
               -if user.disabled == 0
                 =link_to t('html.link.disable'),{:action => 'disable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.disable')}')"}

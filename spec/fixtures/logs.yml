@@ -1,58 +1,55 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 <%
   def today
-    Time.now.to_s(:db)
+    DateTime.now.to_s(:db)
   end
 
   def uid(login)
     conditions = "login='#{login}'"
     user = User.find(:first, :conditions => conditions)
-    if user.nil?
-      user = User.new
-    end
     user.id
   end
 %>
 create:
   operate: 1
   modulename: 用户
-  objectid: <%= uid('disable')%>
+  objectid: <%=Fixtures.identify(:disable)%>
   operatedate: <%= today %>
   ip: 127.0.0.1
-  operator_id: <%= uid('cogentsoft')%>
+  operator: cogentsoft
 
 新增用户:
   operate: 1
   modulename: 用户
-  objectid: <%= uid('disable')%>
+  objectid: <%=Fixtures.identify(:disable)%>
   operatedate: <%= today %>
   content: 新增用户
   ip: 127.0.0.1
-  operator_id: <%= uid('cogentsoft')%>
+  operator: cogentsoft
 
 编辑用户:
   operate: 2 
   modulename: 用户
-  objectid: <%= uid('disable')%>
+  objectid: <%=Fixtures.identify(:disable)%>
   operatedate: <%= today %>
   content: 编辑用户
   ip: 127.0.0.1
-  operator_id: <%= uid('cogentsoft')%>
+  operator: cogentsoft
 
 新增公告:
   operate: 1
   modulename: 公告
-  objectid: <%= Notice.find(:first).id %>
+  objectid: <%=Fixtures.identify(:公告1)%>
   operatedate: <%= today %>
   content: 新增公告
   ip: 127.0.0.1
-  operator_id: <%= uid('cogentsoft')%>
+  operator: cogentsoft
 
 用户登录:
   operate: 7 
   modulename: 用户
-  objectid: <%= uid('depart')%>
+  objectid: <%=Fixtures.identify(:cogentsoft)%>
   operatedate: <%= today %>
   content: 用户登录
   ip: 127.0.0.1
-  operator_id: <%= uid('depart')%>
+  operator: cogentsoft

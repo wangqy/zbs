@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 include AuthenticatedTestHelper
 describe LogsController do
-  fixtures :logs
+  fixtures [:users,:logs]
 
   #Delete this example and add some real ones
   #it "should use LogsController" do
