@@ -21,6 +21,8 @@
     url = notices_path
   when "公告新增"
     url = new_notice_path
+  when "日志管理"
+    url = logs_path
   when "事件分类新增"
     url = new_kind_path
   end

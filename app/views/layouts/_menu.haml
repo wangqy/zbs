@@ -1,9 +1,10 @@
 %li.mainmenu{:class=>select_menu(menu),:id=>"#{menu}-menu"}
-  -link_to new_path(menu) do
+  -link_to menu=="logs" ? index_path(menu) : new_path(menu) do
     ="#{t_menu(menu)}管理"
+  -unless menu=="logs"
     %em more
-  %ul.submenu.wbadges{:style=>"display:none"}
-    %li.bin.shared
-      =link_to "新增#{t_menu(menu)}", new_path(menu)
-    %li.bin.shared
-      =link_to "查询#{t_menu(menu)}", index_path(menu)
+    %ul.submenu.wbadges{:style=>"display:none"}
+      %li.bin.shared
+        =link_to "新增#{t_menu(menu)}", new_path(menu)
+      %li.bin.shared
+        =link_to "查询#{t_menu(menu)}", index_path(menu)

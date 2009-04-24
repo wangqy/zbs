@@ -11,7 +11,7 @@
         %th{:width=>"60"} 操作
       - @list.each do |log|
         %tr
-          %td=t('activerecord.models.' + log.modulename.downcase)
+          %td=log.modulename
           %td=log.operate_enum_op
           %td=log.operator.realname
           %td=log.operatedate.to_s(:full)

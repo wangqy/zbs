@@ -61,6 +61,7 @@ class Log < ActiveRecord::Base
   #@ip          IP
   #@content     操作内容
   def self.log(modulename, operate, objectid, user, ip, content=nil)
+    modulename = I18n.t("activerecord.models.#{modulename.downcase}")
     hash = {:modulename=>modulename,
             :operate=>operate,
             :objectid=>objectid,
