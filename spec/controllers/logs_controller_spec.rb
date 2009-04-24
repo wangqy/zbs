@@ -18,6 +18,11 @@ describe LogsController do
     response.should be_success
   end
 
+  it "should query success" do
+    get :index, :log => {:modulename => '用户', :operator => '高正', :operate => '1'}
+    response.should be_success
+  end
+
   it "should goto show" do
     log = logs(:create)
     get :show, :id => log
