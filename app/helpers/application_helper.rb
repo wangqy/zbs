@@ -76,5 +76,21 @@ module ApplicationHelper
   def require_star
     content_tag :span, "*", :class => "required"
   end
-  
+
+  #截取字符串,后带"更多"链接
+  def truncate_with_more(text, length, id)
+    if text.length > length
+      result = text.mb_chars[0, length].to_str
+      result += "<span id='text_more_link_#{id}'>&nbsp;"
+      result += "<a href='#' onclick='$(\"text_more_#{id}\").show(); $(\"text_more_link_#{id}\").hide(); return false;'>"
+      result += "显示更多内容</a></span>"
+      result += "<span id='text_more_#{id}' style='display: none;'>"
+      result += text.mb_chars[length, text.length].to_str
+      result += "</span>"
+    else
+      result = text
+    end
+    result 
+  end
+
 end

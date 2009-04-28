@@ -32,6 +32,9 @@
   %legend 联系人详细信息
   %table.formin
     %tr
+      %th 身份证号码
+      %td{:colspan=>3}=@event.cardno
+    %tr
       %th 性别
       %td=@event.sex_enum
       %th 联系电话
@@ -42,5 +45,8 @@
       %th 手机号码
       %td=@event.mobile
     %tr
-      %th 联系地址或单位
+      %th 联系地址
       %td{:colspan=>3,:class=>"last"}=@event.address
+    %tr
+      %th 工作单位
+      %td{:colspan=>3,:class=>"last"}=@event.jobunit

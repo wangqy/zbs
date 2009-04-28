@@ -22,9 +22,10 @@ describe WorkitemsController do
 
   describe "GET 'edit'" do
     it "should be successful" do
-      get 'edit', :id => workitems("complain_workitem").id
+      get 'edit', :id => workitems("complain_workitem22").id
       assigns[:workitem].should_not be_nil
       assigns[:event].should_not be_nil
+      assigns[:history].should_not be_nil
       response.should be_success
     end
   end

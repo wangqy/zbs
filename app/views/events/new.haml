@@ -1,6 +1,6 @@
 #mainbar
   .group
-    =error_messages_for params[:type]
+    =error_messages_for :event
     -form_for :event, @event, :url => "/#{params[:type].downcase}s" do |f|
       =f.hidden_field :case_id
       =f.hidden_field :wavfile

@@ -46,11 +46,13 @@ ActiveRecord::Schema.define(:version => 20090427085605) do
     t.integer  "emergency",   :limit => 2
     t.integer  "security",    :limit => 2
     t.integer  "kind_id"
-    t.string   "name",        :limit => 20
+    t.string   "name",        :limit => 20,                 :null => false
     t.string   "phone",       :limit => 20
     t.string   "mobile",      :limit => 20
+    t.string   "cardno",      :limit => 20
     t.integer  "sex",         :limit => 2
     t.string   "address",     :limit => 50
+    t.string   "jobunit",     :limit => 50
     t.string   "email",       :limit => 50
     t.string   "callnumber",  :limit => 20,                 :null => false
     t.string   "calltag",     :limit => 20,                 :null => false

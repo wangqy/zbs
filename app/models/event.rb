@@ -7,8 +7,8 @@ class Event < ActiveRecord::Base
   belongs_to :creator, :class_name => "User"
   belongs_to :modifier, :class_name => "User"
 
-  validates_presence_of :callnumber, :timing, :title, :content, :watchman, :receiver, :manager
-  validates_length_of :title, :name, :phone, :mobile, :callnumber, :watchman, :receiver, :manager, :maximum => 20, :allow_nil => true
+  validates_presence_of :callnumber, :timing, :name, :title, :content, :watchman, :receiver, :manager
+  validates_length_of :title, :name, :cardno, :phone, :mobile, :callnumber, :watchman, :receiver, :manager, :maximum => 20, :allow_nil => true
   validates_length_of :content, :maximum => 800, :allow_nil => true
   validates_length_of :address, :email, :maximum => 50, :allow_nil => true
 

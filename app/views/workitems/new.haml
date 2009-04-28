@@ -36,6 +36,9 @@
       %legend 来电人详细信息
       %table.formin
         %tr
+          %th 身份证号码
+          %td{:colspan=>3}=@event.cardno
+        %tr
           %th 性别
           %td=@event.sex_enum
           %th 联系电话
@@ -46,8 +49,11 @@
           %th 手机号码
           %td=@event.mobile
         %tr
-          %th 联系地址或单位
+          %th 联系地址
           %td{:colspan=>3}=@event.address
+        %tr
+          %th 工作单位
+          %td{:colspan=>3}=@event.jobunit
     %fieldset
       %legend 业务办理
       %table.formin
@@ -64,6 +70,6 @@
           %td=calendar_date_select_tag "finish_date", nil, :popup => :force, :class => 'calendar'
 
     %p.btns{:style=>"clear:left"}
-      = submit_tag '保存', :disable_with => t('html.saving')
+      = submit_tag '提交', :disable_with => t('html.saving')
       = link_to '返回', :back
 

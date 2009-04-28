@@ -13,6 +13,7 @@ class WorkitemsController < ApplicationController
     @workitem = Workitem.find(params[:id])
     @event = @workitem.event
     @list = @event.historys
+    @history = @list.last
     #避免view调用params[:history][:timeout]报错
     params[:history] = {}
   end

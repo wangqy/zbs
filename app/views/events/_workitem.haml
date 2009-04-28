@@ -2,6 +2,21 @@
   %legend 业务办理
   %table.formin
     %tr
+      %td.title{:colspan=>4,:class=>"last"}=@event.title
+    - unless @history.nil?
+      %tr
+        %th 上一办理人
+        %td{:colspan=>3}= "#{@history.creator.department.name} #{@history.creator.realname}(#{@history.creator.telephone}, #{@history.creator.mobile})"
+      %tr
+        %th 上一办理意见
+        %td{:colspan=>3}= @history.reason
+    %tr
+      %th= label_tag :history_reason, "当前事件状态"
+      %td{:colspan=>3}= @event.state_enum
+    %tr
+      %th= label_tag :history_reason, "办理意见"
+      %td{:colspan=>3}= text_area_tag "history[reason]", params[:history][:reason], :rows => 3, :cols => 49, :id => "history_reason"
+    %tr
       %th="办理方式 #{require_star}"
       %td{:colspan=>3,:class=>'last'}
         -if @event.handles.include?(10)
@@ -36,9 +51,6 @@
     %tr.show_by_other
       %th= label_tag :history_user_id, "相关责任人 #{require_star}"
       %td#user_select{:colspan=>3}= select_user
-    %tr
-      %th= label_tag :history_reason, "办理意见"
-      %td{:colspan=>3}= text_area_tag "history[reason]", params[:history][:reason], :rows => 3, :cols => 49, :id => "history_reason"
     %tr
       %th= label_tag :history_remark, "备注"
       %td{:colspan=>3}= text_area_tag "history[remark]", params[:history][:remark], :rows => 3, :cols => 49, :id => "history_remark"

@@ -4,7 +4,7 @@
     -form_tag workitem_path(:id => @workitem.id), :method => :put do 
       =render :partial => "events/workitem"
       %p.btns{:style=>"clear:left"}
-        = submit_tag '保存', :disable_with => t('html.saving')
+        = submit_tag '提交', :disable_with => t('html.saving')
         = link_to '返回', :back
       =render :partial => "events/show"
 #sbar
@@ -13,7 +13,7 @@
     %p
       %span=@event.name
       %span="#{@event.aim_enum}:"
-      =@event.content
+      =truncate_with_more @event.content, 85, @event.id
   .proj-desc
     %p 办理过程
   #shared-bin-block.sblock.bin-block

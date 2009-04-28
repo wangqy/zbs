@@ -16,12 +16,14 @@ class CreateEvents < ActiveRecord::Migration
       #事件分类
       t.integer :kind_id
 
-      #姓名,联系电话,手机号码,Email
-      t.string :name, :phone, :mobile, :limit => 20
+      #姓名
+      t.string :name, :limit => 20, :null => false
+      #联系电话,手机号码,身份证号码
+      t.string :phone, :mobile, :cardno, :limit => 20
       #性别
       t.integer :sex, :limit => 2
-      #联系地址
-      t.string :address, :email, :limit => 50
+      #联系地址,工作单位,Email
+      t.string :address, :jobunit, :email, :limit => 50
 
       #call attribute
       #来电号码, 来电编号
