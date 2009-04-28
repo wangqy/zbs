@@ -40,6 +40,8 @@ class WorkitemsController < ApplicationController
         @event.save! 
       end
       flash[:notice] = "待办事项处理成功"
+      #发送短信
+      Message.create(:case => @event.case, :user => @history.user, :creator => current_user) unless @history.user.nil?
       redirect_to :action => :index
     else
       @list = @event.historys

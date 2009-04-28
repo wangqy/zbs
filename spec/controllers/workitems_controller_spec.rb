@@ -42,6 +42,21 @@ describe WorkitemsController do
       assigns[:history].errors.on(:department_id).should_not be_nil
     end
 
+    it "should send a message" do
+      lambda do 
+        @valid_attributes[:history].merge!(:department_id => departments(:劳动局).id, :user_id => users(:aaron).id)
+        put :update, @valid_attributes
+      end.should change(Message, :count).by(1)
+    end
+
+    it "should not send a message" do
+      lambda do 
+        put 'update', @valid_attributes.merge(
+          :history => {:handle => 21, :department_id => "", :user_id => ""}
+        )
+      end.should_not change(Message, :count)
+    end
+
     #待受理
     describe "in prepare deal" do
       before(:each) do
