@@ -62,14 +62,14 @@ module ApplicationHelper
   def select_dept
     options = Department.all.collect {|d| [d.name, d.id]}
     options = [["未选择",""]] + options
-    select_tag 'history[department_id]', options_for_select(options)
+    select_tag 'history[department_id]', options_for_select(options), :onchange => remote_function(:update=>:user_select, :url => {:controller => :users, :action => :dept}, :with => "'id=' + $('history_department_id').value")
   end
 
-  #获取部门负责人json格式的数据
-  def dept_responser_json
-    department = Department.all.collect{|d| {d.id => d.manager}}
-    responser = department.inject({}){|hashes, item| hashes.merge!(item)} 
-    ActiveSupport::JSON.encode(responser)
+  #选择用户
+  def select_user(list = User.all)
+    options = list.collect {|d| [d.realname, d.id]}
+    options = [["未选择",""]] + options
+    select_tag 'history[user_id]', options_for_select(options)
   end
 
   #必填

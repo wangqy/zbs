@@ -31,6 +31,8 @@ class DispatchesController < ApplicationController
         @event.save! 
       end
       flash[:notice] = "办理成功."
+      #发送短信
+      Message.create(:case => @event.case, :user => @history.user, :creator => current_user)
       redirect_to dispatches_path
     else
       render :action => "new"

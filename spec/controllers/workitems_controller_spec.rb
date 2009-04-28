@@ -42,6 +42,7 @@ describe WorkitemsController do
       assigns[:history].errors.on(:department_id).should_not be_nil
     end
 
+    #待受理
     describe "in prepare deal" do
       before(:each) do
         events(:complain).update_attribute(:state, 10)
@@ -50,7 +51,7 @@ describe WorkitemsController do
       it "should delete last workitem and create a new workitem" do
         lambda do
           put 'update', @valid_attributes.merge(
-            :history => {:handle => 10, :department_id => departments(:劳动局)}
+            :history => {:handle => 10, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
           )
           response.should redirect_to(workitems_path)
         end.should_not change(Workitem, :count)
@@ -59,7 +60,7 @@ describe WorkitemsController do
       #转办
       it "should be turn" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 10, :department_id => departments(:劳动局)}
+          :history => {:handle => 10, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
         events(:complain).reload.state.should == 10
       end
@@ -75,7 +76,7 @@ describe WorkitemsController do
       #申请办结
       it "should be apply finish" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 30, :department_id => departments(:劳动局)}
+          :history => {:handle => 30, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
         events(:complain).reload.state.should == 30
       end
@@ -83,7 +84,7 @@ describe WorkitemsController do
       #退回
       it "should be return" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 40, :department_id => departments(:劳动局)}
+          :history => {:handle => 40, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
         events(:complain).reload.state.should == 40
       end
@@ -97,7 +98,7 @@ describe WorkitemsController do
       #转办
       it "should be turn" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 10, :department_id => departments(:劳动局)}
+          :history => {:handle => 10, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
         events(:complain).reload.state.should == 10
       end
@@ -105,7 +106,7 @@ describe WorkitemsController do
       #申请办结
       it "should be apply finish" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 30, :department_id => departments(:劳动局)}
+          :history => {:handle => 30, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
         events(:complain).reload.state.should == 30
       end
@@ -120,7 +121,7 @@ describe WorkitemsController do
       #转办
       it "should be turn" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 10, :department_id => departments(:劳动局)}
+          :history => {:handle => 10, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
         events(:complain).reload.state.should == 10
       end
@@ -143,7 +144,7 @@ describe WorkitemsController do
       #转办
       it "should be turn" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 10, :department_id => departments(:劳动局)}
+          :history => {:handle => 10, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
         events(:complain).reload.state.should == 10
       end
@@ -159,7 +160,7 @@ describe WorkitemsController do
       #申请办结
       it "should be turn" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 30, :department_id => departments(:劳动局)}
+          :history => {:handle => 30, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
         events(:complain).reload.state.should == 30
       end

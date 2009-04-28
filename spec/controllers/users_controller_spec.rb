@@ -76,6 +76,13 @@ describe UsersController do
     assigns(:user).disabled.should == 0
   end
 
+  it "should get department's user" do
+    get :dept, :id => departments(:劳动局).id
+    response.should render_template('_dept_user')
+    response.should be_success
+    assigns(:list).should_not be_nil
+  end
+
   def create_user(options = {})
     post :create, :user => { 
       :login => 'quire', 

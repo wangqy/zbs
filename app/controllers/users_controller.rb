@@ -127,6 +127,15 @@ class UsersController < ApplicationController
     end
   end
 
+  #获取部门人员
+  def dept
+    @list = []
+    unless params[:id].empty?
+      @list = User.find_all_by_department_id(params[:id])
+    end
+    render :partial => "dept_user", :layout => false
+  end
+
 =begin
   def custom
     @menu = "personal"

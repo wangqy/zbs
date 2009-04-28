@@ -34,8 +34,8 @@
       %th= label_tag :history_timeout, "截止日期"
       %td=calendar_date_select_tag "history[timeout]", params[:history][:timeout], :popup => :force, :class => 'calendar', :id => 'history_timeout'
     %tr.show_by_other
-      %th= label_tag :history_responser, "相关责任人"
-      %td{:colspan=>3}= text_field_tag "history[responser]", params[:history][:responser], :class => "long", :id => "history_responser"
+      %th= label_tag :history_user_id, "相关责任人 #{require_star}"
+      %td#user_select{:colspan=>3}= select_user
     %tr
       %th= label_tag :history_reason, "办理意见"
       %td{:colspan=>3}= text_area_tag "history[reason]", params[:history][:reason], :rows => 3, :cols => 49, :id => "history_reason"
@@ -43,7 +43,6 @@
       %th= label_tag :history_remark, "备注"
       %td{:colspan=>3}= text_area_tag "history[remark]", params[:history][:remark], :rows => 3, :cols => 49, :id => "history_remark"
     %script{:type=>"text/" + "javascript"}
-      ="managers = #{dept_responser_json}"
     :javascript
       j(":radio").click(function(){
         if(j(this).val()==10 || j(this).val()==30)
@@ -52,7 +51,3 @@
           j(".show_by_other").hide();
       });
       j(":radio:checked").click();
-      j("#history_department_id").change(function(){
-        j("#history_responser").val(managers[j(this).val()]);
-      });
-

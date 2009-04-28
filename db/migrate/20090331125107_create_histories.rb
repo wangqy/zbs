@@ -7,7 +7,7 @@ class CreateHistories < ActiveRecord::Migration
       #转办部门,截止日期,相关负责人
       t.references :department
       t.date :timeout
-      t.string :responser
+      t.references :user
       #办理意见,备注
       t.string :reason
       t.string :remark

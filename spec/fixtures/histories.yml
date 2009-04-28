@@ -5,10 +5,10 @@ apply:
   event: complain22
   handle: 20
   department: 
+  user: 
   timeout: 2009-03-31
   reason: 
   remark: 时间紧迫
-  responser: 
   creator: aaron
 
 #转办
@@ -16,8 +16,8 @@ turn:
   event: complain22
   handle: 10
   department: 劳动局
+  user: aaron
   timeout: 2009-03-31
   reason: 转你处办理
   remark: 时间紧迫
-  responser: 张飞
   creator: aaron

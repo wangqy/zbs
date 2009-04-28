@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090417055746) do
+ActiveRecord::Schema.define(:version => 20090427085605) do
 
   create_table "cases", :force => true do |t|
     t.string   "callnumber", :limit => 20,  :null => false
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20090417055746) do
     t.integer  "handle"
     t.integer  "department_id"
     t.date     "timeout"
-    t.string   "responser"
+    t.integer  "user_id"
     t.string   "reason"
     t.string   "remark"
     t.integer  "creator_id"
@@ -93,6 +93,15 @@ ActiveRecord::Schema.define(:version => 20090417055746) do
     t.datetime "operatedate"
     t.string   "ip",          :limit => 15
     t.integer  "operator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "case_id",    :null => false
+    t.integer  "user_id",    :null => false
+    t.string   "content",    :null => false
+    t.integer  "creator_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
