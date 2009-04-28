@@ -12,7 +12,7 @@
 公告2:
   title: 公告标题2
   content: 公告内容2
-  deployed: 1
+  deployed: 0 
   creator: cogentsoft
   modifier: cogentsoft
   deployee: cogentsoft

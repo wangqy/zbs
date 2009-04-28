@@ -18,6 +18,7 @@
         %th{:width=>'140'} 部门
         %th{:width=>'120'} 负责人
         %th 办公电话
+        %th{:width=>'80'} 是否禁用
         %th{:width=>'120'} 操作
       - @page.each do |user|
         %tr
@@ -26,12 +27,14 @@
           %td=user.department ? user.department.name : ""
           %td=user.ismanager_enum_sf
           %td=user.telephone
+          %td=user.disabled_enum_sf
           %td
             =link_to t('html.link.edit'), edit_user_path(user)
-            -if user.disabled==0
-              =link_to t('html.link.disable'),{:action => 'disable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.disable')}')"}
-            -else
-              =link_to t('html.link.enable'),{:action => 'enable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.enable')}')"}
+            -if !(user.role == 1)
+              -if user.disabled == 0
+                =link_to t('html.link.disable'),{:action => 'disable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.disable')}')"}
+              -else
+                =link_to t('html.link.enable'),{:action => 'enable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.enable')}')"}
     #paginate{:style => 'text-align:right;'}
       =will_paginate @page
 

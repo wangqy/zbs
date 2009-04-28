@@ -21,6 +21,8 @@
     url = notices_path
   when "公告新增"
     url = new_notice_path
+  when "日志管理"
+    url = logs_path
   when "事件分类新增"
     url = new_kind_path
   end
@@ -34,6 +36,7 @@ end
   users.each do |user|
     user[:department_id] = Department.last.id
     user[:role] = 1
+    user[:role] = 2 if user["login"] == "disable" || user["login"] == "quentin"
     user[:telephone] = '26741022'
     user[:password] = 'test'
     user[:password] = 'admin' if user["login"] == "cogentsoft"

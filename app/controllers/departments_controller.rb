@@ -12,12 +12,16 @@ class DepartmentsController < ApplicationController
   end
   
   def destroy
-    @department = Department.find(params[:id])
-    if @department.destroy
+    begin
+      @department = Department.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @department = nil
+    end
+    if (!@department.nil?) && @department.destroy
       flash[:notice] = m('department.delete.success')
       Log.delete @department, current_user, request.remote_ip
       redirect_to departments_path
-    elsif
+    else
       flash[:notice] = m('department.delete.failure')
       redirect_to departments_path
     end
@@ -56,11 +60,7 @@ class DepartmentsController < ApplicationController
     if @department.update_attributes(params[:department])
       flash[:notice] = m('department.update.success')
       Log.update @department, current_user, request.remote_ip
-      if params[:commit]==t('html.button.save')
-        redirect_to new_department_path
-      else
-        redirect_to departments_path
-      end
+      redirect_to departments_path
     else
       render :action => "new"
     end

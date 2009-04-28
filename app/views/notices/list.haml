@@ -1,0 +1,14 @@
+.group
+  %fieldset
+    %legend 最近公告
+    -@list.each do |notice|
+      %table.list-notice{:cellSpacing=>1}
+        %tr
+          %td.title{:colspan=>4}= notice.title
+        %tr
+          %td.content{:colspan=>4}= notice.content
+        %tr
+          %th 发布人
+          %td= notice.deployee.realname
+          %th 发布时间
+          %td= notice.deployed_at.to_s(:full)

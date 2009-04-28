@@ -42,13 +42,15 @@ class Log < ActiveRecord::Base
   end
   
   #登录
-  def self.login(object, user, ip, content=nil)
-    log(object.class.name, 7, object.id, user, ip, content)
+  def self.login(user, ip, content=nil)
+    log(user.class.name, 7, user.id, user, ip, content)
   end
 
   #退出
-  def self.logout(object, user, ip, content=nil)
-    log(object.class.name, 88888888, object.id, user, ip, content)
+  def self.logout(user, ip, content=nil)
+    unless user.nil?
+      log(user.class.name, 8, user.id, user, ip, content)
+    end
   end
   
   #记录用户操作日志
@@ -59,6 +61,7 @@ class Log < ActiveRecord::Base
   #@ip          IP
   #@content     操作内容
   def self.log(modulename, operate, objectid, user, ip, content=nil)
+    modulename = I18n.t("activerecord.models.#{modulename.downcase}")
     hash = {:modulename=>modulename,
             :operate=>operate,
             :objectid=>objectid,
@@ -69,8 +72,5 @@ class Log < ActiveRecord::Base
             }
     log = self.new(hash)
     log.save
-    if !log.errors.empty?
-      p log.errors
-    end
   end
 end

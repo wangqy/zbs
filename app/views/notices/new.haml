@@ -14,16 +14,16 @@
           %th 
             = f.label :content, "内容"
             = require_star
-          %td= f.text_field :content
+          %td= f.text_area :content, :rows => 15, :cols => 49
           %td.last &nbsp;
-        -if @notice.deployed == 0
+        -if !@notice.errors.empty? || @notice.deployed == 0
           %tr
             %th 
               = f.label :deployed, "是否发布"
-            %td= f.check_box :deployed, {}, "1", "0"
+            %td= f.check_box(:deployed, {}, "1", "0") + ' 发布后将不可编辑' 
             %td.last &nbsp;
     %p.btns{:style=>"clear:left"}
       -unless !@notice.id.nil?
-        = submit_tag t('html.button.save'), :disable_with => t('html.saving') 
+        = submit_tag t('html.button.save'), :disable_with => t('html.saving')
       = submit_tag t('html.button.back'), :disable_with => t('html.saving')
 

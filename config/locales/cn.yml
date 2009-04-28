@@ -153,11 +153,19 @@ cn:
       enable: "启用"
   confirm:
     delete: "确定要删除吗?"
+    notice: 
+      deploy: "发布后将不可撤销,确定要发布吗?"
     user:
       disable: "确定要禁用用户吗?"
       enable: "确定要启用用户吗?"
 
   msg:
+    login:
+      success: "登录成功"
+      disabled: "登录失败,用户已被禁用,请联系管理员"
+      password: "登录失败,错误的用户名或密码"
+    logout:
+      success: "成功退出" 
     create:
       success: "新增{{model}}成功"
       failure: "新增{{model}}失败"
