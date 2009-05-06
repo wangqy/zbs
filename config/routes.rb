@@ -7,8 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.home '/home', :controller => 'home'
 
-  #define in config/initializers/route.rb
-  map.event_resources :calls, :visits, :letters, :emails, :faxes, :govsites, :comsites, :others
+  map.resources :events
 
   map.named_route("pop_new_call", "pop/:calltype/:callnumber/:site", :controller => 'events', :action => 'new',
                   :type => "Call", :conditions => { :method => :get, :calltype => :dail_in })
@@ -28,6 +27,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
 
+  map.resources :conversations
   map.resources :dispatches
   map.resources :workitems
 

@@ -4,6 +4,14 @@
   #main #main-content {
     padding-right: 0;
     font-size: 14px; }
+    #main #main-content #conversation_index #quick-search-bar {
+      text-align: left; }
+    #main #main-content #conversation_index .btn {
+      float: right; }
+    #main #main-content #conversation_index .conversation_info {
+      padding-top: 20px; }
+      #main #main-content #conversation_index .conversation_info .badge {
+        width: 45px; }
     #main #main-content #mainbar {
       float: left;
       width: 70%; }

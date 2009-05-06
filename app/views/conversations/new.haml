@@ -1,0 +1,10 @@
+#mainbar
+  .group
+    =error_messages_for('conversation', 'event', 'person', 'duty')
+    -form_for @conversation do |f|
+      =hidden_field :event, :category, :value => '2'
+      =hidden_field :event, :wavfile
+      =render :partial => "conversations/form", :locals => {:f => f, :conversation => @conversation}
+#sbar
+  .proj-desc
+    %p 提示信息

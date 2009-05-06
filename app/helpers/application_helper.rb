@@ -79,13 +79,15 @@ module ApplicationHelper
 
   #截取字符串,后带"更多"链接
   def truncate_with_more(text, length, id)
-    if text.length > length
-      result = text.mb_chars[0, length].to_str
-      result += "<span id='text_more_link_#{id}'>&nbsp;"
+    return "" if text.blank?
+    mb_text = text.mb_chars
+    if mb_text.length > length
+      result = mb_text[0, length].to_str
+      result += "<span id='text_more_link_#{id}'>&hellip;"
       result += "<a href='#' onclick='$(\"text_more_#{id}\").show(); $(\"text_more_link_#{id}\").hide(); return false;'>"
-      result += "显示更多内容</a></span>"
+      result += "显示更多</a></span>"
       result += "<span id='text_more_#{id}' style='display: none;'>"
-      result += text.mb_chars[length, text.length].to_str
+      result += mb_text[length, mb_text.length].to_str
       result += "</span>"
     else
       result = text

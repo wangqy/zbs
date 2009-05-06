@@ -1,4 +1,16 @@
-development:
+DEFAULTS: &DEFAULTS
   charset_type: zh_cn.utf-8
   charset_dictpath: <%= File.join(RAILS_ROOT, "lib") %>
+
+production:
+  port: 3312
+  <<: *DEFAULTS
+
+development:
+  port: 3313
+  <<: *DEFAULTS
+
+test:
+  port: 3314
+  <<: *DEFAULTS
 

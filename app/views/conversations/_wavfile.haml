@@ -1,0 +1,9 @@
+- unless event.wavfile.blank?
+  %tr
+    %th 录音文件
+    %td{:colspan=>3}
+      %object{:type=>"audio/x-wav",:width=>42,:height=>25}
+        %param{:name=>"src", :value=>"#{HTTP_WAV_FILE_PATH}/#{event.wavfile}"}
+        %param{:name=>"autoplay", :value=>:false}
+        %param{:name=>"ShowTracker", :value=>:false}
+        %param{:name=>"showpositioncontrols", :value=>:false}

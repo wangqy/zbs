@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+ma:
+  name: 马波
+  phone: 0755-26741022
+  mobile: 13988889999
+  sex: 1
+  address: 深圳南山
+  jobunit: 高正软件
+  email: mahb@cogentsoft.com.cn
+  creator: quentin
+  modifier: quentin
+
+sun:
+  name: 孙小
+  phone: 0755-26741022
+  mobile: 13911112222
+  sex: 1
+  address: 深圳南山
+  jobunit: 高正软件
+  email: sunm@cogentsoft.com.cn
+  creator: quentin
+  modifier: quentin

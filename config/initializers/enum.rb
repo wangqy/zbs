@@ -1,5 +1,10 @@
 class Enum
   #try aen to get snippet
+  CATEGORY = [
+    %w{来电 来访 传真 来函 Email 短信 政务网 家园网 其他}, 
+    %w{1    2    3    4    5     6    7      8      9   }
+  ]
+
   #办理方式
   HANDLE = [
     %w{转办 自己受理 受理 申请办结 退回 退回重办 直接办结 确认办结}, 
@@ -28,12 +33,6 @@ class Enum
   SECURITY = [
     %w{一般 一级保密 二级保密 三级保密 高级保密}, 
     %w{1    2        3        4        5       }
-  ]
-
-  #事件分类
-  KIND = [
-    %w{普通事务 投诉 }, 
-    %w{1        2    }
   ]
 
   #性别
@@ -131,10 +130,22 @@ class ActionView::Helpers::FormBuilder
     enums = enum.nil? ?Enum.__send__(method):Enum.__send__(enum)
     html = ""
     enums.each do |v|
-      html += radio_button method, v[1], :class => :radio
+      html += radio_button method, v[1]
       html += label "#{method}_#{v[1]}", v[0]
     end
     html
   end
 
+end
+
+module ActionView::Helpers::FormTagHelper
+  def radio_enum_tag(method, enum=nil, options = {}, html_options = {})
+    enums = enum.nil? ?Enum.__send__(method):Enum.__send__(enum)
+    html = ""
+    enums.each do |v|
+      html += radio_button_tag method, v[1]
+      html += label_tag "#{method}_#{v[1]}", v[0]
+    end
+    html
+  end
 end

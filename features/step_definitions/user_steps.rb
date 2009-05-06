@@ -7,8 +7,8 @@
     url = users_path
   when "用户新增"
     url = new_user_path
-  when "来电管理" 
-    url = new_call_path
+  when "受理事件" 
+    url = conversations_path
   when "事件调度" 
     url = dispatches_path
   when "待办事项" 

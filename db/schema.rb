@@ -9,14 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090427085605) do
+ActiveRecord::Schema.define(:version => 20090429072739) do
 
-  create_table "cases", :force => true do |t|
-    t.string   "callnumber", :limit => 20,  :null => false
-    t.string   "phone",      :limit => 20
-    t.string   "mobile",     :limit => 20
-    t.string   "content",    :limit => 800, :null => false
-    t.boolean  "delta"
+  create_table "conversations", :force => true do |t|
+    t.integer  "state",       :limit => 2,   :default => 0, :null => false
+    t.string   "tag",         :limit => 20,                 :null => false
+    t.string   "title",       :limit => 20,                 :null => false
+    t.integer  "aim",         :limit => 2
+    t.integer  "emergency",   :limit => 2
+    t.integer  "security",    :limit => 2
+    t.integer  "kind_id"
+    t.string   "content",     :limit => 800,                :null => false
+    t.integer  "creator_id",                                :null => false
+    t.integer  "modifier_id",                               :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -36,33 +41,22 @@ ActiveRecord::Schema.define(:version => 20090427085605) do
     t.datetime "updated_at"
   end
 
+  create_table "duties", :force => true do |t|
+    t.string  "watchman", :limit => 10, :null => false
+    t.string  "receiver", :limit => 10, :null => false
+    t.string  "manager",  :limit => 10, :null => false
+    t.integer "event_id"
+  end
+
   create_table "events", :force => true do |t|
-    t.integer  "state",       :limit => 2,   :default => 0, :null => false
-    t.datetime "timing",                                    :null => false
-    t.string   "title",       :limit => 20,                 :null => false
-    t.string   "content",     :limit => 800,                :null => false
-    t.string   "type",        :limit => 10,                 :null => false
-    t.integer  "aim",         :limit => 2
-    t.integer  "emergency",   :limit => 2
-    t.integer  "security",    :limit => 2
-    t.integer  "kind_id"
-    t.string   "name",        :limit => 20,                 :null => false
-    t.string   "phone",       :limit => 20
-    t.string   "mobile",      :limit => 20
-    t.string   "cardno",      :limit => 20
-    t.integer  "sex",         :limit => 2
-    t.string   "address",     :limit => 50
-    t.string   "jobunit",     :limit => 50
-    t.string   "email",       :limit => 50
-    t.string   "callnumber",  :limit => 20,                 :null => false
-    t.string   "calltag",     :limit => 20,                 :null => false
-    t.string   "wavfile",     :limit => 32
-    t.string   "watchman",    :limit => 20,                 :null => false
-    t.string   "receiver",    :limit => 20,                 :null => false
-    t.string   "manager",     :limit => 20,                 :null => false
-    t.integer  "creator_id",                                :null => false
-    t.integer  "modifier_id",                               :null => false
-    t.integer  "case_id"
+    t.datetime "timing",                         :null => false
+    t.string   "content",         :limit => 800
+    t.integer  "category",        :limit => 2,   :null => false
+    t.string   "wavfile",         :limit => 32
+    t.integer  "creator_id",                     :null => false
+    t.integer  "modifier_id",                    :null => false
+    t.integer  "conversation_id"
+    t.integer  "person_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -118,6 +112,26 @@ ActiveRecord::Schema.define(:version => 20090427085605) do
     t.datetime "deployed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "name",        :limit => 20, :null => false
+    t.string   "phone",       :limit => 20
+    t.string   "mobile",      :limit => 20
+    t.string   "cardno",      :limit => 20
+    t.integer  "sex",         :limit => 2
+    t.string   "address",     :limit => 50
+    t.string   "jobunit",     :limit => 50
+    t.string   "email",       :limit => 50
+    t.integer  "creator_id",                :null => false
+    t.integer  "modifier_id",               :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sequences", :force => true do |t|
+    t.date    "day",                   :null => false
+    t.integer "number", :default => 1, :null => false
   end
 
   create_table "users", :force => true do |t|
