@@ -20,10 +20,13 @@
                 %li.bin.shared
                   %a
                     %span.badge{:title=>event.created_at.to_s(:with_year)}=event.created_at.to_s(:only_date)
-                    %span=event.person.name
+                    -if event.is_in?
+                      %span=event.person.name
+                    -else
+                      %span="(#{event.user.department.name})#{event.user.realname}"
                     %span=event.category_enum
                     %span=truncate_with_more(event.content, 20, event.id)
     .group
       %fieldset
         %legend 3.如果没有相关记录
-        =link_to '增加新事件', new_conversation_path
+        =link_to '增加新事件', new_conversation_path(:phone => params[:phone], :category => params[:category])

@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
     t.integer  "modifier_id",                    :null => false
     t.integer  "conversation_id"
     t.integer  "person_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

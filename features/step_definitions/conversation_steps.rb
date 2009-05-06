@@ -1,5 +1,5 @@
 当 /我输入事件的其他信息/ do
-  而且 "我输入联系人姓名为马海波"
+  而且 "我选中来电"
   而且 "我选择目的为投诉"
   而且 "我选择紧急程度为一般"
   而且 "我选择保密程度为一般"
@@ -15,9 +15,10 @@
 end
 
 而且 /我应该能看到子事件:/ do |hashes|
-  hashes.rows.each_with_index do |row, pos|
+  hashes.raw.each_with_index do |row, pos|
     response.should have_selector(".conversation_info > ul > li:nth-child(#{pos+1})") do |li|
-      li.should contain(row.join(' '))
+      text = li.inner_text.gsub(/\n/,'').squeeze.strip
+      text.should contain(row.join(' '))
     end
   end
 end

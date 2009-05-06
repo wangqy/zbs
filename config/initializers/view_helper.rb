@@ -2,7 +2,7 @@ module ActionView::Helpers::FormTagHelper
   alias_method :orig_radio_button_tag, :radio_button_tag
   #根据params对应的值,判断是否选中
   def radio_button_tag(name, value, checked = false, options = {})
-    options.merge! :class => "radio"
+    options.merge! :class => :radio
     #history[:handle]
     regexp_name = name.to_s.match(/(.*)\[:*(.*)\]/)
     first_pretty_name = regexp_name[1]
@@ -21,7 +21,6 @@ module ActionView::Helpers::FormTagHelper
 end
 
 module ActionView::Helpers::FormHelper
-
   def label_with_model(object_name, method, text = nil, options = {})
     text ||= t("activerecord.attributes.#{object_name}.#{method}", :default => "")
     text += content_tag(:span, "*", :class => "required") if options[:require]
@@ -30,6 +29,13 @@ module ActionView::Helpers::FormHelper
   #直接根据method获取cn.yml中定义的文本
   #如f.label :phone,返回内容为"联系电话"的label,f为case的form
   alias_method_chain :label, :model
+
+  def radio_button_with_class(object_name, method, text = nil, options = {})
+    options.merge! :class => :radio
+    radio_button_without_class object_name, method, text, options
+  end
+  #为radio加上默认的class:radio
+  alias_method_chain :radio_button, :class
 end
 
 class ActionView::Helpers::FormBuilder

@@ -2,6 +2,8 @@ class Event < ActiveRecord::Base
   belongs_to :conversation
   #联系人
   belongs_to :person
+  #用户(回电或回访时使用)
+  belongs_to :user
   #值班室信息
   has_one :duty
   #创建人,修改人
@@ -11,17 +13,11 @@ class Event < ActiveRecord::Base
   validates_presence_of :category, :timing
   validates_length_of :content, :maximum => 800, :allow_nil => true
 
-  def init_case(case_id)
-    unless case_id.blank?
-      self.case = Conversation.find(case_id)
-    else
-      self.build_case(
-        :callnumber => self.callnumber,
-        :phone => self.phone,
-        :mobile => self.mobile,
-        :content => self.content
-      )
-    end
+  def is_in?
+    self.category < 20
   end
 
+  def is_out?
+    self.category >= 20
+  end
 end

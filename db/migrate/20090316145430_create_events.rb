@@ -14,7 +14,9 @@ class CreateEvents < ActiveRecord::Migration
       #关联大事件
       t.references :conversation, :nill => false
       #关联联系人
-      t.references :person, :nill => false
+      t.references :person
+      #关联用户(去电或回访时使用)
+      t.references :user
       t.timestamps
     end
   end

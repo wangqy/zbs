@@ -3,6 +3,10 @@
   %table.formin
     =render :partial => "events/wavfile", :locals => {:event => @event}
     %tr
+      -fields_for :event do |e|
+        %th= e.label_require :category
+        %td{:colspan=>3}= e.radio_enum :category, :category_in
+    %tr
       -fields_for :person do |p|
         %th= p.label_require :phone
         %td= p.text_field :phone, :is_focus => true
@@ -26,7 +30,7 @@
     %tr
       %th= f.label_require :content
       %td{:colspan=>3}= f.text_area :content, :rows => 5, :cols=> 49
-    =render :partial => "events/kind", :locals => { :kind => @conversation.kind}
+    =render :partial => "conversations/kind", :locals => { :kind => @conversation.kind}
 %fieldset
   %legend 联系人详细信息
   %table.formin

@@ -1,5 +1,5 @@
 class Conversation < ActiveRecord::Base
-  has_many :events, :order => :id
+  has_many :events, :order => :timing
   has_many :people, :through => :event
   #事件分类
   belongs_to :kind

@@ -1,6 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-complain_call:
+ma_complain_call:
   conversation: ma_complain
   person: ma
   category: 1
@@ -10,15 +10,35 @@ complain_call:
   modifier: quentin
   created_at: 2009-03-24T22:22:22+08:00
 
+ma_complain_reply_call:
+  conversation: ma_complain
+  user: aaron
+  category: 21
+  timing: 2009-03-25T22:22:22+08:00
+  content: 了解详细情况
+  creator: aaron
+  modifier: aaron
+  created_at: 2009-03-25T22:22:22+08:00
+
 ma_complain_visit:
   conversation: ma_complain
   person: ma
   category: 2
   timing: 2009-03-29T22:22:22+08:00
-  content: 楼下还是太吵了
+  content: 问题仍然存在,要求尽快协调
   creator: quentin
   modifier: quentin
   created_at: 2009-03-29T22:22:22+08:00
+
+ma_complain_reply_visit:
+  conversation: ma_complain
+  user: depart
+  category: 22
+  timing: 2009-04-01T22:22:22+08:00
+  content: 已查处楼下烧烤摊
+  creator: depart
+  modifier: depart
+  created_at: 2009-04-01T22:22:22+08:00
 
 complain_visit:
   conversation: sun_complain

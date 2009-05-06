@@ -10,6 +10,8 @@
       float: right; }
     #main #main-content #conversation_index .conversation_info {
       padding-top: 20px; }
+      #main #main-content #conversation_index .conversation_info li {
+        border: 0; }
       #main #main-content #conversation_index .conversation_info .badge {
         width: 45px; }
     #main #main-content #mainbar {

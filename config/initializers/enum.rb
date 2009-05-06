@@ -1,9 +1,24 @@
 class Enum
   #try aen to get snippet
+  #事件类型(注意与CATEGORY_IN,CATEGORY_OUT保持一致)
   CATEGORY = [
+    %w{来电 来访 传真 来函 Email 短信 政务网 家园网 其他 回电 回访 回传真 回函 回Email 回短信}, 
+    %w{1    2    3    4    5     6    7      8      9    21   22   23     24  25      26    }
+  ]
+
+  #事件类型:来
+  CATEGORY_IN = [
     %w{来电 来访 传真 来函 Email 短信 政务网 家园网 其他}, 
     %w{1    2    3    4    5     6    7      8      9   }
   ]
+
+  #事件类型:去
+  CATEGORY_OUT = [
+    %w{回电 回访 回传真 回函 回Email 回短信}, 
+    %w{21   22   23     24   25      26    }
+  ]
+
+
 
   #办理方式
   HANDLE = [
