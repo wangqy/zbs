@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
   belongs_to :creator, :class_name => "User"
   belongs_to :modifier, :class_name => "User"
 
-  validates_presence_of :person_id, :category, :timing
+  validates_presence_of :category, :timing
   validates_length_of :content, :maximum => 800, :allow_nil => true
 
   def is_in?

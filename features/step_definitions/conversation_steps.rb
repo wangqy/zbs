@@ -26,3 +26,12 @@ end
 那么 /我应该能看到往来记录:/ do |hashes|
   而且 "我应该能看到子事件:", hashes
 end
+
+那么 /我应该能看到处理过程:/ do |hashes|
+  hashes.raw.each_with_index do |row, pos|
+    response.should have_selector("#conversation_history > ul > li:nth-child(#{pos+1})") do |li|
+      text = li.inner_text.gsub(/\n/,'').squeeze.strip
+      text.should contain(row.join(' '))
+    end
+  end
+end

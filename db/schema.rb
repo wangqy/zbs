@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
   end
 
   create_table "histories", :force => true do |t|
-    t.integer  "event_id"
+    t.integer  "conversation_id"
     t.integer  "handle"
     t.integer  "department_id"
     t.date     "timeout"

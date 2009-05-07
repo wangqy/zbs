@@ -4,7 +4,7 @@
     -form_for @event do |f|
       =f.hidden_field :wavfile
       =hidden_field_tag :phone
-      =hidden_field_tag :conversation, :id, :value => @conversation.id
+      =hidden_field_tag 'conversation[id]', @conversation.id
       =render :partial => "events/form", :locals => {:f => f, :event => @event}
 #sbar
   .proj-desc
@@ -13,3 +13,7 @@
       %p 往来记录
     #shared-bin-block.sblock.bin-block
       =render :partial => "conversations/events", :locals => {:conversation => @conversation}
+    .proj-desc
+      %p 处理过程
+    #shared-bin-block.sblock.bin-block
+      =render :partial => "conversations/histories", :locals => {:conversation => @conversation}

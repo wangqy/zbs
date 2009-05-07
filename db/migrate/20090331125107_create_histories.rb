@@ -1,7 +1,7 @@
 class CreateHistories < ActiveRecord::Migration
   def self.up
     create_table :histories do |t|
-      t.references :event
+      t.references :conversation
       #办理方式
       t.integer :handle
       #转办部门,截止日期,相关负责人

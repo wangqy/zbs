@@ -1,0 +1,12 @@
+#conversation_history
+  %ul#shared-ticket-bins.stacked.wbadges.sortable
+    -conversation.histories.each do |history|
+      %li.bin.shared
+        %a
+          %span.badge{:title=>history.created_at.to_s(:with_year)}=history.created_at.to_s(:only_date)
+          %span="(#{history.creator.department.name})#{history.creator.realname}"
+          %span=history.handle_enum
+          - if history.user
+            %span="(#{history.user.department.name})#{history.user.realname}"
+          - unless history.reason.blank?
+            %span=": #{truncate_with_more(history.reason, 20, history.id)}"

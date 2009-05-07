@@ -1,5 +1,5 @@
 class History < ActiveRecord::Base
-  belongs_to :event
+  belongs_to :conversation
   belongs_to :department
   belongs_to :user
   #创建人

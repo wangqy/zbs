@@ -12,9 +12,9 @@ class CreateEvents < ActiveRecord::Migration
       #创建人,修改人
       t.integer :creator_id, :modifier_id, :null => false
       #关联大事件
-      t.references :conversation, :nill => false
+      t.references :conversation, :null => false
       #关联联系人
-      t.references :person
+      t.references :person, :null => false
       #关联用户(去电或回访时使用)
       t.references :user
       t.timestamps

@@ -2,7 +2,7 @@
 
 #自己受理
 apply:
-  event: complain22
+  conversation: ma_complain
   handle: 20
   department: 
   user: 
@@ -10,14 +10,16 @@ apply:
   reason: 
   remark: 时间紧迫
   creator: aaron
+  created_at: 2009-03-25T22:22:22+08:00
 
 #转办
 turn:
-  event: complain22
+  conversation: ma_complain
   handle: 10
   department: 劳动局
-  user: aaron
-  timeout: 2009-03-31
+  user: depart
+  timeout: 2009-04-25
   reason: 转你处办理
   remark: 时间紧迫
   creator: aaron
+  created_at: 2009-03-25T22:22:22+08:00
