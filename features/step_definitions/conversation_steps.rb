@@ -6,7 +6,7 @@
   而且 "我输入主题为马海波咨询新劳动法法规"
   而且 "我输入内容摘要为咨询人对法规存在误解"
   而且 "我选择事件分类为普通事务"
-  而且 "我选择性别为男"
+  而且 "我选中男"
   而且 "我输入联系电话为0755-26741022"
   而且 "我输入电子邮箱为mahb@cogentsoft.com.cn"
   而且 "我输入手机号码为13928452841"
@@ -16,9 +16,13 @@ end
 
 而且 /我应该能看到子事件:/ do |hashes|
   hashes.raw.each_with_index do |row, pos|
-    response.should have_selector(".conversation_info > ul > li:nth-child(#{pos+1})") do |li|
+    response.should have_selector("#shared-ticket-bins > li:nth-child(#{pos+1})") do |li|
       text = li.inner_text.gsub(/\n/,'').squeeze.strip
       text.should contain(row.join(' '))
     end
   end
+end
+
+那么 /我应该能看到往来记录:/ do |hashes|
+  而且 "我应该能看到子事件:", hashes
 end

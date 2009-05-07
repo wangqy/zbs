@@ -3,8 +3,10 @@ class CreatePeople < ActiveRecord::Migration
     create_table :people do |t|
       #姓名
       t.string :name, :limit => 20, :null => false
-      #联系电话,手机号码,身份证号码
-      t.string :phone, :mobile, :cardno, :limit => 20
+      #手机号码,身份证号码
+      t.string :mobile, :cardno, :limit => 20
+      #联系电话,放置联系人的所有电话
+      t.string :phone, :limit => 100
       #性别
       t.integer :sex, :limit => 2
       #联系地址,工作单位,Email

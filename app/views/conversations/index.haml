@@ -1,6 +1,5 @@
 #conversation_index
   -form_tag conversations_path, :method=>:get do
-    =hidden_field_tag :category, params[:category]
     .group
       %fieldset
         %legend 1.查询以往记录
@@ -14,18 +13,8 @@
         -@list.each do |conversation|
           .conversation_info
             %p=truncate_with_more("事件#{@list.index(conversation)+1}:#{conversation.content}", 120, conversation.id)
-            =link_to "当前反映事件与此相同，点击这里关联此事件", new_event_path, :class => 'relate_btn', :conversation_id => conversation.id
-            %ul#shared-ticket-bins.stacked.wbadges.sortable
-              -conversation.events.each do |event|
-                %li.bin.shared
-                  %a
-                    %span.badge{:title=>event.created_at.to_s(:with_year)}=event.created_at.to_s(:only_date)
-                    -if event.is_in?
-                      %span=event.person.name
-                    -else
-                      %span="(#{event.user.department.name})#{event.user.realname}"
-                    %span=event.category_enum
-                    %span=truncate_with_more(event.content, 20, event.id)
+            =link_to "当前反映事件与此相同，点击这里关联此事件", new_event_path(:conversation_id => conversation.id, :phone => params[:phone]), :class => 'relate_btn'
+            =render :partial => "conversations/events", :locals => {:conversation => conversation}
     .group
       %fieldset
         %legend 3.如果没有相关记录

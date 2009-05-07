@@ -18,6 +18,8 @@ class ConversationsController < ApplicationController
     @duty.watchman = current_user.realname
     @duty.receiver = current_user.realname
     @duty.manager = current_user.department.manager
+    #类型默认为来电
+    @event.category = 1
   end
 
   def create

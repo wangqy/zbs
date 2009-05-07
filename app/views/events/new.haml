@@ -1,39 +1,15 @@
 #mainbar
   .group
-    =error_messages_for :event
-    -form_for :event, @event, :url => "/#{params[:type].downcase}s" do |f|
-      =f.hidden_field :case_id
+    =error_messages_for('event', 'person', 'duty')
+    -form_for @event do |f|
       =f.hidden_field :wavfile
+      =hidden_field_tag :phone
+      =hidden_field_tag :conversation, :id, :value => @conversation.id
       =render :partial => "events/form", :locals => {:f => f, :event => @event}
 #sbar
   .proj-desc
-    %p 以下显示以往可能相关的情况及其事件列表,当前反映情况与以之相同时,请点击"关联"按钮
-  -@list.each do |event_case|
+    %p="事件:#{truncate_with_more(@conversation.content, 100, @conversation.id)}"
     .proj-desc
-      %p="情况#{@list.index(event_case)+1}:#{event_case.content}"
-      =link_to_function "关联", nil, :class => 'relate_btn', :case_id => event_case.id, :id => "relate_btn#{event_case.id}", :title => "事件ID:#{event_case.id}"
+      %p 往来记录
     #shared-bin-block.sblock.bin-block
-      %ul#shared-ticket-bins.stacked.wbadges.sortable
-        -event_case.events.each do |event|
-          %li.bin.shared
-            %a
-              %span.badge{:title=>event.created_at.to_s(:with_year)}=event.created_at.to_s(:only_date)
-              %span=event.name
-              %span=t_menu(event.class.to_s)
-              %span=event.aim_enum
-  :javascript
-    j(".relate_btn").toggle(
-      //关联
-      function(){
-        j(this).text("已关联");
-        var case_id = j(this).attr("case_id");
-        var related_case_id = j("#event_case_id").val();
-        if(case_id != related_case_id)
-          j("#relate_btn" + related_case_id).click();
-        j("#event_case_id").val(case_id);
-      },
-      //清除关联
-      function(){
-        j(this).text("关联");
-        j("#event_case_id").val("");
-      })
+      =render :partial => "conversations/events", :locals => {:conversation => @conversation}

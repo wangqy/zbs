@@ -116,16 +116,16 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
   end
 
   create_table "people", :force => true do |t|
-    t.string   "name",        :limit => 20, :null => false
-    t.string   "phone",       :limit => 20
+    t.string   "name",        :limit => 20,  :null => false
     t.string   "mobile",      :limit => 20
     t.string   "cardno",      :limit => 20
+    t.string   "phone",       :limit => 100
     t.integer  "sex",         :limit => 2
     t.string   "address",     :limit => 50
     t.string   "jobunit",     :limit => 50
     t.string   "email",       :limit => 50
-    t.integer  "creator_id",                :null => false
-    t.integer  "modifier_id",               :null => false
+    t.integer  "creator_id",                 :null => false
+    t.integer  "modifier_id",                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

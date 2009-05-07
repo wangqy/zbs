@@ -1,0 +1,12 @@
+%fieldset
+  %legend{:title=>'值班人员,接报人默认为当前用户,值班领导默认为当前用户所在机构名称'} 值班室信息
+  %table.formin
+    -fields_for :duty do |d|
+      %tr
+        %th= d.label_require :watchman
+        %td= d.text_field :watchman
+        %th= d.label_require :receiver
+        %td= d.text_field :receiver
+      %tr
+        %th= d.label_require :manager
+        %td{:colspan=>3}= d.text_field :manager, :class => "long"

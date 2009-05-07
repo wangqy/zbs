@@ -3,61 +3,17 @@
   %table.formin
     =render :partial => "events/wavfile", :locals => {:event => event}
     %tr
-      %th= f.label :callnumber, lr(:callnumber)
-      %td= f.text_field :callnumber, :is_focus => true
-      %th= f.label :timing, lr(:timing)
-      %td= f.calendar_date_select "timing", :time => true, :popup => :force, :class => "calendar"
+      %th= f.label_require :person_id
+      %td{:colspan=>3}= select_person
     %tr
-      %th= f.label :name, lr(:name)
-      %td= f.text_field :name
-      %th= f.label :aim, "目的"
-      %td= f.select :aim
+      %th= f.label_require :category
+      %td{:colspan=>3}= f.radio_enum :category, :category_in
     %tr
-      %th= f.label :emergency, "紧急程度"
-      %td= f.select :emergency
-      %th= f.label :security, "保密程度"
-      %td= f.select :security
+      %th= f.label_require :timing
+      %td{:colspan=>3}= f.calendar_date_select "timing", :time => true, :popup => :force, :class => "calendar"
     %tr
-      %th= f.label :title, "主题 #{require_star}"
-      %td{:colspan=>3}= f.text_field :title, :class => "long"
-    %tr
-      %th= f.label :content, "内容摘要 #{require_star}"
-      %td{:colspan=>3}= f.text_area :content, :rows => 5, :cols=> 49
-    =render :partial => "events/kind", :locals => { :kind => @event.kind}
-%fieldset
-  %legend 联系人详细信息
-  %table.formin
-    %tr
-      %th= f.label :cardno, "身份证号码"
-      %td{:colspan=>3}= f.text_field :cardno, :class => "long"
-    %tr
-      %th= f.label :sex, "性别"
-      %td= f.select :sex
-      %th= f.label :phone, "联系电话"
-      %td= f.text_field :phone
-    %tr
-      %th= f.label :email, "电子邮箱"
-      %td= f.text_field :email
-      %th= f.label :mobile, "手机号码"
-      %td= f.text_field :mobile
-    %tr
-      %th= f.label :address, "联系地址"
-      %td{:colspan=>3}= f.text_field :address, :class => "long"
-    %tr
-      %th= f.label :address, "工作单位"
-      %td{:colspan=>3}= f.text_field :jobunit, :class => "long"
-%fieldset
-  %legend{:title=>'值班人员,接报人默认为当前用户,值班领导默认为当前用户所在机构名称'} 值班室信息
-  %table.formin
-    %tr
-      %th= f.label :watchman, "值班人员 #{require_star}"
-      %td= f.text_field :watchman
-      %th= f.label :receiver, "接报人 #{require_star}"
-      %td= f.text_field :receiver
-    %tr
-      %th= f.label :manager, "值班领导 #{require_star}"
-      %td{:colspan=>3}= f.text_field :manager, :class => "long"
-
+      %th= f.label :content
+      %td{:colspan=>3}= f.text_area :content, :rows => 5, :cols=> 49, :is_focus => true
+=render :partial => "events/duty"
 %p.btns{:style=>"clear:left"}
-  = submit_tag t('html.button.save'), :disable_with => t('html.saving')
-  = submit_tag t('html.button.modify'), :disable_with => t('html.saving')
+  = submit_tag '保存', :disable_with => t('html.saving')

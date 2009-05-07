@@ -1,4 +1,5 @@
 module ConversationsHelper
+  #选择事件分类
   def select_kind(kind)
     kind ||= Kind.new
     options = []
@@ -10,5 +11,15 @@ module ConversationsHelper
       end
     end
     select_tag 'conversation[kind_id]', options_for_select(options, kind.id)
+  end
+
+  #选择联系人
+  def select_person(conversation = @conversation)
+    html = ""
+    conversation.people.each do |p|
+      html += radio_button_tag 'event[person_id]', p.id, p.id == @event.person_id
+      html += label_tag "event_person_id_#{p.id}", p.name
+    end
+    html
   end
 end

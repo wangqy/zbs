@@ -9,14 +9,14 @@
     %tr
       -fields_for :person do |p|
         %th= p.label_require :phone
-        %td= p.text_field :phone, :is_focus => true
+        %td= p.text_field :phone
       -fields_for :event do |e|
         %th= e.label_require :timing
         %td= e.calendar_date_select "timing", :time => true, :popup => :force, :class => "calendar"
     %tr
       -fields_for :person do |p|
         %th= p.label_require :name
-        %td= p.text_field :name
+        %td= p.text_field :name, :is_focus => true
       %th= f.label :aim
       %td= f.select :aim
     %tr
@@ -42,7 +42,7 @@
         %td= p.text_field :mobile
       %tr
         %th= p.label :sex
-        %td= p.select :sex
+        %td= p.radio_enum :sex
         %th= p.label :email
         %td= p.text_field :email
       %tr

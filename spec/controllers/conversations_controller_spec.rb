@@ -26,7 +26,7 @@ describe ConversationsController do
         :mobile => "13988889999",
         :email => "mahb@cogentsoft.com.cn",
         :address => "深圳南山",
-        :jobunit => "高正软件",
+        :jobunit => "高正软件"
       },
       :duty => {
         :watchman => "阿郎",

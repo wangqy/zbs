@@ -30,6 +30,7 @@ cn:
         category: "类型"
         timing: "时间"
         content: "内容摘要"
+        person_id: "联系人"
       person:
         phone: "联系电话"
         name: "姓名"

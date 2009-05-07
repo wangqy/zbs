@@ -1,6 +1,6 @@
 class Conversation < ActiveRecord::Base
   has_many :events, :order => :timing
-  has_many :people, :through => :event
+  has_many :people, :through => :events, :uniq => true
   #事件分类
   belongs_to :kind
   #待办事项
