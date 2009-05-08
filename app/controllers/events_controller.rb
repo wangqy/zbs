@@ -20,7 +20,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    @conversation = Conversation.find(params[:event][:conversation_id])
     @event = Event.new(params[:event])
     @event.creator = current_user
     @event.modifier = current_user
@@ -37,9 +36,26 @@ class EventsController < ApplicationController
         end
         @event.save
       end
-      flash[:notice] = '保存成功.'
+      flash.now[:notice] = '保存成功.'
     end
 
+    @conversation = Conversation.find(params[:event][:conversation_id])
+    @list = @conversation.events
+    render :action => "new"  
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    @event.modifier = current_user
+    #值班室信息
+    @duty = @event.duty
+    @duty.update_attributes(params[:duty])
+
+    if @event.update_attributes(params[:event])
+      flash.now[:notice] = '保存成功.'
+    end
+
+    @conversation = Conversation.find(params[:event][:conversation_id])
     @list = @conversation.events
     render :action => "new"  
   end

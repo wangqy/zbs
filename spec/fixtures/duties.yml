@@ -1,10 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-complain_call:
+ma_complain_call:
   watchman: 阿朗
   receiver: 阿朗
   manager: 劳动局长
-  event: complain_call
+  event: ma_complain_call
 
 complain_visit:
   watchman: 阿朗

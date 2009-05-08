@@ -1,7 +1,0 @@
-#mainbar
-  .group
-    =error_messages_for :event
-    -form_for :event, @event, :url => "/#{params[:type].downcase}s/#{@event.id}" do |f|
-      =hidden_field_tag :_method, :put
-      =render :partial => "events/form", :locals => {:f => f, :event => @event}
-=render :partial => "events/relate"

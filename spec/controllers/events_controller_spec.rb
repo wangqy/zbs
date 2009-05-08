@@ -4,10 +4,8 @@ describe EventsController do
   before(:each) do
     login_as :aaron
     @valid_attribute = {
-      :conversation => {
-        :id => conversations(:ma_complain).id
-      },
       :event => {
+        :conversation_id => conversations(:ma_complain).id,
         :person_id => people(:ma).id,
         :category => 1,
         :timing => "2009-03-24 22:22:22",
@@ -20,7 +18,7 @@ describe EventsController do
   
   describe "GET 'new'" do
     it "should be successful" do
-      get 'new', :conversation_id => conversations(:ma_complain).id
+      get 'new', :event => {:conversation_id => conversations(:ma_complain).id}, :phone => '3324768'
       assigns[:conversation].should_not be_nil
       assigns[:event].timing.should_not be_nil
       #值班室信息
@@ -33,7 +31,7 @@ describe EventsController do
 
     #提供联系人列表,默认显示联系电话相同的联系人
     it "should get person" do
-      get 'new', :conversation_id => conversations(:ma_complain).id, :phone => '13988889999'
+      get 'new', :event => {:conversation_id => conversations(:ma_complain).id}, :phone => '3324768'
       assigns[:event][:person_id].should_not be_nil
     end
   end
@@ -43,6 +41,7 @@ describe EventsController do
       lambda do
         post :create, @valid_attribute
         response.should be_success
+        assigns[:event].duty.should_not be_nil
       end.should change(Event, :count).by(1)
     end
 
@@ -50,6 +49,16 @@ describe EventsController do
     it "should save person's new phone" do
       post :create, @valid_attribute
       Person.find(assigns[:event].person_id).phone.should =~ /3324768/
+    end
+  end
+
+  describe "update event" do
+    it "should be successful" do
+      @valid_attribute.merge!(:id => events(:ma_complain_call))
+      @valid_attribute[:event].merge!(:content => '咨询最新情况')
+      post :update, @valid_attribute.merge!(:id => events(:ma_complain_call))
+      assigns[:event].content.should == '咨询最新情况'
+      response.should be_success
     end
   end
 end

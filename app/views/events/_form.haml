@@ -19,3 +19,4 @@
 =render :partial => "events/duty"
 %p.btns{:style=>"clear:left"}
   = submit_tag '保存', :disable_with => t('html.saving')
+  = link_to '返回', conversations_path(:phone => params[:phone])
