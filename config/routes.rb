@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.home '/home', :controller => 'home'
 
   map.resources :events
+  map.resources :people
 
   map.named_route("pop_new_call", "pop/:calltype/:callnumber/:site", :controller => 'events', :action => 'new',
                   :type => "Call", :conditions => { :method => :get, :calltype => :dail_in })

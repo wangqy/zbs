@@ -10,4 +10,8 @@ class Person < ActiveRecord::Base
   validates_length_of :phone, :maximum => 100, :allow_nil => true
   validates_length_of :name, :cardno, :mobile, :maximum => 20, :allow_nil => true
   validates_length_of :address, :jobunit, :email, :maximum => 50, :allow_nil => true
+
+  def to_s
+    "#{self.sex_enum} #{self.phone} #{self.mobile} #{self.address} #{self.jobunit}"
+  end
 end

@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
   def new
-    @conversation = Conversation.find(params[:conversation_id])
+    @conversation = Conversation.find(params[:event][:conversation_id])
     @list = @conversation.events
-    @event = Event.new
+    @event = Event.new(params[:event])
     @event.wavfile = params[:recordfile] if params[:recordfile]
     @event.timing = DateTime.now.to_s(:with_year)
     #值班室信息
@@ -13,16 +13,20 @@ class EventsController < ApplicationController
     #事件类型默认来电
     @event.category = 1
     #找出默认的联系人
-    people = @conversation.people.select {|p| [p.mobile, p.phone].include? params[:phone]}
+    people = @conversation.people.select do |person|
+      params[:phone].match(person.phone) || params[:phone].match(person.mobile)
+    end
     @event.person_id = (people.size>0 ? people[0].id : 0)
   end
 
   def create
-    @conversation = Conversation.find(params[:conversation][:id])
-    @list = @conversation.events
+    @conversation = Conversation.find(params[:event][:conversation_id])
     @event = Event.new(params[:event])
     @event.creator = current_user
     @event.modifier = current_user
+    #值班室信息
+    @duty = Duty.new(params[:duty])
+    @event.duty = @duty
 
     if @event.valid?
       Event.transaction do
@@ -35,6 +39,13 @@ class EventsController < ApplicationController
       end
       flash[:notice] = '保存成功.'
     end
+
+    @list = @conversation.events
     render :action => "new"  
+  end
+  
+  private
+  def set_menu
+    @menu = 'conversations'
   end
 end

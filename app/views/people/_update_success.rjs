@@ -1,7 +1,8 @@
 page.replace_html 'formin', "<div id='flash-notice'>#{flash[:notice]}</div>"
 page.show 'formin'
 
-page.replace 'event_kind_tr', :partial => 'events/kind', :locals => { :kind => @kind }
-page.delay(2) do
+html = label_tag "event_person_id_#{@person.id}", @person.name, :title => @person.to_s, :id => "person_label_#{@person.id}"
+page.replace "person_label_#{@person.id}", "#{html}\n"
+page.delay(1) do
   page<<"j.facebox.close();"
 end

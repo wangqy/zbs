@@ -8,7 +8,8 @@ cn:
       department: "机构"
       log: "日志"
       notice: "公告"
-      case: "事件"
+      conversation: "事件"
+      person: "联系人"
       kind: "事件分类"
     attributes:
       user:

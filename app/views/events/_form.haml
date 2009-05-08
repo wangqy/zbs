@@ -6,6 +6,7 @@
       %th= f.label_require :person_id
       %td{:colspan=>3}
         = select_person
+        = link_to '新增联系人', new_person_path, :rel => :facebox, :id => 'add_person_btn'
     %tr
       %th= f.label_require :category
       %td{:colspan=>3}= f.radio_enum :category, :category_in

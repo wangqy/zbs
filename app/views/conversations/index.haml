@@ -13,7 +13,7 @@
         -@list.each do |conversation|
           .conversation_info
             %p=truncate_with_more("事件#{@list.index(conversation)+1}:#{conversation.content}", 120, conversation.id)
-            =link_to "当前反映事件与此相同，点击这里关联此事件", new_event_path(:conversation_id => conversation.id, :phone => params[:phone]), :class => 'relate_btn'
+            =link_to "当前反映事件与此相同，点击这里关联此事件", new_event_path('event[conversation_id]' => conversation.id, :phone => params[:phone]), :class => 'relate_btn'
             =render :partial => "conversations/events", :locals => {:conversation => conversation}
     .group
       %fieldset
