@@ -1,3 +1,37 @@
+假如 /我在(.*)页面/ do |page|
+  url = ""
+  case page
+  when "登录"
+    url = "/"
+  when "用户管理" 
+    url = users_path
+  when "用户新增"
+    url = new_user_path
+  when "受理事件" 
+    url = conversations_path
+  when "事件调度" 
+    url = dispatches_path
+  when "待办事项" 
+    url = workitems_path
+  when "机构管理"
+    url = departments_path
+  when "机构新增"
+    url = new_department_path
+  when "公告管理"
+    url = notices_path
+  when "公告新增"
+    url = new_notice_path
+  when "日志管理"
+    url = logs_path
+  when "事件分类新增"
+    url = new_kind_path
+  when "往来记录新增"
+    url = new_reply_path
+  end
+  raise 'visit url is blank' if url.blank?
+  visit url
+end
+
 而且 /我进入(.*)链接/ do |label|
   click_link(label)
 end

@@ -14,5 +14,7 @@
         %td=conversation.created_at.to_s(:without_year)
         %td=conversation.creator.realname
         %td=conversation.state_enum
-        %td=link_to '处理', edit_workitem_path(:id=>conversation.workitem_id)
+        %td
+          =link_to '处理', edit_workitem_path(:id=>conversation.workitem_id)
+          =link_to '添加往来记录', new_event_path('event[conversation_id]' => conversation.id, :category => 'category_out', :menu => :workitems)
 

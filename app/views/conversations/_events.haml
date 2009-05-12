@@ -6,7 +6,7 @@
         -if event.is_in?
           %span=event.person.name
         -else
-          %span="(#{event.user.department.name})#{event.user.realname}"
+          %span="(#{event.creator.department.name})#{event.creator.realname}"
         %span=event.category_enum
         %span=truncate_with_more(event.content, 20, event.id)
         -if event.is_in?

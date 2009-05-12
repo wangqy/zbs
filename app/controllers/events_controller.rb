@@ -12,25 +12,32 @@ class EventsController < ApplicationController
     @duty.manager = current_user.department.manager
     #事件类型默认来电
     @event.category = 1
+    @event.category = 21 if params[:category] == 'category_out'
     #找出默认的联系人
-    people = @conversation.people.select do |person|
-      params[:phone].match(person.phone) || params[:phone].match(person.mobile)
+    unless params[:phone].blank?
+      people = @conversation.people.select do |person|
+        params[:phone].match(person.phone) || params[:phone].match(person.mobile)
+      end
+      @event.person_id = (people.size>0 ? people[0].id : 0)
     end
-    @event.person_id = (people.size>0 ? people[0].id : 0)
+    #事件是否为回电回访
+    params[:category] ||= :category_in
   end
 
   def create
     @event = Event.new(params[:event])
     @event.creator = current_user
     @event.modifier = current_user
-    #值班室信息
-    @duty = Duty.new(params[:duty])
-    @event.duty = @duty
+    #值班室信息(回电回访无需值班信息)
+    if params[:duty]
+      @duty = Duty.new(params[:duty])
+      @event.duty = @duty
+    end
 
     if @event.valid?
       Event.transaction do
         #追加联系电话
-        unless @event.person.phone =~ %r(params[:phone])
+        unless params[:phone].blank? || @event.person.phone =~ %r(params[:phone])
           @event.person.phone += " #{params[:phone]}"
           @event.person.save
         end
@@ -48,8 +55,10 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.modifier = current_user
     #值班室信息
-    @duty = @event.duty
-    @duty.update_attributes(params[:duty])
+    unless params[:duty].blank?
+      @duty = @event.duty
+      @duty.update_attributes(params[:duty])
+    end
 
     if @event.update_attributes(params[:event])
       flash.now[:notice] = '保存成功.'
@@ -62,6 +71,7 @@ class EventsController < ApplicationController
   
   private
   def set_menu
-    @menu = 'conversations'
+    params[:menu] ||= 'conversations'
+    @menu = params[:menu] 
   end
 end

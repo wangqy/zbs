@@ -9,14 +9,15 @@
         = link_to '新增联系人', new_person_path, :rel => :facebox, :id => 'add_person_btn'
     %tr
       %th= f.label_require :category
-      %td{:colspan=>3}= f.radio_enum :category, :category_in
+      %td{:colspan=>3}= f.radio_enum :category, params[:category]
     %tr
       %th= f.label_require :timing
       %td{:colspan=>3}= f.calendar_date_select "timing", :time => true, :popup => :force, :class => "calendar"
     %tr
       %th= f.label :content
       %td{:colspan=>3}= f.text_area :content, :rows => 5, :cols=> 49, :is_focus => true
-=render :partial => "events/duty"
+- if params[:category] == :category_in
+  =render :partial => "events/duty"
 %p.btns{:style=>"clear:left"}
   = submit_tag '保存', :disable_with => t('html.saving')
-  = link_to '返回', conversations_path(:phone => params[:phone])
+  = link_to '返回', :controller => @menu, :phone => params[:phone]

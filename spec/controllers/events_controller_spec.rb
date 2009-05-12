@@ -41,7 +41,7 @@ describe EventsController do
       lambda do
         post :create, @valid_attribute
         response.should be_success
-        assigns[:event].duty.should_not be_nil
+        assigns[:event].duty.should_not be_nil unless params[:duty].blank?
       end.should change(Event, :count).by(1)
     end
 

@@ -1,35 +1,3 @@
-假如 /我在(.*)页面/ do |page|
-  url = ""
-  case page
-  when "登录"
-    url = "/"
-  when "用户管理" 
-    url = users_path
-  when "用户新增"
-    url = new_user_path
-  when "受理事件" 
-    url = conversations_path
-  when "事件调度" 
-    url = dispatches_path
-  when "待办事项" 
-    url = workitems_path
-  when "机构管理"
-    url = departments_path
-  when "机构新增"
-    url = new_department_path
-  when "公告管理"
-    url = notices_path
-  when "公告新增"
-    url = new_notice_path
-  when "日志管理"
-    url = logs_path
-  when "事件分类新增"
-    url = new_kind_path
-  end
-  raise 'visit url is blank' if url.blank?
-  visit url
-end
-
 假如 /有以下用户数据/ do |hashes|
   User.delete_all
   users = hashes.arguments_replaced({"用户名"=>"login","姓名"=>"realname"}).hashes

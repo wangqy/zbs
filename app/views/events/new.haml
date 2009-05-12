@@ -4,6 +4,8 @@
     -form_for @event do |f|
       =f.hidden_field :wavfile
       =hidden_field_tag :phone, params[:phone]
+      =hidden_field_tag :category, params[:category]
+      =hidden_field_tag :menu, params[:menu]
       =f.hidden_field :conversation_id
       =render :partial => "events/form", :locals => {:f => f, :event => @event}
 #sbar
