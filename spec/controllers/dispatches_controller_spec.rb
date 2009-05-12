@@ -4,7 +4,7 @@ describe DispatchesController do
   before(:each) do
     login_as :cogentsoft
     @valid_attributes = {
-      :id => events("complain").id,
+      :id => conversations("ma_complain").id,
       :history => {
         :handle => "10",
         :department_id => departments(:劳动局).id,
@@ -22,7 +22,7 @@ describe DispatchesController do
 
   describe "GET 'new'" do
     it "should be successful" do
-      get 'new', :id => events("complain").id
+      get 'new', :id => conversations("ma_complain").id
       response.should be_success
     end
   end
@@ -63,7 +63,7 @@ describe DispatchesController do
     it "should be save" do
       lambda do
         post :create, @valid_attributes
-        events(:complain).reload.state.should == 10
+        conversations(:ma_complain).reload.state.should == 10
       end.should change(History, :count).by(1)
     end
 
@@ -78,7 +78,7 @@ describe DispatchesController do
     it "should be turn" do
       lambda do
         post :create, @valid_attributes
-        events(:complain).reload.state.should == 10
+        conversations(:ma_complain).reload.state.should == 10
       end.should change(Workitem, :count).by(1)
     end
 
@@ -86,7 +86,7 @@ describe DispatchesController do
     it "should deal by himself" do
       lambda do
         post :create, @valid_attributes.merge(:history => {:handle => 20})
-        events(:complain).reload.state.should == 20
+        conversations(:ma_complain).reload.state.should == 20
       end.should change(Workitem, :count).by(1)
     end
 
@@ -94,7 +94,7 @@ describe DispatchesController do
     it "should be finish" do
       lambda do
         post :create, @valid_attributes.merge(:history => {:handle => 90})
-        events(:complain).reload.state.should == 90
+        conversations(:ma_complain).reload.state.should == 90
       end.should_not change(Workitem, :count)
     end
   end

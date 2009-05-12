@@ -2,27 +2,19 @@
   .group
     =error_messages_for :history
     -form_tag workitem_path(:id => @workitem.id), :method => :put do 
-      =render :partial => "events/workitem"
+      =render :partial => "conversations/workitem"
       %p.btns{:style=>"clear:left"}
         = submit_tag '提交', :disable_with => t('html.saving')
         = link_to '返回', :back
-      =render :partial => "events/show"
+      =render :partial => "conversations/show"
 #sbar
   .proj-desc
-    %p 事件简介
-    %p
-      %span=@event.name
-      %span="#{@event.aim_enum}:"
-      =truncate_with_more @event.content, 85, @event.id
-  .proj-desc
-    %p 办理过程
-  #shared-bin-block.sblock.bin-block
-    %ul#shared-ticket-bins.stacked.wbadges.sortable
-      -@list.each do |history|
-        %li.bin.shared
-          %a{:title => "办理意见:#{history.reason}"}
-            %span.badge{:title=>history.created_at.to_s(:with_year)}=history.created_at.to_s(:only_date)
-            %span=history.creator.department.name
-            %span=history.creator.realname
-            %span=history.handle_enum
-            %span=history.department.name if history.department
+    %p="事件:#{@conversation.title} #{truncate_with_more(@conversation.content, 100, @conversation.id)}"
+    .proj-desc
+      %p 处理过程
+    #shared-bin-block.sblock.bin-block
+      =render :partial => "conversations/histories", :locals => {:conversation => @conversation}
+    .proj-desc
+      %p 往来记录
+    #shared-bin-block.sblock.bin-block
+      =render :partial => "conversations/events", :locals => {:conversation => @conversation}

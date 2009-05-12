@@ -1,18 +1,17 @@
 class WorkitemsController < ApplicationController
   def index
     @list = Workitem.of current_user
-    @list.concat Workitem.belong(current_user.department) if current_user.department
     @list.collect! do |w| 
-      event = w.event
-      event.workitem_id = w.id
-      event
+      conversation = w.conversation
+      conversation.workitem_id = w.id
+      conversation
     end
   end
 
   def edit
     @workitem = Workitem.find(params[:id])
-    @event = @workitem.event
-    @list = @event.historys
+    @conversation = @workitem.conversation
+    @list = @conversation.histories
     @history = @list.last
     #避免view调用params[:history][:timeout]报错
     params[:history] = {}
@@ -20,32 +19,32 @@ class WorkitemsController < ApplicationController
 
   def update
     @workitem = Workitem.find(params[:id])
-    @event = @workitem.event
+    @conversation = @workitem.conversation
     @history = History.new(params[:history])
     @history.creator = current_user
     if @history.valid?
-      @history.event = @event
-      Event.transaction do
+      @history.conversation = @conversation
+      Conversation.transaction do
         #状态
-        @event.set_next_state_from @history.handle
-        @event.historys << @history
+        @conversation.set_next_state_from @history.handle
+        @conversation.histories << @history
         last_workitem = @workitem
 
         workitem_attributes = workitem_attributes_from(@history, last_workitem)
         if workitem_attributes
-          workitem_attributes[:last_store_name] = last_workitem.store_name if last_workitem
+          workitem_attributes[:last_store_id] = last_workitem.store_id if last_workitem
           workitem_attributes[:creator] = current_user.login
-          @event.workitems.create workitem_attributes
+          @conversation.workitems.create workitem_attributes
         end
         @workitem.destroy
-        @event.save! 
+        @conversation.save! 
       end
       flash[:notice] = "待办事项处理成功"
       #发送短信
-      Message.create(:case => @event.case, :user => @history.user, :creator => current_user) unless @history.user.nil?
+      Message.create(:conversation => @conversation, :user => @history.user, :creator => current_user) unless @history.user.nil?
       redirect_to :action => :index
     else
-      @list = @event.historys
+      @list = @conversation.histories
       render :action => "edit"
     end
   end

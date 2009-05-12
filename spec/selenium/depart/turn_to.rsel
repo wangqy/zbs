@@ -1,13 +1,13 @@
-setup :fixtures => [:events, :cases]
-include_partial 'admin/login', :login => 'aaron'
-include_partial 'digit/add_call', :caller => '802'
+setup :fixtures => [:events, :conversations]
+include_partial 'digit/add_conversation'
 include_partial 'admin/login', :login => 'dispatcher'
 click_and_wait "link=事件调度"
-click_and_wait "//div[@id='main-content']/div/table/tbody/tr[3]/td[5]/a"
+click_and_wait "//div[@id='main-content']/div/table/tbody/tr[2]/td[5]/a"
 click "history_handle_10"
-click "//div[@id='mainbar']/div/form/fieldset[1]/table/tbody/tr[1]/td/label[1]"
-select "history_department_id", "label=劳动局"
 type "history_reason", "转你处办理"
+select "history_department_id", "label=劳动局"
+wait_for_text_present "机构人员"
+select "history_user_id", "label=机构人员"
 click_and_wait "commit"
 verify_text_present "办理成功."
 include_partial 'admin/login', :login => 'depart'
@@ -19,15 +19,16 @@ click_and_wait "commit"
 verify_text_present "待办事项处理成功"
 verify_text "//div[@id='main-content']/div/table/tbody/tr[2]/td[5]", "已受理"
 click_and_wait "link=处理"
-click "history_handle_30"
-click "//div[@id='mainbar']/div/form/fieldset[1]/table/tbody/tr[1]/td/label[2]"
-select "history_department_id", "label=劳动局"
 type "history_reason", "办理妥当,可以办结"
+click "history_handle_30"
+select "history_department_id", "label=劳动局"
+wait_for_text_present "机构人员"
+select "history_user_id", "label=机构人员"
 click_and_wait "commit"
 verify_text "flash-notice", "待办事项处理成功"
 verify_text "//div[@id='main-content']/div/table/tbody/tr[2]/td[5]", "待审核"
 click_and_wait "link=处理"
-click "history_handle_91"
 type "history_reason", "同意办结"
+click "history_handle_91"
 click_and_wait "commit"
 verify_text "flash-notice", "待办事项处理成功"

@@ -95,10 +95,10 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
   end
 
   create_table "messages", :force => true do |t|
-    t.integer  "case_id",    :null => false
-    t.integer  "user_id",    :null => false
-    t.string   "content",    :null => false
-    t.integer  "creator_id", :null => false
+    t.integer  "conversation_id", :null => false
+    t.integer  "user_id",         :null => false
+    t.string   "content",         :null => false
+    t.integer  "creator_id",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -160,10 +160,10 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
   end
 
   create_table "workitems", :force => true do |t|
-    t.string   "store_name",      :null => false
-    t.integer  "event_id",        :null => false
+    t.integer  "store_id",        :null => false
+    t.integer  "conversation_id", :null => false
     t.string   "creator",         :null => false
-    t.string   "last_store_name"
+    t.integer  "last_store_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

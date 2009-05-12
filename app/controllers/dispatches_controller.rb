@@ -1,10 +1,10 @@
 class DispatchesController < ApplicationController
   def index
-    @list = Event.paginate :conditions => ["state = ?", "0"], :page => params[:page]
+    @list = Conversation.paginate :conditions => ["state = ?", "0"], :page => params[:page], :order => 'id desc'
   end
 
   def new
-    @event = Event.find(params[:id])
+    @conversation = Conversation.find(params[:id])
     #避免view调用params[:history][:timeout]报错
     params[:history] = {}
   end
@@ -13,26 +13,26 @@ class DispatchesController < ApplicationController
   def create
     @history = History.new(params[:history])
     @history.creator = current_user
-    @event = Event.find(params[:id])
+    @conversation = Conversation.find(params[:id])
     if @history.valid?
-      @history.event = @event
-      Event.transaction do
+      @history.conversation = @conversation
+      Conversation.transaction do
         #状态
-        @event.set_next_state_from @history.handle
-        @event.historys << @history
+        @conversation.set_next_state_from @history.handle
+        @conversation.histories << @history
         last_workitem = nil
 
         workitem_attributes = workitem_attributes_from(@history, last_workitem)
         if workitem_attributes
-          workitem_attributes[:last_store_name] = last_workitem.store_name if last_workitem
+          workitem_attributes[:last_store_id] = last_workitem.store_id if last_workitem
           workitem_attributes[:creator] = current_user.login
-          @event.workitems.create workitem_attributes
+          @conversation.workitems.create workitem_attributes
         end
-        @event.save! 
+        @conversation.save! 
       end
       flash[:notice] = "办理成功."
       #发送短信
-      Message.create(:case => @event.case, :user => @history.user, :creator => current_user) unless @history.user.nil?
+      Message.create(:conversation => @conversation, :user => @history.user, :creator => current_user) unless @history.user.nil?
       redirect_to dispatches_path
     else
       render :action => "new"

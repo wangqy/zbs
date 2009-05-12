@@ -1,3 +1,0 @@
-setup :fixtures => :events
-include_partial 'admin/login', :login => 'aaron'
-include_partial 'digit/add_call', :caller => '802'

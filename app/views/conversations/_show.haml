@@ -1,0 +1,41 @@
+%fieldset
+  %legend 事件信息
+  %table.formin
+    %tr
+      %td.title{:colspan=>4,:class=>"last"}=@conversation.title
+    %tr
+      %td{:colspan=>3}
+      %td.sub_title="编号:#{@conversation.tag}"
+    %tr
+      %th 时间
+      %td=@conversation.created_at.to_s(:db)
+      %th 目的
+      %td=@conversation.aim_enum
+    %tr
+      %th 紧急程度
+      %td=@conversation.emergency_enum
+      %th 保密程度
+      %td=@conversation.security_enum
+    %tr
+      %th 内容摘要
+      %td{:colspan=>3,:class=>"last"}=@conversation.content
+    %tr
+      %th 事件分类
+      %td{:colspan=>3,:class=>"last"}=@conversation.kind.name
+%fieldset
+  %legend 联系人详细信息
+  %table.formin
+    -@conversation.people.each do |p|
+      %tr
+        %th
+          =p.name
+          - if p.sex
+            ="(#{p.sex_enum})"
+        %td{:colspan=>3}
+          %div="电话:(#{p.phone})#{p.mobile}" 
+          - unless p.email.blank?
+            %div="邮箱:#{p.email}"
+          - unless p.address.blank?
+            %div="联系地址:#{p.address}"
+          - unless p.jobunit.blank?
+            %div="工作地址:#{p.jobunit}"

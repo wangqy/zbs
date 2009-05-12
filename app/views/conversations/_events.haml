@@ -9,3 +9,5 @@
           %span="(#{event.user.department.name})#{event.user.realname}"
         %span=event.category_enum
         %span=truncate_with_more(event.content, 20, event.id)
+        -if event.is_in?
+          =render :partial => "events/wavobject", :locals => {:event => event}

@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  case: 
+  conversation: 
   user: 
   content: MyString
 
 two:
-  case: 
+  conversation: 
   user: 
   content: MyString

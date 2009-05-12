@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Event do
   before(:each) do
     @valid_attributes = {
+      :conversation => conversations(:ma_complain),
       :category => 1,
       :timing => "2009-03-24 22:22:22".to_time,
       :content => "",

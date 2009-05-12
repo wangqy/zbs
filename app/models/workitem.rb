@@ -1,11 +1,12 @@
 class Workitem < ActiveRecord::Base
-  belongs_to :event
-
+  belongs_to :conversation
+  belongs_to :store, :class_name => "User"
+  belongs_to :last_store, :class_name => "User"
+  
   named_scope :of, lambda{|user|
-    {:conditions => ['store_name = ?', user.login]}
-  }
-
-  named_scope :belong, lambda{|department|
-    {:conditions => ['store_name = ?', department.id]}
+    {
+      :conditions => ['store_id = ?', user.id],
+      :order => 'id desc'
+    }
   }
 end

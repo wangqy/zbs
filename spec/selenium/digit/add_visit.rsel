@@ -1,9 +1,0 @@
-setup :fixtures => :events
-include_partial 'admin/login', :login => 'aaron'
-click_and_wait "//li[@id='visits-menu']/a"
-type "event_callnumber", "13988889999"
-type "event_name", "张先生"
-type "event_title", "张先生__投诉__区长办公室"
-type "event_content", "来电反映：其是深圳富士康集团的员工，春节前因雪灾不能回家，现其购买了明天从罗湖区火车站至武汉的火车票，因其家住在宝安区龙华街道，想留在火车站候车厅过夜"
-type "event_phone", "801"
-click_and_wait "//input[@name='commit' and @value='保存,接着修改']"

@@ -2,7 +2,7 @@
   %legend 业务办理
   %table.formin
     %tr
-      %td.title{:colspan=>4,:class=>"last"}=@event.title
+      %td.title{:colspan=>4,:class=>"last"}=@conversation.title
     - unless @history.nil?
       %tr
         %th 上一办理人
@@ -12,35 +12,35 @@
         %td{:colspan=>3}= @history.reason
     %tr
       %th= label_tag :history_reason, "当前事件状态"
-      %td{:colspan=>3}= @event.state_enum
+      %td{:colspan=>3}= @conversation.state_enum
     %tr
       %th= label_tag :history_reason, "办理意见"
       %td{:colspan=>3}= text_area_tag "history[reason]", params[:history][:reason], :rows => 3, :cols => 49, :id => "history_reason"
     %tr
       %th="办理方式 #{require_star}"
       %td{:colspan=>3,:class=>'last'}
-        -if @event.handles.include?(10)
+        -if @conversation.handles.include?(10)
           =radio_button_tag 'history[handle]', 10
           =label_tag :history_handle_10, '转办'
-        -if @event.handles.include?(20)
+        -if @conversation.handles.include?(20)
           =radio_button_tag 'history[handle]', 20
           =label_tag :history_handle_20, '自己受理'
-        -if @event.handles.include?(21)
+        -if @conversation.handles.include?(21)
           =radio_button_tag 'history[handle]', 21
           =label_tag :history_handle_21, '受理'
-        -if @event.handles.include?(30)
+        -if @conversation.handles.include?(30)
           =radio_button_tag 'history[handle]', 30
           =label_tag :history_handle_30, '申请办结'
-        -if @event.handles.include?(40)
+        -if @conversation.handles.include?(40)
           =radio_button_tag 'history[handle]', 40
           =label_tag :history_handle_40, '退回'
-        -if @event.handles.include?(41)
+        -if @conversation.handles.include?(41)
           =radio_button_tag 'history[handle]', 41
           =label_tag :history_handle_41, '退回重办'
-        -if @event.handles.include?(90)
+        -if @conversation.handles.include?(90)
           =radio_button_tag 'history[handle]', 90
           =label_tag :history_handle_90, '直接办结'
-        -if @event.handles.include?(91)
+        -if @conversation.handles.include?(91)
           =radio_button_tag 'history[handle]', 91
           =label_tag :history_handle_91, '确认办结'
     %tr.show_by_other

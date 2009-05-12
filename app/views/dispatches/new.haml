@@ -3,15 +3,19 @@
     =error_messages_for :history
     -form_tag dispatches_path do 
       =hidden_field_tag 'id', params[:id]
-      =render :partial => "events/workitem"
+      =render :partial => "conversations/workitem"
       %p.btns{:style=>"clear:left"}
         = submit_tag '提交', :disable_with => t('html.saving')
         = link_to '返回', :back
-      =render :partial => "events/show"
+      =render :partial => "conversations/show"
 #sbar
   .proj-desc
-    %p 事件简介1
-    %p
-      %span=@event.name
-      %span="#{@event.aim_enum}:"
-      =truncate_with_more @event.content, 85, @event.id
+    %p="事件:#{@conversation.title} #{truncate_with_more(@conversation.content, 100, @conversation.id)}"
+    .proj-desc
+      %p 处理过程
+    #shared-bin-block.sblock.bin-block
+      =render :partial => "conversations/histories", :locals => {:conversation => @conversation}
+    .proj-desc
+      %p 往来记录
+    #shared-bin-block.sblock.bin-block
+      =render :partial => "conversations/events", :locals => {:conversation => @conversation}

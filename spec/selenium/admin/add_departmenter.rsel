@@ -1,4 +1,4 @@
-setup :fixtures => :user
+setup :fixtures => :users
 open "/logout"
 type "login", "cogentsoft"
 type "password", "admin"

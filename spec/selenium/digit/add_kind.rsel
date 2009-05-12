@@ -1,6 +1,7 @@
 setup :fixtures => [:events, :kinds]
 include_partial 'admin/login', :login => 'aaron'
-click_and_wait "//li[@id='calls-menu']/a"
+click_and_wait "link=受理事件"
+click_and_wait "link=增加新事件"
 click "link=新增分类"
 wait_for_element_present "kind_name"
 type "kind_name", "刚加的事件分类"

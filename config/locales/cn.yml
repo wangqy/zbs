@@ -51,7 +51,7 @@ cn:
       history:
         handle: "办理方式"
         department_id: "接收部门"
-        department_id: "相关责任人"
+        user_id: "相关责任人"
       notice:
         title: "标题"
         content: "内容"

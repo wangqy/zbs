@@ -29,15 +29,14 @@ class ApplicationController < ActionController::Base
   #根据history属性handle判断,workitem的store_name存储的是用户名还是机构代码
   def workitem_attributes_from(history, last_workitem)
       workitem_attributes = nil
-      #转办,申请办结
+      #转办,申请办结,自己受理,受理
       if [10,30].include?(history.handle)
-        workitem_attributes = {:store_name => history.department_id}
-      #自己受理,受理
+        workitem_attributes = {:store_id => history.user_id}
       elsif [20,21].include?(history.handle)
-        workitem_attributes = {:store_name => current_user.login}
+        workitem_attributes = {:store_id => current_user.id}
       #退回,退回重办
       elsif [40,41].include?(history.handle)
-        workitem_attributes = {:store_name => last_workitem.store_name}
+        workitem_attributes = {:store_id => last_workitem.last_store_id}
       end
   end
 

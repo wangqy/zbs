@@ -1,11 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 complain_workitem:
-  store_name: aaron
-  event: complain 
+  store: depart
+  conversation: ma_complain 
   creator: quentin
+  last_store: quentin
   
 complain_workitem22:
-  store_name: aaron
-  event: complain22 
+  store: depart
+  conversation: sun_complain
   creator: quentin
+  last_store: quentin

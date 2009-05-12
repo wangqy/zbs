@@ -7,12 +7,12 @@
       %th 登记人
       %th 状态
       %th 操作
-    - @list.each do |event|
+    - @list.each do |conversation|
       %tr
-        %td=event.calltag
-        %td=event.title
-        %td=event.created_at.to_s(:without_year)
-        %td=event.creator.realname
-        %td=event.state_enum
-        %td=link_to '处理', edit_workitem_path(:id=>event.workitem_id)
+        %td=conversation.tag
+        %td=conversation.title
+        %td=conversation.created_at.to_s(:without_year)
+        %td=conversation.creator.realname
+        %td=conversation.state_enum
+        %td=link_to '处理', edit_workitem_path(:id=>conversation.workitem_id)
 

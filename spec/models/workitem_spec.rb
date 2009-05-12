@@ -3,8 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Workitem do
   before(:each) do
     @valid_attributes = {
-      :store_name => "aaron",
-      :event => events(:complain),
+      :store_id => "aaron",
+      :conversation => conversations(:ma_complain),
       :creator => "quentin"
     }
   end

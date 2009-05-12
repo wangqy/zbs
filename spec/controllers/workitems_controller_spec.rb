@@ -24,7 +24,7 @@ describe WorkitemsController do
     it "should be successful" do
       get 'edit', :id => workitems("complain_workitem22").id
       assigns[:workitem].should_not be_nil
-      assigns[:event].should_not be_nil
+      assigns[:conversation].should_not be_nil
       assigns[:history].should_not be_nil
       response.should be_success
     end
@@ -61,7 +61,7 @@ describe WorkitemsController do
     #待受理
     describe "in prepare deal" do
       before(:each) do
-        events(:complain).update_attribute(:state, 10)
+        conversations(:ma_complain).update_attribute(:state, 10)
       end
       
       it "should delete last workitem and create a new workitem" do
@@ -78,7 +78,7 @@ describe WorkitemsController do
         put 'update', @valid_attributes.merge(
           :history => {:handle => 10, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
-        events(:complain).reload.state.should == 10
+        conversations(:ma_complain).reload.state.should == 10
       end
 
       #受理
@@ -86,7 +86,7 @@ describe WorkitemsController do
         put 'update', @valid_attributes.merge(
           :history => {:handle => 21, :department_id => ""}
         )
-        events(:complain).reload.state.should == 20
+        conversations(:ma_complain).reload.state.should == 20
       end
 
       #申请办结
@@ -94,21 +94,22 @@ describe WorkitemsController do
         put 'update', @valid_attributes.merge(
           :history => {:handle => 30, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
-        events(:complain).reload.state.should == 30
+        conversations(:ma_complain).reload.state.should == 30
       end
 
       #退回
       it "should be return" do
         put 'update', @valid_attributes.merge(
-          :history => {:handle => 40, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
+          :history => {:handle => 40}
         )
-        events(:complain).reload.state.should == 40
+        conversations(:ma_complain).workitems.first.store.should == users(:quentin)
+        conversations(:ma_complain).reload.state.should == 40
       end
     end
 
     describe "in deal" do
       before(:each) do
-        events(:complain).update_attribute(:state, 20)
+        conversations(:ma_complain).update_attribute(:state, 20)
       end
 
       #转办
@@ -116,7 +117,7 @@ describe WorkitemsController do
         put 'update', @valid_attributes.merge(
           :history => {:handle => 10, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
-        events(:complain).reload.state.should == 10
+        conversations(:ma_complain).reload.state.should == 10
       end
 
       #申请办结
@@ -124,14 +125,14 @@ describe WorkitemsController do
         put 'update', @valid_attributes.merge(
           :history => {:handle => 30, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
-        events(:complain).reload.state.should == 30
+        conversations(:ma_complain).reload.state.should == 30
       end
     end
 
     #已退回
     describe "in return" do
       before(:each) do
-        events(:complain).update_attribute(:state, 40)
+        conversations(:ma_complain).update_attribute(:state, 40)
       end
 
       #转办
@@ -139,7 +140,7 @@ describe WorkitemsController do
         put 'update', @valid_attributes.merge(
           :history => {:handle => 10, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
-        events(:complain).reload.state.should == 10
+        conversations(:ma_complain).reload.state.should == 10
       end
 
       #受理
@@ -147,14 +148,14 @@ describe WorkitemsController do
         put 'update', @valid_attributes.merge(
           :history => {:handle => 21}
         )
-        events(:complain).reload.state.should == 20
+        conversations(:ma_complain).reload.state.should == 20
       end
     end
 
     #待重办
     describe "in redeal" do
       before(:each) do
-        events(:complain).update_attribute(:state, 50)
+        conversations(:ma_complain).update_attribute(:state, 50)
       end
 
       #转办
@@ -162,7 +163,7 @@ describe WorkitemsController do
         put 'update', @valid_attributes.merge(
           :history => {:handle => 10, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
-        events(:complain).reload.state.should == 10
+        conversations(:ma_complain).reload.state.should == 10
       end
 
       #受理
@@ -170,7 +171,7 @@ describe WorkitemsController do
         put 'update', @valid_attributes.merge(
           :history => {:handle => 21}
         )
-        events(:complain).reload.state.should == 20
+        conversations(:ma_complain).reload.state.should == 20
       end
 
       #申请办结
@@ -178,14 +179,14 @@ describe WorkitemsController do
         put 'update', @valid_attributes.merge(
           :history => {:handle => 30, :department_id => departments(:劳动局), :user_id => users(:aaron).id}
         )
-        events(:complain).reload.state.should == 30
+        conversations(:ma_complain).reload.state.should == 30
       end
     end
     
     #待审核
     describe "in audit" do
       before(:each) do
-        events(:complain).update_attribute(:state, 30)
+        conversations(:ma_complain).update_attribute(:state, 30)
       end
 
       #确认办结
@@ -193,7 +194,7 @@ describe WorkitemsController do
         put 'update', @valid_attributes.merge(
           :history => {:handle => 91}
         )
-        events(:complain).reload.state.should == 90
+        conversations(:ma_complain).reload.state.should == 90
       end
 
       #退回重办
@@ -201,7 +202,8 @@ describe WorkitemsController do
         put 'update', @valid_attributes.merge(
           :history => {:handle => 41}
         )
-        events(:complain).reload.state.should == 50
+        conversations(:ma_complain).workitems.first.store.should == users(:quentin)
+        conversations(:ma_complain).reload.state.should == 50
       end
     end
 

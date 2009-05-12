@@ -1,8 +1,5 @@
-open "/home"
-click_and_wait "link=退出"
-type "login", "aaron"
-type "password", "test"
-click_and_wait "save"
+open "/logout"
+include_partial 'admin/login', :login => 'aaron'
 click_and_wait "link=受理事件"
 type "phone", "13988889999"
 click_and_wait "commit"

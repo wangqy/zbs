@@ -11,7 +11,7 @@
 .group
   %table.list
     %tr
-      %th=l(:calltag)
+      %th=l(:tag)
       %th=l(:title)
       %th=l(:name)
       %th=l(:callnumber)
@@ -20,7 +20,7 @@
       %th 操作
     - @list.each do |call|
       %tr
-        %td=call.calltag
+        %td=call.tag
         %td=call.title
         %td=call.name
         %td=call.callnumber

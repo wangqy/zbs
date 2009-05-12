@@ -9,6 +9,7 @@ ma_complain_call:
   creator: quentin
   modifier: quentin
   created_at: 2009-03-24T22:22:22+08:00
+  wavfile: path
 
 ma_complain_reply_call:
   conversation: ma_complain
