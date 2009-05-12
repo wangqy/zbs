@@ -27,26 +27,6 @@ module ApplicationHelper
     t('activerecord.models.' + menu.downcase.singularize)
   end
 
-  def is_admin?(user=nil)
-    user = current_user if user.nil?
-    user.role == 1
-  end
-
-  def is_digit_person?(user=nil)
-    user = current_user if user.nil?
-    user.role == 2
-  end
-
-  def is_dispatch_person?(user=nil)
-    user = current_user if user.nil?
-    user.role == 3
-  end
-
-  def is_depart_person?(user=nil)
-    user = current_user if user.nil?
-    user.role == 4
-  end
-
   def ismanager?
     current_user.ismanager == 1
   end

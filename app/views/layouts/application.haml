@@ -10,7 +10,7 @@
     / [if gte IE 7]
       =stylesheet_link_tag "ie7"
     =javascript_include_tag "prototype", "jquery", "facebox", "application" 
-    -if is_digit_person? && !current_user.site.blank? && params[:uniqueid].nil?
+    -if current_user.is_digit_person? && !current_user.site.blank? && params[:uniqueid].nil?
       /
         =javascript_include_tag "http://#{CALL_CENTER}/interface/js/jquery.json.js", "http://#{CALL_CENTER}/interface/mixpop.php?extension=#{current_user.site}"
     =calendar_date_select_includes "blue"
@@ -31,11 +31,11 @@
               #ublinks
                 =link_to "退出", logout_path
                 =link_to "修改密码", pass_path, :rel => "facebox"
-                -if !is_admin?
+                -if !current_user.is_admin?
                   =link_to "公告", notice_list_path
               %strong{:style=>"margin:0;padding:0;"}
                 %a="欢迎您:#{current_user.login}"
-            -if is_digit_person?
+            -if current_user.is_digit_person?
               .ubody
                 #ublinks
                   =link_to "设置", user_site_path, :rel => "facebox"
@@ -45,24 +45,24 @@
         #main
           #project-nav
             %ul
-              %li#t-proj{:class=>select_menu('home')}
-                =link_to '首页', home_path
-              - if is_admin?
+              - if current_user.is_admin?
+                %li#t-proj{:class=>select_menu('home')}
+                  =link_to '首页', home_path
                 %li#u-menu.mainmenu{:class=>"#{select_menu('users')}"}
                   -%w{departments users notices logs}.each do |menu|
                     =render :partial => "layouts/menu", :locals => { :menu => menu }
-              - elsif is_depart_person? || is_dispatch_person?
-                %li#workitem-menu{:class=>select_menu('workitems')}
+              - elsif current_user.is_depart_person? || current_user.is_dispatch_person?
+                %li#t-proj{:class=>select_menu('workitems')}
                   =link_to '待办事项', workitems_path
-                - if is_dispatch_person?
+                - if current_user.is_dispatch_person?
                   %li{:class=>select_menu('dispatches')}
                     =link_to '事件调度', dispatches_path
               - else
-                %li{:class=>select_menu('conversations')}
+                %li#t-proj{:class=>select_menu('conversations')}
                   =link_to '受理事件', conversations_path
           #action-nav
             %ul.clear
-              - if is_admin? || ismanager?
+              - if current_user.is_admin? || ismanager?
                 -%w{departments users notices}.each do |menu|
                   =render :partial => "layouts/submenu", :locals => { :menu => menu }
               - else

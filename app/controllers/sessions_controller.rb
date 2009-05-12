@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
         end
         flash[:notice] = m('user.login.success')
         Log.login current_user, request.remote_ip
-        redirect_to home_path
+        redirect_to_homepage
       end
     else
       flash.now[:error] = m('user.login.password')
@@ -53,10 +53,14 @@ class SessionsController < ApplicationController
 
   private
   def redirect_to_homepage
-    if [1,2].include? current_user.role
-      redirect_to(home_path)
-    else
+    if current_user.is_digit_person?
+      redirect_to conversations_path
+    elsif current_user.is_dispatch_person?
+      redirect_to dispatches_path
+    elsif current_user.is_depart_person?
       redirect_to workitems_path
+    else
+      redirect_to home_path
     end
   end
 end

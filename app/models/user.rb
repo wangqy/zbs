@@ -84,6 +84,22 @@ class User < ActiveRecord::Base
     @activated
   end
 
+  def is_admin?
+    self.role == 1
+  end
+
+  def is_digit_person?
+    self.role == 2
+  end
+
+  def is_dispatch_person?
+    self.role == 3
+  end
+
+  def is_depart_person?
+    self.role == 4
+  end
+
   protected
     # before filter 
     def encrypt_password
