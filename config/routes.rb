@@ -29,6 +29,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
 
   map.resources :conversations
+  map.searches '/searches', :controller => 'conversations', :action => 'list'
   map.resources :dispatches
   map.resources :workitems
 

@@ -20,6 +20,11 @@ class Conversation < ActiveRecord::Base
       events.person.phone,
       events.person.mobile
     ], :as => :phone
+    set_property :delta => true
+  end
+
+  def per_page
+    20
   end
 
   #当前流程ID

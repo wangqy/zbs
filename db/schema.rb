@@ -12,17 +12,18 @@
 ActiveRecord::Schema.define(:version => 20090429072739) do
 
   create_table "conversations", :force => true do |t|
-    t.integer  "state",       :limit => 2,   :default => 0, :null => false
-    t.string   "tag",         :limit => 20,                 :null => false
-    t.string   "title",       :limit => 20,                 :null => false
+    t.integer  "state",       :limit => 2,   :default => 0,     :null => false
+    t.string   "tag",         :limit => 20,                     :null => false
+    t.string   "title",       :limit => 20,                     :null => false
     t.integer  "aim",         :limit => 2
     t.integer  "emergency",   :limit => 2
     t.integer  "security",    :limit => 2
     t.integer  "kind_id"
-    t.string   "content",     :limit => 800,                :null => false
-    t.date     "finish_at",                                 :null => false
-    t.integer  "creator_id",                                :null => false
-    t.integer  "modifier_id",                               :null => false
+    t.string   "content",     :limit => 800,                    :null => false
+    t.date     "finish_at",                                     :null => false
+    t.integer  "creator_id",                                    :null => false
+    t.integer  "modifier_id",                                   :null => false
+    t.boolean  "delta",                      :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

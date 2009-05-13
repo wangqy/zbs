@@ -15,6 +15,8 @@ class CreateConversations < ActiveRecord::Migration
       t.date :finish_at, :null => false
       #创建人,修改人
       t.integer :creator_id, :modifier_id, :null => false
+      #增量索引标记
+      t.boolean :delta, :null => false, :default => false
 
       t.timestamps
     end

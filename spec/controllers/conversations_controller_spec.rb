@@ -61,6 +61,20 @@ describe ConversationsController do
     end
   end
 
+  describe "GET 'list'" do
+    it "should be list" do
+      get :list, :phone => '13988889999'
+      response.should be_success
+      assigns[:list].should_not be_nil
+      assigns[:list].first.should_not be_nil
+    end
+
+    it "should be show" do
+      get :show, :id => conversations(:ma_complain)
+      assigns[:conversation].should_not be_nil
+    end
+  end
+
   describe "save conversation" do
     it "should be successful" do
       lambda do

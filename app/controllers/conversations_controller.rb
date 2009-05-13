@@ -6,6 +6,16 @@ class ConversationsController < ApplicationController
     end
   end
 
+  def list
+    @menu = 'searches'
+    @list = Conversation.search(params[:phone])
+  end
+
+  def show
+    @menu = 'searches'
+    @conversation = Conversation.find(params[:id])
+  end
+
   def new
     @conversation = Conversation.new
     @event = Event.new

@@ -60,6 +60,8 @@
               - else
                 %li#t-proj{:class=>select_menu('conversations')}
                   =link_to '受理事件', conversations_path
+              %li{:class=>select_menu('searches')}
+                =link_to '事件记录', searches_path
           #action-nav
             %ul.clear
               - if current_user.is_admin? || ismanager?

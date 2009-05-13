@@ -1,0 +1,14 @@
+#mainbar
+  .group
+    =render :partial => "conversations/show"
+    %p.btns{:style=>"clear:left"}
+      = link_to '返回', :back
+#sbar
+  .proj-desc
+    %p 处理过程
+  #shared-bin-block.sblock.bin-block
+    =render :partial => "conversations/histories", :locals => {:conversation => @conversation}
+  .proj-desc
+    %p 往来记录
+  #shared-bin-block.sblock.bin-block
+    =render :partial => "conversations/events", :locals => {:conversation => @conversation}

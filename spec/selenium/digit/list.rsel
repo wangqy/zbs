@@ -1,0 +1,10 @@
+include_partial 'admin/login', :login => 'aaron'
+click_and_wait "link=事件记录"
+type "phone", "13988889999"
+click_and_wait "commit"
+verify_text_present "马先生投诉"
+click_and_wait "link=查看"
+verify_text_present "马先生投诉"
+verify_text_present "编号:深电2009032300099"
+verify_text_present "(劳动局)阿郎"
+click_and_wait "link=返回"
