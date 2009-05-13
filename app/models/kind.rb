@@ -2,7 +2,7 @@ class Kind < ActiveRecord::Base
   belongs_to :parent, :class_name => "Kind"
   has_many :childrens, :class_name => "Kind", :foreign_key => "parent_id"
 
-  validates_presence_of :name
+  validates_presence_of :name, :days
 
   named_scope :parent_list, lambda {
     {

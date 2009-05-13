@@ -48,4 +48,9 @@ describe Conversation do
   it "should init tag when create a new instance" do
     Conversation.create(@valid_attributes).tag.should_not be_nil
   end
+
+  #计算截止日期
+  it "should init finish date" do
+    Conversation.create(@valid_attributes).finish_at.should_not be_nil
+  end
 end

@@ -8,14 +8,19 @@
         %td{:colspan=>2} 不选择一级分类时,表示当前新增的为一级分类
       %tr
         %th
-          %label="一级分类"
+          %label 一级分类
         %td
           - @parent_list.each do |parent|
             =radio_button_tag 'kind[parent_id]', parent.id
             =label_tag "kind_parent_id_#{parent.id}", "#{parent.name}"
       %tr
-        %th= f.label :name, "分类名称 #{require_star}"
+        %th= f.label_require :name
         %td= f.text_field :name
+      %tr
+        %th= f.label_require :days
+        %td
+          = f.text_field :days, :class => :short
+          = "天"
     %p.btns
       = submit_tag '保 存', {:id=>'save'}
       = submit_tag '关 闭', {:type=>'button',:onclick=>'javascript:j.facebox.close();'}

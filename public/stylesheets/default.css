@@ -135,6 +135,8 @@ fieldset {
   border-color: #CCCCCC; }
 .formin input.long, .formpass input.long {
   width: 510px; }
+.formin input.short, .formpass input.short {
+  width: 175px; }
 .formin .calendar, .formpass .calendar {
   width: 182px;
   font-size: 20px;
@@ -142,6 +144,8 @@ fieldset {
   float: left; }
 .formin select, .formpass select {
   width: 190px; }
+.formin select.long, .formpass select.long {
+  width: 400px; }
 .formin .radio, .formpass .radio {
   margin-left: 10px;
   margin-right: 5px;

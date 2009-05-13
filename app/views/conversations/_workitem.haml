@@ -46,11 +46,8 @@
     %tr.show_by_other
       %th= label_tag :history_department_id, "接收部门 #{require_star}"
       %td= select_dept
-      %th= label_tag :history_timeout, "截止日期"
-      %td=calendar_date_select_tag "history[timeout]", params[:history][:timeout], :popup => :force, :class => 'calendar', :id => 'history_timeout'
-    %tr.show_by_other
       %th= label_tag :history_user_id, "相关责任人 #{require_star}"
-      %td#user_select{:colspan=>3}= select_user
+      %td#user_select= select_user
     %tr
       %th= label_tag :history_remark, "备注"
       %td{:colspan=>3}= text_area_tag "history[remark]", params[:history][:remark], :rows => 3, :cols => 49, :id => "history_remark"

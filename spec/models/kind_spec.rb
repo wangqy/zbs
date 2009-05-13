@@ -3,7 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Kind do
   before(:each) do
     @valid_attributes = {
-      :name => "紧急事务"
+      :name => "紧急事务",
+      :days => 30
     }
   end
 
@@ -15,7 +16,13 @@ describe Kind do
 
   it "require name" do
     lambda do
-      Kind.create
+      Kind.create :days => 30
+    end.should_not change(Kind, :count)
+  end
+
+  it "require days" do
+    lambda do
+      Kind.create :name => "紧急事务"
     end.should_not change(Kind, :count)
   end
 

@@ -27,6 +27,7 @@ class Conversation < ActiveRecord::Base
 
   before_create do |c|
     c.tag = Sequence.case_tag
+    c.finish_at = c.kind.days.days.since(Date.today)
   end
 
   #状态矩阵,key为当前事件的状态,value hash中的key为办理方式,value为下一个状态值

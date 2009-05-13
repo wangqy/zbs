@@ -3,5 +3,5 @@ page.show 'formin'
 
 #
 page.delay(2) do
-  page.redirect_to home_path
+  page.redirect_to conversations_path
 end

@@ -10,7 +10,7 @@ describe ConversationsController do
         :emergency => 1,
         :security => 1,
         :content => "来电人对新法规存在误解",
-        :kind_id => kinds(:normal)
+        :kind_id => kinds(:normal).id
       },
       :event => {
         :category => 1,

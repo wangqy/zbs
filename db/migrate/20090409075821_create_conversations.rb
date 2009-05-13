@@ -11,6 +11,8 @@ class CreateConversations < ActiveRecord::Migration
       t.integer :kind_id
       #内容摘要
       t.string :content, :null => false, :limit => 800
+      #截止日期
+      t.date :finish_at, :null => false
       #创建人,修改人
       t.integer :creator_id, :modifier_id, :null => false
 

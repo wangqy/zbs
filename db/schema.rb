@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
     t.integer  "security",    :limit => 2
     t.integer  "kind_id"
     t.string   "content",     :limit => 800,                :null => false
+    t.date     "finish_at",                                 :null => false
     t.integer  "creator_id",                                :null => false
     t.integer  "modifier_id",                               :null => false
     t.datetime "created_at"
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
 
   create_table "kinds", :force => true do |t|
     t.string   "name",       :limit => 20, :null => false
+    t.integer  "days",                     :null => false
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"

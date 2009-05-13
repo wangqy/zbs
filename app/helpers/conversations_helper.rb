@@ -5,12 +5,16 @@ module ConversationsHelper
     options = []
     parent = Kind.parent_list
     parent.each do |p|
-      options << [p.name, p.id]
+      parent_label = p.name
+      parent_label += "(限期#{p.days}天)" if p.days>0
+      options << [parent_label, p.id]
       p.childrens.each do |c|
-        options << ["#{p.name} #{c.name}", c.id]
+        child_label = "#{p.name} #{c.name}"
+        child_label += "(限期#{p.days}天)" if p.days>0
+        options << [child_label, c.id]
       end
     end
-    select_tag 'conversation[kind_id]', options_for_select(options, kind.id)
+    select_tag 'conversation[kind_id]', options_for_select(options, kind.id), :class => "long"
   end
 
   #选择联系人

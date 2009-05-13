@@ -2,14 +2,14 @@
   -form_tag conversations_path, :method=>:get do
     .group
       %fieldset
-        %legend 1.查询以往记录
+        %legend 1.先查询以往记录
         #quick-search-bar
           =label_tag :phone, '联系电话'
           =text_field_tag :phone, params[:phone], :is_focus => true
           =submit_tag '查询'
     .group
       %fieldset
-        %legend 2.以往记录列表
+        %legend 2.检查是否存在相关记录
         -@list.each do |conversation|
           .conversation_info
             %p=truncate_with_more("事件#{@list.index(conversation)+1}:#{conversation.content}", 120, conversation.id)

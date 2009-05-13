@@ -7,8 +7,8 @@
       %td{:colspan=>3}
       %td.sub_title="编号:#{@conversation.tag}"
     %tr
-      %th 时间
-      %td=@conversation.created_at.to_s(:db)
+      %th 截止日期
+      %td=@conversation.finish_at.to_s(:db)
       %th 目的
       %td=@conversation.aim_enum
     %tr

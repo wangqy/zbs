@@ -15,19 +15,21 @@ describe KindsController do
   end
 
   describe "Save" do
-    it "require name" do
+    it "require name and days" do
       lambda do
         xhr :post, :create, :kind=>{
           :name => ""
         }
         assigns[:kind].errors.on(:name).should_not be_nil
+        assigns[:kind].errors.on(:days).should_not be_nil
       end.should_not change(Kind, :count)
     end
 
     it "should be successful" do
       lambda do
         xhr :post, :create, :kind=>{
-          :name => "产权纠纷"
+          :name => "产权纠纷",
+          :days => "30"
         }
         flash[:notice] = "新增事件分类成功"
       end.should change(Kind, :count).by(1)

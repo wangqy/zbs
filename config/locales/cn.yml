@@ -56,7 +56,8 @@ cn:
         title: "标题"
         content: "内容"
       kind:
-        name: "名称"
+        name: "分类名称"
+        days: "期限"
 
 
     errors:

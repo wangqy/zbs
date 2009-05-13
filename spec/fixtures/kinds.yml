@@ -2,8 +2,10 @@
 
 normal:
   name: 普通事务
+  days: 30
   parent: 
 
 normal_fight:
   name: 一般斗殴
+  days: 30
   parent: normal
