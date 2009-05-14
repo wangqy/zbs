@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
     t.integer  "user_id"
     t.string   "reason"
     t.string   "remark"
-    t.integer  "creator_id"
+    t.integer  "creator_id",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -97,10 +97,11 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
   end
 
   create_table "messages", :force => true do |t|
-    t.integer  "conversation_id", :null => false
-    t.integer  "user_id",         :null => false
-    t.string   "content",         :null => false
-    t.integer  "creator_id",      :null => false
+    t.integer  "conversation_id",                    :null => false
+    t.integer  "user_id",                            :null => false
+    t.string   "content",                            :null => false
+    t.integer  "creator_id",                         :null => false
+    t.boolean  "is_sended",       :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -164,8 +165,8 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
   create_table "workitems", :force => true do |t|
     t.integer  "store_id",        :null => false
     t.integer  "conversation_id", :null => false
-    t.string   "creator",         :null => false
-    t.integer  "last_store_id"
+    t.integer  "creator_id",      :null => false
+    t.integer  "last_store_id",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

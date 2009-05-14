@@ -3,11 +3,11 @@
 complain_workitem:
   store: depart
   conversation: ma_complain 
-  creator: quentin
+  creator: users(:quentin)
   last_store: quentin
   
 complain_workitem22:
   store: depart
   conversation: sun_complain
-  creator: quentin
+  creator: users(:quentin)
   last_store: quentin

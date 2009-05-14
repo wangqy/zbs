@@ -12,7 +12,7 @@ class CreateHistories < ActiveRecord::Migration
       t.string :reason
       t.string :remark
       #创建人
-      t.references :creator
+      t.references :creator, :null => false
 
       t.timestamps
     end

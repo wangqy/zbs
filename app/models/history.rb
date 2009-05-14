@@ -9,4 +9,7 @@ class History < ActiveRecord::Base
   validates_presence_of :department_id, :if => Proc.new {|h| [10,30].include?h.handle}
   validates_presence_of :user_id, :if => Proc.new {|h| [10,30].include?h.handle}
 
+  def is_need_msg?
+    %w(10 30 40 41).include?self.handle.to_s
+  end
 end

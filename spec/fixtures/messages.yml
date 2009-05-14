@@ -1,11 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  conversation: 
-  user: 
-  content: MyString
+depart:
+  conversation: ma_complain
+  user: depart 
+  content: 阿郎刚将事件(主题:马先生投诉)转给你,请尽快处理
+  is_sended: false
 
-two:
-  conversation: 
-  user: 
-  content: MyString

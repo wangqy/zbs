@@ -5,7 +5,8 @@ describe Workitem do
     @valid_attributes = {
       :store_id => "aaron",
       :conversation => conversations(:ma_complain),
-      :creator => "quentin"
+      :creator => users(:quentin),
+      :last_store => users(:quentin)
     }
   end
 

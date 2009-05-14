@@ -24,6 +24,12 @@ every 1.day, :at => '1:00 am' do
   rake 'ts:index'
 end
 
+#每天发送待办事项短信
 every :weekday, :at => '10:00 am' do
   runner "Workitem.send_msg"
+end
+
+#定时发送转办短信
+every 10.minutes do
+  runner "Message.send_msg"
 end

@@ -5,9 +5,10 @@ class CreateWorkitems < ActiveRecord::Migration
       t.integer :store_id, :null => false
       t.references :conversation, :null => false
       #办理人
-      t.string :creator, :null => false
-      #上一个任务的store_id,[退回,退回重办]时使用
-      t.integer :last_store_id
+      t.references :creator, :null => false
+
+      #上一个任务的store_id,即上一操作人,[退回,退回重办]时使用
+      t.integer :last_store_id, :null => false
 
       t.timestamps
     end

@@ -23,16 +23,18 @@ class DispatchesController < ApplicationController
         last_workitem = nil
 
         workitem_attributes = workitem_attributes_from(@history, last_workitem)
+        #非"直接办结","确认办结"
         if workitem_attributes
-          workitem_attributes[:last_store_id] = last_workitem.store_id if last_workitem
-          workitem_attributes[:creator] = current_user.login
-          @conversation.workitems.create workitem_attributes
+          workitem_attributes[:last_store_id] = current_user.id
+          workitem_attributes[:creator] = current_user
+          workitem = Workitem.new(workitem_attributes)
+          @conversation.workitems << workitem
+          #发送短信(分派时只有转办才发送短信)
+          Message.create!(:conversation => @conversation, :user => workitem.store, :creator => current_user) if @history.is_need_msg?
         end
         @conversation.save! 
       end
       flash[:notice] = "办理成功."
-      #发送短信
-      Message.create(:conversation => @conversation, :user => @history.user, :creator => current_user) unless @history.user.nil?
       redirect_to dispatches_path
     else
       render :action => "new"

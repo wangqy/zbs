@@ -5,14 +5,13 @@ class Msg < ActiveRecord::Base
 
   #短信模板配置
   DISPATCH_TEMPLATE = <<-EOF
-    <%= DateTime.now.to_s(:db) %> 分派员刚将事件(主题:<%= title %>)转给你,请及时处理
+    <%= DateTime.now.to_s(:db) %> <%= creator %>刚将事件(主题:<%= title %>)转给你,请及时处理
   EOF
 
   #待办事项短信模板
   WORKITEM_TEMPLATE = <<-EOF 
     您的待办事项还有<%= sum %>个事件未处理,请尽快处理.
   EOF
-
 
   def initialize(params = nil)
     params ||= {}
@@ -41,7 +40,7 @@ class Msg < ActiveRecord::Base
     super
   end
 
-  def self.send_to(mobile, content, creator_id = 0)
+  def self.send_to(mobile, content, creator_id = '0')
     self.create(
       :DestAddr => mobile,
       :SM_Content => content,

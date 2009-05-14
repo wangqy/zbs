@@ -13,4 +13,12 @@ describe Message do
     m = Message.create!(@valid_attributes)
     m.content.should_not be_nil
   end
+
+  it "should send the unsended message" do
+    lambda do
+      messages(:depart).is_sended.should == false
+      Message.send_msg
+      messages(:depart).reload.is_sended.should == true
+    end.should change(Msg, :count).by(1)
+  end
 end
