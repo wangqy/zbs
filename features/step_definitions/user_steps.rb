@@ -6,6 +6,7 @@
     user[:role] = 1
     user[:role] = 2 if user["login"] == "disable" || user["login"] == "quentin"
     user[:telephone] = '26741022'
+    user[:mobile] = '13988889999'
     user[:password] = 'test'
     user[:password] = 'admin' if user["login"] == "cogentsoft"
     user[:disabled] = 1 if user["login"] == "disable"

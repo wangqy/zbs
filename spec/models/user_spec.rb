@@ -28,6 +28,13 @@ describe User do
     end.should_not change(User, :count)
   end
 
+  it 'requires mobile' do
+    lambda do
+      u = create_user(:mobile => nil)
+      u.errors.on(:mobile).should_not be_nil
+    end.should_not change(User, :count)
+  end
+
   it 'resets password' do
     users(:quentin).update_attributes(:password => 'new password')
     User.authenticate('quentin', 'new password').should == users(:quentin)
@@ -83,6 +90,7 @@ protected
       :password => 'quire',
       :realname => 'quire',
       :telephone => '26741022',
+      :mobile => '13988889999',
       :department_id => 0,
       :role => 1
     }.merge(options))

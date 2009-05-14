@@ -12,4 +12,10 @@ describe Workitem do
   it "should create a new instance given valid attributes" do
     Workitem.create!(@valid_attributes)
   end
+
+  it "should send a message to user" do
+    lambda do
+      Workitem.send_msg
+    end.should change(Msg, :count).by(1)
+  end
 end

@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table "users", :force => true do |t|
-      t.column :login,                     :string
+      t.column :login,                     :string, :null => false
       t.column :crypted_password,          :string, :limit => 40
       t.column :salt,                      :string, :limit => 40
       t.column :remember_token,            :string
@@ -18,9 +18,9 @@ class CreateUsers < ActiveRecord::Migration
       #职位
       t.string :position
       #办公电话
-      t.string :telephone, :limit=>20
+      t.string :telephone, :limit=>20, :null => false
       #手机
-      t.string :mobile, :limit=>20
+      t.string :mobile, :limit=>20, :null => false
       #是否负责人
       t.integer :ismanager, :limit => 2
       #电子邮箱
@@ -39,7 +39,7 @@ class CreateUsers < ActiveRecord::Migration
     end
 
     say 'create admin user'
-    User.create!({:login => 'admin', :password => 'admin', :realname => '管理员', :telephone => '26741022', :department_id => 0, :disabled => 0, :role => 1})
+    User.create!({:login => 'admin', :password => 'admin', :realname => '管理员', :telephone => '26741022', :mobile => '13988889999', :department_id => 0, :disabled => 0, :role => 1})
     
   end
 

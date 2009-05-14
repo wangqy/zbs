@@ -29,7 +29,7 @@
           %tr
             %th= f.label :telephone, "办公电话 #{require_star}"
             %td= f.text_field :telephone
-            %th= f.label :mobile, "手机"
+            %th= f.label_require :mobile, "手机"
             %td= f.text_field :mobile
           %tr
             %th= f.label :email, "电子邮箱"

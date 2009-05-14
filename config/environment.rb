@@ -77,3 +77,5 @@ Rails::Initializer.run do |config|
 end
 
 CalendarDateSelect.format = :iso_date
+
+require 'whenever'

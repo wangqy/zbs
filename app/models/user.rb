@@ -4,8 +4,9 @@ class User < ActiveRecord::Base
   attr_accessor :password
 
   belongs_to :department
+  has_many :workitems, :foreign_key => "store_id"
 
-  validates_presence_of     :login, :realname, :telephone, :department_id, :role
+  validates_presence_of     :login, :realname, :telephone, :mobile, :department_id, :role
   validates_uniqueness_of   :login, :case_sensitive => false
   validates_length_of       :realname, :maximum => 10
   validates_length_of       :telephone,:maximum => 20

@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login"
+    t.string   "login",                                                   :null => false
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
     t.string   "remember_token"
@@ -148,8 +148,8 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
     t.integer  "department_id",                                           :null => false
     t.integer  "role",                                                    :null => false
     t.string   "position"
-    t.string   "telephone",                 :limit => 20
-    t.string   "mobile",                    :limit => 20
+    t.string   "telephone",                 :limit => 20,                 :null => false
+    t.string   "mobile",                    :limit => 20,                 :null => false
     t.integer  "ismanager",                 :limit => 2
     t.string   "email",                     :limit => 120
     t.string   "remark",                    :limit => 20
