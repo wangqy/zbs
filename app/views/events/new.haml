@@ -2,7 +2,7 @@
   .group
     =error_messages_for('event', 'person', 'duty')
     -form_for @event do |f|
-      =f.hidden_field :record_id
+      =f.hidden_field :record_id, :value => params[:record_id]
       =hidden_field_tag :phone, params[:phone]
       =hidden_field_tag :category, params[:category]
       =hidden_field_tag :menu, params[:menu]

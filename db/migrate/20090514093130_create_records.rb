@@ -7,7 +7,7 @@ class CreateRecords < ActiveRecord::Migration
       #录音文件
       t.string :wavfile, :limit => 32, :null => false
       #呼叫中心录音文件唯一标识
-      t.string :uniqueid, :limit => 32, :null => false, :unique => true
+      t.string :uniqueid, :limit => 32, :null => false
 
       t.datetime :created_at, :null => false
     end

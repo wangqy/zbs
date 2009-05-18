@@ -33,4 +33,5 @@ describe Event do
     events(:ma_complain_call).is_in?.should be_true
     events(:ma_complain_reply_call).is_out?.should be_true
   end
+
 end

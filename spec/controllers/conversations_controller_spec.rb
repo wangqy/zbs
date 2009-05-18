@@ -38,7 +38,7 @@ describe ConversationsController do
 
   describe "GET 'new'" do
     it "should be successful" do
-      get :new, :phone => '13988889999', :category => '1'
+      get :new, :phone => '13988889999', :category => '1', :record_id => records(:ma_complain_call_record)
       response.should be_success
       c = assigns[:conversation]
       event = assigns[:event]
@@ -46,6 +46,7 @@ describe ConversationsController do
       duty = assigns[:duty]
 
       event.timing.should_not be_nil
+      event.record_id.should_not be_nil
       person.phone.should == '13988889999'
       duty.watchman.should_not be_nil
       duty.receiver.should_not be_nil
@@ -79,6 +80,7 @@ describe ConversationsController do
     it "should be successful" do
       lambda do
         post :create, @valid_attribute
+        assigns[:event].record_id.should_not be_nil
         flash[:notice].should == "保存成功!"
       end.should change(Conversation, :count).by(1)
     end

@@ -6,12 +6,12 @@
           =label_tag :phone, '联系电话'
           =text_field_tag :phone, params[:phone], :is_focus => true
           =submit_tag '查询'
-          =link_to '增加新事件', new_conversation_path(:phone => params[:phone], :category => params[:category])
+          =link_to '增加新事件', new_conversation_path(:phone => params[:phone], :category => params[:category], :record_id => params[:record_id])
       .group
         -@list.each do |conversation|
           .conversation_info
             %p=truncate_with_more("事件#{@list.index(conversation)+1}:#{conversation.content}", 120, conversation.id)
-            =link_to "关联此事件", new_event_path('event[conversation_id]' => conversation.id, :phone => params[:phone], :menu => :conversations), :class => 'relate_btn'
+            =link_to "关联此事件", new_event_path('event[conversation_id]' => conversation.id, :phone => params[:phone], :menu => :conversations, :record_id => params[:record_id]), :class => 'relate_btn'
             =render :partial => "conversations/events", :locals => {:conversation => conversation}
 #sbar
   .proj-desc

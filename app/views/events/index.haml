@@ -5,12 +5,13 @@
         #quick-search-bar
           =label_tag :phone, '联系电话'
           =text_field_tag :phone, params[:phone], :is_focus => true
+          =hidden_field_tag :record_id, params[:record_id]
           =submit_tag '查询'
       .group
         -@list.each do |conversation|
           .conversation_info
             %p=truncate_with_more("事件#{@list.index(conversation)+1}:#{conversation.content}", 120, conversation.id)
-            =link_to "关联此事件", new_event_path('event[conversation_id]' => conversation.id, :phone => params[:phone], :category => 'category_out'), :class => 'relate_btn'
+            =link_to "关联此事件", new_event_path('event[conversation_id]' => conversation.id, :phone => params[:phone], :category => 'category_out', :record_id => params[:record_id]), :class => 'relate_btn'
             =render :partial => "conversations/events", :locals => {:conversation => conversation}
 #sbar
   .proj-desc

@@ -23,6 +23,7 @@ class ConversationsController < ApplicationController
     @duty = Duty.new
     @event.timing = DateTime.now.to_s(:with_year)
     @event.category = params[:category]
+    @event.record_id = params[:record_id]
     @person.phone = params[:phone]
     #值班室信息
     @duty.watchman = current_user.realname
