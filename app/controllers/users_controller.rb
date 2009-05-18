@@ -4,11 +4,10 @@ class UsersController < ApplicationController
 
   #列表
   def index
-    @conditions = condition params, "user"
     if params[:user].nil?
       params[:user] = {}
     end
-    @page = User.paginate :page => params[:page], :conditions => @conditions, :per_page => 10, :order => "login"
+    @page = User.paginate :page => params[:page], :conditions => params_condition, :per_page => 10, :order => "login"
   end
 
   #新增

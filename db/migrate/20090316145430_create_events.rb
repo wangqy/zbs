@@ -7,10 +7,10 @@ class CreateEvents < ActiveRecord::Migration
       t.string :content, :limit => 800
       #事件类型(来电,来访,来函,传真等)
       t.integer :category, :null => false, :limit => 2
-      #呼叫中心录音唯一标识符,用于关联录音文件
-      t.string :wavfile, :limit => 32
+      #关联录音记录
+      t.references :record
       #创建人,修改人
-      t.integer :creator_id, :modifier_id, :null => false
+      t.references :creator, :modifier, :null => false
       #关联大事件
       t.references :conversation, :null => false
       #关联联系人

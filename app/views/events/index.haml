@@ -1,34 +1,25 @@
-.group
-  %fieldset
-    %legend 查询条件
-    #quick-search-bar
-      -form_tag calls_path, :method=>:get do
-        =label_tag :callnumber, l(:callnumber)
-        =text_field_tag :callnumber, params[:callnumber]
-        =label_tag :name, l(:name)
-        =text_field_tag :name, params[:name]
-        =submit_tag '查询'
-.group
-  %table.list
-    %tr
-      %th=l(:tag)
-      %th=l(:title)
-      %th=l(:name)
-      %th=l(:callnumber)
-      %th=l(:timing)
-      %th 登记人
-      %th 操作
-    - @list.each do |call|
-      %tr
-        %td=call.tag
-        %td=call.title
-        %td=call.name
-        %td=call.callnumber
-        %td=call.timing.to_s(:without_year)
-        %td=call.creator.realname
-        %td
-          =link_to '查看', call
-          =link_to '编辑', edit_call_path(call)
-          =link_to '删除', call, :confirm => "你确定要删除吗?", :method => :delete
-  =will_paginate @list
-
+#mainbar
+  -form_tag events_path, :method=>:get do
+    #conversation_index
+      .group
+        #quick-search-bar
+          =label_tag :phone, '联系电话'
+          =text_field_tag :phone, params[:phone], :is_focus => true
+          =submit_tag '查询'
+      .group
+        -@list.each do |conversation|
+          .conversation_info
+            %p=truncate_with_more("事件#{@list.index(conversation)+1}:#{conversation.content}", 120, conversation.id)
+            =link_to "关联此事件", new_event_path('event[conversation_id]' => conversation.id, :phone => params[:phone], :category => 'category_out'), :class => 'relate_btn'
+            =render :partial => "conversations/events", :locals => {:conversation => conversation}
+#sbar
+  .proj-desc
+    %p 往来记录指回电,回访等记录
+    %p 操作步骤如下:
+    %ul#shared-ticket-bins.stacked.wbadges.sortable
+      %li 
+        %a 1.输入联系电话,查询
+      %li
+        %a 2.在结果中找出相关的事件记录
+      %li 
+        %a 3.点击"关联此事件",录入往来记录

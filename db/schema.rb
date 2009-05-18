@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090429072739) do
+ActiveRecord::Schema.define(:version => 20090514093130) do
 
   create_table "conversations", :force => true do |t|
     t.integer  "state",       :limit => 2,   :default => 0,     :null => false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
     t.datetime "timing",                         :null => false
     t.string   "content",         :limit => 800
     t.integer  "category",        :limit => 2,   :null => false
-    t.string   "wavfile",         :limit => 32
+    t.integer  "record_id"
     t.integer  "creator_id",                     :null => false
     t.integer  "modifier_id",                    :null => false
     t.integer  "conversation_id",                :null => false
@@ -133,6 +133,14 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
     t.datetime "updated_at"
   end
 
+  create_table "records", :force => true do |t|
+    t.integer  "kind",       :limit => 2,  :null => false
+    t.string   "dail",       :limit => 15, :null => false
+    t.string   "receive",    :limit => 15, :null => false
+    t.string   "wavfile",    :limit => 32, :null => false
+    t.datetime "created_at",               :null => false
+  end
+
   create_table "sequences", :force => true do |t|
     t.date    "day",                   :null => false
     t.integer "number", :default => 1, :null => false
@@ -167,8 +175,7 @@ ActiveRecord::Schema.define(:version => 20090429072739) do
     t.integer  "conversation_id", :null => false
     t.integer  "creator_id",      :null => false
     t.integer  "last_store_id",   :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
   end
 
 end

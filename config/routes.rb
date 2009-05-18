@@ -10,8 +10,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :events
   map.resources :people
 
-  map.named_route("pop_new_call", "pop/:calltype/:callnumber/:site", :controller => 'events', :action => 'new',
-                  :type => "Call", :conditions => { :method => :get, :calltype => :dail_in })
+  #来电,去电
+  map.pop_call "/pop/:kind/:dail/:receive/:wavfile", :controller => 'records', :action => 'create'
 
   map.resources :kinds
   map.resources :users
@@ -32,6 +32,7 @@ ActionController::Routing::Routes.draw do |map|
   map.searches '/searches', :controller => 'conversations', :action => 'list'
   map.resources :dispatches
   map.resources :workitems
+  map.resources :records
 
   # The priority is based upon order of creation: first created -> highest priority.
 

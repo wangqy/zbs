@@ -1,10 +1,9 @@
 class NoticesController < ApplicationController
   def index
-    @conditions = condition params, "notice"
     if params[:notice].nil?
       params[:notice] = {}
     end
-    @list = Notice.paginate :per_page =>10, :conditions => @conditions, :page => params[:page], :order => 'created_at DESC'
+    @list = Notice.paginate :per_page =>10, :conditions => params_condition, :page => params[:page], :order => 'created_at DESC'
   end
   
   def list 

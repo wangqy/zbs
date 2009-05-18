@@ -1,0 +1,7 @@
+setup :fixtures => :records
+include_partial 'admin/login', :login => 'aaron'
+click_and_wait "link=录音记录"
+type "record_dail", "1398888"
+click_and_wait "commit"
+verify_text_present "来电"
+verify_text_present "13988889999"

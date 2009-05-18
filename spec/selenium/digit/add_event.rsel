@@ -3,7 +3,7 @@ include_partial 'admin/login', :login => 'aaron'
 click_and_wait "link=受理事件"
 type "phone", "13988889999"
 click_and_wait "commit"
-click_and_wait "link=当前反映事件与此相同，点击这里关联此事件"
+click_and_wait "link=关联此事件"
 click "link=改"
 wait_for_element_present "person_name"
 type "person_name", "马波波"

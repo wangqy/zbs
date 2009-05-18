@@ -1,18 +1,32 @@
 class EventsController < ApplicationController
+  include ConversationsHelper
+
+  def index
+    @list = []
+    unless params[:phone].blank?
+      @list = Conversation.search(params[:phone])
+    end
+  end
+
   def new
+    #事件是否为回电回访
+    params[:category] ||= :category_in
     @conversation = Conversation.find(params[:event][:conversation_id])
     @list = @conversation.events
     @event = Event.new(params[:event])
-    @event.wavfile = params[:recordfile] if params[:recordfile]
     @event.timing = DateTime.now.to_s(:with_year)
-    #值班室信息
-    @duty = Duty.new
-    @duty.watchman = current_user.realname
-    @duty.receiver = current_user.realname
-    @duty.manager = current_user.department.manager
-    #事件类型默认来电
-    @event.category = 1
-    @event.category = 21 if params[:category] == 'category_out'
+    if is_category_in?
+      #事件类型默认来电
+      @event.category = 1
+      #值班室信息
+      @duty = Duty.new
+      @duty.watchman = current_user.realname
+      @duty.receiver = current_user.realname
+      @duty.manager = current_user.department.manager
+    else
+      #事件类型默认回电
+      @event.category = 21 
+    end
     #找出默认的联系人
     unless params[:phone].blank?
       people = @conversation.people.select do |person|
@@ -20,8 +34,6 @@ class EventsController < ApplicationController
       end
       @event.person_id = (people.size>0 ? people[0].id : 0)
     end
-    #事件是否为回电回访
-    params[:category] ||= :category_in
   end
 
   def create
@@ -71,7 +83,7 @@ class EventsController < ApplicationController
   
   private
   def set_menu
-    params[:menu] ||= 'conversations'
+    params[:menu] ||= super
     @menu = params[:menu] 
   end
 end

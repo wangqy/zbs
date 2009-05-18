@@ -1,5 +1,5 @@
-- unless event.wavfile.blank?
+- if event.record
   %tr
     %th 录音文件
     %td{:colspan=>3}
-      =render :partial => "events/wavobject", :locals => {:event => event}
+      =render :partial => "events/wavobject", :locals => {:record => event.record}

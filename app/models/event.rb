@@ -2,6 +2,8 @@ class Event < ActiveRecord::Base
   belongs_to :conversation
   #联系人
   belongs_to :person
+  #录音记录
+  belongs_to :record
   #值班室信息
   has_one :duty
   #创建人,修改人

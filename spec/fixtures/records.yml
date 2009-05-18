@@ -1,0 +1,8 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+ma_complain_call_record:
+  kind: 1
+  dail: 13988889999
+  receive: 802
+  wavfile: some_path
+  created_at: 2009-03-24T22:22:22+08:00

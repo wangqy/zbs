@@ -29,6 +29,10 @@
     url = new_kind_path
   when "往来记录新增"
     url = new_reply_path
+  when "录音记录"
+    url = records_path
+  when "添加往来记录"
+    url = events_path
   end
   raise 'visit url is blank' if url.blank?
   visit url
@@ -72,7 +76,7 @@ end
   end
 end
 
-那么 /我应该能看到输入的值:(.*)/ do |text|
+那么 /我应该能看到(.*)输入的值:(.*)/ do |label, text|
   response.body.should =~ /#{text}/m
 end
 

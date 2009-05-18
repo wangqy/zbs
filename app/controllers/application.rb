@@ -44,11 +44,12 @@ class ApplicationController < ActionController::Base
   #@param params
   #@name  name[queryField]
   #@return ["1=1 and field like ?", "%fieldValue%"]
-  def condition(param, name)
+  def condition(param, name = nil)
     modelName =  controller_name.capitalize.singularize
     c = eval modelName
     conditions = []
     conditions[0] = "1=1"
+    name = controller_name.singularize if name.blank?
     unless param[name].nil?
       param[name].keys.each do |key|
         unless param[name][key].blank?
@@ -69,6 +70,10 @@ class ApplicationController < ActionController::Base
       end
     end
     conditions
+  end
+
+  def params_condition
+    condition params
   end
 
   #获取操作结果提示信息

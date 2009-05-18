@@ -75,4 +75,9 @@ module ApplicationHelper
     result 
   end
 
+  #获取I18n实体属性名称
+  def tt(path)
+    t("activerecord.attributes.#{path}")
+  end
+
 end

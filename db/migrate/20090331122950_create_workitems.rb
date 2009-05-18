@@ -10,7 +10,7 @@ class CreateWorkitems < ActiveRecord::Migration
       #上一个任务的store_id,即上一操作人,[退回,退回重办]时使用
       t.integer :last_store_id, :null => false
 
-      t.timestamps
+      t.datetime :created_at, :null => false
     end
   end
 

@@ -27,4 +27,9 @@ module ConversationsHelper
     end
     html
   end
+
+  #来电来访
+  def is_category_in?
+    params[:category] == :category_in
+  end
 end

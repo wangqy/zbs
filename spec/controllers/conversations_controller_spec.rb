@@ -16,7 +16,7 @@ describe ConversationsController do
         :category => 1,
         :timing => "2009-03-24 22:22:22",
         :content => "",
-        :wavfile => ""
+        :record_id => records(:ma_complain_call_record).id
       },
       :person => {
         :name => "马波",

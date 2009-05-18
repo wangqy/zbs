@@ -1,21 +1,28 @@
-#conversation_index
+#mainbar
   -form_tag conversations_path, :method=>:get do
-    .group
-      %fieldset
-        %legend 1.先查询以往记录
+    #conversation_index
+      .group
         #quick-search-bar
           =label_tag :phone, '联系电话'
           =text_field_tag :phone, params[:phone], :is_focus => true
           =submit_tag '查询'
-    .group
-      %fieldset
-        %legend 2.检查是否存在相关记录
+          =link_to '增加新事件', new_conversation_path(:phone => params[:phone], :category => params[:category])
+      .group
         -@list.each do |conversation|
           .conversation_info
             %p=truncate_with_more("事件#{@list.index(conversation)+1}:#{conversation.content}", 120, conversation.id)
-            =link_to "当前反映事件与此相同，点击这里关联此事件", new_event_path('event[conversation_id]' => conversation.id, :phone => params[:phone]), :class => 'relate_btn'
+            =link_to "关联此事件", new_event_path('event[conversation_id]' => conversation.id, :phone => params[:phone], :menu => :conversations), :class => 'relate_btn'
             =render :partial => "conversations/events", :locals => {:conversation => conversation}
-    .group
-      %fieldset
-        %legend 3.如果没有相关记录
-        =link_to '增加新事件', new_conversation_path(:phone => params[:phone], :category => params[:category])
+#sbar
+  .proj-desc
+    %p 受理事件指受理来电,来访等记录
+    %p 操作步骤如下:
+    %ul#shared-ticket-bins.stacked.wbadges.sortable
+      %li 
+        %a 1.输入联系电话,查询
+      %li
+        %a 2.在结果中找出相关的事件记录
+      %li 
+        %a 3.点击"关联此事件",录入往来记录
+      %li 
+        %a 4.无相关事件记录时,点击"增加新事件",录入新事件信息

@@ -10,7 +10,7 @@ describe EventsController do
         :category => 1,
         :timing => "2009-03-24 22:22:22",
         :content => "咨询事件进展情况",
-        :wavfile => ""
+        :record_id => records(:ma_complain_call_record).id
       },
       :phone => '3324768'
     }

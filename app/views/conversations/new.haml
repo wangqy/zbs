@@ -2,8 +2,9 @@
   .group
     =error_messages_for('conversation', 'event', 'person', 'duty')
     -form_for @conversation do |f|
+      / 来电来访类型,或回电回访类型
       =hidden_field :event, :category, :value => '2'
-      =hidden_field :event, :wavfile
+      =hidden_field :event, :record_id
       =render :partial => "conversations/form", :locals => {:f => f, :conversation => @conversation}
 #sbar
   .proj-desc

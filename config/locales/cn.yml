@@ -11,6 +11,7 @@ cn:
       conversation: "事件"
       person: "联系人"
       kind: "事件分类"
+      record: "录音记录"
     attributes:
       user:
         login: "用户名"
@@ -58,6 +59,11 @@ cn:
       kind:
         name: "分类名称"
         days: "期限"
+      record:
+        kind: "类型"
+        dail: "拨打电话"
+        receive: "接收电话"
+        created_at: "时间"
 
 
     errors:
