@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :people
 
   #来电,去电
-  map.pop_call "/pop/:kind/:dail/:receive/:wavfile", :controller => 'records', :action => 'create'
+  map.pop_call "/pop/:kind/:dail/:receive/:wavfile/:uniqueid", :controller => 'records', :action => 'create'
 
   map.resources :kinds
   map.resources :users

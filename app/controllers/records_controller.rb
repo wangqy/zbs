@@ -6,11 +6,12 @@ class RecordsController < ApplicationController
   def create
     is_dail_in = (params[:kind] == 'dail_in')
     params[:kind] = is_dail_in ? 1 : 2
-    @record = Record.create!(
+    @record = Record.create(
       :kind => params[:kind],
       :dail => params[:dail],
       :receive => params[:receive],
-      :wavfile => params[:wavfile]
+      :wavfile => params[:wavfile],
+      :uniqueid => params[:uniqueid]
     )
     if is_dail_in
       redirect_to conversations_path(:record_id => @record.id, :phone => @record.dail)

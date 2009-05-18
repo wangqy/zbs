@@ -5,4 +5,5 @@ ma_complain_call_record:
   dail: 13988889999
   receive: 802
   wavfile: some_path
+  uniqueid: 20090518222222123456789
   created_at: 2009-03-24T22:22:22+08:00

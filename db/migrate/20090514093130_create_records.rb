@@ -4,8 +4,10 @@ class CreateRecords < ActiveRecord::Migration
       t.integer :kind, :limit => 2, :null => false
       #拨打电话,接收电话
       t.string :dail, :receive, :limit => 15, :null => false
-      #呼叫中心录音唯一标识符,用于关联录音文件
+      #录音文件
       t.string :wavfile, :limit => 32, :null => false
+      #呼叫中心录音文件唯一标识
+      t.string :uniqueid, :limit => 32, :null => false, :unique => true
 
       t.datetime :created_at, :null => false
     end

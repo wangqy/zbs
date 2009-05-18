@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20090514093130) do
     t.string   "dail",       :limit => 15, :null => false
     t.string   "receive",    :limit => 15, :null => false
     t.string   "wavfile",    :limit => 32, :null => false
+    t.string   "uniqueid",   :limit => 32, :null => false
     t.datetime "created_at",               :null => false
   end
 

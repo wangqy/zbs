@@ -6,7 +6,8 @@ describe Record do
       :kind => 1,
       :dail => "13988889999",
       :receive => "802",
-      :wavfile => "some_path"
+      :wavfile => "some_path",
+      :uniqueid => " 20090518222222123456789"
     }
   end
 
