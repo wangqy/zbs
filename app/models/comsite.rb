@@ -1,2 +1,0 @@
-class Comsite < Event
-end

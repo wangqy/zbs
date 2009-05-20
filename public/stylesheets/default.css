@@ -17,6 +17,21 @@
     #main #main-content #mainbar {
       float: left;
       width: 70%; }
+      #main #main-content #mainbar #tree {
+        float: left;
+        width: 30%;
+        list-style-type: none; }
+        #main #main-content #mainbar #tree img {
+          border: none; }
+        #main #main-content #mainbar #tree .minus_img img {
+          display: none; }
+      #main #main-content #mainbar .sub {
+        padding-left: 10px;
+        list-style-type: none;
+        display: none; }
+      #main #main-content #mainbar #tree-content {
+        float: right;
+        width: 70%; }
     #main #main-content #sbar {
       margin-right: 1px;
       background: #ddd;

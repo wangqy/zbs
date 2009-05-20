@@ -1,0 +1,4 @@
+#page.replace_html "a_#{@department.id}", @department.name
+page.replace_html 'pop-errorExplanation', content_tag(:p, flash[:notice], :class => "notice")
+page.show 'pop-errorExplanation'
+page << "j(':text').val('');"

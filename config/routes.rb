@@ -20,7 +20,9 @@ ActionController::Routing::Routes.draw do |map|
   map.pass '/pass', :controller => 'users', :action => 'pass'
   map.user_site '/user/site', :controller => 'users', :action => 'site'
 
-  map.resources :departments
+  map.resources :departments do |department|
+    department.resources :departments, :as => 'children'
+  end
   map.resources :logs
   map.resources :notices
   #非admin用户查看公告列表

@@ -47,8 +47,12 @@ cn:
         receiver: "接报人"
         manager: "值班领导"
       department:
-        code: "机构代码"
         name: "机构名称"
+        fax: "传真"
+        manager: "值班领导"
+        telephone: "联系电话"
+        address: "地址"
+        remark: "备注"
       history:
         handle: "办理方式"
         department_id: "接收部门"
@@ -81,11 +85,12 @@ cn:
               invalid: ""
 
   html:
+    saving: "保存中..."
     button:
+      create: "保存"
       save: "保存,继续新增"
       modify: "保存,接着修改"
       back: "保存,返回列表"
-    saving: "保存中..."
     link:
       view: "查看"
       edit: "编辑"

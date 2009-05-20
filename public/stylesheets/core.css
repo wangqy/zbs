@@ -2872,7 +2872,7 @@ span.cs-a { background: url(../images/app/icons/a.png) no-repeat;}
   font-weight: bold;
 }
 
-#flash-notice, #flash-errors, #flash-archived, #errorExplanation, .delete-dialog {
+#flash-notice, #flash-errors, #flash-archived, #errorExplanation, .delete-dialog, .notice {
   background: #bec;
   color: #031;
   padding: 10px;

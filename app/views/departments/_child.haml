@@ -1,0 +1,11 @@
+-label_id = "label_#{child.id}"
+-sub_id = "sub_#{child.id}"
+-logo_plus_id = "logo_plus_#{child.id}"
+-logo_minus_id = "logo_minus_#{child.id}"
+-plus_img = "/images/tree/icon_plus.gif"
+-minus_img = "/images/tree/icon_minus.gif"
+%li{:itemid => child.id}
+  =link_to_remote image_tag(plus_img), :update => sub_id, :url => department_departments_path(child), :method => :get, :success => "showMinus('#{logo_plus_id}','#{logo_minus_id}','#{sub_id}')", :html => {:id => logo_plus_id} 
+  =link_to_function image_tag(minus_img), "showPlus('#{logo_plus_id}','#{logo_minus_id}', '#{sub_id}')", :id => logo_minus_id, :class => :minus_img
+  =link_to_remote child.name, :update => :tree_content, :url => edit_department_path(child), :method => :get, :html => {:id => label_id}
+  %ul.sub{:id => sub_id}

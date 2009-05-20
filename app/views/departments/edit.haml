@@ -1,0 +1,24 @@
+#pop-errorExplanation.errorExplanation{:style => 'display:none'}
+-remote_form_for @department do |f|
+  %table.formin
+    %tr
+      %th= f.label_require :name
+      %td= f.text_field :name
+    %tr
+      %th= f.label :fax
+      %td= f.text_field :fax
+    %tr
+      %th= f.label :manager
+      %td= f.text_field :manager
+    %tr
+      %th= f.label :telephone
+      %td= f.text_field :telephone
+    %tr
+      %th= f.label :address
+      %td= f.text_field :address
+    %tr
+      %th= f.label :remark
+      %td= f.text_area :remark, :rows => 5, :cols=> 29
+  %p.btns{:style=>"clear:left"}
+    = submit_tag t('html.button.create'), :disable_with => t('html.saving') 
+    = link_to_remote '新增子机构', :update => :tree_content, :url => new_department_department_path(@department), :method => :get

@@ -1,16 +1,8 @@
 class DepartmentsController < ApplicationController
   def index
-    @conditions = condition params, "department"
-    if params[:department].nil?
-      params[:department] = {}
-    end
-    @list = Department.paginate :per_page =>10, :conditions => @conditions, :page => params[:page], :order => 'created_at DESC'
+    render :partial => 'child', :collection => Department.find(params[:department_id]).children
   end
 
-  def show
-    @department = Department.find(params[:id])
-  end
-  
   def destroy
     begin
       @department = Department.find(params[:id])
@@ -29,6 +21,11 @@ class DepartmentsController < ApplicationController
 
   def new
     @department = Department.new
+    if request.xhr?
+      @parent = Department.find(params[:department_id])
+      @department.parent = @parent
+      render :partial => "new" and return
+    end
   end
 
   def create
@@ -37,32 +34,25 @@ class DepartmentsController < ApplicationController
     @department.modifier = current_user
 
     if @department.save
-      flash[:notice] = m('department.create.success')
+      flash.now[:notice] = "#{m('department.create.success')},可以继续新增."
       Log.create @department, current_user, request.remote_ip
-      if params[:commit]==t('html.button.save')
-        redirect_to new_department_path
-      else
-        redirect_to departments_path
-      end
     else
-      render :action => "new"  
+      render :partial => "share/update_failure", :locals => { :objname => 'department' }
     end
   end
 
   def edit
     @department = Department.find(params[:id])
-    render :action => "new"
+    render :action => "edit", :layout => false
   end
 
   def update
     @department = Department.find(params[:id])
     params[:department][:modifier] = current_user
     if @department.update_attributes(params[:department])
-      flash[:notice] = m('department.update.success')
-      Log.update @department, current_user, request.remote_ip
-      redirect_to departments_path
+      flash.now[:notice] = m('department.update.success')
     else
-      render :action => "new"
+      render :partial => "share/update_failure", :locals => { :objname => 'department' }
     end
   end
 end

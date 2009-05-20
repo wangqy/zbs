@@ -48,8 +48,10 @@
               - if current_user.is_admin?
                 %li#t-proj{:class=>select_menu('home')}
                   =link_to '首页', home_path
+                %li{:class=>select_menu('departments')}
+                  =link_to '机构管理', new_department_path
                 %li#u-menu.mainmenu{:class=>"#{select_menu('users')}"}
-                  -%w{departments users notices logs}.each do |menu|
+                  -%w{users notices logs}.each do |menu|
                     =render :partial => "layouts/menu", :locals => { :menu => menu }
               - elsif current_user.is_depart_person? || current_user.is_dispatch_person?
                 %li#t-proj{:class=>select_menu('workitems')}
@@ -69,7 +71,7 @@
           #action-nav
             %ul.clear
               - if current_user.is_admin? || ismanager?
-                -%w{departments users notices}.each do |menu|
+                -%w{users notices}.each do |menu|
                   =render :partial => "layouts/submenu", :locals => { :menu => menu }
               - else
                 -%w{calls visits faxes letters emails govsites comsites others}.each do |menu|

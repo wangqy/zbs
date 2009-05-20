@@ -1,2 +1,0 @@
-class Govsite < Event
-end

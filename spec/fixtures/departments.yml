@@ -1,5 +1,4 @@
 劳动局:
-  code: A001
   name: 劳动局
   manager: 劳动局长
   telephone: 075581234567
@@ -7,9 +6,25 @@
   remark: 没找到
 
 教育局:
-  code: A002
   name: 教育局
   manager: 教育局长
   telephone: 075581234567
   address: 深南大道1号
   remark: 没找到
+
+办公室:
+  name: 办公室
+  manager: 教育局长
+  telephone: 075581234567
+  address: 深南大道1号
+  remark: 
+  parent: 教育局
+  
+党支部:
+  name: 党支部
+  manager: 教育局长
+  telephone: 075581234567
+  address: 深南大道1号
+  remark: 
+  parent: 教育局
+  

@@ -1,0 +1,35 @@
+setup :fixtures => :departments
+open "/logout"
+type "login", "cogentsoft"
+type "password", "admin"
+click_and_wait "save"
+
+click_and_wait "link=机构管理"
+verify_text_present "教育局"
+click "//img[@alt='Icon_plus']"
+wait_for_text_present "党支部"
+#新增
+type "department_name", "发改局"
+type "department_fax", "26741022"
+type "department_manager", "张学良"
+type "department_telephone", "26741022"
+type "department_address", "科技园南区"
+type "department_remark", "新机构"
+click "commit"
+wait_for_text_present "发改局"
+#修改
+click "label_856925580"
+type "department_name", "总办公室"
+click "commit"
+wait_for_text_present "总办公室"
+#新增子项
+click "link=新增子机构"
+pause 2000
+type "department_name", "分办公室"
+type "department_fax", "26741022"
+type "department_manager", "张敏"
+type "department_telephone", "26741022"
+type "department_address", "深南大道1号"
+click "commit"
+wait_for_text_present "分办公室"
+click "//img[@alt='Icon_minus']"

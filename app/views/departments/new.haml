@@ -1,54 +1,12 @@
+=javascript_include_tag "tree"
 #mainbar
   .group
     %fieldset
       %legend 机构信息
-      =error_messages_for :department
-      -form_for @department do |f|
-        %table.formin
-          %tr
-            %th
-              = f.label :code, "机构代码"
-              = require_star
-            %td
-              = f.text_field :code, :maxlength=>10,:is_focus => true
-            %th
-              = f.label :fax, "传真"
-            %td
-              = f.text_field :fax
-          %tr
-            %th
-              = f.label :name, "机构名称"
-              = require_star
-            %td
-              = f.text_field :name
-            %th
-              = f.label :email, "电子邮件"
-            %td
-              = f.text_field :email
-          %tr
-            %th
-              = f.label :manager, "值班领导"
-            %td
-              = f.text_field :manager
-            %th
-              = f.label :telephone, "联系电话"
-            %td
-              = f.text_field :telephone
-          %tr
-            %th
-              = f.label :address, "地址"
-            %td{:colspan=>3}
-              = f.text_field :address
-          %tr
-            %th
-              = f.label :remark, "备注"
-            %td{:colspan=>3}
-              = f.text_area :remark, :rows => 5, :cols=> 49
-        %p.btns{:style=>"clear:left"}
-          -unless !@department.id.nil?
-            = submit_tag t('html.button.save'), :disable_with => t('html.saving') 
-          = submit_tag t('html.button.back'), :disable_with => t('html.saving')
-
+      %ul#tree{:url => department_departments_path(Department.new), :itemUrl => departments_path, :style => 'float:left'}
+        =render :partial => "child", :collection => Department.top
+      #tree_content{:style => 'float:right'}
+        =render :partial => "new"
 #sbar
   .proj-desc.tip
     %span 当前页面输入项提示信息

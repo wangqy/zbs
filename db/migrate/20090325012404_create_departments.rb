@@ -1,8 +1,6 @@
 class CreateDepartments < ActiveRecord::Migration
   def self.up
     create_table :departments do |t|
-      #机构编码
-      t.string :code, :limit=>10
       #名称
       t.string :name, :limit=>40
       #负责人
@@ -11,8 +9,6 @@ class CreateDepartments < ActiveRecord::Migration
       t.string :telephone, :limit=>20
       #传真
       t.string :fax, :limit=>20
-      #电子邮件
-      t.string :email, :limit=>50
       #地址
       t.string :address, :limit=>120
       #备注
@@ -21,6 +17,8 @@ class CreateDepartments < ActiveRecord::Migration
       t.references :creator
       #最后修改人
       t.references :modifier
+      #上级机构
+      t.integer :parent_id
 
       t.timestamps
     end

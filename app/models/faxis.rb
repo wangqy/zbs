@@ -1,2 +1,0 @@
-class Faxis < Event
-end
