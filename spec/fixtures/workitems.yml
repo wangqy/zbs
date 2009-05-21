@@ -5,6 +5,7 @@ complain_workitem:
   conversation: ma_complain 
   creator: users(:quentin)
   last_store: quentin
+  created_at: 2009-04-24T22:22:22+08:00
   
 complain_workitem22:
   store: depart

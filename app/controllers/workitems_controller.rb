@@ -3,7 +3,7 @@ class WorkitemsController < ApplicationController
     @list = Workitem.of current_user
     @list.collect! do |w| 
       conversation = w.conversation
-      conversation.workitem_id = w.id
+      conversation.workitem = w
       conversation
     end
   end

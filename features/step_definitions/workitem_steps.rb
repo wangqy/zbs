@@ -12,7 +12,9 @@
   end
   conversations = hashes.arguments_replaced({"事件编号"=>"tag","事件主题"=>"title","登记时间"=>"created_at","登记人"=>"creator"}).hashes
   conversations.each do |conversation|
-    conversation = Conversation.find_by_tag(conversation["tag"])
+    tag = conversation['tag']
+    origin_tag = tag.sub(/\(警\)/,'')
+    conversation = Conversation.find_by_tag(origin_tag)
     conversation.update_attribute(:state, state)
   end
 end

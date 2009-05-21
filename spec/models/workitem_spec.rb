@@ -17,6 +17,7 @@ describe Workitem do
   it "should send a message to user" do
     lambda do
       Workitem.send_msg
+      Msg.last.SM_Content.should == "您的待办事项还有2个事件未处理,1个处于预警状态,请尽快处理."
     end.should change(Msg, :count).by(1)
   end
 end

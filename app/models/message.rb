@@ -20,7 +20,7 @@ class Message < ActiveRecord::Base
         Msg.send_to(message.user.mobile, message.content, message.id.to_s)
         message.update_attribute :is_sended, true
       rescue
-        logger.error "send message(#{message.id}) error:#{message.content}"
+        logger.error "#{$!}.send message(#{message.id}) error:#{message.content}"
       end
     end
   end

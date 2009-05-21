@@ -11,7 +11,8 @@
       =stylesheet_link_tag "ie7"
     =javascript_include_tag "prototype", "jquery", "facebox", "application" 
     -if !current_user.site.blank? && params[:record_id].nil?
-      =javascript_include_tag "http://#{CALL_CENTER}/interface/mixControl.php", "http://#{CALL_CENTER}/interface/panel.php?extension=#{current_user.site}"
+      /
+        =javascript_include_tag "http://#{CALL_CENTER}/interface/mixControl.php", "http://#{CALL_CENTER}/interface/panel.php?extension=#{current_user.site}"
     =calendar_date_select_includes "blue"
 
   %body

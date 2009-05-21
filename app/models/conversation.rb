@@ -27,8 +27,8 @@ class Conversation < ActiveRecord::Base
     20
   end
 
-  #当前流程ID
-  attr_accessor :workitem_id
+  #当前流程
+  attr_accessor :workitem
 
   before_create do |c|
     c.tag = Sequence.case_tag
