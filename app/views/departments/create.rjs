@@ -3,4 +3,4 @@ page.show parent
 page.insert_html :bottom, parent, :partial => "child", :locals => {:child => @department}
 page.replace_html 'pop-errorExplanation', content_tag(:p, flash[:notice], :class => "notice")
 page.show 'pop-errorExplanation'
-page << "j(':text').val('');"
+page << "j(':text,textarea').val('');"
