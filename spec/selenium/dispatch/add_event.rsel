@@ -1,0 +1,10 @@
+include_partial 'admin/login', :login => 'dispatcher'
+click_and_wait "//div[@id='main-content']/div/table/tbody/tr[2]/td[5]/a[2]"
+type "event_content", "已经答复"
+click_and_wait "commit"
+verify_text_present "保存成功."
+include_partial 'admin/login', :login => 'depart'
+click_and_wait "//div[@id='main-content']/div/table/tbody/tr[2]/td[6]/a[2]"
+type "event_content", "再次答复对方"
+click_and_wait "commit"
+verify_text_present "保存成功."

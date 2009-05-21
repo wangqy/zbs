@@ -33,6 +33,8 @@ class EventsController < ApplicationController
         params[:phone].match(person.phone) || params[:phone].match(person.mobile)
       end
       @event.person_id = (people.size>0 ? people[0].id : 0)
+    else
+      @event.person_id = @conversation.people.first.id
     end
   end
 

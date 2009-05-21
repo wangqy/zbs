@@ -1,3 +1,4 @@
+#添加往来记录
 open "/logout"
 include_partial 'admin/login', :login => 'aaron'
 click_and_wait "link=受理事件"
