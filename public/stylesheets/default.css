@@ -1,3 +1,6 @@
+#singheadBody {
+  z-index: 99; }
+
 #main {
   width: 98%;
   margin-left: 5px; }

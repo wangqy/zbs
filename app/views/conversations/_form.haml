@@ -5,7 +5,7 @@
     %tr
       -fields_for :event do |e|
         %th= e.label_require :category
-        %td{:colspan=>3}= e.radio_enum :category, :category_in
+        %td{:colspan=>3,:class=>:last}= e.radio_enum :category, :category_in
     %tr
       -fields_for :person do |p|
         %th= p.label_require :phone

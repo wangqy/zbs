@@ -13,6 +13,7 @@
     -if current_user.is_digit_person? && !current_user.site.blank? && params[:uniqueid].nil?
       /
         =javascript_include_tag "http://#{CALL_CENTER}/interface/js/jquery.json.js", "http://#{CALL_CENTER}/interface/mixpop.php?extension=#{current_user.site}"
+      =javascript_include_tag "http://#{CALL_CENTER}/interface/mixControl.php", "http://#{CALL_CENTER}/interface/panel.php?extension=#{current_user.site}"
     =calendar_date_select_includes "blue"
 
   %body
@@ -59,11 +60,11 @@
                 - if current_user.is_dispatch_person?
                   %li{:class=>select_menu('dispatches')}
                     =link_to '事件调度', dispatches_path
+                %li{:class=>select_menu('events')}
+                  =link_to '添加往来记录', events_path
               - else
                 %li#t-proj{:class=>select_menu('conversations')}
                   =link_to '受理事件', conversations_path
-              %li{:class=>select_menu('events')}
-                =link_to '添加往来记录', events_path
               %li{:class=>select_menu('searches')}
                 =link_to '事件记录', searches_path
               %li{:class=>select_menu('records')}
