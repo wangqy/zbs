@@ -3,8 +3,6 @@
   users = hashes.arguments_replaced({"用户名"=>"login","姓名"=>"realname"}).hashes
   users.each do |user|
     user[:department_id] = Department.last.id
-    user[:role] = 1
-    user[:role] = 2 if user["login"] == "disable" || user["login"] == "quentin"
     user[:telephone] = '26741022'
     user[:mobile] = '13988889999'
     user[:password] = 'test'

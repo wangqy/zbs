@@ -13,16 +13,12 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :sex, :limit => 2
       #部门
       t.integer :department_id, :null => false
-      #角色
-      t.integer :role, :null => false
       #职位
       t.string :position
       #办公电话
       t.string :telephone, :limit=>20, :null => false
       #手机
       t.string :mobile, :limit=>20, :null => false
-      #是否负责人
-      t.integer :ismanager, :limit => 2
       #电子邮箱
       t.string :email, :limit=>120
       #备注
@@ -39,7 +35,7 @@ class CreateUsers < ActiveRecord::Migration
     end
 
     say 'create admin user'
-    User.create!({:login => 'admin', :password => 'admin', :realname => '管理员', :telephone => '26741022', :mobile => '13988889999', :department_id => 0, :disabled => 0, :role => 1})
+    User.create!({:login => 'admin', :password => 'admin', :realname => '管理员', :telephone => '26741022', :mobile => '13988889999', :department_id => 0, :disabled => 0})
     
   end
 

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   belongs_to :department
   has_many :workitems, :foreign_key => "store_id"
 
-  validates_presence_of     :login, :realname, :telephone, :mobile, :department_id, :role
+  validates_presence_of     :login, :realname, :telephone, :mobile, :department_id
   validates_uniqueness_of   :login, :case_sensitive => false
   validates_length_of       :realname, :maximum => 10
   validates_length_of       :telephone,:maximum => 20
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   # =========== 新加字段时注意要修改此处 ============
-  attr_accessible :login, :password, :realname, :telephone, :mobile, :position, :ismanager, :sex, :remark, :fax, :department_id, :email, :modifier, :disabled, :role, :site
+  attr_accessible :login, :password, :realname, :telephone, :mobile, :position, :sex, :remark, :fax, :department_id, :email, :modifier, :disabled, :site
 
   def validate_on_create
     if password.blank?
@@ -86,19 +86,7 @@ class User < ActiveRecord::Base
   end
 
   def is_admin?
-    self.role == 1
-  end
-
-  def is_digit_person?
-    self.role == 2
-  end
-
-  def is_dispatch_person?
-    self.role == 3
-  end
-
-  def is_depart_person?
-    self.role == 4
+    %w(admin cogentsoft).include?self.login
   end
 
   protected

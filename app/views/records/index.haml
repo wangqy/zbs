@@ -1,26 +1,33 @@
-.group
-  #quick-search-bar
-    -form_for :record, :url => records_path, :html => {:method=>:get} do |f|
-      =f.label :dail
-      =f.text_field :dail
-      =f.label :receive
-      =f.text_field :receive
-      =submit_tag '查询'
-.group
-  %table.list
-    %tr
-      %th{:width=>'120'}=tt('record.kind')
-      %th{:width=>'120'}=tt('record.dail')
-      %th{:width=>'120'}=tt('record.receive')
-      %th{:width=>'120'}=tt('record.created_at')
-      %th{:width=>'120'} 操作
-    - @page.each do |record|
+#mainbar
+  .group
+    #quick-search-bar
+      -form_for :record, :url => records_path, :html => {:method=>:get} do |f|
+        =f.label :dail
+        =f.text_field :dail, :class => :short
+        =f.label :receive
+        =f.text_field :receive, :class => :short
+        =submit_tag '查询'
+  .group
+    %table.list
       %tr
-        %td=record.kind_enum
-        %td=record.dail
-        %td=record.receive
-        %td=record.created_at.to_s(:db)
-        %td=render :partial => "events/wavobject", :locals => {:record => record}
-  #paginate
-    =will_paginate @page
-
+        %th=tt('record.kind')
+        %th=tt('record.dail')
+        %th=tt('record.receive')
+        %th=tt('record.created_at')
+        %th 操作
+      - @page.each do |record|
+        %tr
+          %td=record.kind_enum
+          %td=record.dail
+          %td=record.receive
+          %td=record.created_at.to_s(:db)
+          %td=render :partial => "events/wavobject", :locals => {:record => record}
+    #paginate
+      =will_paginate @page
+#sbar
+  .proj-desc
+    %p 所有来去电记录可以在这里查询到
+    %p 可进行的操作:
+    %ul#shared-ticket-bins.stacked.wbadges.sortable
+      %li 
+        %a 点击操作列的播放按钮,可以收听录音

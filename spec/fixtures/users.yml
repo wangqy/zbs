@@ -7,7 +7,6 @@ cogentsoft:
   crypted_password: 0fe58654f17c58104c7b290e30c648655f629015 # admin
   department: 劳动局
   disabled: 0
-  role: 1
 
 quentin:
   login: quentin
@@ -18,7 +17,6 @@ quentin:
   crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
   department: 劳动局
   disabled: 0
-  role: 2
 
 aaron:
   login: aaron
@@ -29,7 +27,6 @@ aaron:
   crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
   department: 劳动局
   disabled: 0
-  role: 2
   site: 801
 
 dispatcher:
@@ -41,7 +38,6 @@ dispatcher:
   crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
   department: 教育局
   disabled: 0
-  role: 3
 
 depart:
   login: depart
@@ -52,7 +48,6 @@ depart:
   crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
   department: 劳动局
   disabled: 0
-  role: 4
 
 disable:
   login: disable
@@ -63,5 +58,4 @@ disable:
   crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
   department: 劳动局
   disabled: 1
-  role: 2
 

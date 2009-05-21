@@ -53,14 +53,10 @@ class SessionsController < ApplicationController
 
   private
   def redirect_to_homepage
-    if current_user.is_digit_person?
-      redirect_to conversations_path
-    elsif current_user.is_dispatch_person?
-      redirect_to dispatches_path
-    elsif current_user.is_depart_person?
-      redirect_to workitems_path
-    else
+    if current_user.is_admin?
       redirect_to home_path
+    else
+      redirect_to workitems_path
     end
   end
 end

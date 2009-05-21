@@ -16,7 +16,6 @@
         %th{:width=>'120'} 用户名
         %th{:width=>'120'} 姓名
         %th{:width=>'140'} 部门
-        %th{:width=>'120'} 负责人
         %th 办公电话
         %th{:width=>'80'} 是否禁用
         %th{:width=>'120'} 操作
@@ -25,12 +24,11 @@
           %td=user.login
           %td=user.realname
           %td=user.department ? user.department.name : ""
-          %td=user.ismanager_enum_sf
           %td=user.telephone
           %td=user.disabled_enum_sf
           %td
             =link_to t('html.link.edit'), edit_user_path(user)
-            -if !(user.role == 1)
+            -unless user.is_admin?
               -if user.disabled == 0
                 =link_to t('html.link.disable'),{:action => 'disable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.disable')}')"}
               -else

@@ -5,11 +5,8 @@
     %div#pop-errorExplanation{:style=>'display:none'}
     %table
       %tr
-        %th
-          %span.required *
-          = f.label :site, '坐席号'
-        %td
-          = f.text_field :site
+        %th= f.label :site, '坐席号'
+        %td= f.text_field :site
     %p.btns
       = submit_tag '提 交', {:id=>'save'}
       = submit_tag '关 闭', {:type=>'button',:onclick=>'javascript:j.facebox.close();'}

@@ -91,8 +91,7 @@ protected
       :realname => 'quire',
       :telephone => '26741022',
       :mobile => '13988889999',
-      :department_id => 0,
-      :role => 1
+      :department_id => 0
     }.merge(options))
     record.save
     record

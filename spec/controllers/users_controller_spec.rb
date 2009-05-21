@@ -39,8 +39,7 @@ describe UsersController do
         :mobile => '1398888999',
         :password => 'quire',
         :disabled => '0',
-        :department_id => '0',
-        :role => 1
+        :department_id => '0'
       }, :commit => '保存,继续新增'
       assigns[:user].errors.should be_empty
       response.should redirect_to(:controller => 'users', :action => 'new')
@@ -59,14 +58,6 @@ describe UsersController do
     lambda do
       create_user(:login => nil)
       assigns[:user].errors.on(:login).should_not be_nil
-      response.should be_success
-    end.should_not change(User, :count)
-  end
-
-  it 'requires role' do
-    lambda do
-      create_user(:role => nil)
-      assigns[:user].errors.on(:role).should_not be_nil
       response.should be_success
     end.should_not change(User, :count)
   end
@@ -148,8 +139,7 @@ describe UsersController do
       :mobile => '13988889999',
       :password => 'quire',
       :disabled => '0',
-      :department_id => '0',
-      :role => 1
+      :department_id => '0'
     }.merge(options)
   end
 

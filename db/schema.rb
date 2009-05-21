@@ -155,11 +155,9 @@ ActiveRecord::Schema.define(:version => 20090514093130) do
     t.string   "realname",                                                :null => false
     t.integer  "sex",                       :limit => 2
     t.integer  "department_id",                                           :null => false
-    t.integer  "role",                                                    :null => false
     t.string   "position"
     t.string   "telephone",                 :limit => 20,                 :null => false
     t.string   "mobile",                    :limit => 20,                 :null => false
-    t.integer  "ismanager",                 :limit => 2
     t.string   "email",                     :limit => 120
     t.string   "remark",                    :limit => 20
     t.integer  "disabled",                  :limit => 2,   :default => 0

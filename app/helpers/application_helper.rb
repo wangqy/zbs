@@ -27,10 +27,6 @@ module ApplicationHelper
     t('activerecord.models.' + menu.downcase.singularize)
   end
 
-  def ismanager?
-    current_user.ismanager == 1
-  end
-
   #枚举下拉列表
   #@param object_name 实体名称
   #@param method  枚举类型

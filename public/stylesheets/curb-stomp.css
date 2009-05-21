@@ -10,6 +10,7 @@ input.submit{
   filter:progid:dximagetransform.microsoft.gradient(gradienttype=0, startcolorstr="#ffffff", endcolorstr="#c3daf5");
   cursor: hand;
   color: black;
+  width: 70px !important;
 }
 
 .formpass input.submit{
