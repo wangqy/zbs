@@ -43,3 +43,11 @@ production:
   username: root
   password: 
   socket: /var/run/mysqld/mysqld.sock
+
+sms:
+  adapter: sqlserver
+  mode: ODBC
+  dsn: MSG_DSN
+  username: msg
+  password: msg
+
