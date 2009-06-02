@@ -1,0 +1,111 @@
+@charset "UTF-8";
+.j-form-table {
+    width: 99%; margin:auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.j-form-table-head th, .j-form-table-head td {
+    height: 0px;
+    font-size: 0px;
+}
+
+.j-form-table-body-td {
+    border: 1px solid;
+    padding: 2px 3px;
+    line-height: 21px;
+    vertical-align: middle;
+    word-wrap: break-word;
+	word-break: break-all;
+}
+
+.j-form-table-label-td {
+}
+
+.j-form-table-input-td {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.j-form-table-foot-td {
+    border: 1px solid;
+    padding: 2px 3px;
+    text-align: right;
+}
+
+.j-form-table-group {
+}
+
+.j-form-table-group-cell {
+    font-weight: bold;
+    border: 1px solid;
+    padding: 4px 3px;
+}
+
+.j-form-table-group-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    overflow: hidden;
+}
+
+.j-form-table-split {
+}
+
+.j-form-table-split td {
+	font-weight: bold;
+}
+
+
+.j-form-table-split-cell {
+    /*font-weight: bold;*/
+    border: 1px solid;
+    padding: 4px 3px;
+}
+
+.j-form {
+}
+
+.j-form-text {
+    border: 1px solid;
+    margin: -1px 0;
+    padding: 1px 3px;
+    height: 20px;
+    line-height: 18px;
+    vertical-align: middle;
+}
+
+textarea.j-form-text {
+    height: auto;
+    line-height: normal;
+    padding: 2px 3px;
+}
+
+.j-form-select-box {
+    border: 1px solid;
+    position: relative;
+}
+
+.j-form-select {
+    position: absolute;
+    margin-top: 2px;
+    line-height: 18px;
+}
+
+.j-form-button-out, .j-form-button-over, .j-form-button-down, .j-form-button-up {
+    border: 1px solid;
+    padding: 2px 0px;
+    cursor: pointer;
+    margin-left: 3px;
+    vertical-align: middle;
+}
+
+.j-form-file-button {
+    height: 24px;
+    line-height: 18px;
+}
+
+.j-form-required {
+	vertical-align: middle;
+	color: red;
+}

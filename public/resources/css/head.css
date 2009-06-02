@@ -1,0 +1,183 @@
+@charset "utf-8";
+body{
+	margin:0;
+	background-image: url(../images/head_body_bg.jpg);
+	background-repeat: repeat-x;
+}
+.head_bg {
+	background-repeat: no-repeat;
+	height: 130px;
+	width: 1003px;
+	margin-bottom: 1px;
+}
+.head_td1{width:469px;}
+.menu_bg {
+	width:518px;
+	height:24px;
+	margin-top:14px;
+}
+.menu_top_left {
+	width:12px;
+	height:24px;
+	background-repeat: no-repeat;
+}
+.menu_top_right {
+	width:14px;
+	height:24px;
+	background-repeat: no-repeat;
+}
+
+.menu_ab, .menu {
+	height:24px;
+	width:82px;
+	line-height:150%;
+	text-align:center;
+}
+.menu_ab span, .menu span {
+font-size:12px;
+}
+.menu_ab span{font-size:12px;}
+.menu_ab {
+	font-weight:bold;
+	background-repeat: no-repeat;
+}/*选中的选项卡的颜色*/
+.menu {
+	font-size:12px;
+}/*没选中的选项卡的颜色*/
+
+.submenu_bg {
+	width:518px;
+	height:84px;
+	padding-bottom:6px;
+	text-align:center;
+}
+.submenu_td1{width:12px;}
+.submenu_td2{width:500px;}
+.submenu_td3{width:12px;}
+a.submenu_left {
+	margin-left:9px;
+	width:6px;
+	height:64px;
+	display:block;
+}
+a.submenu_right {
+	margin-right:8px;
+	width:6px;
+	height:64px;
+	display:block;
+}
+a.submenu_11, a.submenu_12, a.submenu_13, a.submenu_14, a.submenu_15 {
+	margin:3px;width:90px;height:19px;float:left;display:block;text-align:center;font-size:12px;padding-top:45px;
+}
+.head_bg {
+	background-image: url(../images/head_bg.jpg);
+	background-repeat: no-repeat;
+	height: 130px;
+	width: 1003px;
+	margin-bottom: 1px;
+}
+.head_td1{width:469px;}
+.menu_bg {
+	width:518px;
+	height:24px;
+	margin-top:14px;
+}
+.menu_top_left {
+	width:12px;
+	height:24px;
+	background-image: url(../images/menu/menu_top_left.jpg);
+	background-repeat: no-repeat;
+}
+.menu_top_right {
+	width:14px;
+	height:24px;
+	background-image: url(../images/menu/menu_top_right.jpg);
+	background-repeat: no-repeat;
+}
+
+.menu_ab, .menu {
+	height:24px;
+	width:82px;
+	line-height:150%;
+	text-align:center;
+}
+.menu_ab span, .menu span {
+font-size:12px;
+filter:Dropshadow(offx=1, offy=0, color=#ffffff) Dropshadow(offx=0, offy=1, color=#ffffff) Dropshadow(offx=0, offy=-1, color=#ffffff) Dropshadow(offx=-1, offy=0, color=#ffffff);
+}
+.menu_ab span{font-size:12px;}
+.menu_ab {
+	font-weight:bold;
+	color:#209A20;
+	background-image: url(../images/menu/submenu_bg.jpg);
+	background-repeat: no-repeat;
+}/*选中的选项卡的颜色*/
+.menu {
+	font-size:12px;
+	background:url(../images/menu/submenu_bg.jpg) no-repeat 0 -26px;
+	color:#209A20;
+}/*没选中的选项卡的颜色*/
+
+.submenu_bg {
+	width:518px;
+	height:84px;
+	padding-bottom:6px;
+	background : url(../images/menu/menu_bg.jpg)  no-repeat center bottom;
+	text-align:center;
+}
+.submenu_td1{width:12px;}
+.submenu_td2{width:500px;}
+.submenu_td3{width:12px;}
+a.submenu_left {
+	margin-left:9px;
+	width:6px;
+	height:64px;
+	background:url(../images/menu/submenu_left.gif) no-repeat -7px;
+	display:block;
+}
+a.submenu_left:hover {
+	background:url(../images/menu/submenu_left.gif) no-repeat;
+}
+a.submenu_right {
+	margin-right:8px;
+	width:6px;
+	height:64px;
+	background:url(../images/menu/submenu_right.gif) no-repeat -7px;
+	display:block;
+}
+a.submenu_right:hover {
+	background:url(../images/menu/submenu_right.gif) no-repeat;
+}
+a.submenu_11, a.submenu_12, a.submenu_13, a.submenu_14, a.submenu_15 {
+	margin:3px;width:90px;height:19px;float:left;display:block;color:#333;text-align:center;font-size:12px;padding-top:45px;
+}
+a.submenu_11 {
+	background:url(../images/menu/submenu_11.jpg) no-repeat;
+}
+a.submenu_11:hover {
+	background:url(../images/menu/submenu_11.jpg) no-repeat 0 -65px;
+}
+a.submenu_12 {
+	background:url(../images/menu/submenu_12.jpg) no-repeat;
+}
+a.submenu_12:hover {
+	background:url(../images/menu/submenu_12.jpg) no-repeat 0 -65px;
+}
+a.submenu_13 {
+	background:url(../images/menu/submenu_13.jpg) no-repeat;
+}
+a.submenu_13:hover {
+	background:url(../images/menu/submenu_13.jpg) no-repeat 0 -65px;
+}
+a.submenu_14 {
+	background:url(../images/menu/submenu_14.jpg) no-repeat;
+}
+a.submenu_14:hover {
+	background:url(../images/menu/submenu_14.jpg) no-repeat 0 -65px;
+}
+a.submenu_15 {
+	background:url(../images/menu/submenu_15.jpg) no-repeat;
+}
+a.submenu_15:hover {
+	background:url(../images/menu/submenu_15.jpg) no-repeat 0 -65px;
+}

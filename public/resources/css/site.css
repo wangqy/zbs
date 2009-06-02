@@ -1,0 +1,656 @@
+﻿@charset "utf-8";
+
+/*--------------------------------整体样式设置----------------------------------*/
+    /* 滚动条样式 */
+* {
+    scrollbar-face-color: #E7F3E7;
+    scrollbar-highlight-color: #FFFFFF;
+    scrollbar-shadow-color: #F2FFCC;
+    scrollbar-3dlight-color: #5CC400;
+    scrollbar-arrow-color: #00a000;
+    scrollbar-track-color: #F2F2F2;
+    scrollbar-darkshadow-color: #B4DAB4;
+    scrollbar-base-color: #CCCCCC;
+}
+
+strong{
+	font-weight:bold;
+}
+em{
+	font-style:italic;
+}
+
+/* 链接样式 */
+a {
+    color: #073269;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #008000;
+    text-decoration: underline;
+}
+
+/* 标题样式 */
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+h4 {
+    font-size: 14px;
+}
+
+h5 {
+    font-size: 12px;
+    margin: 5px 0px 5px 0px;
+}
+
+h6 {
+    font-size: 10px;
+}
+
+.login-bg {
+	background: #008000;
+}
+
+/*--------------------------------首页顶部样式----------------------------------*/
+.head-center {
+    height: 100%;
+    padding-left: 545px;
+    background: transparent url(../images/top_2.jpg) no-repeat;
+}
+
+.head-right {
+    height: 100%;
+    padding-top: 55px;
+    padding-right: 5px;
+    background: transparent url(../images/top_3.jpg) repeat;
+    color: #ffffff;
+    text-align: right;
+}
+
+.welcome {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 20px;
+    line-height: 20px;
+    color: #ffffff;
+    padding-right: 5px;
+}
+
+.head-right a {
+    color: #ffffff;
+}
+
+.head-right a:hover {
+    color: #ffffff;
+}
+
+/*--------------------------------主菜单页面样式----------------------------------*/
+.menu-body {
+    background-color: #1e6bc5;
+}
+
+.menu-container {
+    width: 190px;
+    float: left;
+    padding-left: 5px;
+}
+
+.menu-box {
+    padding: 3px;
+    background-color: #ffffff;
+    border: 1px solid #000;
+}
+
+.menu-fixed-height {
+    height: expression(document.documentElement.clientHeight -   35);
+}
+
+.menu-left-arrow,.menu-right-arrow {
+    width: 5px;
+    height: expression(document.documentElement.clientHeight);
+    float: left;
+    background: transparent no-repeat center;
+    cursor: pointer;
+}
+
+.menu-left-arrow {
+    background-image: url(../images/mini-left.gif) ;
+}
+
+.menu-right-arrow {
+    background-image: url(../images/mini-right.gif);
+}
+
+/*--------------------------------主页面布局样式----------------------------------*/
+/*页面左样式*/
+.main-left{
+	width:30px;
+	height:100%;
+	background: url(../images/main-bg-left.jpg) repeat-y;
+}
+.main-left-top{width:30px; height:46px; background: url(../images/main-bg-left-top.jpg) no-repeat;}
+/*页面右样式*/
+.main-right{
+	width:30px;
+	height:100%;
+	background:url(../images/main-bg-right.jpg) repeat-y;
+}
+.main-right-top{width:30px; height:46px; background: url(../images/main-bg-right-top.jpg) no-repeat;}
+/*页面底部样式*/
+.main-foot{width:100%; height:17px;background:url(../images/main-bg-foot.jpg) repeat-x;}
+.main-foot-left{width:30px; height:17px;background:url(../images/main-bg-foot-left.jpg) no-repeat;}
+.main-foot-right{float:right;width:30px; height:17px;background:url(../images/main-bg-foot-right.jpg) no-repeat;}
+.foot{width:100%;height:32px;background:url(../images/foot-bg.jpg) repeat-x; padding-top:8px;}
+.copyright{float:right; margin-right:10px; text-align:right;color:#fff;line-height:150%;}
+.copyright a,.copyright a:hover,.foot-text a,.foot-text a:hover{color:#fff;}
+.foot-text{
+	background: url(../images/icon/foot_tu.gif)  no-repeat  0 6px;
+	padding-left:10px;margin-left:30px; 
+	color:#fff;line-height:150%;
+}
+
+    /* 页面最外层容器 */
+.content-container {
+    background-color: #fff;
+}
+
+/*页面最外层容器 - 弹出窗口*/
+.content-container-pop {
+    padding: 0px;
+    background-color: #ffffff;
+    width:100%;
+}
+/**弹出页面上的j-panel-foot*/
+.content-container-pop .j-panel-foot{
+    border: none;
+    border-top:1px solid;
+}
+
+/* 导航条 */
+.nav {
+	width:100%;
+	height: 46px;
+	line-height: 34px;
+	padding-left: 10px;
+	color: #fff;
+	position: relative;
+	background: url(../images/nav_bg.jpg)  repeat-x;
+}
+.nav a{color: #fff;}
+/*导航条背景色*/
+.nav-bg{
+border:0;
+	background-image: url(../images/nav_bg.jpg);
+	background-repeat: repeat-x;
+}
+
+/* 全文搜索框 */
+.search-panel {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.search-panel input {
+    width: 150px;
+    height: 16px;
+}
+
+/* 用于页面的分割条 */
+.split {
+    height: 5px;
+    font-size: 1px;
+}
+
+/* j-grid填充满j-panel-body */
+.grid-full {
+	width: 98.5%; margin:auto;
+    height: expression(document.documentElement.clientHeight - 135);
+}
+
+/* j-panel-body填充满页面  */
+* html .panel-full {
+    width: expression(document.documentElement.clientWidth - 12);
+/*    height: expression(document.documentElement.clientHeight - 115);*/
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;margin-left:5px;
+}
+
+*+html .panel-full {
+    /*width: expression(document.documentElement.clientWidth - 8);*/
+    height: expression(document.documentElement.clientHeight - 115);
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* j-tab填充满无导航条页面 */
+.tab-full-nonav {
+    height: expression(document.documentElement.clientHeight - 59);
+}
+
+.tab-full {
+    height: expression(document.documentElement.clientHeight - 50);
+}
+
+/* j-panel-body填充满无导航条页面 */
+.panel-full-nonav {
+    width: expression(document.documentElement.clientWidth - 8);
+    height: expression(document.documentElement.clientHeight - 59);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* 弹出页面上j-panel-body填充满无导航条页面 */
+.panel-full-pop {
+    width: expression(document.documentElement.clientWidth);
+    height: expression(document.documentElement.clientHeight - 26);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* 文件列表 */
+.files {
+    margin: 0;
+    margin-left: 3px;
+}
+
+.files li {
+    list-style-type: square;
+    list-style-position: inside;
+}
+
+/* 提示信息 */
+.tip {
+    padding: 3px;
+    margin: 3px 0px;
+    border: 1px solid orange;
+    background-color: #efefef;
+}
+
+.tip li {
+    list-style-type: decimal;
+    list-style-position: inside;
+}
+
+/** 页面验证提示 */
+.errors {
+    font-size: 0px;
+    color: red;
+    padding: 0px;
+    min-height: 0px;
+    line-height: 0px;
+}
+
+.errors ul {
+    margin: 5px;
+}
+
+/** 查看页面无记录时显示的提示 */
+.no_record {
+	margin:10px;
+	font-weight: bold;
+}
+
+/** 查看页面多行文本框样式 */
+.multi-line{
+    word-wrap:break-word;
+    word-break:break-all;
+}
+
+/** 标题(深蓝加粗)*/
+.caption {
+    font-weight: bold;
+    color: #15428B;
+}
+
+/** 形象进度图片展示 */
+.div-photos {
+	width:100%;
+}
+
+.div-photos ul {
+    margin:0;
+}
+
+.div-photos li {
+    list-style-type: none;
+    float: left;
+    margin: 0 2px;
+}
+
+/** 图片列表样式定义 */
+.photo-list {
+    float: left;
+}
+
+.photo-box {
+    width: 200px;
+    height: 150px;
+}
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.photo-bar {
+    width: 200px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.photo-prev,.photo-next {
+    float: left;
+    width: 20px;
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #efefef;
+    border: 1px solid #196fe0;
+}
+
+/*--------------------------------暂未使用的样式----------------------------------*/
+    /*
+.input-short{
+    width:100px;
+}
+.input-long{
+    width:358px;
+}
+
+.input-file{
+    width:380px;
+}
+*/ /** 项目进程图、项目步骤的样式定义 start */
+.life-panel {
+    border-bottom: 1px solid #99bbe8;
+}
+
+.life-panel-over {
+	background-color: #FFFFDD;
+}
+
+.life-panel a {
+	width: 100%;
+	display: block;
+	color: #15428b;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.life-panel a:hover {
+	color: #15428b;
+	text-decoration: none;
+}
+
+.life-panel-head {
+    width: 15px;
+    padding: 6px 5px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #DFE8F6;
+    color: #15428b;
+    border-right: 1px solid #99bbe8;
+    float: left;
+}
+
+.life-panel-body {
+	float: left;
+	/*border: 1px solid #99bbe8;*/
+}
+
+.step-container {
+	margin: 5px 0px;
+    padding-left: 30px;
+    background: transparent url("../images/arrow.gif") no-repeat left center;
+}
+
+.step {
+    width: 100px;
+    height: 60px;
+    border: 1px solid #4286e2;
+    text-align: center;
+}
+
+.step-icon {
+    width: 32px;
+    height: 32px;
+    margin-top: 5px;
+    display: block;
+}
+
+/** 项目进程图、项目步骤的样式定义 end */ /** 用于显示文件列表，用于ul元素上 */
+.fileList {
+    margin: 0;
+    list-style: inside square;
+}
+
+/*项目资料tbody*/
+#project-info {
+    display: none;
+}
+
+#project-info .table-caption {
+    line-height: 22px;
+    padding-left: 5px;
+    font-weight: bold;
+    color: #15428B;
+    text-align: left;
+}
+
+/*帮助提示*/
+.help-anchor {
+    cursor: pointer;
+    width: 14px;
+    border: 1px solid red;
+}
+
+.help-text {
+    display: none;
+}
+
+/*弹出窗口table外层div*/
+.div-table-pop {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/*for j-toolbar*/
+.tb {
+    border-top: 1px solid #99BBE8;
+}
+
+/*附件展示*/
+.ul-files {
+    margin: 0;
+    padding: 0;
+}
+
+.ul-files li {
+    list-style: inside square;
+}
+
+.div-reply-head {
+    font-weight: bold;
+    background-color: #D2E0F2;
+    color: #15428B;
+    height: 22px;
+    line-height: 22px;
+    border-top: 1px solid #99BBE8;
+    border-bottom: 1px solid #99BBE8;
+    margin: 10px 0 0 0;
+    padding-left: 5px;
+}
+
+.reply-head {
+    height: 22px;
+    line-height: 22px;
+    text-align: left;
+    padding: 0 0 0 5px;
+    font-weight: bold;
+    color: #15428B;
+}
+
+/*查看页记录列表*/
+.table-list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-list th {
+    text-align: left;
+    padding: 2px 2px 2px 5px;
+    border-bottom: 1px solid #ededed;
+}
+
+.table-list td {
+    vertical-align: top;
+    padding: 2px 2px 2px 5px;
+    border-bottom: 1px solid #ededed;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+/*查看页信息展示*/
+.table-info {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-info td {
+    vertical-align: top;
+    padding: 2px 2px 2px 5px;
+    border: 1px solid #ededed;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.j-form-table {
+    border-bottom: 0px solid #ededed;
+}
+
+/*历史记录*/
+.table-history {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    border-top: 1px solid #99BBE8;
+}
+
+.table-history .thead-history td {
+    font-weight: bold;
+    color: #0763BD;
+    text-align: left;
+}
+
+.table-history td {
+    
+}
+
+.table-history .tr-content {
+    display: none;
+}
+
+.table-history .tr-content table {
+    margin-left: 0px;
+}
+
+.table-history .tr-record {
+    cursor: pointer;
+}
+
+.table-history .tr-record td {
+    border: 1px solid #FFF;
+    padding: 2px;
+    /*border-bottom:1px solid #99BBE8;*/
+    background-color: #F0F0F0;
+}
+
+.table-history .tr-content table td {
+    
+}
+
+.div-stat {
+    line-height: 22px;
+    padding: 2px 5px;
+}
+
+.div-stat .item {
+    float: left;
+    clear: left;
+    margin-left: 24px;
+}
+
+/*查询条件容器*/
+.div-search-container {
+    border: 1px solid #CCCCCC;
+    padding: 2px 5px;
+}
+
+.div-search-container table {
+    table-layout: fixed;
+}
+
+.div-search-container input {
+    border: 1px solid #99BBE8;
+}
+
+/*查询按钮*/
+.button-query {
+    background-color: #DFE8F6;
+    color: #15428B;
+    border: 1px solid #15428B;
+    padding-top: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+/*更多查询条件隐藏div*/
+.div-search-more {
+    z-index: 10000;
+    position: absolute;
+    display: none;
+    width: 400px;
+    height: 80px;
+    left: expression((   document.documentElement.clientWidth-400)/ 2 );
+    top: 60px;
+    background-color: #FFF;
+    border: 1px solid #99BBE8;
+    padding: 5px;
+}
+
+.iframe-bg {
+    position: absolute;
+    display: none;
+    left: expression((   document.documentElement.clientWidth-400)/ 2 );
+    top: 60px;
+    width: 415px;
+    height: 95px;
+    z-index: 9999;
+    filter: progid :   DXImageTransform.Microsoft.Alpha (   opacity :   0 );
+}
+
+.tr-more {
+    display: none;
+}

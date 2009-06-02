@@ -1,0 +1,13 @@
+@charset "UTF-8";
+@import "default-skin.css";
+@import "core/j-login.css";
+@import "core/j-reset.css";
+@import "core/j-icon.css";
+@import "core/j-panel.css";
+@import "core/j-toolbar.css";
+@import "core/j-form.css";
+@import "core/j-grid.css";
+@import "core/j-menu.css";
+@import "core/j-tab.css";
+@import "core/j-tree.css";
+@import "core/j-window.css";

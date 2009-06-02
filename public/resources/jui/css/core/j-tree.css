@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+.j-tree {
+}
+
+.j-tree-node {
+    white-space: nowrap;
+    cursor: pointer;
+    color: black;
+    display: inline;
+}
+
+.j-tree-node a {
+    display: block;
+    line-height: 100%;
+    text-decoration: none;
+    outline: 0 none;
+    padding: 1px 0px;
+}
+
+.j-tree-node a:hover {
+    text-decoration: none;
+}
+
+.j-tree-node-fold {
+    float: left;
+    width: 16px;
+    height: 18px;
+    vertical-align: top;
+}
+
+.j-tree-node-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    padding: 0px 3px 0px 2px;
+}
+
+.j-tree-elbow {
+    background-position: 0px 0px;
+}
+
+.j-tree-elbow-end {
+    background-position: 0px -18px;
+}
+
+.j-tree-elbow-end-minus {
+    background-position: 0px -36px;
+}
+
+.j-tree-elbow-end-minus-nl {
+    background-position: 0px -54px;
+}
+
+.j-tree-elbow-end-plus {
+    background-position: 0px -72px;
+}
+
+.j-tree-elbow-end-plus-nl {
+    background-position: 0px -90px;
+}
+
+.j-tree-elbow-line {
+    background-position: 0px -108px;
+}
+
+.j-tree-elbow-minus {
+    background-position: 0px -126px;
+}
+
+.j-tree-elbow-plus {
+    background-position: 0px -144px;
+}

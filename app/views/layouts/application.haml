@@ -4,77 +4,19 @@
   %head
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %title 数字值班室
-    =stylesheet_link_tag "core", "facebox", "default"
-    / [if lt IE 7]
-      =stylesheet_link_tag "curb-stomp"
-    / [if gte IE 7]
-      =stylesheet_link_tag "ie7"
-    =javascript_include_tag "prototype", "jquery", "facebox", "application" 
+    =stylesheet_link_tag "/resources/css/head", "/resources/css/portal", "facebox", "default"
+    =javascript_include_tag "prototype", "jquery", "facebox", "/resources/jui/js/jui.js", "application" 
     -if !current_user.site.blank? && params[:record_id].nil?
       /
         =javascript_include_tag "http://#{CALL_CENTER}/interface/mixControl.php", "http://#{CALL_CENTER}/interface/panel.php?extension=#{current_user.site}"
     =calendar_date_select_includes "blue"
 
   %body
-    #container
-      #header.clear
-        %ul#sec-nav
-        #titles
-          %h1
-            %strong#account-name
-              %a{:href=>"/"} LH
-            %a.pname{:href=>"/"}
-              %b 数字值班室
-        #rheader
-          #userbadge
-            .ubody
-              #ublinks
-                =link_to "退出", logout_path
-                =link_to "修改密码", pass_path, :rel => "facebox"
-                -if !current_user.is_admin?
-                  =link_to "公告", notice_list_path
-              %strong{:style=>"margin:0;padding:0;"}
-                %a="欢迎您:#{current_user.login}"
-            .ubody
-              #ublinks
-                =link_to "设置", user_site_path, :rel => "facebox"
-              %strong
-                %a="坐席号:#{current_user.site.blank? ? '请设置' : current_user.site}"
-      #content
-        #main
-          #project-nav
-            %ul
-              - if current_user.is_admin?
-                %li#t-proj{:class=>select_menu('home')}
-                  =link_to '首页', home_path
-                %li{:class=>select_menu('departments')}
-                  =link_to '机构管理', new_department_path
-                %li#u-menu.mainmenu{:class=>"#{select_menu('users')}"}
-                  -%w{users notices logs}.each do |menu|
-                    =render :partial => "layouts/menu", :locals => { :menu => menu }
-              - else
-                %li#t-proj{:class=>select_menu('workitems')}
-                  =link_to '待办事项', workitems_path
-                %li{:class=>select_menu('conversations')}
-                  =link_to '受理事件', conversations_path
-                %li{:class=>select_menu('dispatches')}
-                  =link_to '事件调度', dispatches_path
-                %li{:class=>select_menu('events')}
-                  =link_to '添加往来记录', events_path
-              %li{:class=>select_menu('searches')}
-                =link_to '事件记录', searches_path
-              %li{:class=>select_menu('records')}
-                =link_to '录音记录', records_path
-          #action-nav
-            %ul.clear
-              - if current_user.is_admin?
-                -%w{users notices}.each do |menu|
-                  =render :partial => "layouts/submenu", :locals => { :menu => menu }
-          -flash.each do |key, msg|
-            =content_tag :div, msg, :id => "flash-#{key}"
-          #main-content
-            =yield
-      #footer
-        #footer-cnt
-          %p 高正软件
-    
+    #content-container
+      .nav 你现在的位置：
+      .split
+      .j-panel
+        .j-panel-head
+          .j-panel-text 项目信息
+        .j-panel-body.j-panel-full
+          =yield

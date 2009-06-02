@@ -1,0 +1,38 @@
+@charset "utf-8";
+.login-panel {
+	margin:125px auto auto;
+	width:461px;
+	height:273px;
+	background-repeat: no-repeat;
+}
+.logoin-table {
+	margin:68px auto auto 138px;
+}
+.login-td1 {
+	width:45px;
+}
+.login-form {
+	border:1px solid;
+	width:150px;
+	height:20px;
+	font-size:12px;
+	line-height:150%;
+	margin:2px auto;
+}
+.login-form1 {
+}
+.login-form2 {
+	width:60px;
+	margin-right:4px;
+}
+.login-button {
+	width:60px;
+	height:22px;
+	margin:10px 9px 0 0;
+	background-repeat: no-repeat;
+	display:block;
+}
+.login-button1 {
+}
+.login-button2 {
+}

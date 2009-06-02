@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+.j-toolbar {
+    padding: 2px 2px 1px 2px;
+    overflow: hidden;
+}
+
+.j-panel-foot .j-toolbar {
+    float: right;
+}
+
+.j-toolbar a {
+    text-decoration: none;
+}
+
+.j-toolbar a:hover {
+    text-decoration: none;
+}
+
+.j-toolbar-item {
+    display: inline;
+    zoom: 1;
+	overflow: hidden;
+}
+
+.j-toolbar-split {
+    width: 4px;
+    height: 16px;
+    margin: 3px 0px 2px 0px;
+    display: inline;
+    zoom: 1;
+    overflow: hidden;
+}
+
+.j-toolbar-btn {
+    height: 16px;
+    margin: 3px 0px 2px 0px;
+    padding-left: 16px;
+    vertical-align: top;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.j-toolbar-btn-text {
+    padding-left: 3px;
+    line-height: 15px;
+    overflow: hidden;
+}
+
+.j-toolbar-btn-left, .j-toolbar-btn-left-over {
+    margin: 0px 1px 0px 1px;
+    padding-left: 3px;
+}
+
+.j-toolbar-btn-right, .j-toolbar-btn-right-over {
+    padding-right: 3px;
+}
+
+.j-page-link {
+	padding: 0px 3px 4px 3px;
+}
+
+.j-page-link a, .j-page-link span {
+	margin: 0px 3px;
+}

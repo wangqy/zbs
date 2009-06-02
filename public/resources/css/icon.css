@@ -1,0 +1,399 @@
+@charset "utf-8";
+/* CSS Document */
+.icon-16px-box {
+	padding-left: 16px;
+	height: 16px;
+	margin-left: 2px;
+	margin-right: 2px;
+	zoom: 1;
+}
+.icon-32px-box {
+	width: 32px;
+	height: 32px;
+	margin-left: 5px;
+	zoom: 1;
+}
+.icon-16px {
+	background: transparent url(../images/icon-16px.gif) no-repeat;
+}
+
+/*Begin 常用图标*/
+/*图标库*/
+.j-icon{
+    background: transparent url(../images/j-icon.gif) no-repeat;
+    cursor:pointer;
+}
+/*浏览、查看*/
+.i-view {
+	background-position: 0px 0px;
+}
+/*创建、新增*/
+.i-create {
+	background-position: 0px -16px;
+}
+/*编辑*/
+.i-edit {
+	background-position: 0px -32px;
+}
+/*删除*/
+.i-delete {
+	background-position: 0px -48px;
+}
+/*保存*/
+.i-save {
+	background-position: 0px -64px;
+}
+/*取消*/
+.i-cancel {
+	background-position: 0px -80px;
+}
+/*确定*/
+.i-confirm {
+	background-position: 0px -96px;
+}
+/*返回*/
+.i-return {
+	background-position: 0px -112px;
+}
+/*刷新*/
+.i-refresh {
+	background-position: 0px -128px;
+}
+/*查找、搜索*/
+.i-search {
+	background-position: 0px -144px;
+}
+/*重置、还原*/
+.i-reset {
+	background-position: 0px -160px;
+}
+/*提交*/
+.i-submit {
+	background-position: 0px -176px;
+}
+/*接收、受理*/
+.i-accept {
+	background-position: 0px -192px;
+}
+/*拒绝、不受理*/
+.i-reject {
+	background-position: 0px -208px;
+}
+/*上传*/
+.i-upload {
+	background-position: 0px -224px;
+}
+/*下载*/
+.i-download {
+	background-position: 0px -240px;
+}
+/*导出*/
+.i-export {
+	background-position: 0px -256px;
+}
+/*导入*/
+.i-import {
+	background-position: 0px -272px;
+}
+/*克隆、复制并保存*/
+.i-clone {
+	background-position: 0px -288px;
+}
+/*加入*/
+.i-join {
+	background-position: 0px -304px;
+}
+/*移出*/
+.i-remove {
+	background-position: 0px -320px;
+}
+/*打印*/
+.i-printer {
+	background-position: 0px -336px;
+}
+/*帮助*/
+.i-help {
+	background-position: 0px -352px;
+}
+/*登录*/
+.i-login {
+	background-position: 0px -368px;
+}
+/*退出登录*/
+.i-logout {
+	background-position: 0px -384px;
+}
+/*锁定*/
+.i-lock {
+	background-position: 0px -400px;
+}
+/*解锁*/
+.i-unlock {
+	background-position: 0px -416px;
+}
+/*关闭*/
+.i-close {
+	background-position: 0px -432px;
+}
+/*系统管理*/
+.i-system {
+	background-position: 0px -448px;
+}
+/*用户管理*/
+.i-user {
+	background-position: 0px -464px;
+}
+/*新增用户*/
+.i-user-create {
+	background-position: 0px -480px;
+}
+/*编辑用户*/
+.i-user-edit {
+	background-position: 0px -496px;
+}
+/*删除用户*/
+.i-user-delete {
+	background-position: 0px -512px;
+}
+/*修改密码*/
+.i-user-pwd {
+	background-position: 0px -528px;
+}
+/*角色管理*/
+.i-role {
+	background-position: 0px -544px;
+}
+/*新增角色*/
+.i-role-create {
+	background-position: 0px -560px;
+}
+/*编辑角色*/
+.i-role-edit {
+	background-position: 0px -576px;
+}
+/*删除角色*/
+.i-role-delete {
+	background-position: 0px -592px;
+}
+/*机构管理*/
+.i-organ {
+	background-position: 0px -608px;
+}
+/*新增机构*/
+.i-organ-create {
+	background-position: 0px -624px;
+}
+/*编辑机构*/
+.i-organ-edit {
+	background-position: 0px -640px;
+}
+/*删除机构*/
+.i-organ-delete {
+	background-position: 0px -656px;
+}
+/*职务管理*/
+.i-position {
+	background-position: 0px -672px;
+}
+/*新增职务*/
+.i-position-create {
+	background-position: 0px -688px;
+}
+/*编辑职务*/
+.i-position-edit {
+	background-position: 0px -704px;
+}
+/*删除职务*/
+.i-position-delete {
+	background-position: 0px -720px;
+}
+/*个人信息*/
+.i-user-info {
+	background-position: 0px -736px;
+}
+/*个性化设置、个人设置*/
+.i-user-setup {
+	background-position: 0px -752px;
+}
+/*退出*/
+.i-exit {
+	background-position: 0px -768px;
+}
+/*常用图标 End**/
+
+/**Begin 项目图标*/
+.p-icon{
+    background: transparent url(../images/p-icon.gif) no-repeat;   
+}
+
+/*重点的*/
+.p-focuson {
+	background-position: 0px 0px;
+}
+/*超时的*/
+.p-timeover {
+	background-position: 0px -16px;
+}
+/*快超时的*/
+.p-urgent {
+	background-position: 0px -32px;
+}
+/*已通过的*/
+.p-passed {
+	background-position: 0px -48px;
+}
+/*正在进行的*/
+.p-doing {
+	background-position: 0px -64px;
+}
+/*未进行的*/
+.p-nodo {
+	background-position: 0px -80px;
+}
+/*被跳过的*/
+.p-ignor {
+	background-position: 0px -96px;
+}
+/*被终止的*/
+.p-ending {
+	background-position: 0px -112px;
+}
+/*项目管理模块*/
+.p-project-module {
+	background-position: 0px -128px;
+}
+/*待办项目*/
+.p-project-waiting {
+	background-position: 0px -144px;
+}
+/*项目管理*/
+.p-project-manage {
+	background-position: 0px -160px;
+}
+/*年度计划*/
+.p-project-plan {
+	background-position: 0px -176px;
+}
+/*项目单位管理模块*/
+.p-unit-module {
+	background-position: 0px -192px;
+}
+/*单位管理*/
+.p-unit-manage {
+	background-position: 0px -208px;
+}
+/*预申请项目*/
+.p-project-pre {
+	background-position: 0px -224px;
+}
+/*申请新项目*/
+.p-project-new {
+	background-position: 0px -240px;
+}
+/*进行中项目*/
+.p-project-doing {
+	background-position: 0px -256px;
+}
+/*已完工项目*/
+.p-project-finish {
+	background-position: 0px -272px;
+}
+/*公告&反馈*/
+.p-announce-feedback {
+	background-position: 0px -288px;
+}
+/*公告管理*/
+.p-announce-manage {
+	background-position: 0px -304px;
+}
+/*反馈管理*/
+.p-feedback-manage {
+	background-position: 0px -320px;
+}
+/*反馈回复*/
+.p-feedback-reply {
+	background-position: 0px -336px;
+}
+/*未读消息*/
+.p-message-new {
+	background-position: 0px -352px;
+}
+/*已读消息*/
+.p-message-read {
+	background-position: 0px -368px;
+}
+
+/*短信平台*/
+.p-message {
+	background-position: 0px -352px;
+}
+
+
+/*发送新消息*/
+.p-send-message {
+	background-position: 0px -292px;
+}
+/*收件箱*/
+.p-recevie-message-inbox {
+	background-position: 0px -352px;	
+}
+/*发件箱*/
+.p-send-message-inbox {
+	background-position: 0px -160px;
+}
+/*废件箱*/
+.p-reclye-message-inbox {
+	background-position: 0px -272px;
+}
+/*回复短信*/
+.p-return-message {
+		background-position: 0px -320px;	
+}		                    	
+
+/*模板管理*/
+.p-system-template {
+	background-position: 0px -384px;
+}
+/*参数设置*/
+.p-system-param {
+	background-position: 0px -400px;
+}
+/*项目图标 End**/
+
+/**Begin 项目流程图例*/
+.p-icon32{
+    background: transparent url(../images/p-icon32.gif) no-repeat;   
+}
+/*已通过的*/
+.p-passed-32px {
+	background-position: 0px 0px;
+}
+/*正在进行的*/
+.p-doing-32px {
+	background-position: 0px -32px;
+}
+/*未进行的*/
+.p-nodo-32px {
+	background-position: 0px -64px;
+}
+/*被跳过的*/
+.p-ignor-32px {
+	background-position: 0px -96px;
+}
+/*被终止的*/
+.p-ending-32px {
+	background-position: 0px -128px;
+}
+/*不通过的*/
+.p-nopassed-32px {
+	background-position: 0px -160px;
+}
+/*项目流程图例 End**/
+
+/*问题反馈模块中的New图标*/
+.question-new {
+	width: 28px;
+	height: 11px;
+	background: transparent url(../images/new.gif) top center no-repeat;
+	zoom: 1;
+}

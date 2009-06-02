@@ -1,0 +1,39 @@
+.head-left {
+		height: 80px;
+		padding-left: 288px;
+		background: transparent url(../images/manage/logo.jpg) no-repeat;
+		position: relative;
+	}
+	
+	.head-center {
+		height: 100%;
+		padding-left: 545px;
+		background: transparent url(../images/top_2.jpg) no-repeat;
+	}
+	
+	.head-right {
+		height: 100%;
+		padding-top: 55px;
+		padding-right: 5px;
+		background: transparent url(../images/top_3.jpg) repeat;
+		color: #ffffff;
+		text-align: right;
+	}
+	
+	.welcome {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		height: 20px;
+		line-height: 20px;
+		color: #ffffff;
+		padding-right: 5px;
+	}
+	
+	.head-right a {
+		color: #ffffff;
+	}
+	
+	.head-right a:hover {
+		color: #ffffff;
+	}

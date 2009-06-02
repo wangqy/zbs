@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+.j-menu {
+    position: absolute;
+    display: none;
+    border: 1px solid;
+    padding: 2px;
+    z-index: 15000;
+}
+
+.j-menu-list-item {
+    white-space: nowrap;
+    display: block;
+    padding: 1px;
+    cursor: pointer;
+	text-align: left;
+}
+
+.j-menu-list-item a {
+	text-decoration: none;
+}
+
+.j-menu-list-item a:hover {
+	text-decoration: none;
+}
+
+.j-menu-item {
+    display: block;
+    line-height: 16px;
+    padding: 3px 21px 3px 3px;
+    white-space: nowrap;
+    text-decoration: none;
+    outline: none 0;
+}
+
+.j-menu-item-active {
+    border: 1px solid;
+    padding: 0;
+    position: relative;
+}
+
+.j-menu-item-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    margin-right: 8px;
+}
+
+.j-menu-item-split {
+    display: block;
+    font-size: 0px;
+	line-height: 0px;
+    margin: 0px 3px 2px 3px;
+    border-bottom: 1px solid;
+}
+
+.j-outlook-menu {
+    overflow: hidden;
+}
+
+.j-outlook-menu ul {
+    background: transparent;
+}
+
+.j-outlook-child-menu-box {
+    overflow: hidden;
+    cursor: default;
+}
+
+.j-outlook-menu-list-item {
+    white-space: nowrap;
+    display: inline;
+    cursor: pointer;
+    line-height: 100%;
+    padding: 1px;
+    margin-bottom: 2px;
+}
+
+.j-outlook-menu-list-item a {
+	text-decoration: none;
+}
+
+.j-outlook-menu-list-item a:hover {
+	text-decoration: none;
+}
+
+.j-outlook-menu-item {
+    display: block;
+    line-height: 16px;
+    padding: 3px 21px 3px 3px;
+    white-space: nowrap;
+    text-decoration: none;
+    outline: none 0;
+    border-bottom: 1px solid;
+}
+
+.j-outlook-menu-item-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    margin-right: 8px;
+}
+
+.j-outlook-menu .j-menu {
+    position: static;
+    border: none;
+    display: block;
+}

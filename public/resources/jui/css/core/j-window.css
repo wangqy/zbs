@@ -1,0 +1,65 @@
+@charset "UTF-8";
+.j-window {
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999997;
+}
+
+.j-window-frame {
+	position: absolute;
+	margin: 0px;
+	padding: 0px;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	filter: Alpha(opacity = 70);
+	z-index: 999998;
+}
+
+.j-window-box {
+	position: absolute;
+	z-index: 999999;
+}
+
+.j-window-tc {
+    overflow: hidden;
+}
+
+.j-window-tl, .j-window-bl, .j-window-ml {
+    padding-left: 6px;
+}
+
+.j-window-tr, .j-window-br, .j-window-mr {
+    padding-right: 6px;
+}
+
+.j-window-bc {
+    padding-bottom: 6px;
+    font-size: 0;
+    line-height: 0;
+}
+
+.j-window-mc {
+    border: 1px solid;
+}
+
+.j-search {
+	width: 500px;
+	height: 300px;
+}
+
+.j-search-body {
+	width: 100%;
+	height: 274px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.j-search-foot .j-toolbar {
+	border-top: 1px solid;
+	text-align: right;
+}

@@ -1,0 +1,93 @@
+/*CSS for manage*/
+@charset "utf-8";
+@import "../jui/css/default.css";
+@import "icon.css";
+@import "site.css";
+@import "main.css";
+@import "common.css";
+
+/*--------------------------------首页主页面布局样式----------------------------------*/
+.left-tab {
+	 float: left;
+	 width: 49%;
+	 height: expression(document.documentElement.clientHeight - 64);
+}
+
+.left-tab .j-grid {
+	width: 100%;
+	height: expression(this.parentElement.clientHeight - 25);
+}
+
+.right-tab {
+	 float: right;
+	 width: 49%;
+	 height: expression(document.documentElement.clientHeight/2 - 47);
+}
+
+.right-tab .j-grid {
+	 height: expression(this.parentElement.clientHeight - 25);
+}
+
+.tab-content-box {
+	padding: 5px;
+}
+
+.text {
+	height: 88px;
+	border: 1px solid #eee;
+	background:#f7f7f7;
+	padding: 5px;
+}
+
+.text ul {
+	margin: 0;
+	list-style: inside square;
+	/*border: 1px solid #99cce8;*/
+	padding: 5px;
+}
+
+.text li {
+	padding: 5px 0px 5px 0px;
+}
+
+/*--------------------------------暂未使用的样式----------------------------------*/
+.des {
+	border: 1px dotted #99c8ee;
+	padding: 5px 3px 4px 5px;
+	text-align: center;
+}
+
+.project-demo {
+	border: 1px solid #99bbe8;
+	width: 50px;
+	height: 16px;
+	margin: 0px 5px 0px 5px;
+	zoom: 1;
+}
+
+/** 项目分类的样式定义，采用图标方式表示 start */
+/* 重点关注项目 */
+.project-focuson {
+	width: 16px;
+	height: 16px;
+	background: transparent url(../images/project-icon.gif) no-repeat -16px -48px;
+	zoom: 1;
+}
+/* 已超时项目 */
+.project-timeover {
+	width: 16px;
+	height: 16px;
+	background: transparent url(../images/project-icon.gif) no-repeat 0px -48px;
+	zoom: 1;
+}
+/* 快超时项目 */
+.project-urgent {
+	width: 16px;
+	height: 16px;
+	background: transparent url(../images/project-icon.gif) no-repeat -16px -32px;
+	zoom: 1;
+}
+/** 项目分类的样式定义，采用图标方式表示 end */
+.content-container-pop .j-panel-body{
+    border:none;
+}

@@ -1,0 +1,66 @@
+!!! Strict
+
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %title 数字值班室
+    =stylesheet_link_tag "/resources/css/head"
+    =javascript_include_tag "/resources/js/tab.js"
+    %style{:type=>"text/css"}
+      :sass
+        body
+          :background url(/resources/images/head_body_bg.jpg) repeat-x
+        #secTable
+          td
+            :cursor pointer
+
+  %body
+    %table.head_bg{:border=>0,:cellspacing=>0,:cellpadding=>0}
+      %tr
+        %td.head_td1 &nbsp;
+        %td
+          %table.menu_bg{:cellspacing=>0,:cellpadding=>0,:width=>0}
+            %tr
+              %td.menu_top_left &nbsp;
+              %td
+                %table{:cellspacing=>0,:cellpadding=>0,:width=>0}
+                  %tr#secTable
+                    %td.menu_ab{:onmouseover=>"secBoard(0)"}
+                      %span 事件管理
+                    %td.menu{:onmouseover=>"secBoard(1)"}
+                      %span 资源中心
+                    %td.menu{:onmouseover=>"secBoard(2)"}
+                      %span 系统管理
+              %td.menu_top_right &nbsp;
+          %table#mainTable.submenu_bg{:cellspacing=>0,:cellpadding=>0,:width=>0}
+            %tbody
+              %tr
+                %td.submenu_td1
+                  %a.submenu_left{:href=>"#"}
+                %td.submenu_td2
+                  =link_to '待办事项', workitems_path, :class => "submenu_11", :target => :mainFrame
+                  =link_to '受理事件', conversations_path, :class => "submenu_12", :target => :mainFrame
+                  =link_to '事件调度', dispatches_path, :class => "submenu_13", :target => :mainFrame
+                  =link_to '添加往来记录', events_path, :class => "submenu_14", :target => :mainFrame
+                %td.submenu_td3
+                  %a.submenu_right{:href=>"#"}
+            %tbody{:style=>"display:none"}
+              %tr
+                %td.submenu_td1
+                  %a.submenu_left{:href=>"#"}
+                %td.submenu_td2
+                  =link_to '事件记录', searches_path, :class => "submenu_11", :target => :mainFrame
+                  =link_to '录音记录', records_path, :class => "submenu_12", :target => :mainFrame
+                %td.submenu_td3
+                  %a.submenu_right{:href=>"#"}
+            %tbody{:style=>"display:none"}
+              %tr
+                %td.submenu_td1
+                  %a.submenu_left{:href=>"#"}
+                %td.submenu_td2
+                  =link_to '机构管理', departments_path, :class => "submenu_11", :target => :mainFrame
+                  =link_to '用户管理', users_path, :class => "submenu_12", :target => :mainFrame
+                  =link_to '日志管理', logs_path, :class => "submenu_13", :target => :mainFrame
+                  =link_to '公告管理', notices_path, :class => "submenu_14", :target => :mainFrame
+                %td.submenu_td3
+                  %a.submenu_right{:href=>"#"}

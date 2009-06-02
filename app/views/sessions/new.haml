@@ -1,14 +1,21 @@
 - form_tag session_path do                                                                                                                 
-  %dl
-    %dt
-      = label_tag 'login', "用户名"
-    %dd
-      = text_field_tag 'login', params[:login], :is_focus => true
-  %dl 
-    %dt
-      = label_tag 'password', "密码"
-    %dd
-      = password_field_tag 'password'
-  %p.btns  
-    = submit_tag '登录', :id => "save"
+  %table.logoin-table{:cellspacing=>0,:cellpadding=>0}
+    %tr
+      %td{:colspan=>2} 
+        -flash.each do |key, msg|
+          =content_tag :p, msg, :class => "flash #{key}"
+    %tr
+      %td.login-td1 用户名
+      %td= text_field_tag 'login', params[:login], :is_focus => true, :class => "login-form login-form1"
+    %tr
+      %td 密&nbsp;&nbsp;&nbsp;码
+      %td= password_field_tag 'password', nil, :class => "login-form login-form1"
+    %tr
+      %td &nbsp;
+      %td
+        %table{:cellspacing=>0,:cellpadding=>0}
+          %tr
+            %td= submit_tag "", :id => "save", :class=> "login-button login-button1", :style => "border: 0"
+            %td{:style=>"padding:0"}
+              %input{:type=>:reset, :class=>"login-button login-button2", :value=>"", :style=>"border:0"}
 

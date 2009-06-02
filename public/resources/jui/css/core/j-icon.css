@@ -1,0 +1,209 @@
+@charset "UTF-8";
+/* 分页图标样式定义 */
+.j-page-first {
+    background-position: 0px 0px;
+}
+
+.j-page-prev {
+    background-position: 0px -16px;
+}
+
+.j-page-next {
+    background-position: 0px -32px;
+}
+
+.j-page-last {
+    background-position: 0px -48px;
+}
+
+.j-page-first-disabled {
+    background-position: 0px -64px;
+}
+
+.j-page-prev-disabled {
+    background-position: 0px -80px;
+}
+
+.j-page-next-disabled {
+    background-position: 0px -96px;
+}
+
+.j-page-last-disabled {
+    background-position: 0px -112px;
+}
+/* 窗口图标样式定义 */
+.j-win-close {
+    background-position: 0px 0px;
+}
+
+.j-win-close-over {
+    background-position: -15px 0px;
+}
+
+.j-win-minimize {
+    background-position: 0 -15px;
+}
+
+.j-win-minimize-over {
+    background-position: -15px -15px;
+}
+
+.j-win-maximize {
+    background-position: 0 -30px;
+}
+
+.j-win-maximize-over {
+    background-position: -15px -30px;
+}
+
+.j-win-restore {
+    background-position: 0 -45px;
+}
+
+.j-win-restore-over {
+    background-position: -15px -45px;
+}
+
+.j-win-up-arrow {
+    background-position: 0 -60px;
+}
+
+.j-win-up-arrow-over {
+    background-position: -15px -60px;
+}
+
+.j-win-down-arrow {
+    background-position: 0 -75px;
+}
+
+.j-win-down-arrow {
+    background-position: -15px -75px;
+}
+
+.j-win-gear {
+    background-position: 0 -90px;
+}
+
+.j-win-gear-over {
+    background-position: -15px -90px;
+}
+
+.j-win-left-arrow {
+    background-position: 0 -105px;
+}
+
+.j-win-left-arrow-over {
+    background-position: -15px -105px;
+}
+
+.j-win-right-arrow {
+    background-position: 0 -120px;
+}
+
+.j-win-right-arrow-over {
+    background-position: -15px -120px;
+}
+
+.j-win-pin {
+    background-position: 0 -135px;
+}
+
+.j-win-pin-over {
+    background-position: -15px -135px;
+}
+
+.j-win-unpin {
+    background-position: 0 -150px;
+}
+
+.j-win-unpin-over {
+    background-position: -15px -150px;
+}
+
+.j-win-right {
+    background-position: 0 -165px;
+}
+
+.j-win-right-over {
+    background-position: -15px -165px;
+}
+
+.j-win-left {
+    background-position: 0 -180px;
+}
+
+.j-win-left-over {
+    background-position: -15px -180px;
+}
+
+.j-win-down {
+    background-position: 0 -195px;
+}
+
+.j-win-down-over {
+    background-position: -15px -195px;
+}
+
+.j-win-up {
+    background-position: 0 -210px;
+}
+
+.j-win-up-over {
+    background-position: -15px -210px;
+}
+
+.j-win-refresh {
+    background-position: 0 -225px;
+}
+
+.j-win-refresh-over {
+    background-position: -15px -225px;
+}
+
+.j-win-plus {
+    background-position: 0 -240px;
+}
+
+.j-win-plus-over {
+    background-position: -15px -240px;
+}
+
+.j-win-minus {
+    background-position: 0 -255px;
+}
+
+.j-win-minus-over {
+    background-position: -15px -255px;
+}
+/* j-win-icon-2d 不包含下面的图标 */
+.j-win-search {
+    background-position: 0 -270px;
+}
+
+.j-win-search-over {
+    background-position: -15px -270px;
+}
+
+.j-win-save {
+    background-position: 0 -285px;
+}
+
+.j-win-save-over {
+    background-position: -15px -285px;
+}
+
+.j-win-help {
+    background-position: 0 -300px;
+}
+
+.j-win-help-over {
+    background-position: -15px -300px;
+}
+
+.j-win-print {
+    background-position: 0 -315px;
+}
+
+.j-win-print-over {
+    background-position: -15px -315px;
+}

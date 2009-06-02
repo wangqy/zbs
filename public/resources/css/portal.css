@@ -1,0 +1,187 @@
+﻿/*CSS for portal*/
+@charset "utf-8";
+@import "../jui/css/default.css";
+@import "icon.css";
+@import "site.css";
+@import "main.css";
+@import "common.css";
+
+
+/*--------------------------------首页主页面布局样式----------------------------------*/
+.left-panel {
+	 float: left;
+	 width: 49%;
+}
+
+.left-panel .j-grid {
+	height: expression(document.documentElement.clientHeight/2 - 73);
+}
+
+.right-panel {
+	 float: right;
+	 width: 49%;
+}
+
+.right-panel .j-grid {
+	 height: expression(document.documentElement.clientHeight/2 - 73);
+}
+
+/*--------------------------------首页滚动栏样式----------------------------------*/
+.scroll-msg-list {
+    overflow-y: hidden;
+    background: url(../images/portal/bg_v.gif) repeat-x bottom;
+}
+
+.scroll-msg-list-null {
+	text-align: center;
+	height: expression(document.documentElement.clientHeight/2 - 48);
+	line-height: 60px;
+}
+
+.scroll-msg {
+	display: none;
+    clear: both;
+    height: expression(document.documentElement.clientHeight/2 - 78);
+    padding: 5px;
+}
+
+.scroll-msg-date {
+	font-weight: bold;
+    line-height: 30px;
+}
+
+.scroll-msg-content {
+    text-indent: 26px;
+    line-height: 20px;
+    white-space: normal;
+}
+
+.scroll-msg-btns {
+    height: 20px;
+    line-height: 20px;
+    text-align: right;
+    background: url(../images/portal/bg_h.gif) repeat-y right;
+}
+
+.scroll-msg-btns a{
+    padding: 2px 5px;
+    margin: 0px 4px;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.scroll-msg-btns .on{
+    background-color:#FFF;
+    color:#000;
+    font-weight:bold;
+}
+
+/*--------------------------------暂未使用的样式----------------------------------*/
+
+.font-normal{
+	font-weight:normal;
+}
+
+.text-multiline{
+	text-indent:28px;
+	word-wrap:break-word !important;
+	word-break:break-all;
+	white-space:normal;
+	border:1px solid red;
+}
+
+/*BEGIN 项目管理CSS*/
+.tr-detail{
+	display:none;
+}
+
+.td-tip{
+	white-space:normal;
+}
+
+.td-text{
+	white-space:normal;
+}
+
+.td-text-multi{
+	white-space:normal;
+	/*text-indent:24px;*/
+}
+
+.td-files{
+	vertical-align:top;
+}
+
+.td-files ul {
+	margin:0;
+}
+	
+.td-files ul li {
+	list-style-type:square;
+	list-style-position:inside;
+}
+
+.td-files ul li span{
+	margin-left:10px;
+	cursor:pointer;
+}
+
+.button-submit{
+	height:26px;
+	background-color:#DFE8F6;
+	color:#15428B;
+	border:1px solid #15428B;
+	padding:3px 3px 1px 3px;
+}
+
+.step-tip{
+	width: 15px;
+	height: 15px;
+	zoom: 1;
+	cursor: pointer;
+	border:1px solid red;
+}
+
+/*工程形象进度提交后回显*/
+.td-photos ul{
+	margin:0;
+}
+.td-photos ul li{
+	list-style-type:none;
+	float:left;
+}
+.td-photos ul li span{
+	margin-left:5px;
+	margin-right:5px;
+	cursor:pointer;
+	color:#15428B;
+}
+
+/*工程形象进度展示*/
+.span-to-left {
+    width: 5px;
+    height: 35px;
+    background: url("../images/mini-left.gif") center center no-repeat;
+    border: 0px solid red;
+    cursor:pointer;
+}
+
+.span-to-right {
+    width: 5px;
+    height: 35px;
+    background: url("../images/mini-right.gif") center center no-repeat;
+    cursor:pointer;
+}
+
+/*END 项目管理CSS*/
+
+/*BEGIN 公告&反馈*/
+.button-feedback{
+	margin:5px 20px;
+	background-color:#DFE8F6;
+	color:#15428B;
+	border:1px solid #15428B;
+	padding:3px 3px 1px 3px;
+	float:right;
+	
+}

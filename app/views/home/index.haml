@@ -1,17 +1,17 @@
-#mainbar
-  #system
-    %p 系统全貌
-  #adminbox
-    .box 系统管理
-    %p 由管理员统一管理用户,机构信息,发布公告
-    
-  #businessbox
-    .box 数字值班室
-    %p 由值班人员录入来电,来访,来函等信息
-    .box 调度中心
-    %p 由调度人员统一分派事件
-    .box 业务处理
-    %p 由各机构人员负责受理,转办,办结事件
-#sbar
-  .proj-desc
-    %p 提示:你可以点击上方[首页]字样右边的功能开始
+!!! Strict
+
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %title 数字值班室
+
+  %frameset{:rows=>"130,*,49",:frameborder=>"no",:border=>"0",:framespacing=>"0"}
+    %frame{:name=>"headFrame",:src=>"/home/head",:scrolling=>"no",:noresize=>"noresize"}
+    %frameset{:cols=>"30,*,30",:frameborder=>"no",:border=>"0",:framespacing=>"0"}
+      %frame{:name=>"leftFrame",:src=>"/home/left",:scrolling=>"no",:noresize=>"noresize"}
+      %frame{:name=>"mainFrame",:src=>"/workitems",:scrolling=>"no",:noresize=>"noresize"}
+      %frame{:name=>"rightFrame",:src=>"/home/right",:scrolling=>"no",:noresize=>"noresize"}
+    %frame{:name=>"footFrame",:src=>"/home/foot",:scrolling=>"no",:noresize=>"noresize"}
+
+  %noframes
+    %body

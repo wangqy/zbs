@@ -4,25 +4,12 @@
   %head
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %title 数字值班室
-    =stylesheet_link_tag "basic"
-    / [if lt IE 7]
-      =stylesheet_link_tag "curb-stomp"
-    / [if gte IE 7]
-      =stylesheet_link_tag "ie7"
-    =javascript_include_tag "jquery"
+    =stylesheet_link_tag "/resources/css/portal"
+    =javascript_include_tag "jquery", "/resources/jui/js/jui.js"
 
-  %body
-    #container
-      #header
-        %h1#logo
-          %a{:href=>"/"} 数字值班室
-      #content
-        #signin
-          %h3 登录
-          -flash.each do |key, msg|
-            =content_tag :p, msg, :class => "flash #{key}"
-          .box-content
-            =yield
+  %body.login-bg
+    .login-panel
+      =yield
 
   :javascript
     //focus

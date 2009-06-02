@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+.j-panel {
+margin-top:-4px;
+}
+.j-panel-head, .j-panel-body, .j-panel-foot {
+    /*border: 1px solid;*/
+    overflow: hidden;
+}
+.j-panel-head {margin:0 1px 4px;}
+.j-panel-body, .j-panel-foot {
+    border-top: none;
+}
+
+.j-panel-foot {
+margin:8px 1px 2px;
+	height: 25px;
+}
+
+.j-panel-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 3px;
+    margin-top: -1px;
+    margin-bottom: -1px;
+	vertical-align: top;
+}
+
+.j-panel-toolbar {
+	float: right;
+    padding: 4px 3px 5px 3px;
+}
+
+.j-panel-toolbar-item {
+	display: inline;
+	overflow: hidden;
+}
+
+.j-panel-toolbar-btn {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    margin-left: 2px;
+	zoom: 1;
+}
+
+.j-panel-text {
+	float: left;
+	padding: 5px 3px 4px 36px;
+}
+
+.j-panel-head .j-panel-text, .j-window-tc .j-panel-text {
+	font-weight: bold;
+}
+
+.j-window-tc .j-panel-toolbar {
+	padding: 5px 0px 4px 3px;
+}

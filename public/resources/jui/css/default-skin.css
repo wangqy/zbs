@@ -1,0 +1,335 @@
+@charset "UTF-8";
+/**
+ * 该文件将其它样式文件中涉及到字体、边框、背景的样式抽取出来，集中放在一起，便于进行样式替换。
+ */
+/*新增登陆页面样式*/
+.login-panel{
+	background-image: url(../../images/login-bg.jpg);	
+}
+.login-form{border-color:#ddd; color:#666;}
+.login-button1{
+	background-image: url(../../images/login-button1.jpg);
+}
+.login-button2{
+	background-image: url(../../images/login-button2.jpg);
+}
+/*end 新增登陆页面样式*/
+/* j-panel */
+.j-panel-head, .j-panel-body, .j-panel-foot {
+    /*border-color: #99bbe8;*/
+}
+
+.j-panel-head {
+    background: transparent url(../images/default/j-panel-head.gif) repeat-x 0 -1px;
+
+}
+
+.j-panel-foot {
+   /* background: transparent url(../images/default/j-panel-foot.gif) repeat-x top left;*/
+   background:#C4FF88;
+}
+
+.j-panel-text {
+	color: #008000;
+	background: url(../../images/icon/icon_title.gif)  no-repeat  12px 4px;	
+    /*color: #0763bd;*/
+}
+/* j-toolbar */
+.j-toolbar {
+    /*background: transparent url(../images/default/j-panel-foot.gif) repeat-x top left;*/
+	
+}
+
+.j-toolbar a {
+    color: #233d6d;
+}
+
+.j-toolbar a:hover {
+    color: #233d6d;
+}
+
+.j-toolbar-split {
+    background: transparent url(../images/default/j-toolbar-split.gif) no-repeat center center;
+}
+
+.j-toolbar-btn-left-over {
+    background: transparent url(../images/default/j-icon-btn-sprite.gif) no-repeat left 0;
+}
+
+.j-toolbar-btn-right-over {
+    background: transparent url(../images/default/j-icon-btn-sprite.gif) no-repeat right -21px;
+}
+
+.j-toolbar-btn-inner-over {
+    background: transparent url(../images/default/j-icon-btn-sprite.gif) repeat-x 0 -42px;
+}
+
+.j-page-link a {
+	color: #073269;
+}
+
+.j-page-link span,.j-page-link a:hover {
+	color: #008000;
+}
+/* j-menu */
+.j-menu {
+    border-color: #718bb7;
+    background: transparent url(../images/default/j-menu.gif) repeat-y;
+}
+
+.j-menu-list-item a {
+	color: #222;
+}
+
+.j-menu-list-item a:hover {
+	color: #222;
+}
+
+.j-menu-item {
+    color: #222;
+}
+
+.j-menu-item-active {
+    border-color: #aaccf6;
+    background: transparent url(../images/default/j-menu-item-active.gif) repeat-x left bottom;
+}
+
+.j-menu-item-active .j-menu-item {
+    color: #233d6d;
+}
+
+.j-menu-item-arrow {
+    background: transparent url(../images/default/j-menu-arrow.gif) no-repeat right;
+}
+
+.j-menu-item-split {
+    border-color: #e0e0e0;
+}
+
+.j-outlook-menu {
+    background: transparent url(../images/default/j-menu.gif) repeat-y;
+}
+
+.j-outlook-menu-list-item a {
+	color: #222;
+}
+
+.j-outlook-menu-list-item a:hover {
+	color: #222;
+}
+
+.j-outlook-menu-item {
+    color: #222;
+    border-color: #99bbe8;
+    background: transparent url(../images/default/j-outlook-menu-item.gif) repeat-x 0 -9px;
+}
+/* j-tab */
+.j-tab {
+    border-color: #fff;
+}
+
+.j-tab-head {
+
+}
+
+.j-tab-head-line {
+    border-color: #ccc;
+    background-color: #fff;
+}
+
+.j-tab-item-head a {
+    /*color: #0763bd;*/
+    color: #008000;
+}
+
+.j-tab-item-head a:hover {
+    /*color: #0763bd;*/
+    color: #008000;
+}
+
+.j-tab-item-head-left, .j-tab-item-head-right, .j-tab-item-head-inner, .j-tab-item-head-left-over, .j-tab-item-head-right-over, .j-tab-item-head-inner-over, .j-tab-item-head-left-active, .j-tab-item-head-right-active, .j-tab-item-head-inner-active {
+    background: transparent url(../images/default/j-tab-sprite.gif) no-repeat;
+}
+/* j-icon */
+.j-page-icon {
+    background: transparent url(../images/default/j-page-icon.gif) no-repeat;
+}
+
+.j-win-icon {
+    background: transparent url(../images/default/j-win-icon.gif) no-repeat;
+}
+
+.j-win-icon-2d {
+    background: transparent url(../images/default/j-win-icon-2d.gif) no-repeat;
+}
+/* j-form */
+.j-form-table-body-td {
+    border-color: #ccc;
+}
+
+.j-form-table-label-td {
+    background-color: #FBFFF4;
+}
+
+.j-form-table-foot-td {
+    border-color: #ededed;
+}
+
+.j-form-table-group-cell {
+	background-color: #f9f9f9;
+    color: #15428b;
+}
+
+.j-form-table-split-cell {
+	background-color: #fcfcfc;
+    color: #15428b;
+}
+
+.j-form-table-group-close {
+    background: transparent url(../images/default/j-form-table-group-close.gif) no-repeat -3px -2px;
+}
+
+.j-form-table-group-open {
+    background: transparent url(../images/default/j-form-table-group-open.gif) no-repeat -3px -2px;
+}
+
+.j-form-text {
+    background: #fff url(../images/default/j-form-text.gif) repeat-x 0 0;
+    border-color: #B5B8C8;
+}
+
+.j-form-text-focus {
+    border-color: #7eadd9;
+}
+
+.j-form-select-box {
+    background: #fff url(../images/default/j-form-text.gif) repeat-x 0 0;
+    border-color: #B5B8C8;
+}
+
+.j-form-button-out, .j-form-button-over, .j-form-button-down, .j-form-button-up {
+    border-color: #15428b;
+    color: #15428b;
+    filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5);
+}
+
+.j-form-button-over {
+    filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#D7E7FA);
+}
+
+.j-form-button-down {
+    border-color: #ffe400;
+}
+/* j-tree */
+.j-tree-node a {
+    color: black;
+}
+
+.j-tree-node a:hover {
+    color: black;
+}
+
+.j-tree-node-selected {
+    background-color: #d9e8fb;
+}
+
+.j-tree-node-over {
+    background-color: #eee;
+}
+
+.j-tree-icon {
+    background: transparent url(../images/default/j-tree-icon.gif) no-repeat;
+}
+/* j-grid */
+.j-grid-head-cell {
+	background: transparent url(../images/default/j-grid-head-cell.gif) repeat-x;
+}
+
+.j-grid-head-cell-over {
+	background: transparent url(../images/default/j-grid-head-cell-over.gif) repeat-x center bottom;
+}
+
+.j-grid-head-resize {
+    border-left-color: #ccc;
+}
+
+.j-grid-head-proxy {
+    background-color: #777;
+}
+
+.j-grid-data-row-odd {
+    background-color: #ffffff;
+}
+
+.j-grid-data-row-even {
+    background-color: #fafafa;
+}
+
+.j-grid-data-row-over {
+    background: transparent url(../images/default/j-grid-data-row-over.gif) repeat-x;
+}
+
+.j-grid-data-cell {
+    border-top-color: #ffffff;
+    border-bottom-color: #cccccc;
+}
+
+.j-grid-data-group-cell {
+    color: #333;
+    border-top-color: #ffffff;
+    border-bottom-color: #ccc;
+}
+
+.j-grid-data-group-close {
+    background: transparent url(../images/default/j-grid-data-group-close.gif) no-repeat -3px -2px;
+}
+
+.j-grid-data-group-open {
+    background: transparent url(../images/default/j-grid-data-group-open.gif) no-repeat -3px -2px;
+}
+/* j-window */
+.j-window {
+	background-color: #EDFDD5;
+}
+
+.j-window-tc {
+    background: transparent url(../images/default/j-window-tc.png) repeat-x 0 0;
+    color: #15428b;
+}
+
+.j-window-tl {
+    background: transparent url(../images/default/j-window-tl.png) no-repeat 0 0;
+}
+
+.j-window-tr {
+    background: transparent url(../images/default/j-window-tr.png) no-repeat right 0;
+}
+
+.j-window-bc {
+    background: transparent url(../images/default/j-window-tc.png) repeat-x 0 bottom;
+}
+
+.j-window-bl {
+    background: transparent url(../images/default/j-window-tl.png) no-repeat 0 bottom;
+}
+
+.j-window-br {
+    background: transparent url(../images/default/j-window-tr.png) no-repeat right bottom;
+}
+
+.j-window-mc {
+    border-color: #00a000;
+    background: #ffffff;
+}
+
+.j-window-ml {
+    background: transparent url(../images/default/j-window-m.png) repeat-y 0 0;
+}
+
+.j-window-mr {
+    background: transparent url(../images/default/j-window-m.png) repeat-y right 0;
+}
+
+.j-search-foot .j-toolbar {
+	border-color: #67C400;
+}
