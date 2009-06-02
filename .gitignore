@@ -2,6 +2,7 @@ config/database.yml
 nbproject/**
 log/
 *.log
+*.pid
 config/initializers/email.rb
 #share by capistrano
 public/photos/**

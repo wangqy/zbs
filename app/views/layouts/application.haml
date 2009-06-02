@@ -4,7 +4,7 @@
   %head
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %title 数字值班室
-    =stylesheet_link_tag "/resources/css/head", "/resources/css/portal", "facebox", "default"
+    =stylesheet_link_tag "/resources/css/portal", "facebox", "default"
     =javascript_include_tag "prototype", "jquery", "facebox", "/resources/jui/js/jui.js", "application" 
     -if !current_user.site.blank? && params[:record_id].nil?
       /
@@ -13,10 +13,4 @@
 
   %body
     #content-container
-      .nav 你现在的位置：
-      .split
-      .j-panel
-        .j-panel-head
-          .j-panel-text 项目信息
-        .j-panel-body.j-panel-full
-          =yield
+      =yield

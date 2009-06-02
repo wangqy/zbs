@@ -1,28 +1,35 @@
-#mainbar
-  -form_tag conversations_path, :method=>:get do
-    #conversation_index
-      .group
-        #quick-search-bar
-          =label_tag :phone, '联系电话'
-          =text_field_tag :phone, params[:phone], :is_focus => true
-          =submit_tag '查询'
+.nav 
+  %span 你现在的位置：受理事件
+  .search-panel
+    -form_tag conversations_path, :method=>:get, :class=>"j-form" do
+      =label_tag :phone, '联系电话'
+      =text_field_tag :phone, params[:phone], :is_focus => true, :class => :nofixed
+      =link_to_function "", "j('.j-form').submit()", :class => "icon-16px-box j-icon i-search", :title => "查询"
+.split
+.j-panel
+  .j-panel-head
+    .j-panel-text 以往事件列表
+  .j-panel-body
+    .j-grid.grid-full
+      %table
+        %thead
+          %tr
+            %th{:width=>"150px"} 事件主题
+            %th{:width=>"150px"} 事件分类
+            %th{:width=>"300px"} 内容摘要
+            %th{:width=>"100px"} 操作
+        %tbody
+          -@list.each do |conversation|
+            %tr.j-grid-data-group.opend
+              %td=conversation.title
+              %td=conversation.kind.name
+              %td{:title=>conversation.content}=truncate(conversation.content,30)
+              %td=link_to "关联", new_event_path('event[conversation_id]' => conversation.id, :phone => params[:phone], :menu => :conversations, :record_id => params[:record_id]), :class => 'relate_btn'
+            %tr
+              %td{:colspan=>4}
+                =render :partial => "conversations/events", :locals => {:conversation => conversation}
+  .j-panel-foot
+    .j-toolbar
+      %ul
+        %li{:icon=>"j-icon i-create"}
           =link_to '增加新事件', new_conversation_path(:phone => params[:phone], :category => params[:category], :record_id => params[:record_id])
-      .group
-        -@list.each do |conversation|
-          .conversation_info
-            %p=truncate_with_more("事件#{@list.index(conversation)+1}:#{conversation.content}", 120, conversation.id)
-            =link_to "关联此事件", new_event_path('event[conversation_id]' => conversation.id, :phone => params[:phone], :menu => :conversations, :record_id => params[:record_id]), :class => 'relate_btn'
-            =render :partial => "conversations/events", :locals => {:conversation => conversation}
-#sbar
-  .proj-desc
-    %p 受理事件指受理来电,来访等记录
-    %p 操作步骤如下:
-    %ul#shared-ticket-bins.stacked.wbadges.sortable
-      %li 
-        %a 1.输入联系电话,查询
-      %li
-        %a 2.在结果中找出相关的事件记录
-      %li 
-        %a 3.点击"关联此事件",录入往来记录
-      %li 
-        %a 4.无相关事件记录时,点击"增加新事件",录入新事件信息
