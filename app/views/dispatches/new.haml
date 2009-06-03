@@ -1,21 +1,50 @@
-#mainbar
-  .group
-    =error_messages_for :history
-    -form_tag dispatches_path do 
-      =hidden_field_tag 'id', params[:id]
-      =render :partial => "conversations/workitem"
-      %p.btns{:style=>"clear:left"}
-        = submit_tag '提交', :disable_with => t('html.saving')
-        = link_to '返回', :back
-      =render :partial => "conversations/show"
-#sbar
-  .proj-desc
-    %p="事件:#{@conversation.title} #{truncate_with_more(@conversation.content, 100, @conversation.id)}"
-    .proj-desc
-      %p 处理过程
-    #shared-bin-block.sblock.bin-block
-      =render :partial => "conversations/histories", :locals => {:conversation => @conversation}
-    .proj-desc
-      %p 往来记录
-    #shared-bin-block.sblock.bin-block
-      =render :partial => "conversations/events", :locals => {:conversation => @conversation}
+-form_tag dispatches_path, :class => 'j-form' do 
+  =hidden_field_tag 'id', params[:id]
+  .nav 
+    %span 你现在的位置：分派事件
+  .split
+  .j-panel
+    .j-panel-head
+      .j-panel-text 事件信息
+    .j-panel-body.panel-full
+      .j-panel.left-panel{:style => "width:70%"}
+        .j-panel-body
+          %table.j-form-table
+            %thead
+              %tr
+                %th{:width=>"80px"}
+                %th{:width=>"200px"}
+                %th{:width=>"80px"}
+                %th{:width=>"200px"}
+                %th
+            %tbody
+              =render :partial => "conversations/workitem"
+              =render :partial => "conversations/show"
+
+      .j-panel.right-panel{:style => "width:28%"}
+        .split
+        .j-panel
+          .j-panel-head
+            .j-panel-text 事件摘要
+          .j-panel-body
+            ==#{@conversation.title} #{truncate_with_more(@conversation.content, 100, @conversation.id)}
+        .split
+        .j-panel
+          .j-panel-head
+            .j-panel-text 处理过程
+          .j-panel-body
+            =render :partial => "conversations/histories", :locals => {:conversation => @conversation}
+        .split
+        .j-panel
+          .j-panel-head
+            .j-panel-text 往来记录
+          .j-panel-body
+            =render :partial => "conversations/events", :locals => {:conversation => @conversation}
+    .j-panel-foot
+      .j-toolbar
+        %ul
+          %li{:icon=>"j-icon i-submit"}
+            =link_to_function "提交", "j('.j-form').submit()"
+          %li
+          %li{:icon=>"j-icon i-return"}
+            = link_to '返回', :back

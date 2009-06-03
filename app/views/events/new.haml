@@ -1,21 +1,54 @@
-#mainbar
-  .group
-    =error_messages_for('event', 'person', 'duty')
-    -form_for @event do |f|
-      =f.hidden_field :record_id, :value => params[:record_id]
-      =hidden_field_tag :phone, params[:phone]
-      =hidden_field_tag :category, params[:category]
-      =hidden_field_tag :menu, params[:menu]
-      =f.hidden_field :conversation_id
-      =render :partial => "events/form", :locals => {:f => f, :event => @event}
-#sbar
-  .proj-desc
-    %p="事件:#{@conversation.title} #{truncate_with_more(@conversation.content, 100, @conversation.id)}"
-    .proj-desc
-      %p 往来记录
-    #shared-bin-block.sblock.bin-block
-      =render :partial => "conversations/events", :locals => {:conversation => @conversation}
-    .proj-desc
-      %p 处理过程
-    #shared-bin-block.sblock.bin-block
-      =render :partial => "conversations/histories", :locals => {:conversation => @conversation}
+-form_for @event, :html => {:class => 'j-form'} do |f|
+  =f.hidden_field :record_id, :value => params[:record_id]
+  =hidden_field_tag :phone, params[:phone]
+  =hidden_field_tag :category, params[:category]
+  =hidden_field_tag :menu, params[:menu]
+  =f.hidden_field :conversation_id
+  .nav 
+    %span 你现在的位置：添加往来记录
+  .split
+  .j-panel
+    .j-panel-head
+      .j-panel-text 事件信息
+    .j-panel-body.panel-full
+      .j-panel.left-panel{:style => "width:70%"}
+        .j-panel-body
+          =error_messages_for('event', 'person', 'duty')
+          %table.j-form-table
+            %thead
+              %tr
+                %th{:width=>"80px"}
+                %th{:width=>"200px"}
+                %th{:width=>"80px"}
+                %th{:width=>"200px"}
+                %th
+            %tbody
+              =render :partial => "events/form", :locals => {:f => f, :event => @event}
+
+      .j-panel.right-panel{:style => "width:30%"}
+        .split
+        .j-panel
+          .j-panel-head
+            .j-panel-text 事件摘要
+          .j-panel-body
+            ==#{@conversation.title} #{truncate_with_more(@conversation.content, 100, @conversation.id)}
+        .split
+        .j-panel
+          .j-panel-head
+            .j-panel-text 往来记录
+          .j-panel-body
+            =render :partial => "conversations/events", :locals => {:conversation => @conversation}
+        .split
+        .j-panel
+          .j-panel-head
+            .j-panel-text 处理过程
+          .j-panel-body
+            =render :partial => "conversations/histories", :locals => {:conversation => @conversation}
+    .j-panel-foot
+      .j-toolbar
+        %ul
+          %li{:icon=>"j-icon i-create"}
+            =link_to_function "保存", "j('.j-form').submit()"
+          %li
+          %li{:icon=>"j-icon i-return"}
+            = link_to '返回', :controller => @menu, :phone => params[:phone]

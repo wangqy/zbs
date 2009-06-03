@@ -1,29 +1,29 @@
-#mainbar
-  .group
-    %table.list
-      %tr
-        %th 事件编号
-        %th 事件主题
-        %th 登记时间
-        %th 登记人
-        %th 操作
-      - @list.each do |conversation|
-        %tr
-          %td=conversation.tag
-          %td=conversation.title
-          %td=conversation.created_at.to_s(:without_year)
-          %td=conversation.creator.realname
-          %td
-            =link_to '办理', new_dispatch_path(:id=>conversation.id)
-            =link_to '添加往来记录', new_event_path('event[conversation_id]' => conversation.id, :category => 'category_out', :menu => :dispatches)
-    #paginate
+.nav 
+  %span 你现在的位置：事件调度
+.split
+.j-panel
+  .j-panel-head
+    .j-panel-text 事件列表
+  .j-panel-body
+    .j-grid.grid-full
+      %table
+        %thead
+          %tr
+            %th{:width=>"150px"} 事件编号
+            %th{:width=>"150px"} 事件主题
+            %th{:width=>"100px"} 登记时间
+            %th{:width=>"100px"} 登记人
+            %th{:width=>"100px"} 操作
+        %tbody
+          -@list.each do |conversation|
+            %tr
+              %td=conversation.tag
+              %td=conversation.title
+              %td=conversation.created_at.to_s(:without_year)
+              %td=conversation.creator.realname
+              %td
+                =link_to '', new_dispatch_path(:id=>conversation.id), :class => "icon-16px-box j-icon i-submit", :title => "办理"
+                =link_to '', new_event_path('event[conversation_id]' => conversation.id, :category => 'category_out', :menu => :dispatches), :class => "icon-16px-box j-icon i-create", :title => "添加往来记录"
+  .j-panel-foot
+    .j-toolbar
       =will_paginate @list
-#sbar
-  .proj-desc
-    %p 事件调度指:对受理后的事件进行分流,一般由值班室人员操作
-    %p 可进行的操作:
-    %ul#shared-ticket-bins.stacked.wbadges.sortable
-      %li 
-        %a 1.办理:进入分流操作页面
-      %li
-        %a 2.添加往来记录:录入事件的回电,回访事件

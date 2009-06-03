@@ -222,7 +222,7 @@ border:0;
 /* j-panel-body填充满页面  */
 * html .panel-full {
     width: expression(document.documentElement.clientWidth - 12);
-/*    height: expression(document.documentElement.clientHeight - 115);*/
+    height: expression(document.documentElement.clientHeight - 115);
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;margin-left:5px;

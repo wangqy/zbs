@@ -1,68 +1,74 @@
-%fieldset
-  %legend 事件信息
-  %table.formin
-    =render :partial => "events/wavfile", :locals => {:event => @event}
-    %tr
-      -fields_for :event do |e|
-        %th= e.label_require :category
-        %td{:colspan=>3,:class=>:last}= e.radio_enum :category, :category_in
-    %tr
-      -fields_for :person do |p|
-        %th= p.label_require :phone
-        %td= p.text_field :phone
-      -fields_for :event do |e|
-        %th= e.label_require :timing
-        %td= e.calendar_date_select "timing", :time => true, :popup => :force, :class => "calendar"
-    %tr
-      -fields_for :person do |p|
-        %th= p.label_require :name
-        %td= p.text_field :name, :is_focus => true
-      %th= f.label :aim
-      %td= f.select :aim
-    %tr
-      %th= f.label :emergency
-      %td= f.select :emergency
-      %th= f.label :security
-      %td= f.select :security
-    %tr
-      %th= f.label_require :title
-      %td{:colspan=>3}= f.text_field :title, :class => "long"
-    %tr
-      %th= f.label_require :content
-      %td{:colspan=>3}= f.text_area :content, :rows => 5, :cols=> 49
-    =render :partial => "conversations/kind", :locals => { :kind => @conversation.kind}
-%fieldset
-  %legend 联系人详细信息
-  %table.formin
-    -fields_for :person do |p|
-      %tr
-        %th= p.label :cardno
-        %td= p.text_field :cardno
-        %th= p.label :mobile
-        %td= p.text_field :mobile
-      %tr
-        %th= p.label :sex
-        %td= p.radio_enum :sex
-        %th= p.label :email
-        %td= p.text_field :email
-      %tr
-        %th= p.label :address
-        %td{:colspan=>3}= p.text_field :address, :class => "long"
-      %tr
-        %th= p.label :jobunit
-        %td{:colspan=>3}= p.text_field :jobunit, :class => "long"
-%fieldset
-  %legend{:title=>'值班人员,接报人默认为当前用户,值班领导默认为当前用户所在机构名称'} 值班室信息
-  %table.formin
-    -fields_for :duty do |d|
-      %tr
-        %th= d.label_require :watchman
-        %td= d.text_field :watchman
-        %th= d.label_require :receiver
-        %td= d.text_field :receiver
-      %tr
-        %th= d.label_require :manager
-        %td{:colspan=>3}= d.text_field :manager, :class => "long"
-
-%p.btns{:style=>"clear:left"}
-  = submit_tag '保存', :disable_with => t('html.saving')
+%tr
+  %td.caption{:colspan=>5} 事件信息
+=render :partial => "events/wavfile", :locals => {:event => @event}
+%tr
+  -fields_for :event do |e|
+    %td= e.label_require :category
+    %td{:colspan=>3}= e.radio_enum :category, :category_in
+    %td &nbsp;
+%tr
+  -fields_for :person do |p|
+    %td= p.label_require :phone
+    %td= p.text_field :phone
+  -fields_for :event do |e|
+    %td= e.label_require :timing
+    %td= e.calendar_date_select "timing", :time => true, :popup => :force, :class => "calendar"
+  %td &nbsp;
+%tr
+  -fields_for :person do |p|
+    %td= p.label_require :name
+    %td= p.text_field :name, :is_focus => true
+  %td= f.label :aim
+  %td= f.select :aim
+  %td &nbsp;
+%tr
+  %td= f.label :emergency
+  %td= f.select :emergency
+  %td= f.label :security
+  %td= f.select :security
+  %td &nbsp;
+%tr
+  %td= f.label_require :title
+  %td{:colspan=>3}= f.text_field :title
+  %td &nbsp;
+%tr
+  %td= f.label_require :content
+  %td{:colspan=>3}= f.text_area :content, :rows => 5, :cols=> 49
+  %td &nbsp;
+=render :partial => "conversations/kind", :locals => { :kind => @conversation.kind}
+%tr
+  %td.caption{:colspan=>5} 联系人详细信息
+-fields_for :person do |p|
+  %tr
+    %td= p.label :cardno
+    %td= p.text_field :cardno
+    %td= p.label :mobile
+    %td= p.text_field :mobile
+    %td &nbsp;
+  %tr
+    %td= p.label :sex
+    %td= p.radio_enum :sex
+    %td= p.label :email
+    %td= p.text_field :email
+    %td &nbsp;
+  %tr
+    %td= p.label :address
+    %td{:colspan=>3}= p.text_field :address
+    %td &nbsp;
+  %tr
+    %td= p.label :jobunit
+    %td{:colspan=>3}= p.text_field :jobunit
+    %td &nbsp;
+%tr
+  %td.caption{:colspan=>5, :title=>'值班人员,接报人默认为当前用户,值班领导默认为当前用户所在机构名称'} 值班室信息
+-fields_for :duty do |d|
+  %tr
+    %td= d.label_require :watchman
+    %td= d.text_field :watchman
+    %td= d.label_require :receiver
+    %td= d.text_field :receiver
+    %td &nbsp;
+  %tr
+    %td= d.label_require :manager
+    %td{:colspan=>3}= d.text_field :manager
+    %td &nbsp;

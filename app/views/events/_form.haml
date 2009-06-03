@@ -1,23 +1,23 @@
-%fieldset
-  %legend 事件信息
-  %table.formin
-    =render :partial => "events/wavfile", :locals => {:event => event}
-    %tr
-      %th= f.label_require :person_id
-      %td{:colspan=>3}
-        = select_person
-        = link_to '新增联系人', new_person_path, :rel => :facebox, :id => 'add_person_btn'
-    %tr
-      %th= f.label_require :category
-      %td{:colspan=>3,:class=>:last}= f.radio_enum :category, params[:category]
-    %tr
-      %th= f.label_require :timing
-      %td{:colspan=>3}= f.calendar_date_select "timing", :time => true, :popup => :force, :class => "calendar"
-    %tr
-      %th= f.label :content
-      %td{:colspan=>3}= f.text_area :content, :rows => 5, :cols=> 49, :is_focus => true
+%tr
+  %td.caption{:colspan=>5} 事件信息
+=render :partial => "events/wavfile", :locals => {:event => event}
+%tr
+  %td= f.label_require :person_id
+  %td{:colspan=>3}
+    = select_person
+    = link_to '新增联系人', new_person_path, :rel => :facebox, :id => 'add_person_btn'
+  %td &nbsp;
+%tr
+  %td= f.label_require :category
+  %td{:colspan=>3}= f.radio_enum :category, params[:category]
+  %td &nbsp;
+%tr
+  %td= f.label_require :timing
+  %td{:colspan=>3}= f.calendar_date_select "timing", :time => true, :popup => :force
+  %td &nbsp;
+%tr
+  %td= f.label :content
+  %td{:colspan=>3}= f.text_area :content, :rows => 5, :cols=> 49, :is_focus => true
+  %td &nbsp;
 - if is_category_in?
   =render :partial => "events/duty"
-%p.btns{:style=>"clear:left"}
-  = submit_tag '保存', :disable_with => t('html.saving')
-  = link_to '返回', :controller => @menu, :phone => params[:phone]

@@ -11,7 +11,7 @@
       .main-foot-right
       .main-foot-left
     .foot
-      .copyright==版权所有：深圳市盐田区政府  技术支持：#{link_to_function "高正软件"}
+      .copyright==版权所有：深圳市罗湖区政府  技术支持：#{link_to_function "高正软件"}
       .foot-text
         ==欢迎您:#{current_user.login}&nbsp;|&nbsp;
         ==坐席号:#{current_user.site.blank? ? '未设置' : current_user.site}
@@ -21,4 +21,4 @@
         %span &nbsp;|&nbsp;
         -unless current_user.is_admin?
           =link_to "公告", notice_list_path
-        =link_to "退出登录", logout_path
+        =link_to "退出登录", logout_path, :target => '_parent'

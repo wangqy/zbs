@@ -1,33 +1,34 @@
-#mainbar
-  .group
-    #quick-search-bar
-      -form_for :record, :url => records_path, :html => {:method=>:get} do |f|
-        =f.label :dail
-        =f.text_field :dail, :class => :short
-        =f.label :receive
-        =f.text_field :receive, :class => :short
-        =submit_tag '查询'
-  .group
-    %table.list
-      %tr
-        %th=tt('record.kind')
-        %th=tt('record.dail')
-        %th=tt('record.receive')
-        %th=tt('record.created_at')
-        %th 操作
-      - @page.each do |record|
-        %tr
-          %td=record.kind_enum
-          %td=record.dail
-          %td=record.receive
-          %td=record.created_at.to_s(:db)
-          %td=render :partial => "events/wavobject", :locals => {:record => record}
-    #paginate
+.nav 
+  %span 你现在的位置：录音记录
+  .search-panel
+    -form_for :record, :url => records_path, :html => {:method=>:get, :class=>"j-form"} do |f|
+      =f.label :dail
+      =f.text_field :dail, :class => :nofixed
+      =f.label :receive
+      =f.text_field :receive, :class => :nofixed
+      =link_to_function "", "j('.j-form').submit()", :class => "icon-16px-box j-icon i-search", :title => "查询"
+.split
+.j-panel
+  .j-panel-head
+    .j-panel-text 记录列表
+  .j-panel-body
+    .j-grid.grid-full
+      %table
+        %thead
+          %tr
+            %th{:width=>"100px"}=tt('record.kind')
+            %th{:width=>"200px"}=tt('record.dail')
+            %th{:width=>"200px"}=tt('record.receive')
+            %th{:width=>"200px"}=tt('record.created_at')
+            %th 操作
+        %tbody
+          - @page.each do |record|
+            %tr
+              %td=record.kind_enum
+              %td=record.dail
+              %td=record.receive
+              %td=record.created_at.to_s(:db)
+              %td=render :partial => "events/wavobject", :locals => {:record => record}
+  .j-panel-foot
+    .j-toolbar
       =will_paginate @page
-#sbar
-  .proj-desc
-    %p 所有来去电记录可以在这里查询到
-    %p 可进行的操作:
-    %ul#shared-ticket-bins.stacked.wbadges.sortable
-      %li 
-        %a 点击操作列的播放按钮,可以收听录音

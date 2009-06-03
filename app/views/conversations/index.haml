@@ -4,6 +4,7 @@
     -form_tag conversations_path, :method=>:get, :class=>"j-form" do
       =label_tag :phone, '联系电话'
       =text_field_tag :phone, params[:phone], :is_focus => true, :class => :nofixed
+      =hidden_field_tag :record_id, params[:record_id]
       =link_to_function "", "j('.j-form').submit()", :class => "icon-16px-box j-icon i-search", :title => "查询"
 .split
 .j-panel
@@ -17,14 +18,14 @@
             %th{:width=>"150px"} 事件主题
             %th{:width=>"150px"} 事件分类
             %th{:width=>"300px"} 内容摘要
-            %th{:width=>"100px"} 操作
+            %th{:width=>"100px"} 关联操作
         %tbody
           -@list.each do |conversation|
             %tr.j-grid-data-group.opend
               %td=conversation.title
               %td=conversation.kind.name
               %td{:title=>conversation.content}=truncate(conversation.content,30)
-              %td=link_to "关联", new_event_path('event[conversation_id]' => conversation.id, :phone => params[:phone], :menu => :conversations, :record_id => params[:record_id]), :class => 'relate_btn'
+              %td=link_to "", new_event_path('event[conversation_id]' => conversation.id, :phone => params[:phone], :menu => :conversations, :record_id => params[:record_id]), :class => 'icon-16px-box j-icon i-create', :title => "关联"
             %tr
               %td{:colspan=>4}
                 =render :partial => "conversations/events", :locals => {:conversation => conversation}

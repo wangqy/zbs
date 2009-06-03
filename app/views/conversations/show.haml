@@ -1,14 +1,37 @@
-#mainbar
-  .group
-    =render :partial => "conversations/show"
-    %p.btns{:style=>"clear:left"}
-      = link_to '返回', :back
-#sbar
-  .proj-desc
-    %p 处理过程
-  #shared-bin-block.sblock.bin-block
-    =render :partial => "conversations/histories", :locals => {:conversation => @conversation}
-  .proj-desc
-    %p 往来记录
-  #shared-bin-block.sblock.bin-block
-    =render :partial => "conversations/events", :locals => {:conversation => @conversation}
+.nav 
+  %span 你现在的位置：事件记录 &gt;&gt; 查看事件
+.split
+.j-panel
+  .j-panel-head
+    .j-panel-text 事件信息
+  .j-panel-body.panel-full
+    .j-panel.left-panel{:style => "width:70%"}
+      .j-panel-body
+        %table.j-form-table
+          %thead
+            %tr
+              %th{:width=>"80px"}
+              %th{:width=>"200px"}
+              %th{:width=>"80px"}
+              %th{:width=>"200px"}
+              %th
+          %tbody
+            =render :partial => "conversations/show"
+    .j-panel.right-panel{:style => "width:30%"}
+      .split
+      .j-panel
+        .j-panel-head
+          .j-panel-text 处理过程
+        .j-panel-body
+          =render :partial => "conversations/histories", :locals => {:conversation => @conversation}
+      .split
+      .j-panel
+        .j-panel-head
+          .j-panel-text 往来记录
+        .j-panel-body
+          =render :partial => "conversations/events", :locals => {:conversation => @conversation}
+  .j-panel-foot
+    .j-toolbar
+      %ul
+        %li{:icon=>"j-icon i-return"}
+          = link_to '返回', :back

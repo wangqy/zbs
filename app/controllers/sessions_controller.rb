@@ -53,10 +53,6 @@ class SessionsController < ApplicationController
 
   private
   def redirect_to_homepage
-    if current_user.is_admin?
-      redirect_to home_path
-    else
-      redirect_to workitems_path
-    end
+    redirect_to home_path
   end
 end

@@ -23,8 +23,8 @@ class Conversation < ActiveRecord::Base
     set_property :delta => true
   end
 
-  def per_page
-    20
+  def self.per_page
+    1
   end
 
   #当前流程

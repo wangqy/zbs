@@ -1,11 +1,30 @@
-#mainbar
-  .group
-    =error_messages_for('conversation', 'event', 'person', 'duty')
-    -form_for @conversation do |f|
-      / 来电来访类型,或回电回访类型
-      =hidden_field :event, :category, :value => '2'
-      =hidden_field :event, :record_id
-      =render :partial => "conversations/form", :locals => {:f => f, :conversation => @conversation}
-#sbar
-  .proj-desc
-    %p 提示信息
+-form_for @conversation, :html => {:class => "j-form"} do |f|
+  / 来电来访类型,或回电回访类型
+  =hidden_field :event, :category, :value => '2'
+  =hidden_field :event, :record_id
+  .nav 
+    %span 你现在的位置：受理事件 &gt;&gt; 增加新事件
+  .split
+  .j-panel
+    .j-panel-head
+      .j-panel-text 事件信息
+    .j-panel-body.panel-full
+      =error_messages_for('conversation', 'event', 'person', 'duty')
+      %table.j-form-table
+        %thead
+          %tr
+            %th{:width=>"80px"}
+            %th{:width=>"200px"}
+            %th{:width=>"80px"}
+            %th{:width=>"200px"}
+            %th
+        %tbody
+          =render :partial => "conversations/form", :locals => {:f => f, :conversation => @conversation}
+    .j-panel-foot
+      .j-toolbar
+        %ul
+          %li{:icon=>"j-icon i-create"}
+            =link_to_function "保存", "j('.j-form').submit()"
+          %li
+          %li{:icon=>"j-icon i-return"}
+            = link_to '返回', :controller => @menu, :phone => params[:phone]

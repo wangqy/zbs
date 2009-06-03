@@ -1,5 +1,6 @@
 %tr#event_kind_tr
-  %th= label_tag :conversation_kind_id, "事件分类"
+  %td= label_tag :conversation_kind_id, "事件分类"
   %td{:colspan=>3}
     = select_kind(kind)
     = link_to '新增分类', new_kind_path, :rel => :facebox
+  %td &nbsp;
