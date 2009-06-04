@@ -1,29 +1,37 @@
-.group
-  =error_messages_for :notice
-  -form_for @notice, :html => {:class=>'formin'} do |f|
-    %fieldset
-      %legend 公告信息
-      %table
-        %tr
-          %th 
-            = f.label :title, "标题"
-            = require_star
-          %td= f.text_field :title
-          %td.last &nbsp;
-        %tr
-          %th 
-            = f.label :content, "内容"
-            = require_star
-          %td= f.text_area :content, :rows => 15, :cols => 49
-          %td.last &nbsp;
-        -if !@notice.errors.empty? || @notice.deployed == 0
+-form_for @notice, :html => {:class => "j-form"} do |f|
+  .nav 
+    %span 你现在的位置：公告管理 &gt;&gt; 增加公告
+  .split
+  .j-panel
+    .j-panel-head
+      .j-panel-text 公告信息
+    .j-panel-body.panel-full
+      =error_messages_for :user
+      %table.j-form-table
+        %thead
           %tr
-            %th 
-              = f.label :deployed, "是否发布"
-            %td= f.check_box(:deployed, {}, "1", "0") + ' 发布后将不可编辑' 
-            %td.last &nbsp;
-    %p.btns{:style=>"clear:left"}
-      -unless !@notice.id.nil?
-        = submit_tag t('html.button.save'), :disable_with => t('html.saving')
-      = submit_tag t('html.button.back'), :disable_with => t('html.saving')
-
+            %th{:width=>"80px"}
+            %th{:width=>"400px"}
+            %th
+        %tbody
+          %tr
+            %td= f.label_require :title
+            %td= f.text_field :title
+            %td &nbsp;
+          %tr
+            %td= f.label_require :content
+            %td= f.text_area :content, :rows => 15
+            %td &nbsp;
+          -if !@notice.errors.empty? || @notice.deployed == 0
+            %tr
+              %td= f.label :deployed, "是否发布"
+              %td= f.check_box(:deployed, {}, "1", "0") + ' 发布后将不可编辑' 
+              %td &nbsp;
+    .j-panel-foot
+      .j-toolbar
+        %ul
+          %li{:icon=>"j-icon i-create"}
+            =link_to_function "保存", "j('.j-form').submit()"
+          %li
+          %li{:icon=>"j-icon i-return"}
+            = link_to '返回', notices_path

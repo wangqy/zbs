@@ -21,7 +21,7 @@
               %td=conversation.title
               %td=conversation.created_at.to_s(:without_year)
               %td=conversation.creator.realname
-              %td=link_to '查看', conversation_path(conversation)
+              %td=link_to '', conversation_path(conversation), :title => '查看', :class => "icon-16px-box j-icon i-view"
   .j-panel-foot
     .j-toolbar
       =will_paginate @list

@@ -1,3 +1,3 @@
-page.replace_html "label_#{@department.id}", @department.name
+page.replace_html "label_#{@department.id}", "<span class='j-tree-node-icon j-icon i-organ'></span>#{@department.name}"
 page.replace_html 'pop-errorExplanation', content_tag(:p, flash[:notice], :class => "notice")
 page.show 'pop-errorExplanation'

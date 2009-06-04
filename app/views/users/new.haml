@@ -1,41 +1,58 @@
-#mainbar
-  .group
-    %fieldset
-      %legend 新增用户
+-form_for :user, :url => users_path, :html => {:class => "j-form"} do |f|
+  .nav 
+    %span 你现在的位置：用户管理 &gt;&gt; 增加用户
+  .split
+  .j-panel
+    .j-panel-head
+      .j-panel-text 用户信息
+    .j-panel-body.panel-full
       =error_messages_for :user
-      -form_for :user, :url => users_path do |f|
-        %table.formin
+      %table.j-form-table
+        %thead
           %tr
-            %th= f.label 'login', "用户名 #{require_star}"
-            %td= f.text_field 'login', :is_focus => true
-            %th= f.label 'password', "密码 #{require_star}"
-            %td= f.password_field 'password'
+            %th{:width=>"80px"}
+            %th{:width=>"200px"}
+            %th{:width=>"80px"}
+            %th{:width=>"200px"}
+            %th
+        %tbody
           %tr
-            %th= f.label 'realname', "姓名 #{require_star}"
-            %td= f.text_field 'realname'
-            %th= f.label :sex, "性别"
-            %td
-              = f.radio_enum :sex
+            %td= f.label_require :login
+            %td= f.text_field :login, :is_focus => true
+            %td= f.label_require :password
+            %td= f.password_field :password
+            %td &nbsp;
           %tr
-            %th= f.label :department_id, "部门 #{require_star}"
+            %td= f.label_require :realname
+            %td= f.text_field :realname
+            %td= f.label :sex
+            %td= f.radio_enum :sex
+            %td &nbsp;
+          %tr
+            %td= f.label_require :department_id
             %td= f.select :department_id, Department.all.collect{|d| [d.name, d.id]}, :include_blank => true
-            %th= f.label :position, "职位"
+            %td= f.label :position
             %td= f.text_field :position
+            %td &nbsp;
           %tr
-            %th= f.label :telephone, "办公电话 #{require_star}"
+            %td= f.label_require :telephone
             %td= f.text_field :telephone
-            %th= f.label_require :mobile, "手机"
+            %td= f.label_require :mobile
             %td= f.text_field :mobile
+            %td &nbsp;
           %tr
-            %th= f.label :email, "电子邮箱"
+            %td= f.label :email
             %td{:colspan=>3}= f.text_field :email
+            %td &nbsp;
           %tr
-            %th= f.label :remark, "备注"
-            %td{:colspan=>3}= f.text_area :remark, :rows => 5, :cols=> 49
-        %p.btns{:style=>"clear:left"}
-          = submit_tag t('html.button.save'), :disable_with => t('html.saving')
-          = submit_tag t('html.button.back'), :disable_with => t('html.saving')
-
-#sbar
-  .proj-desc
-    %p 
+            %td= f.label :remark
+            %td{:colspan=>3}= f.text_area :remark, :rows => 5
+            %td &nbsp;
+    .j-panel-foot
+      .j-toolbar
+        %ul
+          %li{:icon=>"j-icon i-create"}
+            =link_to_function "保存", "j('.j-form').submit()"
+          %li
+          %li{:icon=>"j-icon i-return"}
+            = link_to '返回', users_path

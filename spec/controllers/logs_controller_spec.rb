@@ -23,9 +23,4 @@ describe LogsController do
     response.should be_success
   end
 
-  it "should goto show" do
-    log = logs(:create)
-    get :show, :id => log
-    response.should be_success
-  end
 end

@@ -1,38 +1,45 @@
-.group
-  %fieldset
-    %legend 查询条件
-    #quick-search-bar
-      -form_tag users_path, :method=>:get do
-        =label_tag "user[login]", '用户名'
-        =text_field_tag "user[login]", params[:user][:login]
-        =label_tag "user[realname]", '姓名'
-        =text_field_tag "user[realname]", params[:user][:realname]
-        =submit_tag '查询'
-.group
-  %fieldset
-    %legend 用户列表
-    %table.list
-      %tr
-        %th{:width=>'120'} 用户名
-        %th{:width=>'120'} 姓名
-        %th{:width=>'140'} 部门
-        %th 办公电话
-        %th{:width=>'80'} 是否禁用
-        %th{:width=>'120'} 操作
-      - @page.each do |user|
-        %tr
-          %td=user.login
-          %td=user.realname
-          %td=user.department ? user.department.name : ""
-          %td=user.telephone
-          %td=user.disabled_enum_sf
-          %td
-            =link_to t('html.link.edit'), edit_user_path(user)
-            -unless user.is_admin?
-              -if user.disabled == 0
-                =link_to t('html.link.disable'),{:action => 'disable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.disable')}')"}
-              -else
-                =link_to t('html.link.enable'),{:action => 'enable', :id => user}, {:onclick => "return confirm('#{t('confirm.user.enable')}')"}
-    #paginate{:style => 'text-align:right;'}
+.nav 
+  %span 你现在的位置：用户管理
+  .search-panel
+    -form_tag users_path, :method=>:get, :class=>"j-form" do
+      =label_tag "user[login]", '用户名'
+      =text_field_tag "user[login]", params[:user][:login], :class => :nofixed
+      =label_tag "user[realname]", '姓名'
+      =text_field_tag "user[realname]", params[:user][:realname], :class => :nofixed
+      =link_to_function "", "j('.j-form').submit()", :class => "icon-16px-box j-icon i-search", :title => "查询"
+.split
+.j-panel
+  .j-panel-head
+    .j-panel-text 用户列表
+  .j-panel-body
+    .j-grid.grid-full
+      %table
+        %thead
+          %tr
+            %th{:width=>'120px'} 用户名
+            %th{:width=>'120px'} 姓名
+            %th{:width=>'140px'} 部门
+            %th{:width=>'140px'} 办公电话
+            %th{:width=>'80px'} 是否禁用
+            %th{:width=>'100px'} 操作
+        %tbody
+          - @page.each do |user|
+            %tr
+              %td=user.login
+              %td=user.realname
+              %td=user.department ? user.department.name : ""
+              %td=user.telephone
+              %td=user.disabled_enum_sf
+              %td
+                =link_to "", edit_user_path(user), :title => t('html.link.edit'), :class => "icon-16px-box j-icon i-edit"
+                -unless user.is_admin?
+                  -if user.disabled == 0
+                    =link_to "",{:action => 'disable', :id => user}, :title => t('html.link.disable'), :class => "icon-16px-box j-icon i-lock"
+                  -else
+                    =link_to "",{:action => 'enable', :id => user}, :title => t('html.link.enable'), :class => "icon-16px-box j-icon i-unlock"
+  .j-panel-foot
+    .j-toolbar
       =will_paginate @page
-
+      %ul
+        %li{:icon=>"j-icon i-create"}
+          =link_to '增加', new_user_path

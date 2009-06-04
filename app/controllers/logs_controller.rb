@@ -21,9 +21,4 @@ class LogsController < ApplicationController
     
     @list = Log.paginate :joins => [" inner join users as u on operator_id = u.id"], :per_page => 10, :conditions => @conditions, :page => params[:page], :order => "operatedate desc"
   end
-
-  #查看
-  def show
-    @log = Log.find(params[:id])
-  end
 end

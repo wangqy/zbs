@@ -914,6 +914,10 @@ var JTreeRender = function(){
         
         var ul = tree.children("ul").eq(0);
         ul.children("li").each(function(){
+            //避免重复渲染
+            if($(this).attr("rendered"))
+              return true;
+            $(this).attr("rendered","1");
             $(this).addClass("j-tree-node");
             this.tree = tree.get(0);
             

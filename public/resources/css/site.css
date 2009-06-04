@@ -236,6 +236,22 @@ border:0;
     position: relative;
 }
 
+* html .right-panel-full {
+    height: expression(document.documentElement.clientHeight - 115);
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;margin-left:5px;
+}
+
+*+html .right-panel-full {
+    /*width: expression(document.documentElement.clientWidth - 8);*/
+    height: expression(document.documentElement.clientHeight - 115);
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+
 /* j-tab填充满无导航条页面 */
 .tab-full-nonav {
     height: expression(document.documentElement.clientHeight - 59);

@@ -1,38 +1,52 @@
-.group
-  %fieldset
-    %legend 公告信息
-    %table
-      %tr
-        %th 标题
-        %td= @notice.title
-        %td.last &nbsp;
-      %tr
-        %th 内容
-        %td= @notice.content
-        %td.last &nbsp;
-      %tr
-        %th 是否发布
-        %td= @notice.deployed_enum_sf
-        %td.last &nbsp;
-      %tr
-        %th 创建人
-        %td= @notice.creator.realname
-        %th 创建时间
-        %td= @notice.created_at.to_s(:full)
-        %td.last &nbsp;
-      %tr
-        %th 最后修改人
-        %td= @notice.modifier.realname
-        %th 最后修改时间
-        %td= @notice.updated_at.to_s(:full)
-        %td.last &nbsp;
-      -if @notice.deployed == 1
+.nav 
+  %span 你现在的位置：公告管理 &gt;&gt; 查看公告
+.split
+.j-panel
+  .j-panel-head
+    .j-panel-text 公告信息
+  .j-panel-body.panel-full
+    %table.j-form-table
+      %thead
         %tr
-          %th 发布人
-          %td= @notice.deployee.realname
-          %th 发布时间
-          %td= @notice.deployed_at.to_s(:full)
-          %td.last &nbsp;
-  %p.btns{:style=>"clear:left"}
-    = submit_tag '返回',{:type=>'button',:onclick=>'history.back();'}
-
+          %th{:width=>"80px"}
+          %th{:width=>"200px"}
+          %th{:width=>"80px"}
+          %th{:width=>"200px"}
+          %th
+      %tbody
+        %tr
+          %td 标题
+          %td{:colspan=>3}= @notice.title
+          %td &nbsp;
+        %tr
+          %td 内容
+          %td{:colspan=>3}= @notice.content
+          %td &nbsp;
+        %tr
+          %td 是否发布
+          %td{:colspan=>3}= @notice.deployed_enum_sf
+          %td &nbsp;
+        %tr
+          %td 创建人
+          %td= @notice.creator.realname
+          %td 创建时间
+          %td= @notice.created_at.to_s(:full)
+          %td &nbsp;
+        %tr
+          %td 最后修改人
+          %td= @notice.modifier.realname
+          %td 最后修改时间
+          %td= @notice.updated_at.to_s(:full)
+          %td &nbsp;
+        -if @notice.deployed == 1
+          %tr
+            %td 发布人
+            %td= @notice.deployee.realname
+            %td 发布时间
+            %td= @notice.deployed_at.to_s(:full)
+            %td &nbsp;
+  .j-panel-foot
+    .j-toolbar
+      %ul
+        %li{:icon=>"j-icon i-return"}
+          = link_to '返回', notices_path

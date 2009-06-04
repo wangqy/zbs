@@ -17,13 +17,14 @@
             %th{:width=>"100px"} 操作
         %tbody
           -@list.each do |conversation|
-            %td==#{warning(conversation.workitem)}#{conversation.tag}
-            %td=conversation.title
-            %td=conversation.created_at.to_s(:without_year)
-            %td=conversation.creator.realname
-            %td=conversation.state_enum
-            %td
-              =link_to '', edit_workitem_path(conversation.workitem), :class => "icon-16px-box j-icon i-submit", :title => "处理"
-              =link_to '', new_event_path('event[conversation_id]' => conversation.id, :category => 'category_out', :menu => :workitems), :class => "icon-16px-box j-icon i-create", :title => "添加往来记录"
+            %tr
+              %td==#{warning(conversation.workitem)}#{conversation.tag}
+              %td=conversation.title
+              %td=conversation.created_at.to_s(:without_year)
+              %td=conversation.creator.realname
+              %td=conversation.state_enum
+              %td
+                =link_to '', edit_workitem_path(conversation.workitem), :class => "icon-16px-box j-icon i-submit", :title => "处理"
+                =link_to '', new_event_path('event[conversation_id]' => conversation.id, :category => 'category_out', :menu => :workitems), :class => "icon-16px-box j-icon i-create", :title => "添加往来记录"
   .j-panel-foot
     .j-toolbar

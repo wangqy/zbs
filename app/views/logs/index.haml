@@ -1,36 +1,32 @@
-.group
-  %fieldset
-    %legend 查询条件
-    #quick-search-bar
-      -form_tag logs_path, :method=>:get do
-        =label_tag "log[modulename]", '模块名称'
-        =text_field_tag "log[modulename]", params[:log][:modulename]
-        =label_tag "log[operate]", '操作类型'
-        -operate = params[:log][:operate]
-        -o = operate.blank? ? -1 : operate.to_i
-        =select_tag "log[operate]", options_for_select([['不限','']] + Enum.op, o)
-        =label_tag "log[operator]", '操作人员'
-        =text_field_tag "log[operator]", params[:log][:operator]
-        =submit_tag '查询'
-.group
-  %fieldset
-    %legend 日志列表
-    %table.list
-      %tr
-        %th{:width=>"100"} 模块名称
-        %th{:width=>"100"} 操作类型
-        %th{:width=>"100"} 操作人员
-        %th{:width=>"160"} 操作时间
-        %th IP地址
-        %th{:width=>"60"} 操作
-      - @list.each do |log|
-        %tr
-          %td=log.modulename
-          %td=log.operate_enum_op
-          %td=log.operator.realname
-          %td=log.operatedate.to_s(:full)
-          %td=log.ip
-          %td
-            =link_to t('html.link.view'), log
-    #pagination
+.nav 
+  %span 你现在的位置：系统日志
+  .search-panel
+    -form_tag logs_path, :method=>:get, :class=>"j-form" do
+      =label_tag "log[operator]", '操作人员'
+      =text_field_tag "log[operator]", params[:log][:operator]
+      =link_to_function "", "j('.j-form').submit()", :class => "icon-16px-box j-icon i-search", :title => "查询"
+.split
+.j-panel
+  .j-panel-head
+    .j-panel-text 日志列表
+  .j-panel-body
+    .j-grid.grid-full
+      %table
+        %thead
+          %tr
+            %th{:width=>"100px"} 模块名称
+            %th{:width=>"100px"} 操作类型
+            %th{:width=>"100px"} 操作人员
+            %th{:width=>"160px"} 操作时间
+            %th{:width=>"100px"} IP地址
+        %tbody
+          - @list.each do |log|
+            %tr
+              %td=log.modulename
+              %td=log.operate_enum_op
+              %td=log.operator.realname
+              %td=log.operatedate.to_s(:full)
+              %td=log.ip
+  .j-panel-foot
+    .j-toolbar
       =will_paginate @list

@@ -1,14 +1,14 @@
 =javascript_include_tag "tree"
-#mainbar
-  .group
-    %fieldset
-      %legend 机构信息
+.nav 
+  %span 你现在的位置：机构管理
+.split
+.j-panel.left-panel{:style => "width:30%"}
+  .j-panel-head
+    .j-panel-text 机构树形图
+  .j-panel-body.right-panel-full
+    .j-tree
       %ul#tree{:url => department_departments_path(Department.new), :itemUrl => departments_path, :style => 'float:left'}
         =render :partial => "child", :collection => Department.top
-      #tree_content{:style => 'float:right'}
-        =render :partial => "new"
-#sbar
-  .proj-desc.tip
-    %span 当前页面输入项提示信息
-    %ul
-      %li 值班领导: 值班人员录入事件时,值班室信息的值班领导输入项的默认值
+
+.j-panel.right-panel#tree_content{:style => "width:68%;"}
+  =render :partial => "new"
