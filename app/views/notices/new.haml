@@ -6,6 +6,7 @@
     .j-panel-head
       .j-panel-text 公告信息
     .j-panel-body.panel-full
+      =flash_msg
       =error_messages_for :user
       %table.j-form-table
         %thead
@@ -31,6 +32,7 @@
       .j-toolbar
         %ul
           %li{:icon=>"j-icon i-create"}
+            =submit_tag "保存", :class=> "hide"
             =link_to_function "保存", "j('.j-form').submit()"
           %li
           %li{:icon=>"j-icon i-return"}

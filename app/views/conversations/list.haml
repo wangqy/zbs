@@ -1,5 +1,10 @@
 .nav 
   %span 你现在的位置：事件记录
+  .search-panel
+    -form_tag searches_path, :method=>:get, :class=>"j-form" do
+      =label_tag :phone, '联系电话'
+      =text_field_tag :phone, params[:phone], :is_focus => true, :class => :nofixed
+      =submit_tag "", :id => :search, :class=> "icon-16px-box j-icon i-search nofixed nav-btn", :title => "查询"
 .split
 .j-panel
   .j-panel-head

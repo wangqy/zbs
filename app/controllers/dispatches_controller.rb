@@ -1,6 +1,6 @@
 class DispatchesController < ApplicationController
   def index
-    @list = Conversation.paginate :conditions => ["state = ?", "0"], :page => params[:page], :order => 'id desc'
+    @list = Conversation.paginate :conditions => ["state = ?", 0], :page => params[:page], :order => 'id desc'
   end
 
   def new

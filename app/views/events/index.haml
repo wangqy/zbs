@@ -5,7 +5,7 @@
       =label_tag :phone, '联系电话'
       =text_field_tag :phone, params[:phone], :is_focus => true, :class => :nofixed
       =hidden_field_tag :record_id, params[:record_id]
-      =link_to_function "", "j('.j-form').submit()", :class => "icon-16px-box j-icon i-search", :title => "查询"
+      =submit_tag "", :id => :search, :class=> "icon-16px-box j-icon i-search nofixed nav-btn", :title => "查询"
 .split
 .j-panel
   .j-panel-head
@@ -24,7 +24,7 @@
             %tr.j-grid-data-group.opend
               %td=conversation.title
               %td=conversation.kind.name
-              %td{:title=>conversation.content}=truncate(conversation.content,30)
+              %td{:title=>conversation.content}=truncate(conversation.content,:length => 30)
               %td=link_to "", new_event_path('event[conversation_id]' => conversation.id, :phone => params[:phone], :category => 'category_out', :record_id => params[:record_id]), :class => 'icon-16px-box j-icon i-create', :title => "关联"
             %tr
               %td{:colspan=>4}

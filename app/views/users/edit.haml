@@ -1,4 +1,4 @@
--form_for :user, :url => users_path, :html => {:class => "j-form"} do |f|
+-form_for @user, :html => {:class => "j-form"} do |f|
   =f.hidden_field 'id'
   .nav 
     %span 你现在的位置：用户管理 &gt;&gt; 编辑用户
@@ -7,6 +7,7 @@
     .j-panel-head
       .j-panel-text 用户信息
     .j-panel-body.panel-full
+      =flash_msg
       =error_messages_for :user
       %table.j-form-table
         %thead
@@ -51,6 +52,7 @@
       .j-toolbar
         %ul
           %li{:icon=>"j-icon i-create"}
+            =submit_tag "保存", :class=> "hide"
             =link_to_function "保存", "j('.j-form').submit()"
           %li
           %li{:icon=>"j-icon i-return"}

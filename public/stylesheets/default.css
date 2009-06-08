@@ -1,2 +1,5 @@
 #singheadBody {
   z-index: 99; }
+
+.hide {
+  display: none; }

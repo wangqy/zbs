@@ -24,7 +24,7 @@ class Conversation < ActiveRecord::Base
   end
 
   def self.per_page
-    1
+    20
   end
 
   #当前流程

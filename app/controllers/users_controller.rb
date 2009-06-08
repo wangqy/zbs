@@ -49,7 +49,7 @@ class UsersController < ApplicationController
       Log.update @user, current_user, request. remote_ip
       redirect_to users_path
     else
-      render :action => "new"
+      render :action => "edit"
     end
   end
 =begin

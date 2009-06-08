@@ -1,32 +1,6 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
-  def select_menu(menu)
-    "selected" if is_menu(menu)
-  end
-
-  def is_menu(menu)
-    @menu == menu
-  end
-
-  #@param "calls"
-  #@return new_call_path
-  def new_path(menu)
-    send("new_#{menu.singularize}_path")
-  end
-
-  #@param "calls"
-  #@return new_call_path
-  def index_path(menu)
-    send("#{menu}_path")
-  end
-
-  #@param "calls"
-  #@return 来电
-  def t_menu(menu)
-    t('activerecord.models.' + menu.downcase.singularize)
-  end
-
   #枚举下拉列表
   #@param object_name 实体名称
   #@param method  枚举类型
@@ -74,6 +48,15 @@ module ApplicationHelper
   #获取I18n实体属性名称
   def tt(path)
     t("activerecord.attributes.#{path}")
+  end
+
+  #显示提示消息
+  def flash_msg
+    message = ""
+    flash.each do |key, msg|
+      message += content_tag :div, msg, :id => "flash-#{key}"
+    end
+    message
   end
 
 end

@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
           current_user.remember_me unless current_user.remember_token?
           cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
         end
-        flash[:notice] = m('user.login.success')
+        #flash[:notice] = m('user.login.success')
         Log.login current_user, request.remote_ip
         redirect_to_homepage
       end

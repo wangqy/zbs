@@ -64,12 +64,21 @@ end
   click_button(label)
 end
 
+而且 /我单击按钮(.*)/ do |label|
+  if %w(登录 保存).include?(label)
+    label = :save
+  elsif %w(查询).include?(label)
+    label = :search
+  end
+  click_button(label)
+end
+
 而且 /我触发链接(.*)/ do |label|
   click_link(label)
 end
 
 而且 /我在第(\d+)条记录中点击(.*)按钮/ do |pos, button_label|
-  within("table >tr:nth-child(#{pos.to_i+1})") do
+  within("tbody >tr:nth-child(#{pos})") do
     click_link button_label
   end
 end
@@ -112,9 +121,14 @@ end
 那么 /我将看到以下数据/ do |hashes|
   hashes.rows.each_with_index do |row, i|
     row.each_with_index do |cell, j|
-      response.should have_selector("table.list > tr:nth-child(#{i+2}) > td:nth-child(#{j+1})") do |td|
+      response.should have_selector("tbody > tr:nth-child(#{i+1}) > td:nth-child(#{j+1})") do |td|
         td.inner_text.should == cell
       end
     end
   end
+end
+
+那么 /我应该能在页脚看到:(.+)/ do |text|
+  visit '/home/foot'
+  response.should contain(text)
 end

@@ -4,13 +4,14 @@
     -form_tag notices_path, :method=>:get, :class=>"j-form" do
       =label_tag "notice[title]", '标题'
       =text_field_tag "notice[title]", params[:notice][:title]
-      =link_to_function "", "j('.j-form').submit()", :class => "icon-16px-box j-icon i-search", :title => "查询"
+      =submit_tag "", :id => :search, :class=> "icon-16px-box j-icon i-search nofixed nav-btn", :title => "查询"
 .split
 .j-panel
   .j-panel-head
     .j-panel-text 公告列表
   .j-panel-body
     .j-grid.grid-full
+      =flash_msg
       %table
         %thead
           %tr

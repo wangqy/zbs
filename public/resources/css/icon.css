@@ -397,3 +397,10 @@
 	background: transparent url(../images/new.gif) top center no-repeat;
 	zoom: 1;
 }
+
+/*导航中的按钮*/
+.nav-btn {
+  width: 16px !important;
+  border: 0;
+}
+

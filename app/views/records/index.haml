@@ -6,7 +6,7 @@
       =f.text_field :dail, :class => :nofixed
       =f.label :receive
       =f.text_field :receive, :class => :nofixed
-      =link_to_function "", "j('.j-form').submit()", :class => "icon-16px-box j-icon i-search", :title => "查询"
+      =submit_tag "", :id => :search, :class=> "icon-16px-box j-icon i-search nofixed nav-btn", :title => "查询"
 .split
 .j-panel
   .j-panel-head

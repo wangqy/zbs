@@ -43,6 +43,7 @@
       .j-toolbar
         %ul
           %li{:icon=>"j-icon i-submit"}
+            =submit_tag "提交", :class=> "hide"
             =link_to_function "提交", "j('.j-form').submit()"
           %li
           %li{:icon=>"j-icon i-return"}
