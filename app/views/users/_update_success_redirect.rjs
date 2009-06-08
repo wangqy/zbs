@@ -1,0 +1,6 @@
+page.replace_html 'pop-errorExplanation', "<div id='flash-notice'>#{flash[:notice]}</div>"
+page.show 'pop-errorExplanation'
+
+page.delay(2) do
+  page << 'window.parent.location.reload();'
+end

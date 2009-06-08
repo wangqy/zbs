@@ -24,6 +24,7 @@ cn:
         mobile: "手机"
         email: "电子邮箱"
         remark: "备注"
+        site: "坐席号"
       conversation:
         tag: "编号"
         title: "主题"

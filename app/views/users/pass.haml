@@ -1,16 +1,25 @@
-%fieldset
-  %legend{:style=>'font-size:14px'} 修改密码
-  =error_messages_for :user
-  -remote_form_for :user, :url => {:action => 'updatepass'}, :html => {:class => 'formpass', :id=>'formin'} do |f|
-    %div#pop-errorExplanation{:style=>'display:none'}
-    %table
-      %tr
-        %th
-          %span.required *
-          = f.label 'password', '新密码'
-        %td
-          = f.password_field 'password'
-    %p.btns
-      = submit_tag '提 交', {:id=>'save'}
-      = submit_tag '关 闭', {:type=>'button',:onclick=>'javascript:j.facebox.close();'}
-
+-form_for :user, :url => {:action => 'updatepass'}, :html => {:class => 'j-form'} do |f|
+  .nav 
+    %span 你现在的位置：修改密码
+  .split
+  .j-panel
+    .j-panel-head
+      .j-panel-text 新密码信息
+    .j-panel-body.panel-full
+      =error_messages_for :user
+      %table.j-form-table
+        %thead
+          %tr
+            %th{:width=>"80px"}
+            %th{:width=>"300px"}
+            %th
+        %tbody
+          %tr
+            %td= f.label_require :password, '新密码'
+            %td= f.password_field :password
+            %td &nbsp;
+    .j-panel-foot
+      .j-toolbar
+        %ul
+          %li{:icon=>"j-icon i-create"}
+            =link_to_function "保存", "j('.j-form').submit()"

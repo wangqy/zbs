@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  layout 'facebox', :only => ["pass", "updatepass", "updatesite"]
-  layout 'application', :only => ["index", "new", "create", "edit", "update", "custom", "customed"]
-
   #列表
   def index
     if params[:user].nil?
@@ -103,15 +100,11 @@ class UsersController < ApplicationController
   def updatepass
     @user = User.find(current_user)
     params[:user][:modifier] = current_user
-    #p user
     if @user.update_attributes(params[:user])
       Log.pass @user, current_user, request.remote_ip
-      flash.now[:notice] = m('user.pass.success')
-      render :partial => "share/update_success"
-      #redirect_to root_path
-    else
-      render :partial => "share/update_failure", :locals => { :objname => 'user' }
+      flash[:notice] = m('user.pass.success')
     end
+    render :action => :pass
   end
 
   #更新坐席号
@@ -120,8 +113,8 @@ class UsersController < ApplicationController
     params[:user][:modifier] = current_user
     if @user.update_attributes(params[:user])
       Log.site @user, current_user, request.remote_ip
-      flash.now[:notice] = m('user.site.success')
-      render :partial => "share/update_success_redirect"
+      flash[:notice] = m('user.site.success')
+      render :partial => "update_success_redirect"
     else
       render :partial => "share/update_failure", :locals => { :objname => 'user' }
     end

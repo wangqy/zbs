@@ -1,14 +1,30 @@
-.group
-  %fieldset
-    %legend 最近公告
-    -@list.each do |notice|
-      %table.list-notice{:cellSpacing=>1}
+.nav 
+  %span 你现在的位置：最近公告
+.split
+.j-panel
+  .j-panel-head
+    .j-panel-text 公告信息
+  .j-panel-body.panel-full
+    %table.j-form-table
+      %thead
         %tr
-          %td.title{:colspan=>4}= notice.title
-        %tr
-          %td.content{:colspan=>4}= notice.content
-        %tr
-          %th 发布人
-          %td= notice.deployee.realname
-          %th 发布时间
-          %td= notice.deployed_at.to_s(:full)
+          %th{:width=>"80px"}
+          %th{:width=>"200px"}
+          %th{:width=>"80px"}
+          %th{:width=>"200px"}
+          %th
+      %tbody
+        -@list.each do |notice|
+          %tr
+            %td.caption{:colspan=>5}= notice.title
+          %tr
+            %td.content{:colspan=>4}= notice.content
+            %td &nbsp;
+          %tr
+            %td 发布人
+            %td= notice.deployee.realname
+            %td 发布时间
+            %td= notice.deployed_at.to_s(:full)
+            %td &nbsp;
+          %tr
+            %td{:colspan=>5} &nbsp;

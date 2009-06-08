@@ -71,7 +71,6 @@ describe UsersController do
     modify_password
     flash[:notice].should have_text('修改用户密码成功')
     assigns[:user].errors.should be_empty
-    response.should render_template('share/_update_success')
     User.authenticate('cogentsoft','111111').should == users(:cogentsoft)
     response.should be_success
   end
@@ -81,7 +80,7 @@ describe UsersController do
     xhr :post, :updatesite, :user => { :site => '802' }
     flash[:notice].should have_text('修改用户坐席号成功')
     assigns[:user].errors.should be_empty
-    response.should render_template('share/_update_success')
+    response.should render_template('_update_success')
     response.should be_success
   end
 
@@ -144,7 +143,7 @@ describe UsersController do
   end
 
   def modify_password
-    xhr :post, :updatepass, :user=>{
+    post :updatepass, :user=>{
       :password => '111111'
     }
   end
