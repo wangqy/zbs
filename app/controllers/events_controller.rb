@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 
   def new
     #事件是否为回电回访
-    params[:category] ||= :category_in
+    params[:category] ||= 'category_in'
     @conversation = Conversation.find(params[:event][:conversation_id])
     @list = @conversation.events
     @event = Event.new(params[:event])
