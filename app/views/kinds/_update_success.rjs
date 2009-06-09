@@ -1,7 +1,9 @@
 page.replace_html 'formin', "<div id='flash-notice'>#{flash[:notice]}</div>"
 page.show 'formin'
 
-page.replace 'event_kind_tr', :partial => 'conversations/kind', :locals => { :kind => @kind }
-page.delay(2) do
-  page<<"j.facebox.close();"
+html = render(:partial => 'conversations/kind', :locals => { :kind => @kind })
+page << "window.parent.j('#event_kind_tr').replaceWith(\"#{escape_javascript(html)}\");"
+
+page.delay(1) do
+  page<<"closeWindow();"
 end

@@ -2,5 +2,5 @@
   %td= label_tag :conversation_kind_id, "事件分类"
   %td{:colspan=>3}
     = select_kind(kind)
-    = link_to '新增分类', new_kind_path, :rel => :facebox
+    = link_to '新增分类', new_kind_path, :onclick => "newWindow('新增分类',href,400,300);return false;"
   %td &nbsp;

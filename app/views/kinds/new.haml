@@ -1,27 +1,38 @@
-%fieldset
-  %legend{:style=>'font-size:14px'} 新增事件分类
-  =error_messages_for :kind
-  -remote_form_for @kind, :html => {:class => 'formpass', :id=>'formin'} do |f|
-    %div#pop-errorExplanation{:style=>'display:none'}
-    %table
-      %tr
-        %td{:colspan=>2} 不选择一级分类时,表示当前新增的为一级分类
-      %tr
-        %th
-          %label 一级分类
-        %td
-          - @parent_list.each do |parent|
-            =radio_button_tag 'kind[parent_id]', parent.id
-            =label_tag "kind_parent_id_#{parent.id}", "#{parent.name}"
-      %tr
-        %th= f.label_require :name
-        %td= f.text_field :name
-      %tr
-        %th= f.label_require :days
-        %td
-          = f.text_field :days, :class => :short
-          = "天"
-    %p.btns
-      = submit_tag '保 存', {:id=>'save'}
-      = submit_tag '关 闭', {:type=>'button',:onclick=>'javascript:j.facebox.close();'}
-
+-remote_form_for @kind, :html => {:class => 'j-form', :id=>'formin'} do |f|
+  .j-split
+  .j-panel
+    .j-panel-body.panel-full{:style => "height: expression(document.documentElement.clientHeight - 50)"}
+      %div#pop-errorExplanation{:style=>'display:none'}
+      %table.j-form-table
+        %thead
+          %tr
+            %th{:width=>"80px"}
+            %th{:width=>"220px"}
+            %th
+        %tbody
+          %tr
+            %td{:colspan=>2} 不选择一级分类时,表示当前新增的为一级分类
+          %tr
+            %td
+              %label 一级分类
+            %td
+              - @parent_list.each do |parent|
+                =radio_button_tag 'kind[parent_id]', parent.id
+                =label_tag "kind_parent_id_#{parent.id}", "#{parent.name}"
+          %tr
+            %td= f.label_require :name
+            %td= f.text_field :name
+          %tr
+            %td= f.label_require :days
+            %td
+              = f.text_field :days, :class => :short
+              = "天"
+    .j-panel-foot
+      .j-toolbar
+        %ul
+          %li{:icon=>"j-icon i-create"}
+            =submit_tag "保存", :class=> "hide"
+            =link_to_function "保存", "j('.j-form').trigger('onsubmit')"
+          %li
+          %li{:icon=>"j-icon i-return"}
+            = link_to_function '关闭', 'closeWindow();'

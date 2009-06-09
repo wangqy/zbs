@@ -1,6 +1,4 @@
 class KindsController < ApplicationController
-  layout 'facebox'
-
   def new
     @parent_list = Kind.parent_list
     @kind = Kind.new

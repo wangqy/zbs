@@ -83,6 +83,7 @@ cn:
         blank: "不能为空"
         taken: "已经存在"
         too_long: "长度不能超过{{count}}个字符"
+        not_a_number: "只能是数字"
       models:
         conversation:
           attributes:
