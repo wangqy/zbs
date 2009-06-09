@@ -1,33 +1,54 @@
-%fieldset
-  %legend{:style=>'font-size:14px'} 新增联系人
-  =error_messages_for :person
-  -remote_form_for @person, :html => {:class => 'formpass', :id=>'formin'} do |p|
-    %div#pop-errorExplanation{:style=>'display:none'}
-    %table
-      %tr
-        %th= p.label_require :name
-        %td= p.text_field :name, :is_focus => true
-      %tr
-        %th= p.label_require :phone
-        %td= p.text_field :phone
-      %tr
-        %th= p.label :cardno
-        %td= p.text_field :cardno
-      %tr
-        %th= p.label :mobile
-        %td= p.text_field :mobile
-      %tr
-        %th= p.label :sex
-        %td= p.radio_enum :sex
-      %tr
-        %th= p.label :email
-        %td= p.text_field :email
-      %tr
-        %th= p.label :address
-        %td= p.text_field :address
-      %tr
-        %th= p.label :jobunit
-        %td= p.text_field :jobunit
-    %p.btns
-      = submit_tag '保 存', {:id=>'save'}
-      = submit_tag '关 闭', {:type=>'button',:onclick=>'javascript:j.facebox.close();'}
+-remote_form_for @person, :html => {:class => 'j-form',:id => :formin} do |p|
+  .j-split
+  .j-panel
+    .j-panel-body.panel-full{:style => "height: expression(document.documentElement.clientHeight - 50)"}
+      =error_messages_for :person
+      %div#pop-errorExplanation{:style=>'display:none'}
+      %table.j-form-table
+        %thead
+          %tr
+            %th{:width=>"80px"}
+            %th{:width=>"220px"}
+            %th
+        %tbody
+          %tr
+            %td= p.label_require :name
+            %td= p.text_field :name, :is_focus => true
+            %td &nbsp;
+          %tr
+            %td= p.label_require :phone
+            %td= p.text_field :phone
+            %td &nbsp;
+          %tr
+            %td= p.label :cardno
+            %td= p.text_field :cardno
+            %td &nbsp;
+          %tr
+            %td= p.label :mobile
+            %td= p.text_field :mobile
+            %td &nbsp;
+          %tr
+            %td= p.label :sex
+            %td= p.radio_enum :sex
+            %td &nbsp;
+          %tr
+            %td= p.label :email
+            %td= p.text_field :email
+            %td &nbsp;
+          %tr
+            %td= p.label :address
+            %td= p.text_field :address
+            %td &nbsp;
+          %tr
+            %td= p.label :jobunit
+            %td= p.text_field :jobunit
+            %td &nbsp;
+    .j-panel-foot
+      .j-toolbar
+        %ul
+          %li{:icon=>"j-icon i-create"}
+            =submit_tag "保存", :class=> "hide"
+            =link_to_function "保存", "j('.j-form').trigger('onsubmit')"
+          %li
+          %li{:icon=>"j-icon i-return"}
+            = link_to_function '关闭', 'closeWindow();'

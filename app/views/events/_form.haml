@@ -3,9 +3,10 @@
 =render :partial => "events/wavfile", :locals => {:event => event}
 %tr
   %td= f.label_require :person_id
-  %td{:colspan=>3}
+  %td{:colspan=>3, :id=>'person_td'}
     = select_person
-    = link_to '新增联系人', new_person_path, :rel => :facebox, :id => 'add_person_btn'
+    -if @event.new_record?
+      = link_to '新增联系人', new_person_path, :id => 'add_person_btn', :onclick => "newWindow('新增联系人',href,400,300);return false;"
   %td &nbsp;
 %tr
   %td= f.label_require :category

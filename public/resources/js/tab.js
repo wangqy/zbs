@@ -1,11 +1,13 @@
 function  secBoard(n)
 {
-for(i=0;i<secTable.cells.length;i++)
-secTable.cells[i].className="menu";
-secTable.cells[n].className="menu_ab";
-for(i=0;i<mainTable.tBodies.length;i++)
-mainTable.tBodies[i].style.display="none";
-mainTable.tBodies[n].style.display="block";
+var secTableObj = document.getElementById("secTable");
+var mainTableObj = document.getElementById("mainTable");
+for(i=0;i<secTableObj.cells.length;i++)
+  secTableObj.cells[i].className="menu";
+secTableObj.cells[n].className="menu_ab";
+for(i=0;i<mainTableObj.tBodies.length;i++)
+  mainTableObj.tBodies[i].style.display="none";
+mainTableObj.tBodies[n].style.display="block";
 }
 
 function  secBoardLeft(n)

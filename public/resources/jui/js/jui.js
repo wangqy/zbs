@@ -4,28 +4,27 @@
  * 此外通过attr来获取属性使代码冗长，所有脚本中许多对属性的操作是直接通过DOM对象来进行的。
  * 阅读代码时应注意对jquery对象和DOM对象的区分，例如：
  * 通过get(0)得到的是DOM对象，通过eq(0)得到的是jquery对象；
- * 而在function中$(this)是jquery对象，this是DOM对象。
+ * 而在function中jQuery(this)是jquery对象，this是DOM对象。
  */
-(function($){
 /**
  * j-panel-toolbar渲染器
  */
 var JPanelToolbarRender = function(){
     this.render = function(bar){
-        bar = $(bar);
+        bar = jQuery(bar);
         
         var ul = bar.children("ul").eq(0);
         ul.children("li").each(function(){
-            $(this).addClass("j-panel-toolbar-item");
-            var a = $(this).children("a").eq(0);
+            jQuery(this).addClass("j-panel-toolbar-item");
+            var a = jQuery(this).children("a").eq(0);
 			if (a) {
 				a.addClass("j-panel-toolbar-btn");
-				a.addClass($(this).attr("icon"));
+				a.addClass(jQuery(this).attr("icon"));
 				
 				a.hover(function(){
-					$(this).css("background-position-x", -15);
+					jQuery(this).css("background-position-x", -15);
 				}, function(){
-					$(this).css("background-position-x", 0);
+					jQuery(this).css("background-position-x", 0);
 				});
 			}
         });
@@ -36,51 +35,51 @@ var JPanelToolbarRender = function(){
  */
 var JToolbarRender = function(){
     this.render = function(bar){
-        bar = $(bar);
+        bar = jQuery(bar);
         
         var ul = bar.children("ul").eq(0);
         ul.children("li").each(function(){
-			if($(this).hasClass("j-page-link")) {
-				$(this).addClass("j-toolbar-item");
+			if(jQuery(this).hasClass("j-page-link")) {
+				jQuery(this).addClass("j-toolbar-item");
 				return;
 			}
 			
-            if (!$(this).html()) {
-                $(this).addClass("j-toolbar-split");
+            if (!jQuery(this).html()) {
+                jQuery(this).addClass("j-toolbar-split");
                 return;
             }
-            $(this).addClass("j-toolbar-item");
-            var a = $(this).children("a").eq(0);
+            jQuery(this).addClass("j-toolbar-item");
+            var a = jQuery(this).children("a").eq(0);
             
-            var icon = $("<span></span>");
-            icon.addClass($(this).attr("icon"));
+            var icon = jQuery("<span></span>");
+            icon.addClass(jQuery(this).attr("icon"));
             icon.addClass("j-toolbar-btn");
             if (a.html()) {
-                var text = $("<span></span>");
+                var text = jQuery("<span></span>");
                 text.html(a.html());
                 a.html("");
                 text.addClass("j-toolbar-btn-text");
                 icon.append(text);
             }
             
-            var inner = $("<span></span>");
+            var inner = jQuery("<span></span>");
             inner.addClass("j-toolbar-btn-inner");
             inner.append(icon);
             
-            var right = $("<span></span>");
+            var right = jQuery("<span></span>");
             right.addClass("j-toolbar-btn-right");
             right.append(inner);
             
-            var left = $("<span></span>");
+            var left = jQuery("<span></span>");
             left.addClass("j-toolbar-btn-left");
             left.append(right);
             
             a.append(left);
             if(a.attr("disabled")) {
-            	$(this).attr("disabled",a.attr("disabled"));
+            	jQuery(this).attr("disabled",a.attr("disabled"));
             }
             
-            $(this).hover(function(){
+            jQuery(this).hover(function(){
                 left.addClass("j-toolbar-btn-left-over");
                 right.addClass("j-toolbar-btn-right-over");
                 inner.addClass("j-toolbar-btn-inner-over");
@@ -97,23 +96,23 @@ var JToolbarRender = function(){
  */
 var JTabRender = function(){
     this.render = function(tab){
-        tab = $(tab);
+        tab = jQuery(tab);
         
         var ul = tab.children("ul").eq(0);
         ul.children("li").each(function(){
-            $(this).addClass("j-tab-item-head");
+            jQuery(this).addClass("j-tab-item-head");
             
-            var a = $(this).children("a").eq(0);
-            var inner = $("<span></span>");
+            var a = jQuery(this).children("a").eq(0);
+            var inner = jQuery("<span></span>");
             inner.append(a.html());
-            var right = $("<span></span>");
+            var right = jQuery("<span></span>");
             right.append(inner);
-            var left = $("<span></span>");
+            var left = jQuery("<span></span>");
             left.append(right);
             a.html("");
             a.append(left);
             
-            var content = $(this).children("div").eq(0);
+            var content = jQuery(this).children("div").eq(0);
             if (content.html()) {
 				content.addClass("j-tab-body");
 				tab.append(content);
@@ -123,7 +122,7 @@ var JTabRender = function(){
                 left.attr("class", "j-tab-item-head-left");
                 right.attr("class", "j-tab-item-head-right");
                 inner.attr("class", "j-tab-item-head-inner");
-                $(this).css("z-index", 0);
+                jQuery(this).css("z-index", 0);
                 content.hide();
             }
             
@@ -131,14 +130,14 @@ var JTabRender = function(){
                 left.attr("class", "j-tab-item-head-left-over");
                 right.attr("class", "j-tab-item-head-right-over");
                 inner.attr("class", "j-tab-item-head-inner-over");
-                $(this).css("z-index", 0);
+                jQuery(this).css("z-index", 0);
             }
             
             this.active = function(){
                 left.attr("class", "j-tab-item-head-left-active");
                 right.attr("class", "j-tab-item-head-right-active");
                 inner.attr("class", "j-tab-item-head-inner-active");
-                $(this).css("z-index", 2);
+                jQuery(this).css("z-index", 2);
                 content.show();
                 if (tab.active) {
                     tab.active.normal();
@@ -146,7 +145,7 @@ var JTabRender = function(){
                 tab.active = this;
             }
             
-            if ($(this).hasClass("active")) {
+            if (jQuery(this).hasClass("active")) {
                 this.active();
             }
             else {
@@ -154,7 +153,7 @@ var JTabRender = function(){
             }
             
             // 设置鼠标移入、移出动作
-            $(this).hover(function(){
+            jQuery(this).hover(function(){
                 if (tab.active != this) {
                     this.over();
                 };
@@ -164,18 +163,18 @@ var JTabRender = function(){
                 }
             });
             // 设置鼠标点击动作
-            $(this).click(function(){
+            jQuery(this).click(function(){
 				if (tab.active != this) {
 					this.active();
 				}
             });
         });
         
-        var head = $("<div></div>");
+        var head = jQuery("<div></div>");
         head.addClass("j-tab-head");
         ul.wrap(head);
         
-        var line = $("<div></div>");
+        var line = jQuery("<div></div>");
         line.addClass("j-tab-head-line");
         ul.before(line);
         
@@ -187,24 +186,24 @@ var JTabRender = function(){
  */
 var JFormTableRender = function(){
     this.render = function(table){
-        table = $(table);
+        table = jQuery(table);
         
         var head = table.children("thead").eq(0);
         head.addClass("j-form-table-head");
         
         table.children("tbody").each(function(){
-			$(this).children("tr").each(function() {
+			jQuery(this).children("tr").each(function() {
 				// 处理分组行，只支持一个tbody一个分组
-                if ($(this).hasClass("j-form-table-group")) {
-					$(this).children("td").each(function() {
-						$(this).addClass("j-form-table-group-cell");
+                if (jQuery(this).hasClass("j-form-table-group")) {
+					jQuery(this).children("td").each(function() {
+						jQuery(this).addClass("j-form-table-group-cell");
 					});
                     // 这里只处理分组行的第一个单元格
-                    var td = $(this).children("td").eq(0);
+                    var td = jQuery(this).children("td").eq(0);
                     // 设置打开和关闭的图标按钮
-                    var icon = $("<span class='j-form-table-group-icon'></span>");
+                    var icon = jQuery("<span class='j-form-table-group-icon'></span>");
                     icon.click(function(){
-                        var tr = $(this).parent().parent();
+                        var tr = jQuery(this).parent().parent();
                         if (tr.get(0).opened) {
                             tr.trigger("close");
                             icon.removeClass("j-form-table-group-open");
@@ -218,69 +217,69 @@ var JFormTableRender = function(){
                     });
                     td.prepend(icon);
                     // 设置分组行的打开和关闭动作
-                    $(this).bind("open", function(){
+                    jQuery(this).bind("open", function(){
                         var rowIndex = this.rowIndex;
-                        var members = $(this).parent().children("tr").filter(function(){
+                        var members = jQuery(this).parent().children("tr").filter(function(){
                             return this.rowIndex > rowIndex;
                         });
                         members.each(function(){
-                            $(this).show();
+                            jQuery(this).show();
                         });
                         this.opened = true;
                         return false;
                     });
                     
-                    $(this).bind("close", function(){
+                    jQuery(this).bind("close", function(){
                         var rowIndex = this.rowIndex;
-                        var members = $(this).parent().children("tr").filter(function(){
+                        var members = jQuery(this).parent().children("tr").filter(function(){
                             return this.rowIndex > rowIndex;
                         });
                         members.each(function(){
-                            $(this).hide();
+                            jQuery(this).hide();
                         });
                         this.opened = false;
                         return false;
                     });
                     
                     // 初始化设置
-                    if ($(this).hasClass("opened")) {
+                    if (jQuery(this).hasClass("opened")) {
                         icon.addClass("j-form-table-group-open");
-                        $(this).trigger("open");
+                        jQuery(this).trigger("open");
                     }
                     else {
                         icon.addClass("j-form-table-group-close");
-                        $(this).trigger("close");
+                        jQuery(this).trigger("close");
                     }
                     
                     // 分组行处理完直接返回，不进行下面对非分组行的处理
                     return;
                 }
 				
-				if($(this).hasClass("j-form-table-split")) {
-					$(this).children("td").each(function() {
-						$(this).addClass("j-form-table-split-cell");
+				if(jQuery(this).hasClass("j-form-table-split")) {
+					jQuery(this).children("td").each(function() {
+						jQuery(this).addClass("j-form-table-split-cell");
 					});
 					
 					return;
 				}
 				
-				$(this).children("td:even").each(function() {
-					$(this).addClass("j-form-table-body-td");
-					$(this).addClass("j-form-table-label-td");
+				jQuery(this).children("td:even").each(function() {
+					jQuery(this).addClass("j-form-table-body-td");
+					jQuery(this).addClass("j-form-table-label-td");
 				});
-				$(this).children("td:odd").each(function() {
-					$(this).addClass("j-form-table-body-td");
-					$(this).addClass("j-form-table-input-td");
+				jQuery(this).children("td:odd").each(function() {
+					jQuery(this).addClass("j-form-table-body-td");
+					jQuery(this).addClass("j-form-table-input-td");
 				});
-				$(this).children("td:last").addClass("j-form-table-label-td");
+				jQuery(this).children("td:last").addClass("j-form-table-label-td");
 				/*
-	            $(this).children("td").each(function(){
-	                $(this).addClass("j-form-table-body-td");
+	            jQuery(this).children("td").each(function(){
+	                jQuery(this).addClass("j-form-table-body-td");
 	                if (this.cellIndex % 2 == 0) {
-	                    $(this).addClass("j-form-table-label-td");
+	                    jQuery(this).addClass("j-form-table-label-td");
 	                }
 	                else {
-	                    $(this).addClass("j-form-table-input-td");
+	                    jQuery(this).addClass("j-form-table-input-td");
 	                }
 	            });
 	            */
@@ -290,8 +289,8 @@ var JFormTableRender = function(){
         var foot = table.children("tfoot").eq(0);
         if (foot.html()) {
 			foot.children("tr").each(function() {
-	            $(this).children("td").each(function(){
-	                $(this).addClass("j-form-table-foot-td");
+	            jQuery(this).children("td").each(function(){
+	                jQuery(this).addClass("j-form-table-foot-td");
 	            });
 			});
         }
@@ -311,12 +310,12 @@ var JFormRender = function(){
         }
         
         text.bind("focusin", function(){
-            $(this).addClass("j-form-text-focus");
+            jQuery(this).addClass("j-form-text-focus");
             return false;
         });
         
         text.bind("focusout", function(){
-            $(this).removeClass("j-form-text-focus");
+            jQuery(this).removeClass("j-form-text-focus");
             return false;
         });
     }
@@ -326,7 +325,7 @@ var JFormRender = function(){
         if (!select.hasClass("nofixed")) {
         	select.css("width",select.parent().width() - 8);
         	/*
-            var box = $("<div></div>");
+            var box = jQuery("<div></div>");
             box.addClass("j-form-select-box");
             box.css("width", select.parent().width() - 8);
             box.css("height", select.parent().height() + 2);
@@ -353,16 +352,16 @@ var JFormRender = function(){
             button.addClass("j-form-button-out");
             
             button.mouseout(function(){
-                $(this).attr("class", "j-form-button-out");
+                jQuery(this).attr("class", "j-form-button-out");
             });
             button.mouseover(function(){
-                $(this).attr("class", "j-form-button-over");
+                jQuery(this).attr("class", "j-form-button-over");
             });
             button.mousedown(function(){
-                $(this).attr("class", "j-form-button-down");
+                jQuery(this).attr("class", "j-form-button-down");
             });
             button.mouseup(function(){
-                $(this).attr("class", "j-form-button-up");
+                jQuery(this).attr("class", "j-form-button-up");
             });
         }
     }
@@ -370,11 +369,11 @@ var JFormRender = function(){
     var renderFile = function(file){
         // 如果设置了nofixed，则不进行渲染。
         if (!file.hasClass("nofixed")) {
-            var input = $("<input type='text'></input>");
+            var input = jQuery("<input type='text'></input>");
             renderText(input);
-            input.css("width", $(file).parent().width() - 88);
+            input.css("width", jQuery(file).parent().width() - 88);
             
-            var button = $("<input type='button'></input>");
+            var button = jQuery("<input type='button'></input>");
             button.val("选取文件");
             renderButton(button);
             
@@ -398,29 +397,29 @@ var JFormRender = function(){
     }
     
     this.render = function(form){
-        form = $(form);
+        form = jQuery(form);
         
         form.find(":input").each(function(){
             // 如果form设置为nofixed，则将其下所有元素设置为nofixed。
             if (form.hasClass("nofixed")) {
-                $(this).addClass("nofixed");
+                jQuery(this).addClass("nofixed");
             }
             if (this.type == "text" || this.type == "password" || this.type == "textarea") {
-                renderText($(this));
+                renderText(jQuery(this));
             }
             if (this.type == "select-one" || this.type == "select-multiple") {
-                renderSelect($(this));
+                renderSelect(jQuery(this));
             }
             if (this.type == "button" || this.type == "submit" || this.type == "reset") {
-                renderButton($(this));
+                renderButton(jQuery(this));
             }
             if (this.type == "file") {
-                renderFile($(this));
+                renderFile(jQuery(this));
             }
         });
         
         form.find("label").each(function(){
-            renderLabel($(this));
+            renderLabel(jQuery(this));
         });
     }
 }
@@ -436,7 +435,7 @@ var JGridRender = function(){
     var mousePosFixedWidth = 7;
     
     this.render = function(grid){
-        grid = $(grid);
+        grid = jQuery(grid);
         // 渲染放置数据的表格
         var bt = grid.children("table").eq(0);
         bt.addClass("j-grid-data-table");
@@ -444,26 +443,26 @@ var JGridRender = function(){
         bt.attr("cellpadding", 0);
         
         bt.children("tbody").each(function(){
-            $(this).children("tr").each(function(){
+            jQuery(this).children("tr").each(function(){
             	// 加入一列留空
-                $(this).append("<td></td>");
+                jQuery(this).append("<td></td>");
                 
                 // 处理分组行，只支持一个tbody一个分组
-                if ($(this).hasClass("j-grid-data-group")) {
-					$(this).children("td").each(function() {
-						$(this).addClass("j-grid-data-group-cell");
-						if(!$(this).html()) {
+                if (jQuery(this).hasClass("j-grid-data-group")) {
+					jQuery(this).children("td").each(function() {
+						jQuery(this).addClass("j-grid-data-group-cell");
+						if(!jQuery(this).html()) {
 	                    	// 如果单元格无内容，补上一个空格，避免出现边框样式问题
-	                    	$(this).html("&nbsp;");
+	                    	jQuery(this).html("&nbsp;");
 	                    }
 					});
                     // 这里只处理分组行的第一个单元格，要求分组行的单元格合并为一个
-                    var td = $(this).children("td").eq(0);
+                    var td = jQuery(this).children("td").eq(0);
                     //td.addClass("j-grid-data-group-cell");
                     // 设置打开和关闭的图标按钮
-                    var icon = $("<span class='j-grid-data-group-icon'></span>");
+                    var icon = jQuery("<span class='j-grid-data-group-icon'></span>");
                     icon.click(function(){
-                        var tr = $(this).parent().parent();
+                        var tr = jQuery(this).parent().parent();
                         if (tr.get(0).opened) {
                             tr.trigger("close");
                             icon.removeClass("j-grid-data-group-open");
@@ -477,38 +476,38 @@ var JGridRender = function(){
                     });
                     td.prepend(icon);
                     // 设置分组行的打开和关闭动作
-                    $(this).bind("open", function(){
+                    jQuery(this).bind("open", function(){
                         var rowIndex = this.rowIndex;
-                        var members = $(this).parent().children("tr").filter(function(){
+                        var members = jQuery(this).parent().children("tr").filter(function(){
                             return this.rowIndex > rowIndex;
                         });
                         members.each(function(){
-                            $(this).show();
+                            jQuery(this).show();
                         });
                         this.opened = true;
                         return false;
                     });
                     
-                    $(this).bind("close", function(){
+                    jQuery(this).bind("close", function(){
                         var rowIndex = this.rowIndex;
-                        var members = $(this).parent().children("tr").filter(function(){
+                        var members = jQuery(this).parent().children("tr").filter(function(){
                             return this.rowIndex > rowIndex;
                         });
                         members.each(function(){
-                            $(this).hide();
+                            jQuery(this).hide();
                         });
                         this.opened = false;
                         return false;
                     });
                     
                     // 初始化设置
-                    if ($(this).hasClass("opened")) {
+                    if (jQuery(this).hasClass("opened")) {
                         icon.addClass("j-grid-data-group-open");
-                        $(this).trigger("open");
+                        jQuery(this).trigger("open");
                     }
                     else {
                         icon.addClass("j-grid-data-group-close");
-                        $(this).trigger("close");
+                        jQuery(this).trigger("close");
                     }
                     
                     // 分组行处理完直接返回，不进行下面对非分组行的处理
@@ -516,36 +515,36 @@ var JGridRender = function(){
                 }
                 
                 // 处理非分组行
-                $(this).addClass("j-grid-data-row");
+                jQuery(this).addClass("j-grid-data-row");
                 // 设置隔行样式
                 if (this.rowIndex % 2 == 0) {
-                    $(this).addClass("j-grid-data-row-even");
+                    jQuery(this).addClass("j-grid-data-row-even");
                 }
                 else {
-                    $(this).addClass("j-grid-data-row-odd");
+                    jQuery(this).addClass("j-grid-data-row-odd");
                 }
                 // 设置鼠标移入、移出效果
-                $(this).hover(function(){
-                    $(this).addClass("j-grid-data-row-over");
+                jQuery(this).hover(function(){
+                    jQuery(this).addClass("j-grid-data-row-over");
                 }, function(){
-                    $(this).removeClass("j-grid-data-row-over");
+                    jQuery(this).removeClass("j-grid-data-row-over");
                 });
                 // 渲染单元格
-                $(this).children("td").each(function(){
-                    $(this).addClass("j-grid-data-cell");
-                    if($(this).html()) {
+                jQuery(this).children("td").each(function(){
+                    jQuery(this).addClass("j-grid-data-cell");
+                    if(jQuery(this).html()) {
                     	// 如果单元格有内容，则加入文本层，用于处理文字超长溢出以省略号显示
-                        $(this).wrapInner("<span class='j-grid-data-text'></span>");
+                        jQuery(this).wrapInner("<span class='j-grid-data-text'></span>");
                     } else {
                     	// 如果单元格无内容，补上一个空格，避免出现边框样式问题
-                    	$(this).html("&nbsp;");
+                    	jQuery(this).html("&nbsp;");
                     }
                 });
             });
         });
         // 定义修正单元格宽度的方法
         bt.bind("fixedThWidth", function(event, cellIndex, width){
-            $(this).find("th").each(function(){
+            jQuery(this).find("th").each(function(){
                 if (width < headMinWidth) {
                     width = headMinWidth;
                 }
@@ -557,7 +556,7 @@ var JGridRender = function(){
         });
         
         // 渲染放置表头的表格
-        var ht = $("<table onselectstart='return false;'></table>");
+        var ht = jQuery("<table onselectstart='return false;'></table>");
         ht.addClass("j-grid-head-table");
         ht.attr("cellspacing", 0);
         ht.attr("cellpadding", 0);
@@ -572,42 +571,42 @@ var JGridRender = function(){
         btHead.addClass("j-grid-data-head");
         
         ht.find("th").each(function(){
-            $(this).addClass("j-grid-head-cell");
+            jQuery(this).addClass("j-grid-head-cell");
             // 加入文本层，用于处理文字超长溢出以省略号显示
-            $(this).wrapInner("<span class='j-grid-head-text'></span>");
+            jQuery(this).wrapInner("<span class='j-grid-head-text'></span>");
             // 根据列头修正数据单元格宽度，最后一列是留空的，不需要进行修正
-            if (this.cellIndex < $(this).parent().children().size() - 1) {
+            if (this.cellIndex < jQuery(this).parent().children().size() - 1) {
                 bt.trigger("fixedThWidth", [this.cellIndex, this.width]);
             }
             // 创建列头的拉动条浮标
             if (this.width) {
-                var resize = $("<div class='j-grid-head-resize'></div>");
+                var resize = jQuery("<div class='j-grid-head-resize'></div>");
                 resize.mousedown(function(event){
                     proxy.get(0).resize = this;
                     proxy.trigger("open", event);
                     
                 });
-                $(this).append(resize);
+                jQuery(this).append(resize);
             }
             // 设置列头的鼠标移入、移出效果
-            $(this).hover(function(){
+            jQuery(this).hover(function(){
                 // 没有进行拖动的时候设置该效果，拖动时不设置此效果以防闪烁
                 if (grid.children(".j-grid-head-proxy").css("display") == "none") {
-                    $(this).addClass("j-grid-head-cell-over");
+                    jQuery(this).addClass("j-grid-head-cell-over");
                 }
             }, function(){
-                $(this).removeClass("j-grid-head-cell-over");
+                jQuery(this).removeClass("j-grid-head-cell-over");
             });
         });
         
         // 定义修正列头宽度的方法
         ht.bind("fixedThWidth", function(event, cellIndex, width){
-            $(this).find("th").each(function(){
+            jQuery(this).find("th").each(function(){
                 if (width < headMinWidth) {
                     width = headMinWidth;
                 }
-                if ($(this).attr("cellIndex") == cellIndex) {
-                    $(this).attr("width", width);
+                if (jQuery(this).attr("cellIndex") == cellIndex) {
+                    jQuery(this).attr("width", width);
                 }
             });
             // 修正列头宽度的同时修正数据单元格的宽度
@@ -629,18 +628,18 @@ var JGridRender = function(){
         });
         
         // 创建拖动列头使用的游标
-        var proxy = $("<div class='j-grid-head-proxy'></div>");
+        var proxy = jQuery("<div class='j-grid-head-proxy'></div>");
         proxy.bind("open", function(){
             this.proxyX = window.event.clientX;
-            $(this).css("left", window.event.clientX - grid.get(0).offsetLeft + offsetLeftFixedWidth - mousePosFixedWidth);
-            $(this).show();
+            jQuery(this).css("left", window.event.clientX - grid.get(0).offsetLeft + offsetLeftFixedWidth - mousePosFixedWidth);
+            jQuery(this).show();
             return false;
         });
         
         proxy.bind("close", function(event){
             this.resize = undefined;
             this.proxyX = 0;
-            $(this).hide();
+            jQuery(this).hide();
             return false;
         });
         grid.append(proxy);
@@ -680,7 +679,7 @@ var JMenuRender = function() {
         li.addClass("j-menu-list-item");
         var a = li.children("a").eq(0);
         a.addClass("j-menu-item");
-        var icon = $("<span></span>");
+        var icon = jQuery("<span></span>");
         icon.addClass("j-menu-item-icon");
         if (li.attr("icon")) {
             icon.addClass(li.attr("icon"));
@@ -697,38 +696,38 @@ var JMenuRender = function() {
                 return;
             }
             
-            $(this).addClass("j-menu-item-active");
+            jQuery(this).addClass("j-menu-item-active");
             
             if (childMenu) {
-                $(childMenu).trigger("open", "right");
+                jQuery(childMenu).trigger("open", "right");
             }
             if (this.menu.active && this.menu.active != this) {
-                $(this.menu.active).trigger("reset");
+                jQuery(this.menu.active).trigger("reset");
             }
             this.menu.active = this;
             return false;
         });
         
         li.bind("reset", function(){
-            $(this).removeClass("j-menu-item-active");
+            jQuery(this).removeClass("j-menu-item-active");
             if (childMenu) {
-                $(childMenu).trigger("reset");
+                jQuery(childMenu).trigger("reset");
             }
             return false;
         });
         
         li.hover(function(){
-            $(this).trigger("active");
+            jQuery(this).trigger("active");
         }, function(){
             if (!childMenu) {
                 this.menu.active = null;
-                $(this).trigger("reset");
+                jQuery(this).trigger("reset");
             }
         });
     }
     
     this.render = function(menu){
-        menu = $(menu);
+        menu = jQuery(menu);
         
         // 如果菜单的display属性不是none，则该菜单将直接显示并且不会被关闭
         if (menu.css("display") != "none") {
@@ -738,31 +737,31 @@ var JMenuRender = function() {
         var ul = menu.children("ul").eq(0);
         ul.children("li").each(function(){
             this.menu = menu;
-            renderLi($(this));
+            renderLi(jQuery(this));
         });
         
         menu.bind("open", function(event, model){
-            var parentTop = $(this).parent().offset().top;
-            var parentLeft = $(this).parent().offset().left;
-            var parentWidth = $(this).parent().width();
-            var parentHeight = $(this).parent().height();
+            var parentTop = jQuery(this).parent().offset().top;
+            var parentLeft = jQuery(this).parent().offset().left;
+            var parentWidth = jQuery(this).parent().width();
+            var parentHeight = jQuery(this).parent().height();
 			
 			// 将event转成IE的event
 			event = window.event;
 			
             // 在父元素的右边展开
             if (model == "right") {
-                if (parentTop + $(this).height() > document.body.scrollHeight) {
-                    $(this).css("top", -($(this).height() - parentHeight));
+                if (parentTop + jQuery(this).height() > document.body.scrollHeight) {
+                    jQuery(this).css("top", -(jQuery(this).height() - parentHeight));
                 }
                 else {
-                    $(this).css("top", 0);
+                    jQuery(this).css("top", 0);
                 }
-                if (parentLeft + parentWidth + $(this).width() > document.body.scrollWidth) {
-                    $(this).css("left", -$(this).width());
+                if (parentLeft + parentWidth + jQuery(this).width() > document.body.scrollWidth) {
+                    jQuery(this).css("left", -jQuery(this).width());
                 }
                 else {
-                    $(this).css("left", parentWidth);
+                    jQuery(this).css("left", parentWidth);
                 }
             }
 			// 鼠标点击在父元素上的位置展开（要求父元素的position样式为relative或absolute）
@@ -770,17 +769,17 @@ var JMenuRender = function() {
                 var x = window.event.offsetX;
                 var y = window.event.offsetY;
 				
-                if (parentTop + y + $(this).height() > document.body.scrollHeight) {
-                    $(this).css("top", y - $(this).height());
+                if (parentTop + y + jQuery(this).height() > document.body.scrollHeight) {
+                    jQuery(this).css("top", y - jQuery(this).height());
                 }
                 else {
-                    $(this).css("top", y);
+                    jQuery(this).css("top", y);
                 }
-                if (parentLeft + x + $(this).width() > document.body.scrollWidth) {
-                    $(this).css("left", x - $(this).width());
+                if (parentLeft + x + jQuery(this).width() > document.body.scrollWidth) {
+                    jQuery(this).css("left", x - jQuery(this).width());
                 }
                 else {
-                    $(this).css("left", x);
+                    jQuery(this).css("left", x);
                 }
             }
 			// 鼠标点击在文档的位置展开
@@ -788,21 +787,21 @@ var JMenuRender = function() {
                 var x = window.event.clientX;
                 var y = window.event.clientY;
 				
-                if (y + $(this).height() > document.documentElement.clientHeight) {
-                    $(this).css("top", y - $(this).height());
+                if (y + jQuery(this).height() > document.documentElement.clientHeight) {
+                    jQuery(this).css("top", y - jQuery(this).height());
                 }
                 else {
-                    $(this).css("top", y);
+                    jQuery(this).css("top", y);
                 }
-                if (x + $(this).width() > document.documentElement.clientWidth) {
-                    $(this).css("left", x - $(this).width());
+                if (x + jQuery(this).width() > document.documentElement.clientWidth) {
+                    jQuery(this).css("left", x - jQuery(this).width());
                 }
                 else {
-                    $(this).css("left", x);
+                    jQuery(this).css("left", x);
                 }
             }
             
-            $(this).show("fast");
+            jQuery(this).show("fast");
             return false;
         });
         
@@ -813,8 +812,8 @@ var JMenuRender = function() {
 			// 遍历调用每个菜单项元素的重置方法
             ul.children("li").each(function(){
 				// 跳过是分割符的菜单项
-                if ($(this).html()) {
-                    $(this).trigger("reset");
+                if (jQuery(this).html()) {
+                    jQuery(this).trigger("reset");
                 }
             });
 			// 对于opened属性为true（在页面元素设置了display: block样式）的菜单是永远不会被关闭的
@@ -825,7 +824,7 @@ var JMenuRender = function() {
         });
         
 		// 点击文档时将所有菜单重置
-        $(document.body).click(function(){
+        jQuery(document.body).click(function(){
             menu.trigger("reset");
         });
     }
@@ -835,27 +834,27 @@ var JMenuRender = function() {
  */
 var JOutlookMenuRender = function(){
     this.render = function(menu){
-        menu = $(menu);
+        menu = jQuery(menu);
         var ul = menu.children("ul").eq(0);
         var itemHeight = 23;
         var itemCount = ul.children("li").size();
         ul.children("li").each(function(){
-            $(this).addClass("j-outlook-menu-list-item");
+            jQuery(this).addClass("j-outlook-menu-list-item");
             
-            var a = $(this).children("a").eq(0);
+            var a = jQuery(this).children("a").eq(0);
             a.addClass("j-outlook-menu-item");
             
-            var icon = $("<span></span>");
+            var icon = jQuery("<span></span>");
             icon.addClass("j-outlook-menu-item-icon");
-            if ($(this).attr("icon")) {
-                icon.addClass($(this).attr("icon"));
+            if (jQuery(this).attr("icon")) {
+                icon.addClass(jQuery(this).attr("icon"));
             }
             
             a.prepend(icon);
             
-            var childMenu = $(this).children(".j-menu").eq(0);
+            var childMenu = jQuery(this).children(".j-menu").eq(0);
             
-            var childMenuBox = $("<div></div>");
+            var childMenuBox = jQuery("<div></div>");
             childMenuBox.addClass("j-outlook-child-menu-box");
             childMenuBox.css("height", menu.height() - itemCount * itemHeight);
             
@@ -898,7 +897,7 @@ var JOutlookMenuRender = function(){
  */
 var JTreeRender = function(){
     this.render = function(tree){
-        tree = $(tree);
+        tree = jQuery(tree);
         
         if (tree.attr("level") == undefined) {
             tree.attr("level", 0);
@@ -915,10 +914,10 @@ var JTreeRender = function(){
         var ul = tree.children("ul").eq(0);
         ul.children("li").each(function(){
             //避免重复渲染
-            if($(this).attr("rendered"))
+            if(jQuery(this).attr("rendered"))
               return true;
-            $(this).attr("rendered","1");
-            $(this).addClass("j-tree-node");
+            jQuery(this).attr("rendered","1");
+            jQuery(this).addClass("j-tree-node");
             this.tree = tree.get(0);
             
             if (this.opened == undefined || this.opened == "false") {
@@ -928,23 +927,23 @@ var JTreeRender = function(){
                 this.opened = true;
             }
             
-            var a = $(this).children("a").eq(0);
-            var nodeIcon = $("<span></span>");
+            var a = jQuery(this).children("a").eq(0);
+            var nodeIcon = jQuery("<span></span>");
             nodeIcon.addClass("j-tree-node-icon");
-            if ($(this).attr("icon")) {
-                nodeIcon.addClass($(this).attr("icon"));
+            if (jQuery(this).attr("icon")) {
+                nodeIcon.addClass(jQuery(this).attr("icon"));
             }
             a.prepend(nodeIcon);
             
             a.click(function() {
             	if(tree.get(0).getTopTree().selected) {
-            		$(tree.get(0).getTopTree().selected).removeClass("j-tree-node-selected");
+            		jQuery(tree.get(0).getTopTree().selected).removeClass("j-tree-node-selected");
             	}
-            	$(this).addClass("j-tree-node-selected");
+            	jQuery(this).addClass("j-tree-node-selected");
             	tree.get(0).getTopTree().selected = this;
             });
             
-            var foldIcon = $("<span></span>");
+            var foldIcon = jQuery("<span></span>");
             foldIcon.addClass("j-tree-node-fold j-tree-icon");
             if (this.leaf) {
                 foldIcon.css("background", "");
@@ -963,9 +962,9 @@ var JTreeRender = function(){
                 }
             });
             
-            $(this).prepend(foldIcon);
+            jQuery(this).prepend(foldIcon);
             
-            var childTree = $(this).children(".j-tree").get(0);
+            var childTree = jQuery(this).children(".j-tree").get(0);
             
             if (childTree) {
                 childTree.parentLi = this;
@@ -973,14 +972,14 @@ var JTreeRender = function(){
             }
             
             a.hover(function(){
-                $(this).addClass("j-tree-node-over");
+                jQuery(this).addClass("j-tree-node-over");
             }, function(){
-                $(this).removeClass("j-tree-node-over");
+                jQuery(this).removeClass("j-tree-node-over");
             });
             
             this.open = function(){
                 if (childTree) {
-                    $(childTree).show();
+                    jQuery(childTree).show();
                 }
                 this.opened = true;
                 foldIcon.removeClass("j-tree-elbow-end-plus-nl");
@@ -991,7 +990,7 @@ var JTreeRender = function(){
             }
             this.close = function(){
                 if (childTree) {
-                    $(childTree).hide();
+                    jQuery(childTree).hide();
                 }
                 this.opened = false;
                 foldIcon.removeClass("j-tree-elbow-end-minus-nl");
@@ -1014,7 +1013,7 @@ var JTreeRender = function(){
 
 var JSearchRender = function() {
 	this.render = function(search){
-		search = $(search);
+		search = jQuery(search);
 		search.hide();
 	}
 }
@@ -1049,7 +1048,7 @@ var JRenderManager = function(){
     
     this.getRender = function(el){
         for (var i = 0; i < this.renders.length; i++) {
-            if ($(el).hasClass(this.renders[i].name)) {
+            if (jQuery(el).hasClass(this.renders[i].name)) {
                 return this.renders[i].instance;
             }
         }
@@ -1059,12 +1058,12 @@ var JRenderManager = function(){
 renderManager = new JRenderManager();
 
 function renderAll(){
-    $("form,div,span,table").each(function(){
+    jQuery("form,div,span,table").each(function(){
         renderManager.render(this);
     });
 }
 
-$(document).ready(function(){
+jQuery(document).ready(function(){
     renderAll();
 });
 
@@ -1078,21 +1077,21 @@ var JWindow = function(){
     this.fixedHeight = 33;
     
     var createWindow = function(){
-        var wd = $("<div></div>");
+        var wd = jQuery("<div></div>");
         wd.addClass("j-window");
-        //wd.width($(document).width());
-        //wd.height($(document).height());
+        //wd.width(jQuery(document).width());
+        //wd.height(jQuery(document).height());
         
-        var frame = $("<iframe frameborder='no' scrolling='no' class='j-window-frame'></iframe>");
+        var frame = jQuery("<iframe frameborder='no' scrolling='no' class='j-window-frame'></iframe>");
         wd.append(frame);
         
-        var box = $("<div></div>");
+        var box = jQuery("<div></div>");
         box.addClass("j-window-box");
         wd.append(box);
         
-        var head = $("<div class='j-window-tl'><div class='j-window-tr'><div class='j-window-tc'></div></div></div>");
-        var text = $("<div class='j-panel-text'></div>");
-        var tcBar = $("<div class='j-panel-toolbar'><ul><li icon='j-win-icon j-win-close'><a></a></li></ul></div>");
+        var head = jQuery("<div class='j-window-tl'><div class='j-window-tr'><div class='j-window-tc'></div></div></div>");
+        var text = jQuery("<div class='j-panel-text'></div>");
+        var tcBar = jQuery("<div class='j-panel-toolbar'><ul><li icon='j-win-icon j-win-close'><a></a></li></ul></div>");
         
         tcBar.find("a").eq(0).click(function(){
             wd.trigger("close");
@@ -1106,7 +1105,7 @@ var JWindow = function(){
         });
         box.append(head);
         
-        var body = $("<div class='j-window-ml'><div class='j-window-mr'><div class='j-window-mc'></div></div></div>");
+        var body = jQuery("<div class='j-window-ml'><div class='j-window-mr'><div class='j-window-mc'></div></div></div>");
         wd.bind("content", function(event, content){
             var mc = body.find(".j-window-mc").eq(0);
             mc.empty();
@@ -1115,7 +1114,7 @@ var JWindow = function(){
         });
         box.append(body);
         
-        var foot = $("<div class='j-window-bl'><div class='j-window-br'><div class='j-window-bc'></div></div></div>");
+        var foot = jQuery("<div class='j-window-bl'><div class='j-window-br'><div class='j-window-bc'></div></div></div>");
         box.append(foot);
         
         wd.bind("position", function(event, width, height){
@@ -1131,12 +1130,12 @@ var JWindow = function(){
         });
         
         wd.bind("close", function(){
-            $(this).hide("fast");
+            jQuery(this).hide("fast");
             return false;
         });
         
         wd.bind("open", function(){
-        	$(this).show("fast");
+        	jQuery(this).show("fast");
         	return false;
         });
         
@@ -1152,14 +1151,14 @@ var JWindow = function(){
             height = this.defaultWindowHeight;
         }
         
-        var wd = $("#j-window");
+        var wd = jQuery("#j-window");
         if (!wd.html()) {
             wd = createWindow();
             wd.attr("id", "j-window");
-            $(document.body).append(wd);
+            jQuery(document.body).append(wd);
         }
         
-        var content = $("<iframe frameborder='0' scrolling='no' src='" + url + "'></iframe>");
+        var content = jQuery("<iframe frameborder='0' scrolling='no' src='" + url + "'></iframe>");
         content.width(width - this.fixedWidth);
         content.height(height - this.fixedHeight);
         content.get(0).wd = wd;
@@ -1170,9 +1169,9 @@ var JWindow = function(){
     }
     
     this.openDiv = function(contentId){
-        var wd = $("#" + contentId + "-window");
+        var wd = jQuery("#" + contentId + "-window");
         if (!wd.html()) {
-            var content = $("#" + contentId);
+            var content = jQuery("#" + contentId);
             content.show();
             
             wd = createWindow();
@@ -1183,7 +1182,7 @@ var JWindow = function(){
             if(form.html()) {
             	form.append(wd);
             } else {
-            	$(document.body).append(wd);
+            	jQuery(document.body).append(wd);
             }
             
             if (content.attr("caption")) {
@@ -1216,9 +1215,8 @@ function newDiv(contentId){
 }
 
 function closeDiv(contentId){
-    var wd = $("#" + contentId + "-window");
+    var wd = jQuery("#" + contentId + "-window");
     if (wd.html()) {
         wd.trigger("close");
     }
 }
-})(jQuery);

@@ -1,14 +1,13 @@
 page.replace_html 'formin', "<div id='flash-notice'>#{flash[:notice]}</div>"
 page.show 'formin'
 
-html = radio_button_tag 'event[person_id]', @person.id, true
-html += label_tag "event_person_id_#{@person.id}", @person.name, :title => @person.to_s, :id => "person_label_#{@person.id}"
-html += "(#{link_to('改', edit_person_path(@person), :rel => :facebox)})"
-page.insert_html :before, 'add_person_btn', "#{html}\n"
-
-page << "j('#person_label_#{@person.id}').click();" 
-page << "j('a[rel*=facebox]').facebox();" 
+html = render(:partial => "people/link", :locals => { :p => @person, :selected => true })
+page << "window.parent.j('#add_person_btn').before(\"#{escape_javascript(html)}\\n\");"
 
 page.delay(1) do
-  page<<"j.facebox.close();"
+  page << "window.parent.j('#person_td :radio').attr('checked','').attr('disabled','disabled');" 
+  page << "window.parent.j('#event_person_id_#{@person.id}').attr('disabled','').click();" 
+  #一个事件只关联一个联系人，因此不能增加多个联系人
+  page << "window.parent.j('#add_person_btn').hide();" 
+  page<<"closeWindow();"
 end
