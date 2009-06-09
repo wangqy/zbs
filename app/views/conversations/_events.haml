@@ -1,8 +1,8 @@
-%ul#shared-ticket-bins.stacked.wbadges.sortable
+%ul.list
   -conversation.events.each do |event|
-    %li.bin.shared
+    %li
       %a
-        %span.badge{:title=>event.created_at.to_s(:with_year)}=event.created_at.to_s(:only_date)
+        %span{:title=>event.created_at.to_s(:with_year)}=event.created_at.to_s(:only_date)
         -if event.is_in?
           %span=event.person.name
         -else
