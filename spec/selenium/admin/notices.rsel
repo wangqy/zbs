@@ -20,29 +20,35 @@ type 'password', 'admin'
 click_and_wait 'commit'
 
 #新增一条发布的公告
-click_and_wait "//li[@id='notices-menu']/a"
+select_frame "headFrame"
+click "link=公告管理"
+
+select_frame "relative=parent"
+select_frame "mainFrame"
+#点击按钮
+wait_for_element_present "//div[@id='content-container']/div[3]/div[3]/div/ul/li/a/span/span/span/span"
+click_and_wait "//div[@id='content-container']/div[3]/div[3]/div/ul/li/a/span/span/span/span"
+
 type 'notice_title', 'selenium公告1'
 type 'notice_content', 'selenium公告内容1'
 check 'notice_deployed'
-click_and_wait "//input[@value='保存,返回列表']"
+click_and_wait "commit"
 
 #新增一条未发布的公告
-click_and_wait "//li[@id='notices-menu']/a"
+click_and_wait "//div[@id='content-container']/div[3]/div[3]/div/ul/li/a/span/span/span/span"
 type 'notice_title', 'selenium公告2'
 type 'notice_content', 'selenium公告内容2'
-click_and_wait "//input[@value='保存,返回列表']"
+click_and_wait "commit"
 
-#查询未发布的公告
-click_and_wait "//a[@href='/notices']"
+#查询
 type 'notice_title', 'selenium'
-select 'notice_deployed', label='否'
-click_and_wait "//input[@value='查询']"
+click_and_wait "search"
 
 #编辑
 click_and_wait "//a[contains(@href,'edit')]"
-click_and_wait "//input[@value='保存,返回列表']"
+click_and_wait "commit"
 
 #查看
-click_and_wait "link=查看"
-click_and_wait "//input[contains(@value, '返回')]"
+click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[2]/table/tbody/tr[1]/td[6]/span/a[1]"
+click_and_wait "//div[@id='content-container']/div[3]/div[3]/div/ul/li/a/span/span/span/span/span"
 

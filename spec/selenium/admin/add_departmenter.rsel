@@ -1,9 +1,19 @@
 setup :fixtures => :users
+
 open "/logout"
 type "login", "cogentsoft"
 type "password", "admin"
 click_and_wait "save"
-click_and_wait "//li[@id='users-menu']/a"
+
+select_frame "headFrame"
+click "link=用户管理"
+
+select_frame "relative=parent"
+select_frame "mainFrame"
+#点击按钮
+wait_for_element_present "//div[@id='content-container']/div[3]/div[3]/div/ul/li/a/span/span/span/span"
+click_and_wait "//div[@id='content-container']/div[3]/div[3]/div/ul/li/a/span/span/span/span"
+
 type "user_login", "depart1"
 type "user_password", "test"
 type "user_realname", "张昭"
@@ -14,6 +24,6 @@ type "user_mobile", "13988889999"
 type "user_position", "名士"
 type "user_email", "depart@cogentsoft.com.cn"
 type "user_remark", "负责处理事件"
-click "//div[@id='mainbar']/div/fieldset/form/table/tbody/tr[7]/td"
+
 click_and_wait "commit"
 verify_text_present "新增用户成功"

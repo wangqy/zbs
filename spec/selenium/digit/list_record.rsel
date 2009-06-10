@@ -1,7 +1,13 @@
 setup :fixtures => :records
 include_partial 'admin/login', :login => 'aaron'
-click_and_wait "link=录音记录"
+select_frame "headFrame"
+click "link=录音记录"
+
+select_frame "relative=parent"
+select_frame "mainFrame"
+
+wait_for_element_present "record_dail"
 type "record_dail", "1398888"
-click_and_wait "commit"
+click_and_wait "search"
 verify_text_present "来电"
 verify_text_present "13988889999"

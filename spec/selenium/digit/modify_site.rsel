@@ -1,6 +1,19 @@
 include_partial 'admin/login', :login => 'aaron'
+
+select_frame "footFrame"
 click "link=设置"
+
+select_frame "relative=parent"
+select_frame "mainFrame"
+
 wait_for_element_present "user_site"
-type "user_site", "802"
-click_and_wait "save"
-verify_text_present "坐席号:802"
+type "user_site", "803"
+#保存按钮
+click_and_wait "//div[@id='content-container']/form/div[3]/div[3]/div/ul/li/a/span/span/span/span/span"
+
+select_frame "mainFrame"
+wait_for_text_present "修改用户坐席号成功"
+
+select_frame "relative=parent"
+select_frame "footFrame"
+wait_for_text_present "坐席号:803"

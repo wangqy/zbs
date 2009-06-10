@@ -1,20 +1,33 @@
 #添加往来记录
 open "/logout"
 include_partial 'admin/login', :login => 'aaron'
-click_and_wait "link=受理事件"
+
+select_frame "headFrame"
+click "link=受理事件"
+
+select_frame "relative=parent"
+select_frame "mainFrame"
+
+wait_for_element_present "phone"
 type "phone", "13988889999"
-click_and_wait "commit"
-click_and_wait "link=关联此事件"
+click_and_wait "search"
+
+#关联
+click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr[1]/td[4]/a"
 click "link=改"
 wait_for_element_present "person_name"
 type "person_name", "马波波"
-click "save"
+#保存
+click "//form[@id='formin']/div[3]/div[2]/div/ul/li[1]/a/span/span/span/span/span"
+
 wait_for_text_present "马波波"
 click "add_person_btn"
 wait_for_element_present "person_name"
 type "person_name", "李先生"
 type "person_phone", "3324768"
-click "save"
+click "//form[@id='formin']/div[2]/div[2]/div/ul/li[1]/a/span/span/span/span/span"
+
+#保存新联系人
 wait_for_text_present "李先生"
 click_and_wait "commit"
 verify_text_present "保存成功"

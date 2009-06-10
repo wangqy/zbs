@@ -6,5 +6,8 @@ click "link=新增分类"
 wait_for_element_present "kind_name"
 type "kind_name", "刚加的事件分类"
 type "kind_days", "30"
-click "save"
+#保存按钮
+click "//form[@id='formin']/div[2]/div[2]/div/ul/li[1]/a/span/span/span/span"
+
+select_frame "mainFrame"
 wait_for_text_present "刚加的事件分类"

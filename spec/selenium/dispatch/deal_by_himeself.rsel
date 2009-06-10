@@ -1,21 +1,38 @@
+setup :fixtures => [:conversations, :events, :people, :duties, :workitems, :histories]
 include_partial 'admin/login', :login => 'dispatcher'
-click_and_wait "link=事件调度"
-click_and_wait "link=办理"
+
+include_partial 'select', :menu => '事件调度'
+
+#办理按钮
+click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr[1]/td[5]/span/a[1]"
 click "history_handle_20"
 type "history_reason", "我来办理"
-click_and_wait "commit"
+#提交按钮
+click_and_wait "//div[@id='content-container']/form/div[3]/div[3]/div/ul/li[1]/a/span/span/span/span"
+
 verify_text_present "办理成功."
-click_and_wait "link=待办事项"
-click_and_wait "link=处理"
+
+#转待办事项办理
+select_frame "relative=parent"
+include_partial 'select', :menu => '待办事项'
+
+#办理按钮
+wait_for_element_present "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr/td[6]/span/a[1]"
+click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr/td[6]/span/a[1]"
+
 click "history_handle_30"
 select "history_department_id", "label=教育局"
 wait_for_text_present "调度员"
 select "history_user_id", "label=调度员"
 type "history_reason", "可以办结了"
-click_and_wait "commit"
+#提交按钮
+click_and_wait "//div[@id='content-container']/form/div[4]/div[3]/div/ul/li[1]/a/span/span/span/span/span"
+
 verify_text_present "待办事项处理成功"
-click_and_wait "link=处理"
+#办理按钮
+click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr/td[6]/span/a[1]"
 click "history_handle_91"
 type "history_reason", "处理方式妥当,可以办结"
-click_and_wait "commit"
+#提交按钮
+click_and_wait "//div[@id='content-container']/form/div[4]/div[3]/div/ul/li[1]/a/span/span/span/span/span"
 verify_text_present "待办事项处理成功"

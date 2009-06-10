@@ -1,12 +1,33 @@
 setup :fixtures => [:conversations, :events]
 include_partial 'admin/login', :login => 'dispatcher'
-click_and_wait "link=事件调度"
-click_and_wait "//div[@id='main-content']/div/table/tbody/tr[2]/td[5]/a[2]"
+
+select_frame "headFrame"
+click "link=事件调度"
+
+select_frame "relative=parent"
+select_frame "mainFrame"
+
+#关联链接
+wait_for_element_present "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr[2]/td[5]/span/a[2]"
+click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr[2]/td[5]/span/a[2]"
 type "event_content", "已经答复"
-click_and_wait "commit"
-verify_text_present "保存成功."
+#保存按钮
+click_and_wait "//form[@id='new_event']/div[3]/div[3]/div/ul/li[1]/a/span/span/span/span/span"
+wait_for_text_present "保存成功."
+
+select_frame "relative=parent"
 include_partial 'admin/login', :login => 'depart'
-click_and_wait "//div[@id='main-content']/div/table/tbody/tr[2]/td[6]/a[2]"
+
+
+select_frame "headFrame"
+click "link=事件调度"
+
+select_frame "relative=parent"
+select_frame "mainFrame"
+
+#关联链接
+wait_for_element_present "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr[2]/td[5]/span/a[2]"
+click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr[2]/td[5]/span/a[2]"
 type "event_content", "再次答复对方"
-click_and_wait "commit"
-verify_text_present "保存成功."
+click_and_wait "//form[@id='new_event']/div[3]/div[3]/div/ul/li[1]/a/span/span/span/span/span"
+wait_for_text_present "保存成功."

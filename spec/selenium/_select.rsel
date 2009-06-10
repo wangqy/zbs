@@ -1,0 +1,7 @@
+select_frame "headFrame"
+click "link=#{menu}"
+
+select_frame "relative=parent"
+select_frame "mainFrame"
+
+wait_for_element_present "content-container"

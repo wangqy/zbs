@@ -39,6 +39,7 @@
     .j-toolbar
       %ul
         %li{:icon=>"j-icon i-save"}
+          =submit_tag "保存", :class=> "hide"
           =link_to_function "保存", "j('.j-form').trigger('onsubmit');"
 
 -if @department.parent

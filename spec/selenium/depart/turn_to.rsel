@@ -1,34 +1,55 @@
-setup :fixtures => [:events, :conversations]
+setup :fixtures => [:conversations, :events, :people, :duties, :workitems, :histories]
 include_partial 'digit/add_conversation'
+
+select_frame "relative=parent"
 include_partial 'admin/login', :login => 'dispatcher'
-click_and_wait "link=事件调度"
-click_and_wait "//div[@id='main-content']/div/table/tbody/tr[2]/td[5]/a"
+
+include_partial 'select', :menu => '事件调度'
+
+#办理按钮
+click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr[1]/td[5]/span/a[1]"
 click "history_handle_10"
 type "history_reason", "转你处办理"
 select "history_department_id", "label=劳动局"
 wait_for_text_present "机构人员"
 select "history_user_id", "label=机构人员"
-click_and_wait "commit"
+#提交按钮
+click_and_wait "//div[@id='content-container']/form/div[3]/div[3]/div/ul/li[1]/a/span/span/span/span"
 verify_text_present "办理成功."
+
+#转办人处理待办事项
+select_frame "relative=parent"
 include_partial 'admin/login', :login => 'depart'
-click_and_wait "link=待办事项"
-click_and_wait "link=处理"
+#转待办事项办理
+include_partial 'select', :menu => '待办事项'
+
+#处理按钮
+click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr[3]/td[6]/span/a[1]"
 click "history_handle_21"
 type "history_reason", "我来办理"
-click_and_wait "commit"
+#提交按钮
+click_and_wait "//div[@id='content-container']/form/div[4]/div[3]/div/ul/li[1]/a/span/span/span/span/span"
 verify_text_present "待办事项处理成功"
-verify_text "//div[@id='main-content']/div/table/tbody/tr[2]/td[5]", "已受理"
-click_and_wait "link=处理"
+
+#状态
+verify_text "//div[@id='content-container']/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[3]/td[5]/span", "已受理"
+#处理按钮
+click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr[3]/td[6]/span/a[1]"
 type "history_reason", "办理妥当,可以办结"
 click "history_handle_30"
 select "history_department_id", "label=劳动局"
 wait_for_text_present "机构人员"
 select "history_user_id", "label=机构人员"
-click_and_wait "commit"
+#提交按钮
+click_and_wait "//div[@id='content-container']/form/div[4]/div[3]/div/ul/li[1]/a/span/span/span/span/span"
 verify_text "flash-notice", "待办事项处理成功"
-verify_text "//div[@id='main-content']/div/table/tbody/tr[2]/td[5]", "待审核"
-click_and_wait "link=处理"
+
+#状态
+verify_text "//div[@id='content-container']/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[3]/td[5]/span", "待审核"
+#处理按钮
+click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr[3]/td[6]/span/a[1]"
 type "history_reason", "同意办结"
 click "history_handle_91"
-click_and_wait "commit"
+#提交按钮
+click_and_wait "//div[@id='content-container']/form/div[4]/div[3]/div/ul/li[1]/a/span/span/span/span/span"
 verify_text "flash-notice", "待办事项处理成功"

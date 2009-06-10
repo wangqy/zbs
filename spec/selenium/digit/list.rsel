@@ -1,10 +1,19 @@
 include_partial 'admin/login', :login => 'aaron'
-click_and_wait "link=事件记录"
+
+select_frame "headFrame"
+click "link=事件记录"
+
+select_frame "relative=parent"
+select_frame "mainFrame"
+
+wait_for_element_present "phone"
 type "phone", "13988889999"
 click_and_wait "commit"
+
 verify_text_present "马先生投诉"
-click_and_wait "link=查看"
+#查看按钮
+click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr/td[5]/span/a"
+
 verify_text_present "马先生投诉"
-verify_text_present "编号:深电2009032300099"
+verify_text_present "深电2009032300099"
 verify_text_present "(劳动局)阿郎"
-click_and_wait "link=返回"

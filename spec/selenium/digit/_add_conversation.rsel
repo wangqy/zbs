@@ -1,8 +1,17 @@
 include_partial 'admin/login', :login => 'aaron'
-click_and_wait "link=受理事件"
+
+select_frame "headFrame"
+click "link=受理事件"
+
+select_frame "relative=parent"
+select_frame "mainFrame"
+
+wait_for_element_present "phone"
 type "phone", "13988998899"
-click_and_wait "commit"
-click_and_wait "link=增加新事件"
+click_and_wait "search"
+
+#增加新事件
+click_and_wait "//div[@id='content-container']/div[3]/div[3]/div/ul/li/a/span/span/span/span/span"
 click "event_category_2"
 type "person_name", "刘胡兰"
 type "conversation_title", "投诉商场给假货"
@@ -11,4 +20,5 @@ type "person_cardno", "441521198305120808"
 click "person_sex_1"
 type "person_address", "梅林小区A栋803"
 type "person_jobunit", "高正软件公司"
+
 click_and_wait "commit"
