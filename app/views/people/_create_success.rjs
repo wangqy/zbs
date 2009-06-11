@@ -6,6 +6,8 @@ page << "window.parent.j('#add_person_btn').before(\"#{escape_javascript(html)}\
 
 page.delay(1) do
   page << "window.parent.j('#person_td :radio').attr('checked','').attr('disabled','disabled');" 
+  #隐藏修改按钮，修正修改后导致出现多个radio选中的问题
+  page << "window.parent.j('#person_td .link_change').hide();" 
   page << "window.parent.j('#event_person_id_#{@person.id}').attr('disabled','').click();" 
   #一个事件只关联一个联系人，因此不能增加多个联系人
   page << "window.parent.j('#add_person_btn').hide();" 

@@ -6,7 +6,7 @@
   %td{:colspan=>3, :id=>'person_td'}
     = select_person
     -if @event.new_record?
-      = link_to '新增联系人', new_person_path, :id => 'add_person_btn', :onclick => "newWindow('新增联系人',href,400,300);return false;"
+      = link_to '新增联系人', new_person_path, :id => 'add_person_btn', :onclick => "newWindow('新增联系人',href,400,300);return false;", :title => "一个事件只能新增关联一个联系人，因此新增联系人后此按钮会被隐藏，且不能再修改其他联系人"
   %td &nbsp;
 %tr
   %td= f.label_require :category

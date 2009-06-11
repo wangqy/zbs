@@ -1,4 +1,4 @@
 %span{:id => "person_#{p.id}"}
   %span><=radio_button_tag 'event[person_id]', p.id, selected
   %span><=label_tag "event_person_id_#{p.id}", p.name, :title => p.to_s
-  %span><==(#{link_to_function('改', "newWindow('编辑联系人','#{edit_person_path(p)}',400,300);return false;")})
+  %span.link_change><==(#{link_to_function('改', "newWindow('编辑联系人','#{edit_person_path(p)}',400,300);return false;")})
