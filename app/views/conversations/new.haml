@@ -26,7 +26,7 @@
         %ul
           %li{:icon=>"j-icon i-create"}
             =submit_tag "保存", :class=> "hide"
-            =link_to_function "保存", "j('.j-form').submit()"
+            =link_to_function "提交事件调度", "j('.j-form').submit()"
           %li
           %li{:icon=>"j-icon i-return"}
             = link_to '返回', :controller => @menu, :phone => params[:phone]

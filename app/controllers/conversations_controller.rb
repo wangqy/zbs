@@ -55,7 +55,9 @@ class ConversationsController < ApplicationController
     end
     unless [@conversation, @event, @person, @duty].map(&:errors).map(&:empty?).include?(false)
       flash[:notice] = "保存成功!"
+      redirect_to :phone => params[:phone]
+    else
+      render :action => "new"
     end
-    render :action => :new
   end
 end
