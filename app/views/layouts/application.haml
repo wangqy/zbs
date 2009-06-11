@@ -4,13 +4,10 @@
   %head
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %title 数字值班室
-    =stylesheet_link_tag "/resources/css/portal", "facebox", "default"
-    =javascript_include_tag "prototype", "jquery", "facebox", "/resources/jui/js/jui.js", "application" 
-    -if !current_user.site.blank? && params[:record_id].nil?
-      /
-        =javascript_include_tag "http://#{CALL_CENTER}/interface/mixControl.php", "http://#{CALL_CENTER}/interface/panel.php?extension=#{current_user.site}"
+    =stylesheet_link_tag "/resources/css/portal", "default"
+    =javascript_include_tag "prototype", "jquery", "/resources/jui/js/jui.js", "application" 
     =calendar_date_select_includes "blue"
 
   %body
-    #content-container
+    #content-container{:style => "overflow: hidden !important;width:99.5%;height:99.6%"}
       =yield

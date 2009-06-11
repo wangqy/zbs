@@ -4,8 +4,11 @@
   %head
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %title 数字值班室
-    =stylesheet_link_tag "/resources/css/head"
+    =stylesheet_link_tag "/resources/css/head", "default"
     =javascript_include_tag "/resources/js/tab.js"
+    =javascript_include_tag "jquery"
+    -if !current_user.site.blank? && params[:record_id].nil?
+      =javascript_include_tag "http://#{CALL_CENTER}/interface/mixControl.php", "http://#{CALL_CENTER}/interface/panel.php?extension=#{current_user.site}"
     %style{:type=>"text/css"}
       :sass
         body
@@ -64,3 +67,7 @@
                   =link_to '公告管理', notices_path, :class => "submenu_14", :target => :mainFrame
                 %td.submenu_td3
                   %a.submenu_right{:href=>"#"}
+
+  :javascript
+    //修正呼叫中心控制面板菜单
+    jQuery('#singheadPanel td:first').width('20%');

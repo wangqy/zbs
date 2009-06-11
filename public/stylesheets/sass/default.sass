@@ -1,7 +1,3 @@
-//呼叫中心面板
-#singheadBody
-  :z-index 99
-
 .hide
   :display none
 
@@ -28,3 +24,36 @@
 ul.list
   li
     :margin 3px 0px 3px 5px
+
+//呼叫中心面板
+#singheadBody
+  :z-index 99
+  div
+    :padding 0
+    :margin 0
+  #singheadPanel
+    :height 80px
+    td
+      :height expression(18)
+      :padding 0 !important
+      :margin 0 !important
+      :color red !important
+    #singheadPanelOperat
+      :height 60px !important
+      .tabs-container
+        :height 40px !important
+      .tabs-nav
+        :height 20px !important
+        :line-height 100%
+        a
+          :line-height 1
+          span
+            :height 10px !important
+  .singheadBtnSlide
+    :height 12px
+    :font-size 12px
+    :padding 2px 2px 1px 0
+    :background-position right -57px
+  .active
+    :background-position right 2px
+    

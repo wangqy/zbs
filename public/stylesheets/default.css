@@ -1,6 +1,3 @@
-#singheadBody {
-  z-index: 99; }
-
 .hide {
   display: none; }
 
@@ -25,3 +22,34 @@
 
 ul.list li {
   margin: 3px 0px 3px 5px; }
+
+#singheadBody {
+  z-index: 99; }
+  #singheadBody div {
+    padding: 0;
+    margin: 0; }
+  #singheadBody #singheadPanel {
+    height: 80px; }
+    #singheadBody #singheadPanel td {
+      height: expression(18);
+      padding: 0 !important;
+      margin: 0 !important;
+      color: red !important; }
+    #singheadBody #singheadPanel #singheadPanelOperat {
+      height: 60px !important; }
+      #singheadBody #singheadPanel #singheadPanelOperat .tabs-container {
+        height: 40px !important; }
+      #singheadBody #singheadPanel #singheadPanelOperat .tabs-nav {
+        height: 20px !important;
+        line-height: 100%; }
+        #singheadBody #singheadPanel #singheadPanelOperat .tabs-nav a {
+          line-height: 1; }
+          #singheadBody #singheadPanel #singheadPanelOperat .tabs-nav a span {
+            height: 10px !important; }
+  #singheadBody .singheadBtnSlide {
+    height: 12px;
+    font-size: 12px;
+    padding: 2px 2px 1px 0;
+    background-position: right -57px; }
+  #singheadBody .active {
+    background-position: right 2px; }
