@@ -28,6 +28,9 @@
 ul.list li {
   margin: 3px 0px 3px 5px; }
 
+.warning {
+  color: red; }
+
 #singheadBody {
   z-index: 99; }
   #singheadBody div {
