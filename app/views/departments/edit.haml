@@ -2,32 +2,7 @@
   .j-panel-head
     .j-panel-text 机构信息
   .j-panel-body.right-panel-full
-    #pop-errorExplanation.errorExplanation{:style => 'display:none'}
-    %table.j-form-table
-      %thead
-        %tr
-          %th{:width=>"80px"}
-          %th{:width=>"300px"}
-          %th
-      %tbody
-        %tr
-          %td= f.label_require :name
-          %td= f.text_field :name
-        %tr
-          %td= f.label :fax
-          %td= f.text_field :fax
-        %tr
-          %td= f.label :manager
-          %td= f.text_field :manager
-        %tr
-          %td= f.label :telephone
-          %td= f.text_field :telephone
-        %tr
-          %td= f.label :address
-          %td= f.text_field :address
-        %tr
-          %td= f.label :remark
-          %td= f.text_area :remark, :rows => 5, :cols=> 29
+    =render :partial => 'form', :locals => { :f => f}
   .j-panel-foot
     .j-toolbar
       %ul

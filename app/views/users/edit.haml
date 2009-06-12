@@ -30,7 +30,7 @@
           %td &nbsp;
         %tr
           %td= f.label_require :department_id
-          %td= f.select :department_id, Department.all.collect{|d| [d.name, d.id]}, :include_blank => true
+          %td= f.select :department_id, select_dept_options
           %td= f.label :position
           %td= f.text_field :position
           %td &nbsp;

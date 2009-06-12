@@ -19,6 +19,9 @@ class CreateDepartments < ActiveRecord::Migration
       t.references :modifier
       #上级机构
       t.integer :parent_id
+      #值班室信息:职能,线路
+      t.string :responsibility, :limit=>120
+      t.integer :lines, :limit=>4
 
       t.timestamps
     end

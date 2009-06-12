@@ -2,7 +2,9 @@
   %td.caption{:colspan=>5} 业务办理
 %tr
   %td 事件主题
-  %td{:colspan=>3}=@conversation.title
+  %td=@conversation.title
+  %td 当前事件状态
+  %td= @conversation.state_enum
   %td &nbsp;
 - unless @history.nil?
   %tr
@@ -13,10 +15,6 @@
     %td 上一办理意见
     %td{:colspan=>3}= @history.reason
     %td &nbsp;
-%tr
-  %td= label_tag :history_reason, "当前事件状态"
-  %td{:colspan=>3}= @conversation.state_enum
-  %td &nbsp;
 %tr
   %td= label_tag :history_reason, "办理意见"
   %td{:colspan=>3}= text_area_tag "history[reason]", params[:history][:reason], :rows => 3, :cols => 49, :id => "history_reason"

@@ -10,9 +10,18 @@ module ApplicationHelper
 
   #选择部门
   def select_dept
-    options = Department.all.collect {|d| [d.name, d.id]}
+    options = select_dept_options
     options = [["未选择",""]] + options
     select_tag 'history[department_id]', options_for_select(options), :onchange => remote_function(:update=>:user_select, :url => {:controller => :users, :action => :dept}, :with => "'id=' + $('history_department_id').value")
+  end
+
+  def select_dept_options(list = Department.top, level = 0)
+    options = []
+    list.each do |dept|
+      options += [["#{''.rjust(level,'>')}#{dept.name}", dept.id]]
+      options += select_dept_options(dept.children, level+1)
+    end
+    options
   end
 
   #选择用户

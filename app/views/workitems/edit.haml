@@ -6,7 +6,7 @@
     .j-panel-head
       .j-panel-text 事件信息
     .j-panel-body.panel-full
-      .j-panel.left-panel{:style => "width:70%"}
+      .j-panel.left-panel{:style => "width:60%"}
         .j-panel-body
           %table.j-form-table
             %thead
@@ -20,13 +20,13 @@
               =render :partial => "conversations/workitem"
               =render :partial => "conversations/show"
 
-      .j-panel.right-panel{:style => "width:28%"}
+      .j-panel.right-panel{:style => "width:38%"}
         .split
         .j-panel
           .j-panel-head
             .j-panel-text 事件摘要
           .j-panel-body
-            ==#{@conversation.title} #{truncate_with_more(@conversation.content, 100, @conversation.id)}
+            =truncate_with_more(@conversation.content, 100, @conversation.id)
         .split
         .j-panel
           .j-panel-head

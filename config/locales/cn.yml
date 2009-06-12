@@ -58,6 +58,8 @@ cn:
         telephone: "联系电话"
         address: "地址"
         remark: "备注"
+        responsibility: "职能"
+        lines: "线路数"
       history:
         handle: "办理方式"
         department_id: "接收部门"
