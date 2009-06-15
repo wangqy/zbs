@@ -15,7 +15,7 @@ class Department < ActiveRecord::Base
   validates_length_of :manager, :maximum => 10, :allow_nil => true
   validates_length_of :telephone, :fax, :maximum => 20, :allow_nil => true
   validates_length_of :remark, :maximum => 800, :allow_nil => true
-  validates_numericality_of :lines
+  validates_numericality_of :lines, :allow_nil => true
 
   named_scope :top, :conditions => ["parent_id is null"]
 end

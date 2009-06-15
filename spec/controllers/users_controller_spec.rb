@@ -126,7 +126,7 @@ describe UsersController do
     user = users(:disable)
     post :update, :user => {:login=> ''}, :id => user
     assigns("user").errors.on(:login).should_not be_nil
-    response.should render_template('users/new')
+    response.should render_template('users/edit')
   end
 
   def create_user(options = {})

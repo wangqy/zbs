@@ -16,7 +16,7 @@ end
 
 而且 /我应该能看到子事件:/ do |hashes|
   hashes.raw.each_with_index do |row, pos|
-    response.should have_selector("#shared-ticket-bins > li:nth-child(#{pos+1})") do |li|
+    response.should have_selector("#conversation_event > li:nth-child(#{pos+1})") do |li|
       text = li.inner_text.gsub(/\n/,'').squeeze.strip
       text.should contain(row.join(' '))
     end
@@ -29,7 +29,7 @@ end
 
 那么 /我应该能看到处理过程:/ do |hashes|
   hashes.raw.each_with_index do |row, pos|
-    response.should have_selector("#conversation_history > ul > li:nth-child(#{pos+1})") do |li|
+    response.should have_selector("#conversation_history > li:nth-child(#{pos+1})") do |li|
       text = li.inner_text.gsub(/\n/,'').squeeze.strip
       text.should contain(row.join(' '))
     end
