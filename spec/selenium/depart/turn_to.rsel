@@ -7,6 +7,7 @@ include_partial 'admin/login', :login => 'dispatcher'
 include_partial 'select', :menu => '事件调度'
 
 #办理按钮
+wait_for_element_present "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr[1]/td[5]/span/a[1]"
 click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr[1]/td[5]/span/a[1]"
 click "history_handle_10"
 type "history_reason", "转你处办理"

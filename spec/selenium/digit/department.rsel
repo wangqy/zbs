@@ -28,7 +28,7 @@ id = Department.find_by_name('教育局').id
 click "label_#{id}"
 wait_for_element_present "//form[@id='edit_department_#{id}']/div[4]/div/ul/li[3]/a/span/span/span/span/span"
 click "//form[@id='edit_department_#{id}']/div[4]/div/ul/li[3]/a/span/span/span/span/span"
-pause 3 
+pause 3000
 type "department_name", "总办公室"
 click "commit"
 wait_for_text_present "总办公室"
@@ -38,6 +38,7 @@ click "label_#{id}"
 wait_for_element_present "//form[@id='edit_department_#{id}']/div[4]/div/ul/li[3]/a/span/span/span/span/span"
 click "//form[@id='edit_department_#{id}']/div[4]/div/ul/li[3]/a/span/span/span/span/span"
 wait_for_element_present "department_name"
+pause 3000
 type "department_name", "分办公室"
 type "department_fax", "26741022"
 type "department_manager", "张敏"
