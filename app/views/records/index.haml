@@ -20,7 +20,8 @@
             %th{:width=>"200px"}=tt('record.dail')
             %th{:width=>"200px"}=tt('record.receive')
             %th{:width=>"200px"}=tt('record.created_at')
-            %th 操作
+            %th{:width=>"100px"} 操作
+            %th 
         %tbody
           - @page.each do |record|
             %tr
@@ -29,6 +30,7 @@
               %td=record.receive
               %td=record.created_at.to_s(:db)
               %td=render :partial => "events/wavobject", :locals => {:record => record}
+              %td &nbsp;
   .j-panel-foot
     .j-toolbar
       =will_paginate @page
