@@ -1,3 +1,0 @@
-[submodule "vendor/plugins/thinking-sphinx"]
-	path = vendor/plugins/thinking-sphinx
-	url = git://github.com/saberma/thinking-sphinx.git

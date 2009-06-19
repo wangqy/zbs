@@ -15,3 +15,5 @@ coverage/**
 #full-text search engine
 db/sphinx/**
 config/development.sphinx.conf
+#selenium
+vendor/plugins/selenium-on-rails/log
