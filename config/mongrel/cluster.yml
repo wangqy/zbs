@@ -1,0 +1,10 @@
+--- 
+user: app_cogentzbs
+group: app_cogentzbs
+cwd: /var/www/cogentzbs/current
+log_file: /var/www/cogentzbs/shared/log/mongrel.log
+port: "8000"
+environment: production
+address: 127.0.0.1
+pid_file: /var/www/cogentzbs/shared/pids/mongrel.pid
+servers: 2
