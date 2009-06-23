@@ -20,7 +20,7 @@ set :web_server_type, :nginx
 set :app_server_type, :mongrel
 set :db_server_type, :mysql
 
-set :mongrel_conf, "#{deploy_to}/current/config/mongrel_cluster.yml"
+#set :mongrel_conf, "#{deploy_to}/current/config/mongrel_cluster.yml"
 
 role :app, domain
 role :web, domain
