@@ -8,5 +8,7 @@
         -else
           %span="(#{event.creator.department.name})#{event.creator.realname}"
         %span=event.category_enum
+        -if event.is_out?
+          %span=event.person.name
         %span=truncate_with_more(event.content, 20, event.id)
         =render :partial => "events/wavobject", :locals => {:record => event.record}
