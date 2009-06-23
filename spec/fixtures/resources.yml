@@ -1,0 +1,86 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+event:
+  name: 事件管理
+  code: events
+  sequence: 1
+
+workitems:
+  name: 待办事项
+  code: workitems
+  parent: event
+  path: /workitems
+  sequence: 1
+
+conversations:
+  name: 受理事件
+  code: conversations
+  parent: event
+  path: /conversations
+  sequence: 2
+
+dispatches:
+  name: 事件调度
+  code: dispatches
+  parent: event
+  path: /dispatches
+  sequence: 3
+
+events:
+  name: 添加往来记录
+  code: events
+  parent: event
+  path: /events
+  sequence: 4
+
+central:
+  name: 资源中心
+  code: central
+  sequence: 2
+
+searches:
+  name: 事件记录
+  code: searches
+  parent: central
+  path: /searches
+  sequence: 1
+
+records:
+  name: 录音记录
+  code: records
+  parent: central
+  path: /records
+  sequence: 2
+
+system:
+  name: 系统管理
+  code: system
+  sequence: 3
+
+departments:
+  name: 机构管理
+  code: departments
+  parent: system
+  path: /departments
+  sequence: 1
+
+users:
+  name: 用户管理
+  code: users
+  parent: system
+  path: /users
+  sequence: 2
+
+logs:
+  name: 系统日志
+  code: logs
+  parent: system
+  path: /logs
+  sequence: 3
+
+notices:
+  name: 公告管理
+  code: notices
+  parent: system
+  path: /notices
+  sequence: 4

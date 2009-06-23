@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+admin_departments:
+  user: admin
+  resource: departments
+
+admin_users:
+  user: admin
+  resource: users
+
+admin_logs:
+  user: admin
+  resource: logs
+
+admin_notices:
+  user: admin
+  resource: notices

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   belongs_to :department
   has_many :workitems, :foreign_key => "store_id"
+  has_many :permissions
+  has_many :resources, :through => :permissions
 
   validates_presence_of     :login, :realname, :telephone, :mobile, :department_id
   validates_uniqueness_of   :login, :case_sensitive => false

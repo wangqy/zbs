@@ -12,6 +12,8 @@
       =yield
 
   :javascript
+    var topWindow = window.top;
+    if(topWindow && topWindow!=this)
+      topWindow.location = this.location;
     //focus
     jQuery(":input[is_focus]").focus();
-  

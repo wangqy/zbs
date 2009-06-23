@@ -28,46 +28,21 @@
               %td
                 %table{:cellspacing=>0,:cellpadding=>0,:width=>0}
                   %tr#secTable
-                    %td.menu_ab{:onmouseover=>"secBoard(0)"}
-                      %span 事件管理
-                    %td.menu{:onmouseover=>"secBoard(1)"}
-                      %span 资源中心
-                    %td.menu{:onmouseover=>"secBoard(2)"}
-                      %span 系统管理
+                    -@menus.each_index do |index|
+                      %td.menu_ab{:onmouseover=>"secBoard(#{index})"}
+                        %span=@menus[index].name
               %td.menu_top_right &nbsp;
           %table#mainTable.submenu_bg{:cellspacing=>0,:cellpadding=>0,:width=>0}
-            %tbody
-              %tr
-                %td.submenu_td1
-                  %a.submenu_left{:href=>"#"}
-                %td.submenu_td2
-                  =link_to '待办事项', workitems_path, :class => "submenu_11", :target => :mainFrame
-                  =link_to '受理事件', conversations_path, :class => "submenu_12", :target => :mainFrame
-                  =link_to '事件调度', dispatches_path, :class => "submenu_13", :target => :mainFrame
-                  =link_to '添加往来记录', events_path, :class => "submenu_14", :target => :mainFrame
-                %td.submenu_td3
-                  %a.submenu_right{:href=>"#"}
-            %tbody{:style=>"display:none"}
-              %tr
-                %td.submenu_td1
-                  %a.submenu_left{:href=>"#"}
-                %td.submenu_td2
-                  =link_to '事件记录', searches_path, :class => "submenu_11", :target => :mainFrame
-                  =link_to '录音记录', records_path, :class => "submenu_12", :target => :mainFrame
-                %td.submenu_td3
-                  %a.submenu_right{:href=>"#"}
-            %tbody{:style=>"display:none"}
-              %tr
-                %td.submenu_td1
-                  %a.submenu_left{:href=>"#"}
-                %td.submenu_td2
-                  =link_to '机构管理', new_department_path, :class => "submenu_11", :target => :mainFrame
-                  =link_to '用户管理', users_path, :class => "submenu_12", :target => :mainFrame
-                  =link_to '系统日志', logs_path, :class => "submenu_13", :target => :mainFrame
-                  =link_to '公告管理', notices_path, :class => "submenu_14", :target => :mainFrame
-                %td.submenu_td3
-                  %a.submenu_right{:href=>"#"}
-
+            -@menus.each_index do |index|
+              %tbody{:style => index>0?"display:none":""}
+                %tr
+                  %td.submenu_td1
+                    %a.submenu_left{:href=>"#"}
+                  %td.submenu_td2
+                    - @menus[index].children.each do |submenu|
+                      =link_to submenu.name, submenu.path, :class => "submenu_1#{submenu.sequence}", :target => :mainFrame
+                  %td.submenu_td3
+                    %a.submenu_right{:href=>"#"}
   :javascript
     //修正呼叫中心控制面板菜单
     jQuery('#singheadPanel td:first').width('20%');

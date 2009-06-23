@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090514093130) do
+ActiveRecord::Schema.define(:version => 20090622095102) do
 
   create_table "conversations", :force => true do |t|
     t.integer  "state",       :limit => 2,   :default => 0,     :null => false
@@ -134,6 +134,11 @@ ActiveRecord::Schema.define(:version => 20090514093130) do
     t.datetime "updated_at"
   end
 
+  create_table "permissions", :force => true do |t|
+    t.integer "user_id"
+    t.integer "resource_id"
+  end
+
   create_table "records", :force => true do |t|
     t.integer  "kind",       :limit => 2,  :null => false
     t.string   "dail",       :limit => 15, :null => false
@@ -141,6 +146,14 @@ ActiveRecord::Schema.define(:version => 20090514093130) do
     t.string   "wavfile",    :limit => 32, :null => false
     t.string   "uniqueid",   :limit => 32, :null => false
     t.datetime "created_at",               :null => false
+  end
+
+  create_table "resources", :force => true do |t|
+    t.string  "name",      :limit => 20,                :null => false
+    t.string  "code",      :limit => 20,                :null => false
+    t.string  "path",      :limit => 50
+    t.integer "sequence",                :default => 0, :null => false
+    t.integer "parent_id"
   end
 
   create_table "sequences", :force => true do |t|

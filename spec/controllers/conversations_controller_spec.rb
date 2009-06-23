@@ -64,10 +64,9 @@ describe ConversationsController do
 
   describe "GET 'list'" do
     it "should be list" do
-      get :list, :phone => '13988889999'
+      get :list, :title => '马先生'
       response.should be_success
-      assigns[:list].should_not be_nil
-      assigns[:list].first.should_not be_nil
+      assigns[:page].should_not be_nil
     end
 
     it "should be show" do

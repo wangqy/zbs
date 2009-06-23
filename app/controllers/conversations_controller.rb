@@ -7,12 +7,10 @@ class ConversationsController < ApplicationController
   end
 
   def list
-    @menu = 'searches'
-    @list = Conversation.search(params[:phone])
+    @page = Conversation.paginate :page => params[:page], :conditions => params_condition, :per_page => 10, :order => "id desc"
   end
 
   def show
-    @menu = 'searches'
     @conversation = Conversation.find(params[:id])
   end
 
