@@ -19,8 +19,8 @@
             %th{:width=>"150px"} 事件分类
             %th{:width=>"300px"} 内容摘要
             %th{:width=>"100px"} 关联操作
-        %tbody
-          -@list.each do |conversation|
+        -@list.each do |conversation|
+          %tbody
             %tr.j-grid-data-group.opend
               %td=conversation.title
               %td=conversation.kind.name
