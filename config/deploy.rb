@@ -31,11 +31,8 @@ set :database_yml_in_scm, false
 set :user, "cogentzbs"
 set :runner, nil
 
-set :packages_for_project, %w(libxslt1-dev libxml2-dev imagemagick)
-set :gems_for_project, %w(rspec hoe haml paperclip mislav-will_paginate mysql cucumber webrat)
-
 set :packages_for_project, %w(libopenssl-ruby1.8 libmysqlclient15-dev imagemagick libxslt1-dev libxml2-dev unixodbc unixodbc-dev)
-set :gems_for_project, %w(rspec rspec-rails hoe haml paperclip mislav-will_paginate aslakhellesoy-cucumber webrat javan-whenever calendar_date_select)
+set :gems_for_project, %w(rspec rspec-rails hoe haml paperclip mislav-will_paginate aslakhellesoy-cucumber webrat javan-whenever calendar_date_select wvanbergen-request-log-analyzer)
 set :shared_dirs, %w(public/upload log)
 
 namespace :deploy do
