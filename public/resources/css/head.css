@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 body{
 	margin:0;
 	background-image: url(../images/head_body_bg.jpg);
@@ -148,36 +148,105 @@ a.submenu_right {
 a.submenu_right:hover {
 	background:url(../images/menu/submenu_right.gif) no-repeat;
 }
-a.submenu_11, a.submenu_12, a.submenu_13, a.submenu_14, a.submenu_15 {
-	margin:3px;width:90px;height:19px;float:left;display:block;color:#333;text-align:center;font-size:12px;padding-top:45px;
+
+
+a.submenu {
+	margin: 3px;
+	width: 90px;
+	height: 19px;
+	float: left;
+	display: block;
+	color: #333;
+	text-align: center;
+	font-size: 12px;
+	padding-top: 45px;
+	background-repeat: no-repeat;
 }
+
+a.submenu:hover {
+	background-position: 0 -65px;
+}
+
 a.submenu_11 {
-	background:url(../images/menu/submenu_11.jpg) no-repeat;
+	background-image: url(../images/menu/submenu_11.jpg);
 }
-a.submenu_11:hover {
-	background:url(../images/menu/submenu_11.jpg) no-repeat 0 -65px;
-}
+
 a.submenu_12 {
-	background:url(../images/menu/submenu_12.jpg) no-repeat;
+	background-image: url(../images/menu/submenu_12.jpg);
 }
-a.submenu_12:hover {
-	background:url(../images/menu/submenu_12.jpg) no-repeat 0 -65px;
-}
+
 a.submenu_13 {
-	background:url(../images/menu/submenu_13.jpg) no-repeat;
+	background-image: url(../images/menu/submenu_13.jpg);
 }
-a.submenu_13:hover {
-	background:url(../images/menu/submenu_13.jpg) no-repeat 0 -65px;
-}
+
 a.submenu_14 {
-	background:url(../images/menu/submenu_14.jpg) no-repeat;
+	background-image: url(../images/menu/submenu_14.jpg);
 }
-a.submenu_14:hover {
-	background:url(../images/menu/submenu_14.jpg) no-repeat 0 -65px;
-}
+
 a.submenu_15 {
-	background:url(../images/menu/submenu_15.jpg) no-repeat;
+	background-image: url(../images/menu/submenu_15.jpg);
 }
-a.submenu_15:hover {
-	background:url(../images/menu/submenu_15.jpg) no-repeat 0 -65px;
+
+a.submenu_21 {
+	background-image: url(../images/menu/submenu_21.jpg);
+}
+
+a.submenu_31 {
+	background-image: url(../images/menu/submenu_31.jpg);
+}
+
+a.submenu_32 {
+	background-image: url(../images/menu/submenu_32.jpg);
+}
+
+a.submenu_33 {
+	background-image: url(../images/menu/submenu_33.jpg);
+}
+
+a.submenu_34 {
+	background-image: url(../images/menu/submenu_34.jpg);
+}
+
+a.submenu_41 {
+	background-image: url(../images/menu/submenu_41.jpg);
+}
+
+a.submenu_42 {
+	background-image: url(../images/menu/submenu_42.jpg);
+}
+
+a.submenu_43 {
+	background-image: url(../images/menu/submenu_43.jpg);
+}
+
+a.submenu_51 {
+	background-image: url(../images/menu/submenu_51.jpg);
+}
+
+a.submenu_52 {
+	background-image: url(../images/menu/submenu_52.jpg);
+}
+
+a.submenu_53 {
+	background-image: url(../images/menu/submenu_53.jpg);
+}
+
+a.submenu_61 {
+	background-image: url(../images/menu/submenu_61.jpg);
+}
+
+a.submenu_62 {
+	background-image: url(../images/menu/submenu_62.jpg);
+}
+
+a.submenu_63 {
+	background-image: url(../images/menu/submenu_63.jpg);
+}
+
+a.submenu_64 {
+	background-image: url(../images/menu/submenu_64.jpg);
+}
+
+a.submenu_71 {
+	background-image: url(../images/menu/submenu_71.jpg);
 }
