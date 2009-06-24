@@ -3,6 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
+  include ExceptionLoggable
   helper :all # include all helpers, all the time
   before_filter :set_menu
   before_filter :must_login
@@ -15,6 +16,7 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
+  
 
   def must_login
     unless logged_in?

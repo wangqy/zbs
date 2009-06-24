@@ -32,7 +32,7 @@ set :user, "cogentzbs"
 set :runner, nil
 
 set :packages_for_project, %w(libopenssl-ruby1.8 libmysqlclient15-dev imagemagick libxslt1-dev libxml2-dev unixodbc unixodbc-dev)
-set :gems_for_project, %w(rspec rspec-rails hoe haml paperclip mislav-will_paginate aslakhellesoy-cucumber webrat javan-whenever calendar_date_select wvanbergen-request-log-analyzer)
+set :gems_for_project, %w(rspec rspec-rails hoe haml paperclip mislav-will_paginate aslakhellesoy-cucumber webrat javan-whenever calendar_date_select wvanbergen-request-log-analyzer RedCloth)
 set :shared_dirs, %w(public/upload log)
 
 namespace :deploy do
