@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :set_menu, :only => [:new, :create, :edit, :update]
+
   #列表
   def index
     if params[:user].nil?
@@ -19,6 +21,8 @@ class UsersController < ApplicationController
     @user.disabled = 0
     @user.creator = current_user
     @user.modifier = current_user
+    @user.resources.clear
+    @user.resources = Resource.find(params['resource_ids']) if params['resource_ids']
 
     @user.save
     if @user.errors.empty?
@@ -43,6 +47,8 @@ class UsersController < ApplicationController
   #更新
   def update
     @user = User.find(params[:id])
+    @user.resources.clear
+    @user.resources = Resource.find(params['resource_ids']) if params['resource_ids']
     params[:user][:modifier] = current_user
     if @user.update_attributes(params[:user])
       flash[:notice] = m('user.update.success')
@@ -127,6 +133,11 @@ class UsersController < ApplicationController
       @list = User.find_all_by_department_id(params[:id])
     end
     render :partial => "dept_user", :layout => false
+  end
+
+  private
+  def set_menu
+    @menus = Resource.top
   end
 
 end

@@ -7,47 +7,47 @@
     .j-panel-head
       .j-panel-text 用户信息
     .j-panel-body.panel-full
-      =flash_msg
-      =error_messages_for :user
-      %table.j-form-table
-        %thead
+      .j-panel.left-panel{:style => "width:60%"}
+        .split
+        =flash_msg
+        =error_messages_for :user
+        %table.j-form-table
+          %thead
+            %tr
+              %th{:width=>"80px"}
+              %th{:width=>"200px"}
+              %th{:width=>"80px"}
+              %th{:width=>"200px"}
+              %th
+          %tbody
           %tr
-            %th{:width=>"80px"}
-            %th{:width=>"200px"}
-            %th{:width=>"80px"}
-            %th{:width=>"200px"}
-            %th
-        %tbody
-        %tr
-          %td= f.label_require :login
-          %td= f.text_field :login, :is_focus => true
-          %td{:colspan=>3} &nbsp;
-        %tr
-          %td= f.label_require :realname
-          %td= f.text_field :realname
-          %td= f.label :sex
-          %td= f.radio_enum :sex
-          %td &nbsp;
-        %tr
-          %td= f.label_require :department_id
-          %td= f.select :department_id, select_dept_options
-          %td= f.label :position
-          %td= f.text_field :position
-          %td &nbsp;
-        %tr
-          %td= f.label_require :telephone
-          %td= f.text_field :telephone
-          %td= f.label_require :mobile
-          %td= f.text_field :mobile
-          %td &nbsp;
-        %tr
-          %td= f.label :email
-          %td{:colspan=>3}= f.text_field :email
-          %td &nbsp;
-        %tr
-          %td= f.label :remark
-          %td{:colspan=>3}= f.text_area :remark, :rows => 5
-          %td &nbsp;
+            %td= f.label_require :login
+            %td= f.text_field :login, :is_focus => true
+            %td{:colspan=>2} &nbsp;
+            %td{:rowspan=>6} &nbsp;
+          %tr
+            %td= f.label_require :realname
+            %td= f.text_field :realname
+            %td= f.label :sex
+            %td= f.radio_enum :sex
+          %tr
+            %td= f.label_require :department_id
+            %td= f.select :department_id, select_dept_options
+            %td= f.label :position
+            %td= f.text_field :position
+          %tr
+            %td= f.label_require :telephone
+            %td= f.text_field :telephone
+            %td= f.label_require :mobile
+            %td= f.text_field :mobile
+          %tr
+            %td= f.label :email
+            %td{:colspan=>3}= f.text_field :email
+          %tr
+            %td= f.label :remark
+            %td{:colspan=>3}= f.text_area :remark, :rows => 5
+      =render :partial => 'permissions'
+
     .j-panel-foot
       .j-toolbar
         %ul
