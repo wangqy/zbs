@@ -13,7 +13,7 @@
 
   :javascript
     var topWindow = window.top;
-    if(topWindow && topWindow!=this)
+    if(topWindow && topWindow!=this && topWindow.document.title.indexOf('Selenium')<0)
       topWindow.location = this.location;
     //focus
     jQuery(":input[is_focus]").focus();

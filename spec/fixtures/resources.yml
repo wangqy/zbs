@@ -3,7 +3,7 @@
 event:
   name: 事件管理
   code: events
-  sequence: 1
+  sequence: 0
 
 workitems:
   name: 待办事项
@@ -36,51 +36,51 @@ events:
 central:
   name: 资源中心
   code: central
-  sequence: 2
+  sequence: 20
 
 searches:
   name: 事件记录
   code: searches
   parent: central
   path: /searches
-  sequence: 1
+  sequence: 21
 
 records:
   name: 录音记录
   code: records
   parent: central
   path: /records
-  sequence: 2
+  sequence: 22
 
 system:
   name: 系统管理
   code: system
-  sequence: 3
+  sequence: 90
 
 departments:
   name: 机构管理
   code: departments
   parent: system
-  path: /departments
-  sequence: 1
+  path: /departments/new
+  sequence: 91
 
 users:
   name: 用户管理
   code: users
   parent: system
   path: /users
-  sequence: 2
+  sequence: 92
 
 logs:
   name: 系统日志
   code: logs
   parent: system
   path: /logs
-  sequence: 3
+  sequence: 93
 
 notices:
   name: 公告管理
   code: notices
   parent: system
   path: /notices
-  sequence: 4
+  sequence: 94

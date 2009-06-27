@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   #Don't check AuthenticityToken for 'create' action
   protect_from_forgery :except => :create
   skip_before_filter :must_login, :destroy
+  skip_before_filter :check_permission, :destroy
 
   layout 'login'
 

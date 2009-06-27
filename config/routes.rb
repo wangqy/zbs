@@ -31,7 +31,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
 
   map.resources :conversations
-  map.searches '/searches', :controller => 'conversations', :action => 'list'
+  #resource_code参数用于配合权限校验
+  map.searches '/searches', :controller => 'conversations', :action => 'list', :resource_code => "searches"
   map.resources :dispatches
   map.resources :workitems
   map.resources :records

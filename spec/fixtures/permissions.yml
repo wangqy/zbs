@@ -1,5 +1,5 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
+#admin
 admin_departments:
   user: admin
   resource: departments
@@ -15,3 +15,120 @@ admin_logs:
 admin_notices:
   user: admin
   resource: notices
+
+#cogentsoft
+cogentsoft_departments:
+  user: cogentsoft
+  resource: departments
+
+cogentsoft_users:
+  user: cogentsoft
+  resource: users
+
+cogentsoft_logs:
+  user: cogentsoft
+  resource: logs
+
+cogentsoft_notices:
+  user: cogentsoft
+  resource: notices
+
+#quentin
+quentin_workitems:
+  user: quentin
+  resource: workitems
+
+quentin_conversations:
+  user: quentin
+  resource: conversations
+
+quentin_dispatches:
+  user: quentin
+  resource: dispatches
+
+quentin_events:
+  user: quentin
+  resource: events
+
+quentin_searches:
+  user: quentin
+  resource: searches
+
+quentin_records:
+  user: quentin
+  resource: records
+
+#aaron
+aaron_workitems:
+  user: aaron
+  resource: workitems
+
+aaron_conversations:
+  user: aaron
+  resource: conversations
+
+aaron_dispatches:
+  user: aaron
+  resource: dispatches
+
+aaron_events:
+  user: aaron
+  resource: events
+
+aaron_searches:
+  user: aaron
+  resource: searches
+
+aaron_records:
+  user: aaron
+  resource: records
+
+#dispatcher
+dispatcher_workitems:
+  user: dispatcher
+  resource: workitems
+
+dispatcher_conversations:
+  user: dispatcher
+  resource: conversations
+
+dispatcher_dispatches:
+  user: dispatcher
+  resource: dispatches
+
+dispatcher_events:
+  user: dispatcher
+  resource: events
+
+dispatcher_searches:
+  user: dispatcher
+  resource: searches
+
+dispatcher_records:
+  user: dispatcher
+  resource: records
+
+#depart
+depart_workitems:
+  user: depart
+  resource: workitems
+
+depart_conversations:
+  user: depart
+  resource: conversations
+
+depart_dispatches:
+  user: depart
+  resource: dispatches
+
+depart_events:
+  user: depart
+  resource: events
+
+depart_searches:
+  user: depart
+  resource: searches
+
+depart_records:
+  user: depart
+  resource: records

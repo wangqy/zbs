@@ -8,7 +8,9 @@
     user[:password] = 'test'
     user[:password] = 'admin' if user["login"] == "cogentsoft"
     user[:disabled] = 1 if user["login"] == "disable"
-    User.create! user
+    user = User.create!(user)
+    user.resources << Resource.find_by_code('system').children
+    user.save!
   end
 end
 

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :set_menu, :only => [:new, :create, :edit, :update]
+  skip_before_filter :check_permission, :only => [:pass, :updatepass, :site, :updatesite, :dept]
 
   #列表
   def index

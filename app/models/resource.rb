@@ -1,6 +1,6 @@
 class Resource < ActiveRecord::Base
   belongs_to :parent, :class_name => "Resource"
-  has_many :children, :class_name => "Resource", :foreign_key => "parent_id"
+  has_many :children, :class_name => "Resource", :foreign_key => "parent_id", :order => "sequence"
   has_many :permissions
   has_many :users, :through => :permissions
 
