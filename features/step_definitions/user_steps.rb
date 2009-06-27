@@ -13,6 +13,7 @@
 end
 
 假如 /我已经以用户(.*),密码(.*)登录/ do |login, password|
+  假如 "我在退出页面"
   假如 "我在登录页面"
   当 "我输入用户名为#{login}"
   当 "我输入密　码为#{password}"
@@ -28,11 +29,15 @@ end
 end
   
 当 /我修改第(\d+)个用户的(.+)为(.+)/ do |pos, label, value|
+  假如 "我进入第#{pos}个用户的编辑页面"
+  而且 "我输入#{label}为#{value}"
+  当 "我点击保存"
+end
+  
+当 /我进入第(\d+)个用户的编辑页面/ do |pos|
   within("tbody > tr:nth-child(#{pos})") do
     click_link '编辑'
   end
-  当 "我输入#{label}为#{value}"
-  而且 "我点击保存"
 end
 
 当 /我禁用第(\d+)个用户/ do |pos|
