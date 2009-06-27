@@ -6,6 +6,7 @@ class Resource < ActiveRecord::Base
 
   named_scope :top, :conditions => ["parent_id is null"]
 
+  #一级菜单为key，根据一级菜单找出二级菜单
   def self.menu_hash_from(user)
     hashes = {}
     sub_menus = user.resources
@@ -23,6 +24,7 @@ class Resource < ActiveRecord::Base
     hashes
   end
 
+  #一级菜单
   def self.menu_from(menu_hashes)
     self.sort!(menu_hashes.keys)
   end

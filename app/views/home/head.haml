@@ -39,7 +39,7 @@
                   %td.submenu_td1
                     %a.submenu_left{:href=>"#"}
                   %td.submenu_td2
-                    - @menus[index].children.each do |submenu|
+                    - @menu_hash[@menus[index]].each do |submenu|
                       =link_to submenu.name, submenu.path, :class => "submenu_1#{submenu.sequence}", :target => :mainFrame
                   %td.submenu_td3
                     %a.submenu_right{:href=>"#"}
