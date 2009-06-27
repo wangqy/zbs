@@ -29,7 +29,7 @@ ul.list li {
   margin: 3px 0px 3px 5px;
   padding-bottom: 5px; }
 
-.warning {
+.warning, .required {
   color: red; }
 
 #player {
