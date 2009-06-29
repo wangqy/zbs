@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   belongs_to :department
   has_many :workitems, :foreign_key => "store_id"
+  has_many :permissions
+  has_many :resources, :through => :permissions, :order => "sequence"
 
   validates_presence_of     :login, :realname, :telephone, :mobile, :department_id
   validates_uniqueness_of   :login, :case_sensitive => false
@@ -87,6 +89,12 @@ class User < ActiveRecord::Base
 
   def is_admin?
     %w(admin cogentsoft).include?self.login
+  end
+
+  #权限校验
+  #@params resource_code
+  def has_right?(resource_code)
+    resources.map(&:code).include?(resource_code)
   end
 
   protected

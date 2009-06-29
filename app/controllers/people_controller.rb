@@ -1,4 +1,6 @@
 class PeopleController < ApplicationController
+  skip_before_filter :check_permission
+
   def new
     @person = Person.new
   end

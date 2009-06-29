@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include ExceptionLoggable
   helper :all # include all helpers, all the time
   before_filter :set_menu
-  before_filter :must_login
+  before_filter :must_login, :check_permission
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
@@ -19,11 +19,18 @@ class ApplicationController < ActionController::Base
   
 
   def must_login
-    unless logged_in?
-      redirect_to login_path
-    end
+    redirect_to login_path unless logged_in?
   end
 
+  #权限校验
+  def check_permission
+    resource_code = controller_name
+    #事件记录例外
+    resource_code = "searches" if params[:resource_code] == "searches"
+    redirect_to(:controller => 'home', :action => 'no_right') unless current_user.has_right?(resource_code)
+  end
+
+  #此方法方便往来记录中正确返回
   def set_menu
     @menu = controller_name
   end

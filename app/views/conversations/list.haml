@@ -2,8 +2,8 @@
   %span 你现在的位置：事件记录
   .search-panel
     -form_tag searches_path, :method=>:get, :class=>"j-form" do
-      =label_tag :phone, '联系电话'
-      =text_field_tag :phone, params[:phone], :is_focus => true, :class => :nofixed
+      =label_tag 'conversation_title', '事件主题'
+      =text_field_tag 'conversation[title]', params[:conversation].nil? ? nil:params[:conversation][:title], :is_focus => true, :class => :nofixed
       =submit_tag "", :id => :search, :class=> "icon-16px-box j-icon i-search nofixed nav-btn", :title => "查询"
 .split
 .j-panel
@@ -20,7 +20,7 @@
             %th{:width=>"100px"} 登记人
             %th{:width=>"100px"} 操作
         %tbody
-          -@list.each do |conversation|
+          -@page.each do |conversation|
             %tr
               %td=conversation.tag
               %td=conversation.title
@@ -29,4 +29,4 @@
               %td=link_to '', conversation_path(conversation), :title => '查看', :class => "icon-16px-box j-icon i-view"
   .j-panel-foot
     .j-toolbar
-      =will_paginate @list
+      =will_paginate @page

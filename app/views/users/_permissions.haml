@@ -1,0 +1,21 @@
+.j-panel.right-panel{:style => "width:38%"}
+  .split
+  .j-panel
+    .j-panel-head
+      .j-panel-text 权限设置
+    .j-panel-body
+      %table.j-form-table
+        %thead
+          %tr
+            %th{:width=>"100px"}
+        -@menus.each_index do |index|
+          %tbody
+            %tr
+              %td.caption=@menus[index].name
+            %tr
+              %td
+                %ul
+                  -@menus[index].children.each do |submenu|
+                    %li
+                      =check_box_tag 'resource_ids[]', submenu.id, @user.resources.include?(submenu), :id => "resource_#{submenu.id}"
+                      =label_tag "resource_#{submenu.id}", submenu.name

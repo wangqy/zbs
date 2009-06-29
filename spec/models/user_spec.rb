@@ -83,6 +83,12 @@ describe User do
     users(:quentin).remember_token_expires_at.between?(before, after).should be_true
   end
 
+  #权限校验
+  it 'should check permission' do
+    users(:admin).has_right?('workitems').should be_false
+    users(:admin).has_right?('departments').should be_true
+  end
+
 protected
   def create_user(options = {})
     record = User.new({ 

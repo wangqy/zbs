@@ -1,6 +1,8 @@
 假如 /我在(.*)页面/ do |page|
   url = ""
   case page
+  when "退出"
+    url = "/logout"
   when "登录"
     url = "/"
   when "用户管理" 
@@ -131,4 +133,14 @@ end
 那么 /我应该能在页脚看到:(.+)/ do |text|
   visit '/home/foot'
   response.should contain(text)
+end
+
+那么 /我应该看到菜单项:(.+)/ do |text|
+  visit '/home/head'
+  response.should contain(text)
+end
+
+那么 /我应该看不到菜单项:(.+)/ do |text|
+  visit '/home/head'
+  response.should_not contain(text)
 end

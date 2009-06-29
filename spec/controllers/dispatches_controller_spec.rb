@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe DispatchesController do
   before(:each) do
-    login_as :cogentsoft
+    login_as :dispatcher
     @valid_attributes = {
       :id => conversations("ma_complain").id,
       :history => {

@@ -1,4 +1,6 @@
 class KindsController < ApplicationController
+  skip_before_filter :check_permission
+
   def new
     @parent_list = Kind.parent_list
     @kind = Kind.new

@@ -6,8 +6,8 @@ click "link=事件记录"
 select_frame "relative=parent"
 select_frame "mainFrame"
 
-wait_for_element_present "phone"
-type "phone", "13988889999"
+wait_for_element_present "conversation_title"
+type "conversation_title", "马先生投诉"
 click_and_wait "commit"
 
 verify_text_present "马先生投诉"
