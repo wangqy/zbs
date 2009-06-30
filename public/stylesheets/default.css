@@ -58,6 +58,26 @@ div.dialog {
     color: #f00;
     line-height: 1.5em; }
 
+#help {
+  display: none;
+  z-index: 99;
+  background-color: #0078A7;
+  outline: 1px solid #669;
+  border: 2px solid #fff;
+  padding: 10px 15px;
+  width: 250px;
+  color: #fff;
+  text-align: left;
+  font-size: 14px;
+  outline-radius: 4px;
+  -moz-outline-radius: 4px;
+  -webkit-outline-radius: 4px; }
+  #help ol {
+    list-style-type: decimal;
+    margin: 3px 0 15px 10px; }
+    #help ol li {
+      padding: 2px 5px 0px 5px; }
+
 #singheadBody {
   z-index: 99; }
   #singheadBody div {
