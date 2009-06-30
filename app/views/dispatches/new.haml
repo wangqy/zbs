@@ -8,6 +8,9 @@
       .j-panel-text 事件信息
     .j-panel-body.panel-full
       .j-panel.left-panel{:style => "width:60%"}
+        .split
+        =flash_msg
+        =error_messages_for :history
         .j-panel-body
           %table.j-form-table
             %thead
