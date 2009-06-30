@@ -94,3 +94,11 @@ notices:
   path: /notices
   css: 64
   sequence: 94
+
+online:
+  name: 在线用户
+  code: online
+  parent: system
+  path: /online
+  css: 71
+  sequence: 95

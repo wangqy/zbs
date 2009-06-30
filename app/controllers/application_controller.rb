@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include ExceptionLoggable
   helper :all # include all helpers, all the time
-  before_filter :set_menu
-  before_filter :must_login, :check_permission
+  before_filter :set_menu, :must_login, :check_permission, :set_online_user
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
@@ -17,7 +16,6 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
   
-
   def must_login
     redirect_to login_path unless logged_in?
   end
@@ -28,6 +26,16 @@ class ApplicationController < ActionController::Base
     #事件记录例外
     resource_code = "searches" if params[:resource_code] == "searches"
     redirect_to(:controller => 'home', :action => 'no_right') unless current_user.has_right?(resource_code)
+  end
+
+  #保存在线用户
+  def set_online_user
+    online = Online.find_by_user_id(current_user.id)
+    if online
+      online.update_attribute :actived_at, DateTime.now
+    else
+      Online.create(:user_id => current_user.id)
+    end
   end
 
   #此方法方便往来记录中正确返回

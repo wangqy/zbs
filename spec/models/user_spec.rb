@@ -89,6 +89,14 @@ describe User do
     users(:admin).has_right?('departments').should be_true
   end
 
+  it 'should show user online state' do
+    Online.create!(
+      :user_id => users(:cogentsoft).id,
+      :actived_at => Time.now
+    )
+    users(:cogentsoft).online?.should be_true
+  end
+
 protected
   def create_user(options = {})
     record = User.new({ 

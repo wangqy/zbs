@@ -1,0 +1,28 @@
+.nav 
+  %span 你现在的位置：在线用户
+.split
+.j-panel
+  .j-panel-head
+    .j-panel-text 在线用户列表
+  .j-panel-body
+    =flash_msg
+    .j-grid.grid-full
+      %table
+        %thead
+          %tr
+            %th{:width=>'120px'} 用户名
+            %th{:width=>'120px'} 姓名
+            %th{:width=>'140px'} 办公电话
+            %th{:width=>'80px',:title=>'30分钟内操作过的用户'} 在线状态
+            %th &nbsp;
+        - @departments.each do |department|
+          %tbody
+            %tr.j-grid-data-group.opened
+              %td{:colspan=>5}=department.name
+            - department.users.each do |user|
+              %tr
+                %td=user.login
+                %td=user.realname
+                %td=user.telephone
+                %td=user.online? ? "在线":"不在线"
+                %td &nbsp;

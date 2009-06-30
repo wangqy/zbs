@@ -1,6 +1,6 @@
 class Department < ActiveRecord::Base
-  #负责人
-  has_many :managers, :class_name => "User", :foreign_key => "department_id"
+  #用户
+  has_many :users
   #创建人
   belongs_to :creator, :class_name => "User"
   #最后修改人

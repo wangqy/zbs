@@ -97,6 +97,10 @@ class User < ActiveRecord::Base
     resources.map(&:code).include?(resource_code)
   end
 
+  def online?
+    Online.now?(self)
+  end
+
   protected
     # before filter 
     def encrypt_password

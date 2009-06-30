@@ -26,6 +26,7 @@ class CreateResources < ActiveRecord::Migration
     Resource.create!({:name => '用户管理', :code => 'users', :parent => system, :path => '/users', :css => '41', :sequence => 92})
     Resource.create!({:name => '系统日志', :code => 'logs', :parent => system, :path => '/logs', :css => '53', :sequence => 93})
     Resource.create!({:name => '公告管理', :code => 'notices', :parent => system, :path => '/notices', :css => '64', :sequence => 94})
+    Resource.create!({:name => '在线用户', :code => 'online', :parent => system, :path => '/online', :css => '71', :sequence => 95})
   end
 
   def self.down

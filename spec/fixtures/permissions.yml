@@ -16,6 +16,10 @@ admin_notices:
   user: admin
   resource: notices
 
+admin_online:
+  user: admin
+  resource: online
+
 #cogentsoft
 cogentsoft_departments:
   user: cogentsoft
@@ -32,6 +36,10 @@ cogentsoft_logs:
 cogentsoft_notices:
   user: cogentsoft
   resource: notices
+
+cogentsoft_online:
+  user: cogentsoft
+  resource: online
 
 #quentin
 quentin_workitems:

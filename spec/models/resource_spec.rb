@@ -14,7 +14,8 @@ describe Resource do
         resources(:departments),
         resources(:users),
         resources(:logs),
-        resources(:notices)
+        resources(:notices),
+        resources(:online)
       ]
     }
     Resource.menu_hash_from(users(:admin)).should == menu_hash

@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   protect_from_forgery :except => :create
   skip_before_filter :must_login, :destroy
   skip_before_filter :check_permission, :destroy
+  skip_before_filter :set_online_user
 
   layout 'login'
 
@@ -52,7 +53,6 @@ class SessionsController < ApplicationController
     reset_session
   end
 
-  private
   def redirect_to_homepage
     redirect_to home_path
   end

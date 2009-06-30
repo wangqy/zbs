@@ -33,6 +33,8 @@
     url = records_path
   when "添加往来记录"
     url = events_path
+  when "在线用户"
+    url = '/online'
   end
   raise 'visit url is blank' if url.blank?
   visit url
