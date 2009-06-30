@@ -1,16 +1,16 @@
-#help
+#help{:title => '帮助信息'}
   %b 受理事件时，操作步骤如下：
   %ol
-    %li 先输入联系电话，查询以往的事件记录
+    %li 先输入联系电话，查询以往事件记录
     %li 
       如果查询结果中存在与当前事件相同的记录(根据内容摘要判断是否相同)，点击"关联操作"列的
       %span.icon-16px-box.j-icon.i-create
       按钮
     %li 
-      如果没有相同事件，点击右下角的
+      如果没有相同事件，点击右下角的"
       %span.icon-16px-box.j-icon.i-create
-      按钮
-  %b 其他信息：
+      增加新事件"按钮
+  %b 其他帮助信息：
   %ol
     %li 
       点击事件主题左边的
@@ -29,7 +29,7 @@
       =text_field_tag :phone, params[:phone], :is_focus => true, :class => :nofixed
       =hidden_field_tag :record_id, params[:record_id]
       =submit_tag "", :id => :search, :class=> "icon-16px-box j-icon i-search nofixed nav-btn", :title => "查询"
-      %span.icon-16px-box.j-icon.i-help{:title => '帮助信息'}
+      %span.icon-16px-box.j-icon.i-help
 .split
 .j-panel
   .j-panel-head
@@ -58,4 +58,4 @@
     .j-toolbar
       %ul
         %li{:icon=>"j-icon i-create"}
-          =link_to '增加新事件', new_conversation_path(:phone => params[:phone], :category => params[:category], :record_id => params[:record_id])
+          =link_to '增加新事件', new_conversation_path(:phone => params[:phone], :category => params[:category], :record_id => params[:record_id]), :id => 'conversation_add_btn'

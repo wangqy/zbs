@@ -13,7 +13,7 @@ type "phone", "13988889999"
 click_and_wait "search"
 
 #关联
-click_and_wait "//div[@id='content-container']/div[3]/div[2]/div/div[1]/table/tbody/tr[1]/td[4]/a"
+click_and_wait "//a[@title='关联'][1]"
 click "link=改"
 wait_for_element_present "person_name"
 type "person_name", "马波波"

@@ -31,7 +31,7 @@ j(document).ready(function(){
   j('.i-help').tooltip({
     delay: 200,
     tip: '#help',
-    offset: [10,690],
+    offset: [20,0],
     effect: 'slideup',
     position: ['bottom','left'],
     opacity: 0.9

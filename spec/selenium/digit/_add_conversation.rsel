@@ -11,7 +11,8 @@ type "phone", "13988998899"
 click_and_wait "search"
 
 #增加新事件
-click_and_wait "//div[@id='content-container']/div[3]/div[3]/div/ul/li/a/span/span/span/span/span"
+#click_and_wait "//div[@id='content-container']/div[3]/div[3]/div/ul/li/a/span/span/span/span/span"
+click_and_wait "conversation_add_btn"
 click "event_category_2"
 type "person_name", "刘胡兰"
 type "conversation_title", "投诉商场给假货"

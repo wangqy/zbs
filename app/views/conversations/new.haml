@@ -1,9 +1,20 @@
+#help
+  %b 新增事件操作说明如下：
+  %ol
+    %li 值班室信息中，值班人员、接报人默认为当前用户；值班领导默认值取当前用户所在机构的"值班领导"
+    %li 
+      点击右下角按钮"
+      %span.icon-16px-box.j-icon.i-create
+      提交事件调度"后，值班室的调度人员就可以在"事件管理"-"事件调度"中分派此事件
+
 -form_for @conversation, :html => {:class => "j-form"} do |f|
   / 来电来访类型,或回电回访类型
   =hidden_field :event, :category, :value => '2'
   =hidden_field :event, :record_id
   .nav 
     %span 你现在的位置：受理事件 &gt;&gt; 增加新事件
+    .search-panel
+      %span.icon-16px-box.j-icon.i-help{:title => '帮助信息'}
   .split
   .j-panel
     .j-panel-head

@@ -74,9 +74,12 @@ div.dialog {
   -webkit-outline-radius: 4px; }
   #help ol {
     list-style-type: decimal;
-    margin: 3px 0 15px 10px; }
+    margin: 3px 0 5px 10px;
+    padding: 5px 0 5px 5px; }
     #help ol li {
-      padding: 2px 5px 0px 5px; }
+      padding: 2px 0;
+      line-height: 24px;
+      font-size: 14px; }
 
 #singheadBody {
   z-index: 99; }
